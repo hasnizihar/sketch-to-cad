@@ -1,0 +1,64 @@
+{
+  "$schema": "../../skills/sketch-to-cad/schemas/floor-plan-model.json",
+  "metadata": {
+    "projectName": "Studio-Unit-A1-Fixture",
+    "author": "Antigravity Sketch-to-CAD Agent",
+    "version": "1.0",
+    "createdAt": "2026-10-26T21:30:00Z"
+  },
+  "status": "approved",
+  "approval": {
+    "approvedBy": "Test Harness",
+    "approvedAt": "2026-10-26T21:35:00Z",
+    "approvalNotes": "Fixture dataset for automated model schema and geometric validation."
+  },
+  "units": "mm",
+  "envelope": {
+    "width": 6000,
+    "depth": 5000,
+    "origin": [0, 0],
+    "widthSource": "explicit",
+    "depthSource": "explicit"
+  },
+  "uncertainties": [
+    {
+      "id": "U1",
+      "target": "Bathroom Width",
+      "description": "Partition position unlabeled in sketch.",
+      "assumedValue": "1600mm",
+      "confidence": "medium",
+      "status": "confirmed"
+    },
+    {
+      "id": "U2",
+      "target": "Wall Thickness",
+      "description": "Wall thickness not annotated on sketch.",
+      "assumedValue": "Ext=200mm, Int=100mm",
+      "confidence": "high",
+      "status": "confirmed"
+    }
+  ],
+  "walls": [
+    { "id": "W-EXT-S", "type": "exterior", "start": [0, 0], "end": [6000, 0], "thickness": 200, "layer": "A-WALL-EXTR", "source": "explicit", "openingIds": ["WIN-1", "D-ENTR"] },
+    { "id": "W-EXT-E", "type": "exterior", "start": [6000, 0], "end": [6000, 5000], "thickness": 200, "layer": "A-WALL-EXTR", "source": "explicit", "openingIds": [] },
+    { "id": "W-EXT-N", "type": "exterior", "start": [6000, 5000], "end": [0, 5000], "thickness": 200, "layer": "A-WALL-EXTR", "source": "explicit", "openingIds": ["WIN-2"] },
+    { "id": "W-EXT-W", "type": "exterior", "start": [0, 5000], "end": [0, 0], "thickness": 200, "layer": "A-WALL-EXTR", "source": "explicit", "openingIds": [] },
+    { "id": "W-INT-V", "type": "interior", "start": [4300, 200], "end": [4300, 4800], "thickness": 100, "layer": "A-WALL-INTR", "source": "estimated", "openingIds": [] },
+    { "id": "W-INT-H", "type": "interior", "start": [4400, 2600], "end": [5800, 2600], "thickness": 100, "layer": "A-WALL-INTR", "source": "estimated", "openingIds": ["D-BATH"] }
+  ],
+  "openings": [
+    { "id": "D-ENTR", "type": "door", "wallId": "W-EXT-S", "center": [5000, 100], "width": 900, "swing": "inward-left", "source": "inferred" },
+    { "id": "D-BATH", "type": "door", "wallId": "W-INT-H", "center": [4900, 2650], "width": 750, "swing": "inward-right", "source": "inferred" },
+    { "id": "WIN-1", "type": "window", "wallId": "W-EXT-S", "center": [2100, 100], "width": 1800, "sillHeight": 900, "source": "estimated" },
+    { "id": "WIN-2", "type": "window", "wallId": "W-EXT-N", "center": [5100, 4900], "width": 800, "sillHeight": 1400, "source": "estimated" }
+  ],
+  "rooms": [
+    { "id": "R1", "name": "STUDIO / LIVING", "approximateArea": 19.3, "labelPosition": [2150, 2500], "boundaryCorners": [[200, 200], [4300, 200], [4300, 4800], [200, 4800]] },
+    { "id": "R2", "name": "BATHROOM", "approximateArea": 3.1, "labelPosition": [5100, 3700], "boundaryCorners": [[4400, 2700], [5800, 2700], [5800, 4800], [4400, 4800]] },
+    { "id": "R3", "name": "KITCHEN / ENTRY", "approximateArea": 3.4, "labelPosition": [5100, 1400], "boundaryCorners": [[4400, 200], [5800, 200], [5800, 2600], [4400, 2600]] }
+  ],
+  "dimensions": [
+    { "id": "DIM-1", "tier": 3, "p1": [0, 0], "p2": [6000, 0], "at": [3000, -500], "source": "explicit", "text": "6000" },
+    { "id": "DIM-2", "tier": 3, "p1": [0, 0], "p2": [0, 5000], "at": [-500, 2500], "source": "explicit", "text": "5000" }
+  ]
+}

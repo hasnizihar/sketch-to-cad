@@ -1,0 +1,43 @@
+# Environment & Credentials
+.env
+.env.*
+*.env
+*token*
+*secret*
+*credential*
+*.key
+*.pem
+
+# Antigravity Workspace Specific & User Configs
+.agents/mcp_config.json
+.system_generated/
+*.bak
+*.bak*
+
+# CAD Outputs & Local Test Artifacts (Except documentation assets)
+*.dxf
+*.dwg
+*.log
+*.tmp
+temp/
+tmp/
+test_workspace/
+
+# Operating System Files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# IDE & Editor Specific
+.vscode/
+.idea/
+*.swp
+*~
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/

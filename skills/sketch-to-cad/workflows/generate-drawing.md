@@ -1,0 +1,158 @@
+# Workflow: Generate Drawing
+
+This workflow specifies how to deterministically translate an approved [`floor-plan-model.json`](../schemas/floor-plan-model.json) into CADCraft MCP operations.
+
+## Guiding Principles
+1. **Primary Tool: `execute` with Structured JSON**:
+   Prefer calling `execute(command="...", params={...})` over raw command line strings. It bypasses text escaping, spacing issues, and interactive prompts.
+2. **Openings Cut Cleanly**:
+   Wall lines must **never** run continuously across door or window openings. Every wall hosting an opening is subdivided into distinct solid segments on either side of the opening.
+3. **Sealed Wall Cavities (Jamb End-Caps)**:
+   All door cutouts must be capped across the wall thickness with transverse jamb lines on the wall layer (`A-WALL-EXTR` or `A-WALL-INTR`) so wall cavities do not appear open or unclosed.
+4. **Layer Separation**:
+   Entities must be drawn on their designated AIA layer (`A-WALL-EXTR`, `A-WALL-INTR`, `A-DOOR`, `A-GLAZ`, `A-ANNO-TEXT`, `A-ANNO-DIMS`).
+5. **Readable Dimension Scaling**:
+   Standard millimeter architectural plans require scaled dimension styles (`textHeight >= 150mm`, `arrowSize >= 120mm`) so annotations remain crisp and readable at standard zoom levels.
+
+---
+
+## Stage 1: Initialize Clean Drawing Session
+```json
+new_drawing(metric=true)
+```
+Verify via `inspect_drawing` that the session starts in an empty model space.
+
+---
+
+## Stage 2: Create Standard AIA Layers & Dimension Style
+Call `execute` with `layer.new` for each standard layer:
+```python
+execute(command="layer.new", params={"name": "A-WALL-EXTR", "color": "cyan"})
+execute(command="layer.new", params={"name": "A-WALL-INTR", "color": "green"})
+execute(command="layer.new", params={"name": "A-DOOR", "color": "yellow"})
+execute(command="layer.new", params={"name": "A-GLAZ", "color": "blue"})
+execute(command="layer.new", params={"name": "A-ANNO-TEXT", "color": "red"})
+execute(command="layer.new", params={"name": "A-ANNO-DIMS", "color": "magenta"})
+```
+
+Create a dedicated architectural dimension style to ensure visible numeric text:
+```python
+execute(command="dimstyle.new", params={
+    "name": "Arch",
+    "textHeight": 180.0,
+    "arrowSize": 140.0,
+    "extExtend": 120.0,
+    "extOffset": 60.0,
+    "current": true
+})
+```
+
+---
+
+## Stage 3: Draw Exterior & Interior Walls with Clean Openings
+
+### Layer Activation
+```python
+execute(command="layer.current", params={"name": "A-WALL-EXTR"})
+```
+
+### Deterministic Segmented Wall Generation
+For each wall segment from $(x_1, y_1)$ to $(x_2, y_2)$ with thickness $T$:
+1. If the wall has **no openings**:
+   - Draw outer face: `execute(command="line", params={"points": [[x1_out, y1_out], [x2_out, y2_out]]})`
+   - Draw inner face: `execute(command="line", params={"points": [[x1_in, y1_in], [x2_in, y2_in]]})`
+2. If the wall has an **opening** of width $W$ at center $C$:
+   - Calculate opening start $O_1 = C - (W / 2)$ and opening end $O_2 = C + (W / 2)$.
+   - Draw outer face Segment 1: from wall start to $O_1$.
+   - Draw outer face Segment 2: from $O_2$ to wall end.
+   - Draw inner face Segment 1: from inner start to inner $O_1$.
+   - Draw inner face Segment 2: from inner $O_2$ to inner end.
+   - **Seal Wall Cavity**: Draw transverse jamb end-caps across the wall thickness at $O_1$ and $O_2$:
+     `execute(command="line", params={"points": [P_outer_O1, P_inner_O1]})`
+     `execute(command="line", params={"points": [P_outer_O2, P_inner_O2]})`
+
+This guarantees that openings are cleanly cut without overlapping lines or hollow, floating wall cavities.
+
+---
+
+## Stage 4: Add Windows (`A-GLAZ`)
+```python
+execute(command="layer.current", params={"name": "A-GLAZ"})
+```
+For each window of width $W$ across wall thickness $T$:
+1. **Jamb End Caps**:
+   - Left jamb: `execute(command="line", params={"points": [P_outer_left, P_inner_left]})`
+   - Right jamb: `execute(command="line", params={"points": [P_outer_right, P_inner_right]})`
+2. **Glass Centerline**:
+   - `execute(command="line", params={"points": [P_mid_left, P_mid_right]})`
+
+---
+
+## Stage 5: Add Doors & Swings (`A-DOOR`)
+```python
+execute(command="layer.current", params={"name": "A-DOOR"})
+```
+For each single swing door of width $W$ at hinge point $(h_x, h_y)$:
+1. **Door Leaf**:
+   - Draw open panel at 90°:
+     `execute(command="line", params={"points": [[hx, hy], [leaf_end_x, leaf_end_y]]})`
+2. **Swing Arc**:
+   - Draw 90° swing arc:
+     `execute(command="arc", params={"center": [hx, hy], "radius": W, "start": start_angle, "end": end_angle})`
+
+Verify that the door leaf sits flush against the host jamb and swings inward against an adjacent wall.
+
+---
+
+## Stage 6: Room Labels & Annotations (`A-ANNO-TEXT`)
+```python
+execute(command="layer.current", params={"name": "A-ANNO-TEXT"})
+```
+For each room in `model.rooms`:
+- If the space is a wide room:
+  ```python
+  execute(command="text", params={
+      "at": room["labelPosition"],
+      "text": room["name"],
+      "height": 180,
+      "justify": "MC"
+  })
+  ```
+- If the space is a narrow corridor or hallway ($\le 1200\text{ mm}$ wide):
+  Format text into two stacked, centered lines (e.g., line 1: `CENTRAL` at $Y+125$, line 2: `CORRIDOR` at $Y-125$, `height: 140`) to maintain clear margins from adjacent partitions.
+
+---
+
+## Stage 7: Dimension Chains (`A-ANNO-DIMS`)
+```python
+execute(command="layer.current", params={"name": "A-ANNO-DIMS"})
+```
+For each dimension in `model.dimensions`:
+- Set explicit readable text strings (e.g., `"8000"`, `"8700"`).
+- For horizontal dimensions:
+  ```python
+  execute(command="dimlinear", params={
+      "p1": dim["p1"],
+      "p2": dim["p2"],
+      "at": dim["at"],
+      "text": str(dim["value"])
+  })
+  ```
+- For vertical dimensions, include `rotation: 90.0` so extension lines and text align along the Y-axis:
+  ```python
+  execute(command="dimlinear", params={
+      "p1": dim["p1"],
+      "p2": dim["p2"],
+      "at": dim["at"],
+      "rotation": 90.0,
+      "text": str(dim["value"])
+  })
+  ```
+
+---
+
+## Stage 8: Frame View Extents
+```python
+execute(command="zoom", params={"mode": "extents"})
+```
+Proceed immediately to [`validate-and-export.md`](validate-and-export.md).

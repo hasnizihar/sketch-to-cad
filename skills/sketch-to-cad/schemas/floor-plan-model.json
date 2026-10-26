@@ -1,0 +1,182 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ResidentialFloorPlanModel",
+  "description": "Structured intermediate coordinate-based representation of a residential floor plan bridging sketch interpretation, user approval, and CADCraft drafting.",
+  "type": "object",
+  "required": ["metadata", "status", "units", "envelope", "walls", "openings", "rooms", "dimensions", "uncertainties"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["projectName", "version", "createdAt"],
+      "properties": {
+        "projectName": { "type": "string" },
+        "author": { "type": "string" },
+        "version": { "type": "string" },
+        "createdAt": { "type": "string" }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "awaiting_approval", "approved", "rejected"],
+      "description": "Approval state. Generation must not proceed unless status is approved."
+    },
+    "approval": {
+      "type": "object",
+      "properties": {
+        "approvedBy": { "type": "string" },
+        "approvedAt": { "type": "string" },
+        "approvalNotes": { "type": "string" }
+      }
+    },
+    "units": {
+      "type": "string",
+      "enum": ["mm", "m", "in", "ft"],
+      "description": "Drawing units used for all coordinate and dimension values."
+    },
+    "envelope": {
+      "type": "object",
+      "required": ["width", "depth", "origin", "widthSource", "depthSource"],
+      "properties": {
+        "width": { "type": "number", "minimum": 0 },
+        "depth": { "type": "number", "minimum": 0 },
+        "origin": {
+          "type": "array",
+          "items": { "type": "number" },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "widthSource": { "type": "string", "enum": ["explicit", "estimated", "inferred"] },
+        "depthSource": { "type": "string", "enum": ["explicit", "estimated", "inferred"] }
+      }
+    },
+    "uncertainties": {
+      "type": "array",
+      "description": "Explicit log of all ambiguous or estimated features requiring user review.",
+      "items": {
+        "type": "object",
+        "required": ["id", "target", "description", "status"],
+        "properties": {
+          "id": { "type": "string" },
+          "target": { "type": "string" },
+          "description": { "type": "string" },
+          "assumedValue": { "type": ["string", "number", "null"] },
+          "confidence": { "type": "string", "enum": ["low", "medium", "high"] },
+          "status": { "type": "string", "enum": ["unresolved", "confirmed", "corrected"] }
+        }
+      }
+    },
+    "walls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "start", "end", "thickness", "layer", "source"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": { "type": "string", "enum": ["exterior", "interior"] },
+          "start": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "end": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "thickness": { "type": "number", "minimum": 0 },
+          "layer": { "type": "string" },
+          "source": { "type": "string", "enum": ["explicit", "estimated", "inferred"] },
+          "openingIds": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "openings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "wallId", "center", "width", "source"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": { "type": "string", "enum": ["door", "window", "cased_opening"] },
+          "wallId": { "type": "string" },
+          "center": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "width": { "type": "number", "minimum": 0 },
+          "sillHeight": { "type": "number" },
+          "swing": {
+            "type": "string",
+            "enum": ["inward-left", "inward-right", "outward-left", "outward-right", "double", "sliding", "none"]
+          },
+          "source": { "type": "string", "enum": ["explicit", "estimated", "inferred"] }
+        }
+      }
+    },
+    "rooms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "labelPosition", "approximateArea"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "approximateArea": { "type": "number", "minimum": 0 },
+          "labelPosition": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "boundaryCorners": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": { "type": "number" },
+              "minItems": 2,
+              "maxItems": 2
+            }
+          }
+        }
+      }
+    },
+    "dimensions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "p1", "p2", "at", "source"],
+        "properties": {
+          "id": { "type": "string" },
+          "tier": { "type": "integer", "enum": [1, 2, 3] },
+          "p1": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "p2": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "at": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "source": { "type": "string", "enum": ["explicit", "estimated", "inferred"] },
+          "text": { "type": "string" }
+        }
+      }
+    }
+  }
+}
