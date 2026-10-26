@@ -9,6 +9,22 @@ An AI agent skill for turning rough residential floor-plan sketches into reviewa
 
 ---
 
+## Transformation: Sketch to CAD
+
+| Input: Hand-Drawn Sketch (Before) | Output: Verified CAD Floor Plan (After) |
+| :---: | :---: |
+| <img src="docs/assets/sketch-before.jpg" alt="Hand-Drawn Sketch (Before)" width="480"/> | <img src="docs/assets/cad-after.png" alt="Generated CAD Floor Plan (After)" width="480"/> |
+| *Raw residential sketch with handwritten dimensions & conflicts* | *Standard AIA layered CAD drawing with sealed jambs & readable dimensions* |
+
+### What the Skill Reconciled
+- **Dimension Conflict Resolution**: The sketch's left-hand chain ($1800 + 4100 + 3200 = 9100\text{ mm}$) conflicted with the right-hand overall depth ($8700\text{ mm}$). Through the mandatory **User Approval Gate**, the agent identified the discrepancy and obtained approval to lock the rectangular footprint to $8000 \times 8700\text{ mm}$ with a $3700\text{ mm}$ middle room.
+- **Sealed Wall Cavities**: Transformed rough single/double lines into clean $200\text{ mm}$ exterior walls (`A-WALL-EXTR`) and $100\text{ mm}$ interior partitions (`A-WALL-INTR`) with closed transverse jamb end-caps at all openings.
+- **Orientation Reconciliation**: Verified and established the main entrance on the East exterior wall into the Foyer, with inward swing geometry matching the sketch.
+- **Circulation & Annotation Clearance**: Split the corridor label into stacked text (`CENTRAL` / `CORRIDOR`) to prevent line collisions in narrow circulation spaces.
+- **Readable Dimension Annotations**: Applied a dedicated architectural style (`textHeight: 180`, `arrowSize: 140`, $90^\circ$ vertical rotation) so numeric values (`8000`, `8700`, `3800`, `4200`, `1200`, `3000`) are crisp and legible.
+
+---
+
 ## Overview
 
 **Sketch-to-CAD** is a reusable skill for Google Antigravity that bridges hand-drawn architectural sketches and computer-aided drafting (CAD).
@@ -106,11 +122,21 @@ In your workspace, create or update `.agents/mcp_config.json` with the path to y
 
 ```
 sketch-to-cad/
-├── README.md              # Project overview, installation, and usage
+├── README.md              # Project overview, before/after showcase, and usage
 ├── LICENSE                # MIT license
 ├── CONTRIBUTING.md         # Contribution guidelines
 ├── CHANGELOG.md            # Version history and release notes
 ├── .gitignore             # Protection against secret and artifact uploads
+├── docs/
+│   ├── assets/            # Showcase images (before-sketch, after-cad)
+│   ├── installation.md    # Detailed installation guide
+│   ├── cadcraft-mcp-setup.md # CADCraft MCP configuration instructions
+│   ├── workflow.md        # Deep dive into the 7-stage quality gate
+│   ├── troubleshooting.md # Common issues and recovery steps
+│   └── limitations.md     # Honest appraisal of v0.1.0 and future roadmap
+├── scripts/
+│   ├── install.ps1        # Beginner-friendly PowerShell installer
+│   └── validate-skill.ps1 # Skill and schema integrity test script
 ├── skills/
 │   └── sketch-to-cad/     # The reusable Antigravity skill
 │       ├── SKILL.md       # Master skill instruction file
@@ -118,15 +144,6 @@ sketch-to-cad/
 │       ├── schemas/       # JSON schema for floor-plan models
 │       ├── workflows/     # Phase-by-phase workflow guides
 │       └── examples/      # Canonical sample project execution
-├── scripts/
-│   ├── install.ps1        # Beginner-friendly PowerShell installer
-│   └── validate-skill.ps1 # Skill and schema integrity test script
-├── docs/
-│   ├── installation.md    # Detailed installation guide
-│   ├── cadcraft-mcp-setup.md # CADCraft MCP configuration instructions
-│   ├── workflow.md        # Deep dive into the 7-stage quality gate
-│   ├── troubleshooting.md # Common issues and recovery steps
-│   └── limitations.md     # Honest appraisal of v0.1.0 and future roadmap
 └── tests/
     ├── README.md          # Test suite documentation
     └── fixtures/          # Validated test floor-plan models
