@@ -12,6 +12,10 @@ An open-source AI agent skill that transforms hand-drawn residential floor-plan 
 [![CAD Backend: CADCraft MCP](https://img.shields.io/badge/CAD%20Backend-CADCraft%20MCP-orange.svg)](docs/cadcraft-mcp-setup.md)
 [![Stars](https://img.shields.io/github/stars/hasnizihar/sketch-to-cad?style=social)](https://github.com/hasnizihar/sketch-to-cad/stargazers)
 
+<p align="center">
+  <img src="docs/assets/banner.png" alt="Sketch-to-CAD Workflow Infographic Banner" width="100%"/>
+</p>
+
 [Quick Start](#quick-start) • [How It Works](#how-it-works) • [Demonstration](#before-and-after-demonstration) • [Documentation](docs/) • [Report an Issue](https://github.com/hasnizihar/sketch-to-cad/issues)
 
 ---
