@@ -63,12 +63,17 @@ Sketch ──► Interpretation ──► User Approval ──► CAD Generation
 ## Quick Start Installation
 
 ### 1. Prerequisites
-1. Ensure [CADCraft](docs/cadcraft-mcp-setup.md) is installed on your system.
-2. Open PowerShell in your local project or clone this repository:
-   ```bash
-   git clone https://github.com/hasnizihar/sketch-to-cad.git
-   cd sketch-to-cad
-   ```
+
+> [!IMPORTANT]
+> **External Dependencies**: This repository provides the **AI agent skill and drafting workflows**. It does **not** bundle the CADCraft CAD engine or the Google Antigravity runtime. Both must be installed separately:
+> 1. **Google Antigravity**: AI Agent IDE / Runtime environment.
+> 2. **CADCraft CLI**: Proprietary CAD drafting engine (v0.8.0+). See [docs/cadcraft-mcp-setup.md](docs/cadcraft-mcp-setup.md).
+
+Clone or download this repository:
+```bash
+git clone https://github.com/hasnizihar/sketch-to-cad.git
+cd sketch-to-cad
+```
 
 ### 2. Run the Installer
 Run the included PowerShell installer to install the skill into your Antigravity workspace:

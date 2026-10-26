@@ -6,10 +6,12 @@ This guide walks you through setting up the `sketch-to-cad` skill in your Antigr
 
 ## 1. Prerequisites
 
-Before installing, ensure you have:
+> [!IMPORTANT]
+> **Dependency Boundary**: Installing this skill copies agent prompts, workflows, and schemas into your workspace. It does **not** install or configure CADCraft or Antigravity automatically. You must have both installed:
+
 1. **Operating System**: Windows 10/11 (verified environment).
 2. **AI Agent Platform**: Google Antigravity IDE / Agent runtime.
-3. **CAD Backend**: CADCraft CLI v0.8+ installed separately.
+3. **CAD Backend**: [CADCraft CLI](cadcraft-mcp-setup.md) v0.8+ (installed separately).
 4. **Shell**: PowerShell 5.1+ or PowerShell 7+.
 
 ---
