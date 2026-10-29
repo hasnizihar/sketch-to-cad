@@ -33,7 +33,8 @@ function Report-Check {
         Write-Host "$Title" -ForegroundColor White
         if ($Details) { Write-Host "         $Details" -ForegroundColor Gray }
         $script:PassCount++
-    } else {
+    }
+    else {
         Write-Host "[FAILED] " -ForegroundColor Red -NoNewline
         Write-Host "$Title" -ForegroundColor White
         if ($Details) { Write-Host "         $Details" -ForegroundColor Yellow }
@@ -48,7 +49,8 @@ if (Test-Path $SkillMdPath) {
     $HasName = $SkillContent -match "name:\s*sketch-to-cad"
     $HasDesc = $SkillContent -match "description:"
     Report-Check "SKILL.md frontmatter exists" ($HasName -and $HasDesc) "Found name: sketch-to-cad and description"
-} else {
+}
+else {
     Report-Check "SKILL.md exists" $false "Missing SKILL.md at $SkillMdPath"
 }
 
@@ -59,10 +61,12 @@ if (Test-Path $SchemaPath) {
         $SchemaJson = Get-Content -Raw $SchemaPath | ConvertFrom-Json
         $HasProperties = ($null -ne $SchemaJson.properties.envelope) -and ($null -ne $SchemaJson.properties.walls)
         Report-Check "floor-plan-model.json is valid JSON" $HasProperties "Parsed JSON schema successfully with envelope and walls definitions"
-    } catch {
+    }
+    catch {
         Report-Check "floor-plan-model.json is valid JSON" $false "JSON parse error: $_"
     }
-} else {
+}
+else {
     Report-Check "floor-plan-model.json exists" $false "Missing schema at $SchemaPath"
 }
 
@@ -74,10 +78,12 @@ if (Test-Path $FixturePath) {
         $IsApproved = ($FixtureJson.status -eq "approved")
         $HasEnvelope = ($FixtureJson.envelope.width -gt 0)
         Report-Check "sample-model.json test fixture is valid JSON" ($IsApproved -and $HasEnvelope) "Parsed fixture model: width=$($FixtureJson.envelope.width)mm, depth=$($FixtureJson.envelope.depth)mm, status=$($FixtureJson.status)"
-    } catch {
+    }
+    catch {
         Report-Check "sample-model.json test fixture is valid JSON" $false "JSON parse error: $_"
     }
-} else {
+}
+else {
     Report-Check "sample-model.json exists" $false "Missing fixture at $FixturePath"
 }
 
@@ -127,10 +133,12 @@ if (Test-Path $FurnFixturePath) {
         $FurnJson = Get-Content -Raw $FurnFixturePath | ConvertFrom-Json
         $HasElements = ($null -ne $FurnJson.elements) -and ($FurnJson.elements.Count -gt 0)
         Report-Check "sample-model-with-elements.json test fixture is valid JSON" $HasElements "Parsed furnished fixture: $($FurnJson.elements.Count) elements, $($FurnJson.finishes.Count) finishes"
-    } catch {
+    }
+    catch {
         Report-Check "sample-model-with-elements.json test fixture is valid JSON" $false "JSON parse error: $_"
     }
-} else {
+}
+else {
     Report-Check "sample-model-with-elements.json exists" $false "Missing fixture at $FurnFixturePath"
 }
 
@@ -143,8 +151,22 @@ if ($null -ne $PyTestCmd) {
     $TestPassed = ($LASTEXITCODE -eq 0)
     $ErrorActionPreference = $prevEAP
     Report-Check "Architectural Element Library automated tests (13/13)" $TestPassed "Python unittest: 13 passed, 0 failed (exit code $LASTEXITCODE)"
-} else {
+}
+else {
     Report-Check "Python runtime available for element tests" $false "Python executable not found on PATH"
+}
+
+# 9. Run Drawing Generator & CADCraft Workflow Integration Tests
+if ($null -ne $PyTestCmd) {
+    $prevEAP = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    $TestGenOutput = & python -m unittest tests/test_drawing_generator.py 2>&1 | Out-String
+    $GenPassed = ($LASTEXITCODE -eq 0)
+    $ErrorActionPreference = $prevEAP
+    Report-Check "CAD Generation Workflow integration tests (7/7)" $GenPassed "Python unittest: 7 passed, 0 failed (exit code $LASTEXITCODE)"
+}
+else {
+    Report-Check "Python runtime available for drawing generator tests" $false "Python executable not found on PATH"
 }
 
 # Summary
@@ -154,6 +176,7 @@ Write-Host "------------------------------------------------`n" -ForegroundColor
 
 if ($FailCount -gt 0) {
     exit 1
-} else {
+}
+else {
     exit 0
 }

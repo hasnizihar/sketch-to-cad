@@ -32,3 +32,8 @@ This directory contains test specifications, reference fixtures, and validation 
    python -m unittest tests/test_element_library.py
    ```
    Covers catalog completeness, positive dimensions, base points, layer mappings, instance validation rules, schema backward compatibility, mocked CADCraft block calls, and real CADCraft CLI execution.
+3. **CAD Drawing Generator Workflow Integration Tests**:
+   ```powershell
+   python -m unittest tests/test_drawing_generator.py
+   ```
+   Validates end-to-end model compilation, Approval Gate enforcement, unapproved proposal rejection, duplicate ID handling, envelope clearance warnings, and real CADCraft headless MCP DXF+PNG generation.

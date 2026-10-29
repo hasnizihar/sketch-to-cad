@@ -19,9 +19,13 @@ Every element extracted from a user sketch or drawing prompt must be tagged with
      - Standard exterior wall thickness (200mm / 8") and interior partition thickness (100mm / 4.5").
      - Standard door widths (900mm entry, 800mm room, 750mm bath).
 
+4. **`proposed`**:
+   - Elements, fixtures, or spatial furniture arrangements suggested by the AI agent to verify space planning and spatial coordination.
+   - **Strict Approval Rule**: All `proposed` elements are initialized with `status: "unresolved"` and **must not be drafted** into the CAD model until explicitly approved by the reviewer.
+
 ---
 
-## Step 2: Extracting Spatial Topology
+## Step 2: Extracting Spatial Topology & Architectural Elements
 
 1. **Building Envelope**:
    - Establish the coordinate origin `(0, 0)` at the bottom-left corner of the exterior perimeter.

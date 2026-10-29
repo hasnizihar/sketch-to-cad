@@ -131,3 +131,4 @@ When exported, CAD blocks on these layers translate directly into semantic BIMCr
 | `A-STAIR` / `CIRC_STAIR_*` | BIMCraft `stair` | Riser count, run depth, width, storey association |
 | `A-COLS` / `STRUC_COL_*` | BIMCraft `column` | Insertion point, cross-section profile, storey height |
 | `A-FLOR-FIN` | BIMCraft `floor` finish layer | Room boundary boundary polygon, finish thickness (15-25mm) |
+

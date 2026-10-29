@@ -17,6 +17,7 @@
 # CAD Outputs & Local Test Artifacts (Except documentation assets)
 *.dxf
 !residential-floor-plan.dxf
+!tests/output/*.dxf
 *.dwg
 *.log
 *.tmp

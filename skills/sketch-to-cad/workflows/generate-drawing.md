@@ -104,7 +104,51 @@ Verify that the door leaf sits flush against the host jamb and swings inward aga
 
 ---
 
-## Stage 6: Room Labels & Annotations (`A-ANNO-TEXT`)
+## Stage 6: Register & Insert Reusable Architectural Elements
+
+For each element defined in `model.elements`:
+1. **Approval Verification**: Verify element provenance. If `source == "proposed"`, confirm that status is explicitly `"approved"`. Never draft unapproved proposals.
+2. **Block Registration**: Query drawing blocks via `inspect_drawing()`. If the block definition does not yet exist in the drawing session, register it on its designated AIA layer (`A-FURN`, `A-FIXT`, `A-STAIR`, or `A-COLS`) using `register_cad_block()` from [references/architectural-element-library.md](../references/architectural-element-library.md):
+   ```python
+   execute(command="block", params={
+       "name": element["blockId"],
+       "base": [0.0, 0.0],
+       "handles": drawn_primitive_handles,
+       "keep": "delete"
+   })
+   ```
+3. **Block Placement**: Switch to target layer and insert block reference at room coordinates $(X, Y)$ with specified rotation ($0^\circ, 90^\circ, 180^\circ, 270^\circ$) and scale:
+   ```python
+   execute(command="insert", params={
+       "name": element["blockId"],
+       "at": element["position"],
+       "rotation": element.get("rotation", 0.0),
+       "scale": element.get("scale", 1.0)
+   })
+   ```
+
+---
+
+## Stage 7: Apply Floor Finishes & Tile Hatches (`A-FLOR-FIN`)
+
+For each floor finish in `model.finishes`:
+```python
+execute(command="layer.current", params={"name": "A-FLOR-FIN"})
+```
+1. Draw closed boundary polyline or rectangle along room walls:
+   `execute(command="rectang", params={"p1": boundary[0], "p2": boundary[1]})`
+2. Apply hatching using the boundary handle:
+   ```python
+   execute(command="hatch", params={
+       "handles": [boundary_handle],
+       "pattern": "ANSI37",
+       "scale": tile_size / 15.0
+   })
+   ```
+
+---
+
+## Stage 8: Room Labels & Annotations (`A-ANNO-TEXT`)
 ```python
 execute(command="layer.current", params={"name": "A-ANNO-TEXT"})
 ```
@@ -123,7 +167,7 @@ For each room in `model.rooms`:
 
 ---
 
-## Stage 7: Dimension Chains (`A-ANNO-DIMS`)
+## Stage 9: Dimension Chains (`A-ANNO-DIMS`)
 ```python
 execute(command="layer.current", params={"name": "A-ANNO-DIMS"})
 ```
@@ -151,7 +195,7 @@ For each dimension in `model.dimensions`:
 
 ---
 
-## Stage 8: Frame View Extents
+## Stage 10: Frame View Extents & Export
 ```python
 execute(command="zoom", params={"mode": "extents"})
 ```

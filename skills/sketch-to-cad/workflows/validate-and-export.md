@@ -10,13 +10,20 @@ Call `inspect_drawing(entities=true)` and parse the JSON payload:
    - Compare `extents: [[min_x, min_y], [max_x, max_y]]` with `model.envelope`.
    - Dimension extents will extend slightly beyond walls; ensure wall geometry falls strictly within $[0, 0]$ to $[\text{width}, \text{depth}]$.
 2. **Layer Allocation Check**:
-   - Verify all 6 AIA layers exist in `layers`.
-   - Ensure default layer `0` contains zero geometry lines.
-3. **Room Labels Check**:
+   - Verify all active AIA layers exist in `layers` (`A-WALL-EXTR`, `A-WALL-INTR`, `A-DOOR`, `A-GLAZ`, `A-FURN`, `A-FIXT`, `A-STAIR`, `A-COLS`, `A-FLOR-FIN`, `A-ANNO-TEXT`, `A-ANNO-DIMS`).
+   - Ensure default layer `0` contains zero geometry lines or block references.
+3. **Architectural Elements & Blocks Check**:
+   - Verify count of `Block Reference` entities matches approved `model.elements` count.
+   - Verify all unique `blockId` names appear in `drawing.blocks`.
+   - Confirm element insertion positions $(X, Y)$ reside within exterior envelope bounds and assigned room polygons.
+4. **Floor Finishes & Tile Hatches Check**:
+   - Verify count of `Hatch` entities matches number of defined finishes in `model.finishes`.
+   - Verify all hatches are assigned to `A-FLOR-FIN`.
+5. **Room Labels Check**:
    - Call `find_text()` or inspect text entities.
    - Verify every room name in `model.rooms` appears exactly once.
    - Confirm insertion point $(x, y)$ is within that room's boundary.
-4. **Opening Counts Check**:
+6. **Opening Counts Check**:
    - Verify count of Arc entities equals number of swing doors in `model.openings`.
    - Verify count of glazing lines matches expected window jamb/sash count.
 
