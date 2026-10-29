@@ -93,7 +93,9 @@ $ExpectedFiles = @(
     "references\residential-drawing-standards.md",
     "references\validation-checklist.md",
     "references\architectural-element-library.md",
+    "references\bim-handoff-contract.md",
     "schemas\floor-plan-model.json",
+    "schemas\bim-handoff.schema.json",
     "workflows\interpret-sketch.md",
     "workflows\generate-drawing.md",
     "workflows\validate-and-export.md",
@@ -109,7 +111,7 @@ foreach ($RelPath in $ExpectedFiles) {
         $MissingList += $RelPath
     }
 }
-Report-Check "Referenced skill files exist (9/9)" $AllFilesExist ($MissingList -join ", ")
+Report-Check "Referenced skill files exist (11/11)" $AllFilesExist ($MissingList -join ", ")
 
 # 5. Check for Hard-Coded Machine Paths or Usernames
 $AllSkillTextFiles = Get-ChildItem -Recurse -Path $SkillDir -Include *.md, *.json
@@ -167,6 +169,19 @@ if ($null -ne $PyTestCmd) {
 }
 else {
     Report-Check "Python runtime available for drawing generator tests" $false "Python executable not found on PATH"
+}
+
+# 10. Run BIM Handoff Contract Tests (Milestone 4)
+if ($null -ne $PyTestCmd) {
+    $prevEAP = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    $TestHandoffOutput = & python -m unittest tests/test_bim_handoff.py 2>&1 | Out-String
+    $HandoffPassed = ($LASTEXITCODE -eq 0)
+    $ErrorActionPreference = $prevEAP
+    Report-Check "BIM Handoff Contract automated tests (9/9)" $HandoffPassed "Python unittest: 9 passed, 0 failed (exit code $LASTEXITCODE)"
+}
+else {
+    Report-Check "Python runtime available for BIM handoff tests" $false "Python executable not found on PATH"
 }
 
 # Summary

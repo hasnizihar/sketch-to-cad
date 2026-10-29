@@ -50,11 +50,14 @@ Save drawing and exports to explicit output destinations:
    ```json
    save(path=".../floor-plan.dxf")
    ```
-2. **Visual Preview (PNG)**:
+2. **Structured Companion Metadata (BIM Handoff JSON)**:
+   Compiled automatically via `compile_bim_handoff(...)` or `build_drawing(..., output_handoff_path=".../floor-plan.handoff.json")`.
+   Strictly validated against [`bim-handoff.schema.json`](../schemas/bim-handoff.schema.json).
+3. **Visual Preview (PNG)**:
    ```json
    save(path=".../floor-plan.png")
    ```
-3. Verify on disk that both files exist and have non-zero file sizes.
+4. Verify on disk that all three files exist and have non-zero file sizes.
 
 ---
 
@@ -69,16 +72,25 @@ Deliver the final validation report categorizing checks into **Passed**, **Faile
 - **Building Footprint**: 8000mm x 8700mm [PASSED]
   - Drawing Extents: X[-1000 to 9400], Y[-1000 to 10000] (including dimension witness lines).
 - **Wall Envelope**: Double-wall construction, all openings cut cleanly with jamb end-caps [PASSED].
-- **Layer Architecture**: 6 AIA standard layers populated, layer 0 empty [PASSED].
+- **Layer Architecture**: AIA standard layers populated, layer 0 empty [PASSED].
 - **Openings**: 8 doors, 6 windows verified in position and swing direction [PASSED].
-- **Dimension Readability**: Dimension text legible at standard zoom [PASSED].
+- **Elements & Blocks**: 8 block references registered and inserted [PASSED].
+- **Finishes & Hatches**: 1 tile grid pattern hatch on A-FLOR-FIN [PASSED].
+- **Dimension Readability**: Dimension text legible at standard zoom with zero title collisions [PASSED].
 - **Room Labels**: 8 rooms labeled at clear centroids with no line collisions [PASSED].
 
-#### 2. Unverified Scope / Compliance Notice
+#### 2. Downstream BIM Handoff Contract
+- **Contract Schema**: `bim-handoff.schema.json` v1.0.0 [PASSED]
+- **Companion File**: `floor-plan.handoff.json` (Valid JSON Schema Draft-07) [PASSED]
+- **Vertical Parameters**: Storey elevations and opening heights explicitly stored as `null` for downstream human approval gate [PASSED]
+- **BIM Handshake**: Verified for ingestion by `dxf-to-3d-bim`.
+
+#### 3. Unverified Scope / Compliance Notice
 - **Structural Load-Bearing**: Unverified. Requires review by a licensed structural engineer.
 - **Egress / Life-Safety Codes**: Unverified. Subject to local municipal building codes.
 
-#### 3. Output Artifacts
-- DXF Drawing: `residential-floor-plan.dxf` (Verified: 68,008 bytes)
-- Visual Preview: `residential-floor-plan.png` (Verified: 346,185 bytes)
+#### 4. Output Artifacts
+- DXF Drawing: `residential-floor-plan.dxf` (Verified: >35KB)
+- BIM Handoff JSON: `residential-floor-plan.handoff.json` (Verified: >10KB)
+- Visual Preview: `residential-floor-plan.png` (Verified: >300KB)
 ```

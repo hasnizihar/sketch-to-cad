@@ -85,9 +85,10 @@ Execute the automated checks in [references/validation-checklist.md](references/
 
 ### Phase 7: Deliver Final Deliverables
 1. Save master vector DXF: `save(path=".../floor-plan.dxf")`.
-2. Export visual preview PNG: `save(path=".../floor-plan.png")`.
-3. Verify files on disk (existence and non-zero size).
-4. Deliver structured acceptance report with PASSED / FAILED / UNVERIFIED statuses and non-compliance disclaimer.
+2. Generate companion BIM handoff metadata: `<drawing-name>.handoff.json` conforming to [schemas/bim-handoff.schema.json](schemas/bim-handoff.schema.json) and documented in [references/bim-handoff-contract.md](references/bim-handoff-contract.md).
+3. Export visual preview PNG: `save(path=".../floor-plan.png")`.
+4. Verify files on disk (existence and non-zero size).
+5. Deliver structured acceptance report with PASSED / FAILED / UNVERIFIED statuses and non-compliance disclaimer.
 
 ## Recovery
 If an MCP call fails:

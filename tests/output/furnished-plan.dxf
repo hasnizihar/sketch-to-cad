@@ -1701,7 +1701,7 @@ Refrigerator 700x700mm with door split line and handle
   0
 LWPOLYLINE
   5
-135
+14F
 330
 117A
 100
@@ -1733,7 +1733,7 @@ AcDbPolyline
   0
 LINE
   5
-136
+150
 330
 117A
 100
@@ -1757,7 +1757,7 @@ AcDbLine
   0
 LINE
   5
-137
+151
 330
 117A
 100
@@ -1821,7 +1821,7 @@ Shower tray 900x900mm with drain and slope diagonals
   0
 LWPOLYLINE
   5
-143
+147
 330
 117B
 100
@@ -1853,7 +1853,7 @@ AcDbPolyline
   0
 LWPOLYLINE
   5
-144
+148
 330
 117B
 100
@@ -1885,7 +1885,7 @@ AcDbPolyline
   0
 LINE
   5
-145
+149
 330
 117B
 100
@@ -1909,7 +1909,7 @@ AcDbLine
   0
 LINE
   5
-146
+14A
 330
 117B
 100
@@ -1933,7 +1933,7 @@ AcDbLine
   0
 CIRCLE
   5
-147
+14B
 330
 117B
 100
@@ -1993,7 +1993,7 @@ Toilet with cistern tank and rounded bowl
   0
 LWPOLYLINE
   5
-154
+13C
 330
 117C
 100
@@ -2025,7 +2025,7 @@ AcDbPolyline
   0
 LINE
   5
-155
+13D
 330
 117C
 100
@@ -2049,7 +2049,7 @@ AcDbLine
   0
 LINE
   5
-156
+13E
 330
 117C
 100
@@ -2073,7 +2073,7 @@ AcDbLine
   0
 LINE
   5
-157
+13F
 330
 117C
 100
@@ -2097,7 +2097,7 @@ AcDbLine
   0
 LINE
   5
-158
+140
 330
 117C
 100
@@ -2121,7 +2121,7 @@ AcDbLine
   0
 LINE
   5
-159
+141
 330
 117C
 100
@@ -2185,7 +2185,7 @@ Vanity counter 600x450mm with inner basin rim and faucet
   0
 LWPOLYLINE
   5
-13B
+133
 330
 117D
 100
@@ -2217,7 +2217,7 @@ AcDbPolyline
   0
 LWPOLYLINE
   5
-13C
+134
 330
 117D
 100
@@ -2249,7 +2249,7 @@ AcDbPolyline
   0
 CIRCLE
   5
-13D
+135
 330
 117D
 100
@@ -2309,7 +2309,7 @@ Double bed 1800x2000mm with dual pillows and duvet fold
   0
 LWPOLYLINE
   5
-12E
+160
 330
 117E
 100
@@ -2341,7 +2341,7 @@ AcDbPolyline
   0
 LWPOLYLINE
   5
-12F
+161
 330
 117E
 100
@@ -2373,7 +2373,7 @@ AcDbPolyline
   0
 LWPOLYLINE
   5
-130
+162
 330
 117E
 100
@@ -2405,7 +2405,7 @@ AcDbPolyline
   0
 LINE
   5
-131
+163
 330
 117E
 100
@@ -2469,7 +2469,7 @@ Two-seater sofa 1500x850mm with backrest and dual cushions
   0
 LWPOLYLINE
   5
-15F
+157
 330
 117F
 100
@@ -2501,7 +2501,7 @@ AcDbPolyline
   0
 LINE
   5
-160
+158
 330
 117F
 100
@@ -2525,7 +2525,7 @@ AcDbLine
   0
 LINE
   5
-161
+159
 330
 117F
 100
@@ -2549,7 +2549,7 @@ AcDbLine
   0
 LINE
   5
-162
+15A
 330
 117F
 100
@@ -2573,7 +2573,7 @@ AcDbLine
   0
 LINE
   5
-163
+15B
 330
 117F
 100
@@ -2637,7 +2637,7 @@ Square reinforced concrete column 200x200mm
   0
 LWPOLYLINE
   5
-14B
+12D
 330
 1180
 100
@@ -2669,7 +2669,7 @@ AcDbPolyline
   0
 LINE
   5
-14C
+12E
 330
 1180
 100
@@ -2693,7 +2693,7 @@ AcDbLine
   0
 LINE
   5
-14D
+12F
 330
 1180
 100

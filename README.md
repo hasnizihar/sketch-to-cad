@@ -163,11 +163,12 @@ In your workspace, create or edit `.agents/mcp_config.json`:
 
 ## Output Deliverables
 
-Each completed workflow produces four synchronized artifacts:
+Each completed workflow produces five synchronized artifacts:
 
 | Deliverable | Format | Description |
 | :--- | :--- | :--- |
 | **Master CAD Drawing** | `.dxf` | Layered 2D vector CAD drawing compatible with AutoCAD, CADCraft, LibreCAD, and QCAD. |
+| **BIM Handoff Contract** | `.handoff.json` | Structured companion metadata adhering to [`bim-handoff.schema.json`](skills/sketch-to-cad/schemas/bim-handoff.schema.json) for 3D reconstruction in `dxf-to-3d-bim`. |
 | **Visual Preview** | `.png` | High-resolution raster preview for instant visual verification without CAD software. |
 | **Floor Plan Model** | `.json` | Intermediate coordinate data model conforming to [`schemas/floor-plan-model.json`](skills/sketch-to-cad/schemas/floor-plan-model.json). |
 | **Acceptance Report** | `.md` | Itemized audit report with PASSED, FAILED, and UNVERIFIED compliance notices. |
@@ -220,13 +221,14 @@ sketch-to-cad/
 ├── skills/
 │   └── sketch-to-cad/                 # The reusable Antigravity skill
 │       ├── SKILL.md                   # Master skill definition
-│       ├── references/                # CADCraft schemas, AIA standards, QA checklist
-│       ├── schemas/                   # JSON schema for floor-plan models
+│       ├── references/                # CADCraft schemas, element library, BIM handoff contract
+│       ├── schemas/                   # JSON schemas (floor-plan-model, bim-handoff)
 │       ├── workflows/                 # Stage-by-stage drafting & validation guides
-│       └── examples/                  # Studio apartment reference project
+│       └── examples/                  # Reference projects and fixtures
 └── tests/
     ├── README.md                      # Test suite documentation
-    └── fixtures/                      # Validated floor-plan JSON models
+    ├── fixtures/                      # Validated floor-plan models and handoff JSON
+    └── output/                        # DXF, PNG, and companion handoff deliverables
 ```
 
 ---

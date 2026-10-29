@@ -20,6 +20,7 @@ This directory contains test specifications, reference fixtures, and validation 
 
 - [`fixtures/sample-model.json`](fixtures/sample-model.json): Baseline canonical intermediate model representing an unfurnished 6m x 5m studio apartment with 3 rooms, 2 doors, 2 windows, and 2 dimension chains.
 - [`fixtures/sample-model-with-elements.json`](fixtures/sample-model-with-elements.json): Furnished 6m x 5m studio apartment fixture demonstrating architectural blocks across `A-FURN`, `A-FIXT`, `A-COLS`, and tile floor finish on `A-FLOR-FIN`.
+- [`fixtures/sample-model-with-elements.handoff.json`](fixtures/sample-model-with-elements.handoff.json): Validated companion BIM handoff contract fixture conforming to `bim-handoff.schema.json` v1.0.0.
 
 ## Automated Test Suites
 
@@ -37,3 +38,8 @@ This directory contains test specifications, reference fixtures, and validation 
    python -m unittest tests/test_drawing_generator.py
    ```
    Validates end-to-end model compilation, Approval Gate enforcement, unapproved proposal rejection, duplicate ID handling, envelope clearance warnings, and real CADCraft headless MCP DXF+PNG generation.
+4. **BIM Handoff Contract Test Suite (Milestone 4)**:
+   ```powershell
+   python -m unittest tests/test_bim_handoff.py
+   ```
+   Validates Draft-07 compliance of `bim-handoff.schema.json`, full JSON compilation, backward compatibility with un-furnished models, null-preservation of unverified vertical elevations, host-wall relationships, and real CADCraft DXF+JSON consistency.

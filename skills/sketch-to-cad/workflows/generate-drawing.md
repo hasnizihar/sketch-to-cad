@@ -195,8 +195,18 @@ For each dimension in `model.dimensions`:
 
 ---
 
-## Stage 10: Frame View Extents & Export
+## Stage 10: Frame View Extents & Export DXF
 ```python
 execute(command="zoom", params={"mode": "extents"})
+save(path=".../floor-plan.dxf")
 ```
+
+---
+
+## Stage 11: Compile Companion BIM Handoff JSON
+Generate `<drawing-name>.handoff.json` using `compile_bim_handoff(...)`:
+- Validated against [`bim-handoff.schema.json`](../schemas/bim-handoff.schema.json).
+- Cross-references all DXF layers, registered blocks, entity counts, wall centerlines, and opening hosts.
+- Preserves `null` for unannotated vertical dimensions (storey elevations, door/window heights) for downstream human approval.
+
 Proceed immediately to [`validate-and-export.md`](validate-and-export.md).

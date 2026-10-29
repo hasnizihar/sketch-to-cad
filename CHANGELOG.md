@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased]
+
+### Added
+- **Milestone 4: DXF Output Standardization & BIM Handoff Contract**:
+  - Authored Draft-07 JSON Schema `skills/sketch-to-cad/schemas/bim-handoff.schema.json` v1.0.0.
+  - Implemented `compile_bim_handoff(...)` compiler in `scripts/drawing_generator.py` converting approved models into standardized companion JSON metadata (`<drawing-name>.handoff.json`).
+  - Added full companion metadata output to `DrawingGenerator.build_drawing(...)` and CLI `--output-handoff`.
+  - Added comprehensive technical specification `skills/sketch-to-cad/references/bim-handoff-contract.md`.
+  - Added automated test suite `tests/test_bim_handoff.py` (9 tests) verifying schema compliance, unverified vertical parameters as null, host-wall relationships, and genuine CADCraft DXF/JSON consistency.
+  - Added companion fixture `tests/fixtures/sample-model-with-elements.handoff.json` and generated `tests/output/furnished-plan.handoff.json`.
+  - Added Check 10 to `scripts/validate-skill.ps1` (10/10 passed).
+- **Milestone 3: Architectural Element Workflow Integration**:
+  - Integrated 20 CAD block definitions and insertion into `drawing_generator.py` pipeline.
+  - Added automated preflight validation with Human Approval Gate enforcement for proposed elements.
+  - Added CAD hatch generation for floor finishes on `A-FLOR-FIN`.
+- **Milestone 2: Reusable Architectural Element Library**:
+  - Implemented `scripts/element_library.py` with 20 parametric residential blocks across furniture, sanitary fixtures, kitchen units, structural columns, and circulation elements.
+  - Extended model schema `floor-plan-model.json` to v1.1.0 supporting optional `elements` and `finishes`.
+
 ## [0.1.0] - 2026-10-26
 
 ### Added
