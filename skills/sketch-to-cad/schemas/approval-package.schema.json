@@ -1,0 +1,161 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ApprovalPackage",
+  "description": "Structured human review package and revision-aware approval contract for AI-interpreted architectural floor plans.",
+  "type": "object",
+  "required": [
+    "package_id",
+    "project_name",
+    "revision_hash",
+    "status",
+    "source_sketch",
+    "draft_model_summary",
+    "extracted_dimensions",
+    "detected_conflicts",
+    "unknowns",
+    "suggested_corrections",
+    "approval_actions_required",
+    "decisions_log"
+  ],
+  "properties": {
+    "package_id": { "type": "string" },
+    "project_name": { "type": "string" },
+    "revision_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "SHA-256 hash of the canonical draft model geometry. Any change to geometry invalidates this hash."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["awaiting_approval", "approved", "rejected", "invalidated_by_revision"]
+    },
+    "source_sketch": {
+      "type": "object",
+      "required": ["source_file", "file_type"],
+      "properties": {
+        "source_file": { "type": "string" },
+        "file_type": { "type": "string" },
+        "page_number": { "type": ["integer", "null"] },
+        "dimensions_pixels": { "type": ["object", "null"] }
+      }
+    },
+    "draft_model_summary": {
+      "type": "object",
+      "required": ["envelope", "levels_count", "rooms_count", "walls_count", "openings_count"],
+      "properties": {
+        "envelope": {
+          "type": "object",
+          "required": ["width_mm", "depth_mm"],
+          "properties": {
+            "width_mm": { "type": "number" },
+            "depth_mm": { "type": "number" }
+          }
+        },
+        "levels_count": { "type": "integer", "minimum": 1 },
+        "rooms_count": { "type": "integer", "minimum": 0 },
+        "walls_count": { "type": "integer", "minimum": 1 },
+        "openings_count": { "type": "integer", "minimum": 0 },
+        "staircases_count": { "type": "integer", "minimum": 0 },
+        "columns_count": { "type": "integer", "minimum": 0 },
+        "furnishings_count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "extracted_dimensions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "source_text", "value_mm", "category"],
+        "properties": {
+          "id": { "type": "string" },
+          "source_text": { "type": "string" },
+          "value_mm": { "type": "number" },
+          "category": { "type": "string", "enum": ["explicit", "estimated", "inferred", "proposed", "unknown"] },
+          "target_description": { "type": "string" }
+        }
+      }
+    },
+    "detected_conflicts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "conflict_type", "severity", "description"],
+        "properties": {
+          "id": { "type": "string" },
+          "conflict_type": { "type": "string", "enum": ["arithmetic_mismatch", "unclosed_boundary", "dangling_wall", "overlapping_openings", "unsupported_geometry"] },
+          "severity": { "type": "string", "enum": ["blocker", "warning"] },
+          "description": { "type": "string" },
+          "involved_elements": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "unknowns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "field", "description"],
+        "properties": {
+          "id": { "type": "string" },
+          "field": { "type": "string" },
+          "description": { "type": "string" },
+          "default_if_approved": { "type": ["string", "number", "null"] }
+        }
+      }
+    },
+    "suggested_corrections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "target_element", "proposed_value", "rationale"],
+        "properties": {
+          "id": { "type": "string" },
+          "target_element": { "type": "string" },
+          "proposed_value": { "type": ["string", "number", "object"] },
+          "rationale": { "type": "string" }
+        }
+      }
+    },
+    "approval_actions_required": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["action_id", "question", "options"],
+        "properties": {
+          "action_id": { "type": "string" },
+          "question": { "type": "string" },
+          "options": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "status": { "type": "string", "enum": ["pending", "resolved"] },
+          "resolved_choice": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "decisions_log": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["timestamp", "reviewer_name", "action", "details"],
+        "properties": {
+          "timestamp": { "type": "string" },
+          "reviewer_name": { "type": "string" },
+          "action": { "type": "string", "enum": ["approve", "reject", "correct_dimension", "correct_room_label", "confirm_opening", "resolve_uncertainty"] },
+          "details": { "type": "object" }
+        }
+      }
+    },
+    "approval_metadata": {
+      "type": "object",
+      "properties": {
+        "approved_by": { "type": "string" },
+        "approval_timestamp": { "type": "string" },
+        "approved_revision_hash": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}
+

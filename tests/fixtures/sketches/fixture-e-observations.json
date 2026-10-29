@@ -1,0 +1,158 @@
+{
+  "source_metadata": {
+    "source_file": "fixture-e-nonrectangular.png",
+    "file_type": "png",
+    "page_number": 1,
+    "total_pages": 1,
+    "dimensions_pixels": {
+      "width": 1200,
+      "height": 900
+    },
+    "dpi": 72.0,
+    "orientation_degrees": 0,
+    "source_floor_hint": "Ground Floor",
+    "preprocessing_applied": [
+      "Deterministic RGB normalization"
+    ]
+  },
+  "status": "extracted",
+  "confidence_summary": {
+    "overall_confidence": 0.88,
+    "dimension_reliability": "medium",
+    "notes": "Nonrectangular floor plan with an intentionally angled northern boundary wall"
+  },
+  "walls": [
+    {
+      "id": "W-ANGLED-NORTH",
+      "wall_type": "exterior",
+      "start_point_pixel": [
+        200,
+        300
+      ],
+      "end_point_pixel": [
+        900,
+        150
+      ],
+      "thickness_mm": 200.0,
+      "thickness_category": "explicit",
+      "confidence": 0.92,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.16,
+        0.16,
+        0.34,
+        0.75
+      ]
+    },
+    {
+      "id": "W-EXT-EAST",
+      "wall_type": "exterior",
+      "start_point_pixel": [
+        900,
+        150
+      ],
+      "end_point_pixel": [
+        900,
+        700
+      ],
+      "thickness_mm": 200.0,
+      "thickness_category": "explicit",
+      "confidence": 0.95,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.16,
+        0.74,
+        0.78,
+        0.76
+      ]
+    },
+    {
+      "id": "W-EXT-SOUTH",
+      "wall_type": "exterior",
+      "start_point_pixel": [
+        900,
+        700
+      ],
+      "end_point_pixel": [
+        200,
+        700
+      ],
+      "thickness_mm": 200.0,
+      "thickness_category": "explicit",
+      "confidence": 0.95,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.77,
+        0.16,
+        0.79,
+        0.76
+      ]
+    },
+    {
+      "id": "W-EXT-WEST",
+      "wall_type": "exterior",
+      "start_point_pixel": [
+        200,
+        700
+      ],
+      "end_point_pixel": [
+        200,
+        300
+      ],
+      "thickness_mm": 200.0,
+      "thickness_category": "explicit",
+      "confidence": 0.95,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.33,
+        0.16,
+        0.78,
+        0.17
+      ]
+    }
+  ],
+  "openings": [],
+  "rooms": [
+    {
+      "id": "R-ANGLED-1",
+      "raw_label": "ANGLED LIVING SPACE",
+      "standardized_type": "LIVING",
+      "floor_level": "ground",
+      "approx_width_mm": 7000.0,
+      "approx_depth_mm": 5500.0,
+      "dimension_provenance": "inferred",
+      "confidence": 0.88,
+      "source_bbox": [
+        0.25,
+        0.2,
+        0.7,
+        0.7
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-S",
+      "source_text": "7000 mm",
+      "value_mm": 7000.0,
+      "category": "explicit",
+      "target_entity_type": "overall_width",
+      "confidence": 0.95,
+      "source_bbox": [
+        0.8,
+        0.4,
+        0.85,
+        0.6
+      ]
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "unc-angled-wall",
+      "field": "walls.W-ANGLED-NORTH",
+      "severity": "warning",
+      "description": "Wall W-ANGLED-NORTH is genuinely angled (slope preserved); confirm CAD drafting compatibility.",
+      "suggested_action": "Confirm angled wall geometry without forcing orthogonal alignment."
+    }
+  ]
+}

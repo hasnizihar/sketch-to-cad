@@ -225,3 +225,13 @@ For multi-storey residential projects:
    - Compile consolidated reports (`<project>.report.json`, `.report.md`, `.report.pdf`) with floor-by-floor schedules and vertical coordination verification.
 
 Proceed immediately to [`validate-and-export.md`](validate-and-export.md).
+
+---
+
+## Stage 12: End-to-End Orchestration & Visual QA (Milestone 7)
+
+For full sketch-to-CAD automation, execute through `scripts/sketch_to_cad_pipeline.py`:
+1. **Automated Pipeline**: Coordinates sketch ingestion, observation extraction, geometry reconstruction, draft model compilation, human approval gate, DXF drafting, BIM handoff, and reports.
+2. **Visual Quality Assurance**: Automatically executes `perform_visual_qa(...)` comparing source sketch features against the generated CAD model, outputting `<project>.visual-qa.json` and `<project>.visual-qa.md`.
+3. Reference: See [`references/end-to-end-pipeline.md`](../references/end-to-end-pipeline.md).
+

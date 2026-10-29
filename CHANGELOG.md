@@ -10,6 +10,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Milestone 7: End-to-End Sketch Interpretation & CAD Generation**:
+  - Implemented multimodal sketch ingestion engine `scripts/sketch_interpreter.py` supporting `.jpg`, `.jpeg`, `.png`, and multi-page `.pdf` floor-plan sets without mutating source files.
+  - Authored structured observation schema `skills/sketch-to-cad/schemas/sketch-observations.schema.json` capturing walls, openings, rooms, stairs, columns, symbols, normalized bounding boxes `[ymin, xmin, ymax, xmax]`, and confidence.
+  - Implemented deterministic geometric reconstruction engine `reconstruct_geometry`: validates wall graph connectivity, performs orthogonal snapping ($\pm 5^\circ$) while preserving genuinely angled walls, checks closed room polygons, associates door/window openings to host walls, and performs arithmetic contradiction checks between room chains and overall envelope without silent warping.
+  - Authored revision-aware approval schema `skills/sketch-to-cad/schemas/approval-package.schema.json` and human review module `scripts/approval_package.py`.
+  - Enforced mandatory human approval gate: computes deterministic SHA-256 geometry revision hash; strictly prohibits AI agents and automated bots from self-approving proposals; invalidates approval upon subsequent geometry changes.
+  - Implemented source-to-CAD feature-level visual quality assurance engine `scripts/visual_qa.py`: verifies footprint aspect ratio, room topology and count, opening counts, and dimension fidelity, outputting `<project>.visual-qa.json` and `<project>.visual-qa.md` discrepancy reports.
+  - Built unified end-to-end pipeline orchestrator `scripts/sketch_to_cad_pipeline.py` connecting sketch ingestion, observation extraction, geometry reconstruction, human review gate, CADCraft DXF drafting, BIM handoff compiling, architectural PDF/Markdown reporting, and visual QA.
+  - Generated synthetic and canonical sketch fixture dataset in `tests/fixtures/sketches/`: Fixture A (clean single floor), Fixture B (incomplete/missing dimensions), Fixture C (arithmetic contradictions), Fixture D (multi-page two-storey PDF), and Fixture E (nonrectangular angled plan).
+  - Executed end-to-end pipeline against the user's canonical hand-drawn sketch `docs/assets/sketch-before.jpg`.
+  - Added new references: `references/sketch-interpretation-contract.md`, `references/source-traceability.md`, and `references/end-to-end-pipeline.md`.
+  - Created automated test suite `tests/test_sketch_to_cad_e2e.py` covering all 24 required capabilities (repository total: 91 passed tests).
+  - Updated `scripts/validate-skill.ps1` with Validation Check 13 (13/13 passed).
 - **Milestone 6: Multi-Storey Residential Floor Plans**:
   - Extended intermediate model schema `skills/sketch-to-cad/schemas/floor-plan-model.json` to support multi-storey definitions: root `floors` array, `stairs` vertical circulation, `approval.floorApprovals`, and optional `floorId` on all entities with 100% legacy backward compatibility.
   - Implemented independent per-floor drawing separation: `DrawingGenerator.build_floor_drawing` and `DrawingGenerator.build_multi_floor_drawings` generate isolated DXF drawings for each storey (`<project>-level-01.dxf`, `<project>-level-02.dxf`) in distinct CADCraft sessions with zero entity leakage.
@@ -55,6 +68,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2026-10-26
 
 ### Added
+- **Milestone 7: End-to-End Sketch Interpretation & CAD Generation**:
+  - Implemented multimodal sketch ingestion engine `scripts/sketch_interpreter.py` supporting `.jpg`, `.jpeg`, `.png`, and multi-page `.pdf` floor-plan sets without mutating source files.
+  - Authored structured observation schema `skills/sketch-to-cad/schemas/sketch-observations.schema.json` capturing walls, openings, rooms, stairs, columns, symbols, normalized bounding boxes `[ymin, xmin, ymax, xmax]`, and confidence.
+  - Implemented deterministic geometric reconstruction engine `reconstruct_geometry`: validates wall graph connectivity, performs orthogonal snapping ($\pm 5^\circ$) while preserving genuinely angled walls, checks closed room polygons, associates door/window openings to host walls, and performs arithmetic contradiction checks between room chains and overall envelope without silent warping.
+  - Authored revision-aware approval schema `skills/sketch-to-cad/schemas/approval-package.schema.json` and human review module `scripts/approval_package.py`.
+  - Enforced mandatory human approval gate: computes deterministic SHA-256 geometry revision hash; strictly prohibits AI agents and automated bots from self-approving proposals; invalidates approval upon subsequent geometry changes.
+  - Implemented source-to-CAD feature-level visual quality assurance engine `scripts/visual_qa.py`: verifies footprint aspect ratio, room topology and count, opening counts, and dimension fidelity, outputting `<project>.visual-qa.json` and `<project>.visual-qa.md` discrepancy reports.
+  - Built unified end-to-end pipeline orchestrator `scripts/sketch_to_cad_pipeline.py` connecting sketch ingestion, observation extraction, geometry reconstruction, human review gate, CADCraft DXF drafting, BIM handoff compiling, architectural PDF/Markdown reporting, and visual QA.
+  - Generated synthetic and canonical sketch fixture dataset in `tests/fixtures/sketches/`: Fixture A (clean single floor), Fixture B (incomplete/missing dimensions), Fixture C (arithmetic contradictions), Fixture D (multi-page two-storey PDF), and Fixture E (nonrectangular angled plan).
+  - Executed end-to-end pipeline against the user's canonical hand-drawn sketch `docs/assets/sketch-before.jpg`.
+  - Added new references: `references/sketch-interpretation-contract.md`, `references/source-traceability.md`, and `references/end-to-end-pipeline.md`.
+  - Created automated test suite `tests/test_sketch_to_cad_e2e.py` covering all 24 required capabilities (repository total: 91 passed tests).
+  - Updated `scripts/validate-skill.ps1` with Validation Check 13 (13/13 passed).
 - **Initial Public Preview Release** of the reusable `sketch-to-cad` skill for Google Antigravity.
 - **7-Stage Quality Gate Workflow**:
   - `Sketch → Interpretation → User Approval → CAD Generation → Geometric Validation → Visual QA & Source Comparison → Final Deliverables`.

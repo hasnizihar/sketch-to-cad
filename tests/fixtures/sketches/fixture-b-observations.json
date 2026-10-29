@@ -1,0 +1,138 @@
+{
+  "source_metadata": {
+    "source_file": "fixture-b-incomplete.png",
+    "file_type": "png",
+    "page_number": 1,
+    "total_pages": 1,
+    "dimensions_pixels": {
+      "width": 1000,
+      "height": 800
+    },
+    "dpi": 72.0,
+    "orientation_degrees": 0,
+    "source_floor_hint": "Ground Floor",
+    "preprocessing_applied": [
+      "Deterministic RGB normalization"
+    ]
+  },
+  "status": "extracted",
+  "confidence_summary": {
+    "overall_confidence": 0.72,
+    "dimension_reliability": "medium",
+    "notes": "Incomplete sketch: overall depth missing and wall thicknesses unannotated"
+  },
+  "walls": [
+    {
+      "id": "W-EXT-NORTH",
+      "wall_type": "exterior",
+      "start_point_pixel": [
+        150,
+        150
+      ],
+      "end_point_pixel": [
+        850,
+        150
+      ],
+      "thickness_mm": null,
+      "thickness_category": "unknown",
+      "confidence": 0.85,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.18,
+        0.15,
+        0.2,
+        0.85
+      ]
+    },
+    {
+      "id": "W-EXT-SOUTH",
+      "wall_type": "exterior",
+      "start_point_pixel": [
+        150,
+        650
+      ],
+      "end_point_pixel": [
+        850,
+        650
+      ],
+      "thickness_mm": null,
+      "thickness_category": "unknown",
+      "confidence": 0.85,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.8,
+        0.15,
+        0.82,
+        0.85
+      ]
+    }
+  ],
+  "openings": [
+    {
+      "id": "OP-AMBIGUOUS-01",
+      "type": "opening",
+      "swing_direction": "unknown",
+      "width_mm": null,
+      "width_category": "unknown",
+      "host_wall_ref": null,
+      "confidence": 0.6,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.31,
+        0.84,
+        0.4,
+        0.86
+      ]
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-01",
+      "raw_label": "STUDIO LIVING",
+      "standardized_type": "LIVING",
+      "floor_level": "ground",
+      "approx_width_mm": 7000.0,
+      "approx_depth_mm": null,
+      "dimension_provenance": "inferred",
+      "confidence": 0.8,
+      "source_bbox": [
+        0.2,
+        0.2,
+        0.5,
+        0.8
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-1",
+      "source_text": "7000 mm",
+      "value_mm": 7000.0,
+      "category": "explicit",
+      "target_entity_type": "overall_width",
+      "confidence": 0.95,
+      "source_bbox": [
+        0.1,
+        0.4,
+        0.15,
+        0.6
+      ]
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "unc-missing-depth",
+      "field": "envelope.depth",
+      "severity": "blocker",
+      "description": "Overall building depth is not annotated on sketch.",
+      "suggested_action": "Request human confirmation for building depth."
+    },
+    {
+      "id": "unc-wall-thickness",
+      "field": "walls.thickness",
+      "severity": "info",
+      "description": "Wall thickness unannotated; standard 200mm exterior proposed.",
+      "suggested_action": "Confirm proposed 200mm exterior wall thickness."
+    }
+  ]
+}

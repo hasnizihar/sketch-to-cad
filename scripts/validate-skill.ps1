@@ -95,9 +95,15 @@ $ExpectedFiles = @(
     "references\architectural-element-library.md",
     "references\bim-handoff-contract.md",
     "references\architectural-reporting-guide.md",
+    "references\multi-storey-floor-plans.md",
+    "references\sketch-interpretation-contract.md",
+    "references\source-traceability.md",
+    "references\end-to-end-pipeline.md",
     "schemas\floor-plan-model.json",
     "schemas\bim-handoff.schema.json",
     "schemas\architectural-report.schema.json",
+    "schemas\sketch-observations.schema.json",
+    "schemas\approval-package.schema.json",
     "workflows\interpret-sketch.md",
     "workflows\generate-drawing.md",
     "workflows\validate-and-export.md",
@@ -113,7 +119,7 @@ foreach ($RelPath in $ExpectedFiles) {
         $MissingList += $RelPath
     }
 }
-Report-Check "Referenced skill files exist (13/13)" $AllFilesExist ($MissingList -join ", ")
+Report-Check "Referenced skill files exist (19/19)" $AllFilesExist ($MissingList -join ", ")
 
 # 5. Check for Hard-Coded Machine Paths or Usernames
 $AllSkillTextFiles = Get-ChildItem -Recurse -Path $SkillDir -Include *.md, *.json
@@ -210,6 +216,20 @@ if ($null -ne $PyTestCmd) {
 }
 else {
     Report-Check "Python runtime available for multi-storey tests" $false "Python executable not found on PATH"
+}
+
+
+# 13. Run End-to-End Sketch Interpretation & CAD Pipeline Tests (Milestone 7)
+if ($null -ne $PyTestCmd) {
+    $prevEAP = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    $TestE2EOutput = & python -m unittest tests/test_sketch_to_cad_e2e.py 2>&1 | Out-String
+    $E2EPassed = ($LASTEXITCODE -eq 0)
+    $ErrorActionPreference = $prevEAP
+    Report-Check "End-to-End Sketch Interpretation & CAD Pipeline tests (24/24)" $E2EPassed "Python unittest: 24 passed, 0 failed (exit code $LASTEXITCODE)"
+}
+else {
+    Report-Check "Python runtime available for end-to-end sketch tests" $false "Python executable not found on PATH"
 }
 
 # Summary

@@ -1,0 +1,172 @@
+{
+  "source_metadata": {
+    "source_file": "fixture-c-contradictory.png",
+    "file_type": "png",
+    "page_number": 1,
+    "total_pages": 1,
+    "dimensions_pixels": {
+      "width": 1200,
+      "height": 900
+    },
+    "dpi": 72.0,
+    "orientation_degrees": 0,
+    "source_floor_hint": "Ground Floor",
+    "preprocessing_applied": [
+      "Deterministic RGB normalization"
+    ]
+  },
+  "status": "extracted",
+  "confidence_summary": {
+    "overall_confidence": 0.65,
+    "dimension_reliability": "critical_conflicts",
+    "notes": "Severe arithmetic contradiction: room chain (9100mm) exceeds overall footprint (8000mm)"
+  },
+  "walls": [
+    {
+      "id": "W-EXT-NORTH",
+      "wall_type": "exterior",
+      "start_point_pixel": [
+        200,
+        200
+      ],
+      "end_point_pixel": [
+        1000,
+        200
+      ],
+      "thickness_mm": 200.0,
+      "thickness_category": "explicit",
+      "confidence": 0.95,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.22,
+        0.16,
+        0.23,
+        0.84
+      ]
+    },
+    {
+      "id": "W-EXT-SOUTH",
+      "wall_type": "exterior",
+      "start_point_pixel": [
+        1000,
+        700
+      ],
+      "end_point_pixel": [
+        200,
+        700
+      ],
+      "thickness_mm": 200.0,
+      "thickness_category": "explicit",
+      "confidence": 0.95,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.77,
+        0.16,
+        0.78,
+        0.84
+      ]
+    }
+  ],
+  "openings": [],
+  "rooms": [
+    {
+      "id": "R-A",
+      "raw_label": "ROOM A",
+      "standardized_type": "ROOM",
+      "floor_level": "ground",
+      "approx_width_mm": 4500.0,
+      "approx_depth_mm": 6000.0,
+      "dimension_provenance": "explicit",
+      "confidence": 0.9,
+      "source_bbox": [
+        0.25,
+        0.2,
+        0.75,
+        0.5
+      ]
+    },
+    {
+      "id": "R-B",
+      "raw_label": "ROOM B",
+      "standardized_type": "ROOM",
+      "floor_level": "ground",
+      "approx_width_mm": 4600.0,
+      "approx_depth_mm": 6000.0,
+      "dimension_provenance": "explicit",
+      "confidence": 0.9,
+      "source_bbox": [
+        0.25,
+        0.5,
+        0.75,
+        0.8
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-OVERALL-W",
+      "source_text": "8000 mm",
+      "value_mm": 8000.0,
+      "category": "explicit",
+      "target_entity_type": "overall_width",
+      "confidence": 0.95,
+      "source_bbox": [
+        0.15,
+        0.45,
+        0.18,
+        0.55
+      ]
+    },
+    {
+      "id": "DIM-OVERALL-D",
+      "source_text": "6000 mm",
+      "value_mm": 6000.0,
+      "category": "explicit",
+      "target_entity_type": "overall_depth",
+      "confidence": 0.95,
+      "source_bbox": [
+        0.45,
+        0.08,
+        0.55,
+        0.15
+      ]
+    },
+    {
+      "id": "DIM-ROOM-A-W",
+      "source_text": "4500 mm",
+      "value_mm": 4500.0,
+      "category": "explicit",
+      "target_entity_type": "room_width",
+      "confidence": 0.95,
+      "source_bbox": [
+        0.78,
+        0.25,
+        0.82,
+        0.45
+      ]
+    },
+    {
+      "id": "DIM-ROOM-B-W",
+      "source_text": "4600 mm",
+      "value_mm": 4600.0,
+      "category": "explicit",
+      "target_entity_type": "room_width",
+      "confidence": 0.95,
+      "source_bbox": [
+        0.78,
+        0.55,
+        0.82,
+        0.75
+      ]
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "unc-contradiction-width",
+      "field": "envelope.width",
+      "severity": "blocker",
+      "description": "Contradictory width: Room chain sum (4500 + 4600 = 9100mm) exceeds overall width (8000mm).",
+      "suggested_action": "User must clarify whether 8000mm envelope or 9100mm interior sum is correct."
+    }
+  ]
+}

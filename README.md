@@ -219,6 +219,10 @@ sketch-to-cad/
 ├── scripts/
 │   ├── install.ps1                    # PowerShell installer with -DryRun support
 │   ├── validate-skill.ps1             # Automated schema, links, & safety validator
+│   ├── sketch_interpreter.py          # Multimodal ingestion, observation extraction & geometry reconstruction
+│   ├── approval_package.py            # Revision-aware human review proposal packaging & approval gate
+│   ├── visual_qa.py                   # Feature-level source-to-CAD visual QA discrepancy reporter
+│   ├── sketch_to_cad_pipeline.py      # End-to-end automated pipeline orchestrator
 │   ├── drawing_generator.py           # Deterministic CAD drafting & handoff engine
 │   ├── element_library.py             # 20 standard residential CAD blocks
 │   └── architectural_reports.py       # Schedules, quantities, & audit report engine
@@ -230,7 +234,7 @@ sketch-to-cad/
 │       ├── workflows/                 # Stage-by-stage drafting, reporting & validation guides
 │       └── examples/                  # Reference projects and fixtures
 └── tests/
-    ├── README.md                      # Test suite documentation (67 tests, 12 checks)
+    ├── README.md                      # Test suite documentation (91 tests, 13 checks)
     ├── fixtures/                      # Validated floor-plan models and handoff JSON
     └── output/                        # DXF, PNG, handoff JSON, and report deliverables
 ```

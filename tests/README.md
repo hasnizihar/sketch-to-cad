@@ -56,3 +56,43 @@ This directory contains test specifications, reference fixtures, and validation 
    python -m unittest tests/test_multi_storey.py
    ```
    Validates multi-level floor plan schema rules, per-floor approval gate enforcement, independent DXF drawing generation, entity isolation without inter-floor leakage, shared Cartesian coordinate system, staircase vertical circulation alignment ($<=50\text{mm}$ tolerance), structural column continuity across levels, companion multi-storey BIM handoffs, and real CADCraft multi-floor execution.
+
+7. **End-to-End Sketch Interpretation & CAD Generation Test Suite (Milestone 7)**:
+   ```powershell
+   python -m unittest tests/test_sketch_to_cad_e2e.py
+   ```
+   Validates all 24 required capabilities across the end-to-end pipeline:
+   - JPG and PNG input handling (`load_sketch_input`).
+   - Multi-page PDF input handling and page rendering.
+   - Corrupted, empty, or unsupported format rejection with actionable errors.
+   - Immutability of original sketch files and source metadata preservation.
+   - Structured observation validation against `sketch-observations.schema.json`.
+   - Dimension provenance classification (`explicit`, `estimated`, `inferred`, `proposed`, `unknown`).
+   - Missing dimension handling and uncertainty logging without arbitrary fabrication.
+   - Arithmetic contradiction detection between room chains and overall envelope.
+   - Wall graph connectivity and dangling wall detection.
+   - Closed room boundary reconstruction and area computation.
+   - Opening-to-wall host associations.
+   - Unrecognized symbol preservation in uncertainty log.
+   - Single-floor versus multi-floor identification.
+   - Multi-floor source separation from multi-page PDFs.
+   - Structured human approval package creation and proposal markdown rendering.
+   - Reviewer rejection handling and decision logging.
+   - Strict prohibition of AI agent self-approval.
+   - SHA-256 geometry hash revision tracking and tampered model invalidation.
+   - Canonical draft model compilation with status `awaiting_approval`.
+   - Human approval transition to `approved` state.
+   - Real CADCraft editable DXF generation.
+   - Companion BIM handoff consistency (`bim-handoff.schema.json`).
+   - Architectural report generation (PDF and Markdown).
+   - Source-to-CAD feature-level visual quality assurance (`perform_visual_qa`).
+   - Complete end-to-end fixture execution from sketch image to approved deliverables.
+
+### Sketch Fixtures (Milestone 7)
+
+Located in `tests/fixtures/sketches/`:
+- `fixture-a-clean-single-floor.png`: Clean orthogonal single-floor hand sketch with complete explicit dimensioning.
+- `fixture-b-incomplete.png`: Incomplete sketch missing depth dimension and wall thicknesses.
+- `fixture-c-contradictory.png`: Contradictory sketch with room chain sum exceeding overall envelope.
+- `fixture-d-two-storey.pdf`: Multi-page PDF containing coordinated Ground and First floor plans with aligned staircase.
+- `fixture-e-nonrectangular.png`: Nonrectangular floor plan with an intentionally angled boundary wall.

@@ -114,4 +114,8 @@ Deliver the final validation report categorizing checks into **Passed**, **Faile
 - Architectural Report Markdown: `residential-floor-plan.report.md` (Verified: >4KB)
 - Architectural Report PDF: `residential-floor-plan.report.pdf` (Verified: >15KB)
 - Visual Preview: `residential-floor-plan.png` (Verified: >300KB)
+- Visual QA Report JSON: `residential-floor-plan.visual-qa.json` (Verified: >2KB)
+- Visual QA Report Markdown: `residential-floor-plan.visual-qa.md` (Verified: >2KB)
+- Human Review Package JSON: `residential-floor-plan.approval.json` (Verified: >3KB)
+- Human Review Proposal Markdown: `residential-floor-plan.proposal.md` (Verified: >2KB)
 ```

@@ -1,0 +1,306 @@
+{
+  "schemaVersion": "1.0.0",
+  "project": {
+    "projectName": "Residential Floor Plan",
+    "drawingId": "residential-hand-sketch-project",
+    "units": "mm",
+    "coordinateSystem": "Cartesian2D_RightHanded_YUp",
+    "sourceSketch": "hand-sketch-residential.png",
+    "author": "AI Agent (Antigravity Sketch Interpreter)",
+    "createdAt": "2026-10-30T00:00:00Z"
+  },
+  "dxf": {
+    "filename": "residential-hand-sketch-project.dxf",
+    "units": "mm",
+    "layers": [
+      {
+        "name": "0",
+        "color": "White",
+        "category": "system",
+        "entityCount": 0
+      },
+      {
+        "name": "Defpoints",
+        "color": "White",
+        "category": "system",
+        "entityCount": 0
+      },
+      {
+        "name": "A-WALL-EXTR",
+        "color": "Cyan",
+        "category": "walls",
+        "entityCount": 0
+      },
+      {
+        "name": "A-WALL-INTR",
+        "color": "Green",
+        "category": "walls",
+        "entityCount": 0
+      },
+      {
+        "name": "A-DOOR",
+        "color": "Yellow",
+        "category": "doors",
+        "entityCount": 0
+      },
+      {
+        "name": "A-GLAZ",
+        "color": "Blue",
+        "category": "glazing",
+        "entityCount": 0
+      },
+      {
+        "name": "A-FURN",
+        "color": "Green",
+        "category": "furniture",
+        "entityCount": 0
+      },
+      {
+        "name": "A-FIXT",
+        "color": "Color 8",
+        "category": "fixtures",
+        "entityCount": 0
+      },
+      {
+        "name": "A-STAIR",
+        "color": "Yellow",
+        "category": "circulation",
+        "entityCount": 0
+      },
+      {
+        "name": "A-COLS",
+        "color": "Cyan",
+        "category": "structure",
+        "entityCount": 0
+      },
+      {
+        "name": "A-FLOR-FIN",
+        "color": "Color 8",
+        "category": "finishes",
+        "entityCount": 0
+      },
+      {
+        "name": "A-ANNO-TEXT",
+        "color": "Red",
+        "category": "annotations",
+        "entityCount": 0
+      },
+      {
+        "name": "A-ANNO-DIMS",
+        "color": "Magenta",
+        "category": "annotations",
+        "entityCount": 0
+      }
+    ],
+    "blocks": [],
+    "entityCount": 21,
+    "extents": [
+      [
+        -406.25,
+        -1000.0
+      ],
+      [
+        8100.0,
+        8800.0
+      ]
+    ]
+  },
+  "floors": [
+    {
+      "id": "LEVEL-01",
+      "name": "Ground Floor",
+      "elevation": null,
+      "height": null,
+      "envelope": {
+        "width": 8000.0,
+        "depth": 8700.0,
+        "origin": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  ],
+  "walls": [
+    {
+      "id": "W-EXT-NORTH",
+      "classification": "exterior",
+      "start": [
+        0.0,
+        8700.0
+      ],
+      "end": [
+        8000.0,
+        8700.0
+      ],
+      "thickness": 200.0,
+      "layer": "A-WALL-EXTR",
+      "floorId": "LEVEL-01",
+      "openingIds": [],
+      "source": "explicit"
+    },
+    {
+      "id": "W-EXT-EAST",
+      "classification": "exterior",
+      "start": [
+        8000.0,
+        8700.0
+      ],
+      "end": [
+        8000.0,
+        0.0
+      ],
+      "thickness": 200.0,
+      "layer": "A-WALL-EXTR",
+      "floorId": "LEVEL-01",
+      "openingIds": [],
+      "source": "explicit"
+    },
+    {
+      "id": "W-EXT-SOUTH",
+      "classification": "exterior",
+      "start": [
+        8000.0,
+        0.0
+      ],
+      "end": [
+        0.0,
+        0.0
+      ],
+      "thickness": 200.0,
+      "layer": "A-WALL-EXTR",
+      "floorId": "LEVEL-01",
+      "openingIds": [],
+      "source": "explicit"
+    },
+    {
+      "id": "W-EXT-WEST",
+      "classification": "exterior",
+      "start": [
+        0.0,
+        0.0
+      ],
+      "end": [
+        0.0,
+        8700.0
+      ],
+      "thickness": 200.0,
+      "layer": "A-WALL-EXTR",
+      "floorId": "LEVEL-01",
+      "openingIds": [],
+      "source": "explicit"
+    },
+    {
+      "id": "W-INTR-MID",
+      "classification": "interior",
+      "start": [
+        0.0,
+        4350.0
+      ],
+      "end": [
+        8000.0,
+        4350.0
+      ],
+      "thickness": 150.0,
+      "layer": "A-WALL-INTR",
+      "floorId": "LEVEL-01",
+      "openingIds": [],
+      "source": "estimated"
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-ENTRY",
+      "type": "door",
+      "wallId": "W-EXT-SOUTH",
+      "center": [
+        4000.0,
+        0.0
+      ],
+      "width": 1000.0,
+      "height": null,
+      "sillHeight": null,
+      "floorId": "LEVEL-01",
+      "source": "explicit",
+      "swing": "inward-right"
+    },
+    {
+      "id": "W-KIT",
+      "type": "window",
+      "wallId": "W-EXT-WEST",
+      "center": [
+        4000.0,
+        0.0
+      ],
+      "width": 1200.0,
+      "height": null,
+      "sillHeight": null,
+      "floorId": "LEVEL-01",
+      "source": "estimated"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-LIVING",
+      "name": "LIVING / DINING",
+      "floorId": "LEVEL-01",
+      "approximateArea": 21.6,
+      "areaMethod": "enclosed_bounding_box",
+      "labelPosition": [
+        4000.0,
+        2610.0
+      ]
+    },
+    {
+      "id": "R-KITCHEN",
+      "name": "KITCHEN",
+      "floorId": "LEVEL-01",
+      "approximateArea": 9.0,
+      "areaMethod": "enclosed_bounding_box",
+      "labelPosition": [
+        4000.0,
+        5220.0
+      ]
+    },
+    {
+      "id": "R-BEDROOM-1",
+      "name": "BEDROOM 1",
+      "floorId": "LEVEL-01",
+      "approximateArea": 14.44,
+      "areaMethod": "enclosed_bounding_box",
+      "labelPosition": [
+        4000.0,
+        2610.0
+      ]
+    }
+  ],
+  "elements": [],
+  "finishes": [],
+  "uncertainties": [
+    {
+      "id": "unc-mid-partition",
+      "target": "walls.W-INTR-MID.thickness",
+      "description": "Interior partition thickness not explicitly annotated; 150mm proposed.",
+      "assumedValue": null,
+      "confidence": "medium",
+      "status": "unresolved"
+    }
+  ],
+  "validation": {
+    "status": "PASSED",
+    "isApproved": true,
+    "approvedBy": "User (Antigravity Approval Gate)",
+    "approvedAt": "2026-10-30T00:00:00Z",
+    "entityIntegrity": {
+      "entityCount": 21,
+      "blockReferences": 0,
+      "hatches": 0,
+      "layer0Empty": true
+    },
+    "geometryChecks": {
+      "envelopeMatch": true,
+      "cleanWallJambs": true,
+      "warnings": []
+    }
+  }
+}

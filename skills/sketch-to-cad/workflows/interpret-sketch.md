@@ -2,7 +2,19 @@
 
 This workflow governs how the AI agent analyzes residential floor-plan sketches, extracts architectural constraints, categorizes uncertainties, and obtains explicit user approval before any CAD drafting begins.
 
-## Step 1: Visual Decomposition & Dimension Classification
+## Step 1: Input Ingestion & Multi-Format Support
+
+The sketch interpretation pipeline accepts:
+- **Raster Formats**: `.jpg`, `.jpeg`, `.png` (scanned drawings, photographed hand sketches).
+- **Vector / Scanned Documents**: `.pdf` (single-page or multi-page floor plans).
+- **Multi-Floor Identification**: Multi-page PDF sets or multiple drawings separated by level.
+
+Original files are preserved without modification. Source metadata is captured:
+- `source_file`, `file_type`, `dimensions_pixels`, `dpi`, `page_number`, `total_pages`, `orientation_degrees`.
+
+---
+
+## Step 2: Visual Decomposition & Dimension Classification
 
 Every element extracted from a user sketch or drawing prompt must be tagged with its **Dimension Source**:
 
@@ -14,96 +26,66 @@ Every element extracted from a user sketch or drawing prompt must be tagged with
    - Must be flagged as estimates with an associated confidence level (`low`, `medium`, `high`).
 3. **`inferred`**:
    - Geometry assumed based on architectural convention rather than visual measurement:
-     - 90° square corners.
+     - $90^\circ$ square corners.
      - Wall collinearity and alignments.
-     - Standard exterior wall thickness (200mm / 8") and interior partition thickness (100mm / 4.5").
+     - Standard exterior wall thickness (200mm) and interior partition thickness (150mm).
      - Standard door widths (900mm entry, 800mm room, 750mm bath).
-
 4. **`proposed`**:
-   - Elements, fixtures, or spatial furniture arrangements suggested by the AI agent to verify space planning and spatial coordination.
-   - **Strict Approval Rule**: All `proposed` elements are initialized with `status: "unresolved"` and **must not be drafted** into the CAD model until explicitly approved by the reviewer.
+   - Elements, fixtures, or spatial furniture arrangements suggested by the AI agent to verify space planning.
+   - All `proposed` elements are initialized with `status: "unresolved"` and **must not be drafted** into the CAD model until explicitly approved.
+5. **`unknown`**:
+   - Completely absent dimensions; flagged as blocker uncertainties.
+
+> [!CAUTION]
+> **No Fabricated Dimensions**: The AI agent must never invent or fabricate real-world millimeter dimensions from pixel measurements without an explicit scale anchor.
 
 ---
 
-## Step 2: Extracting Spatial Topology & Architectural Elements
+## Step 3: Structured Observation Schema & Traceability
 
-1. **Building Envelope**:
-   - Establish the coordinate origin `(0, 0)` at the bottom-left corner of the exterior perimeter.
-   - Establish bounding box: width (along X axis) and depth (along Y axis).
-2. **Wall Graph**:
-   - Map exterior wall boundaries (`A-WALL-EXTR`) and interior partitions (`A-WALL-INTR`).
-   - Note which walls intersect to form corners (L-junctions) and partitions (T-junctions).
-3. **Openings (Doors & Windows)**:
-   - Identify which wall hosts each opening.
-   - Record opening width and center coordinates.
-   - For doors: identify hinge side, wall face, and swing direction (inward into room against wall).
-4. **Rooms & Labels**:
-   - List each room function (Living, Dining, Kitchen, Bedroom, Bathroom, Circulation).
-   - Calculate approximate enclosed floor area in square meters (or sq ft).
-   - Determine label anchor coordinate (visual centroid of the room).
+Extracted visual features are validated against [`schemas/sketch-observations.schema.json`](../schemas/sketch-observations.schema.json).
+
+Each extracted entity includes source traceability:
+- `source_bbox`: Normalized bounding box `[ymin, xmin, ymax, xmax]` in range `[0.0, 1.0]`.
+- `confidence`: Interpretation confidence `[0.0, 1.0]`.
+- `provenance`: Origin of observation (`sketch_annotation`, `sketch_symbol`, `architectural_convention`).
+
+See detailed specification in [`references/source-traceability.md`](../references/source-traceability.md).
 
 ---
 
-## Step 3: Compiling the Uncertainty & Assumption Log
+## Step 4: Geometric Reconstruction & Contradiction Detection
 
-All ambiguities must be formally cataloged into the `uncertainties` array of the floor-plan model:
-- Unclear handwritten text or numbers.
-- Unlabeled rooms or missing dimensions.
-- Conflicting dimension chains (e.g., sum of room dimensions not matching overall envelope).
-- Walls that appear non-perpendicular or misaligned.
-- Unspecified window dimensions or door swing directions.
-
-Each entry requires:
-- `id`: Unique identifier (`U1`, `U2`, ...).
-- `target`: Target room, wall, or opening.
-- `description`: Plain-English explanation of what is ambiguous.
-- `assumedValue`: The provisional value chosen for the plan.
-- `confidence`: `low` | `medium` | `high`.
-- `status`: `unresolved`.
+`scripts/sketch_interpreter.py` reconstructs coherent 2D geometry:
+1. **Orthogonal Snapping**: Walls within $\pm 5^\circ$ of orthogonal snap to $0^\circ, 90^\circ, 180^\circ, 270^\circ$. **Genuinely angled walls are preserved**.
+2. **Wall Connectivity**: Validates closed exterior boundary and identifies dangling walls.
+3. **Arithmetic Contradiction Detection**: Compares interior room dimension chains against the overall envelope.
+   - If sum of room chain exceeds overall dimension (e.g. 9100mm vs 8000mm), a **`blocker`** conflict (`arithmetic_mismatch`) is generated.
+   - Rooms are never silently stretched or compressed.
 
 ---
 
-## Step 4: Generating the Structured Model Proposal
+## Step 5: Compiling the Draft Model & Approval Package
 
-Construct the intermediate JSON document according to [`schemas/floor-plan-model.json`](../schemas/floor-plan-model.json) with:
-```json
-{
-  "status": "awaiting_approval",
-  ...
-}
-```
+1. Compiles draft canonical model conforming to [`schemas/floor-plan-model.json`](../schemas/floor-plan-model.json) with status strictly set to `"awaiting_approval"`.
+2. Computes deterministic SHA-256 revision hash of model geometry.
+3. Generates structured review package conforming to [`schemas/approval-package.schema.json`](../schemas/approval-package.schema.json) and Markdown proposal `<project>.proposal.md`.
 
 ---
 
-## Step 5: Presentation & User Approval Gate
-
-Present the proposed interpretation to the user in a structured review summary:
+## Step 6: Mandatory Human Approval Gate
 
 ```markdown
-### Proposed Residential Floor Plan Review
-
-#### 1. Building Envelope & Rooms
-- **Footprint**: 6.00 m x 5.00 m (Enclosed Area: 30.0 m²)
-- **Rooms Identified**:
-  - Studio / Living: 4.20 m x 4.60 m (19.3 m²) [Explicit length, Inferred width]
-  - Bathroom: 1.60 m x 2.20 m (3.5 m²) [Estimated from sketch layout]
-  - Kitchenette / Entry: 1.60 m x 2.40 m (3.8 m²) [Inferred partition]
-
-#### 2. Openings & Fixtures
-- Main Entry Door: 900mm width, opening inward
-- Bathroom Door: 750mm width, opening inward against partition
-- Living Window: 1800mm width, centered on south wall
-- Bathroom Window: 600mm width, high sill on north wall
-
-#### 3. Log of Assumptions & Uncertainties
-| ID | Target | Observation / Ambiguity | Assumed Value | Confidence |
-| :--- | :--- | :--- | :--- | :--- |
-| U1 | South Wall | Dimension written as '6000' with arrow | 6000mm overall width | High |
-| U2 | Bath Partition | Wall position unlabeled in sketch | 1600mm from east wall | Medium |
-| U3 | Wall Thickness | Not annotated | Ext = 200mm, Int = 100mm | Inferred |
-
 > [!IMPORTANT]
-> **Approval Gate**: Do not generate CAD geometry until you confirm or correct these dimensions and layout assumptions.
+> **Mandatory Human Approval Gate**: CADCraft generation must halt until explicit human approval is received.
+> Automated AI agents are strictly prohibited from self-approving their own proposals.
 ```
 
-Wait for explicit confirmation or user corrections before proceeding to drafting.
+### Reviewer Decisions Supported:
+- **`approve`**: Requires human reviewer name and notes; sets model status to `"approved"`.
+- **`reject`**: Records rejection reason; halts drafting.
+- **`correct_dimension`**: Updates target dimension, recalculates revision hash.
+- **`correct_room_label`**: Updates room label, recalculates revision hash.
+- **`resolve_uncertainty`**: Confirms or corrects an unannotated parameter.
+
+Any geometry modification made after package creation invalidates the revision hash, requiring renewed approval.

@@ -1,0 +1,77 @@
+{
+  "package_id": "AP-20261030030818",
+  "project_name": "Residential Hand Sketch Project",
+  "revision_hash": "c3d86284cb2fe38ff5d696020503dfc4f2385b9f60a465018140e5b134e59cb1",
+  "status": "approved",
+  "source_sketch": {
+    "source_file": "sketch-before.jpg",
+    "file_type": "jpg",
+    "page_number": 1,
+    "dimensions_pixels": {
+      "width": 1200,
+      "height": 849
+    }
+  },
+  "draft_model_summary": {
+    "envelope": {
+      "width_mm": 8000.0,
+      "depth_mm": 8700.0
+    },
+    "levels_count": 1,
+    "rooms_count": 3,
+    "walls_count": 5,
+    "openings_count": 2,
+    "staircases_count": 1,
+    "columns_count": 0,
+    "furnishings_count": 0
+  },
+  "extracted_dimensions": [
+    {
+      "id": "DIM-WIDTH",
+      "source_text": "8000",
+      "value_mm": 8000.0,
+      "category": "explicit",
+      "target_description": "overall_width"
+    },
+    {
+      "id": "DIM-DEPTH",
+      "source_text": "8700",
+      "value_mm": 8700.0,
+      "category": "explicit",
+      "target_description": "overall_depth"
+    }
+  ],
+  "detected_conflicts": [],
+  "unknowns": [],
+  "suggested_corrections": [],
+  "approval_actions_required": [
+    {
+      "action_id": "act-approve-proposal",
+      "question": "Approve floor plan layout (8000 x 8700 mm, 3 rooms) for CAD generation?",
+      "options": [
+        "Approve without changes",
+        "Reject proposal",
+        "Request specific dimension changes"
+      ],
+      "status": "resolved",
+      "resolved_choice": "Approved by human reviewer"
+    }
+  ],
+  "decisions_log": [
+    {
+      "timestamp": "2026-10-29T21:38:18.251610+00:00",
+      "reviewer_name": "Jane Doe, Licensed Architect",
+      "action": "approve",
+      "details": {
+        "notes": "Approved 8000x8700mm residential layout with 150mm interior walls.",
+        "override_blockers": false
+      }
+    }
+  ],
+  "approval_metadata": {
+    "approved_by": "Jane Doe, Licensed Architect",
+    "approval_timestamp": "2026-10-29T21:38:18.251610+00:00",
+    "approved_revision_hash": "c3d86284cb2fe38ff5d696020503dfc4f2385b9f60a465018140e5b134e59cb1",
+    "notes": "Approved 8000x8700mm residential layout with 150mm interior walls."
+  }
+}

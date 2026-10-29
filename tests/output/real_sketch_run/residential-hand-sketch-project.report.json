@@ -1,0 +1,160 @@
+{
+  "schemaVersion": "1.0.0",
+  "project": {
+    "projectName": "Residential Hand Sketch Project",
+    "drawingId": "residential-hand-sketch-project",
+    "units": "mm",
+    "coordinateSystem": "Cartesian2D_RightHanded_YUp",
+    "sourceSketch": "hand-sketch-residential.png",
+    "author": "AI Agent (Antigravity Sketch Interpreter)",
+    "approvalStatus": "approved",
+    "approvedBy": null,
+    "approvedAt": null,
+    "createdAt": "2026-10-30T00:00:00Z"
+  },
+  "summary": {
+    "floorCount": 1,
+    "roomCount": 3,
+    "doorCount": 1,
+    "windowCount": 1,
+    "elementCount": 0,
+    "finishCount": 0,
+    "totalNetAreaM2": 45.04,
+    "grossFootprintAreaM2": 69.6,
+    "grossAreaMethod": "exterior_envelope_bounding_box",
+    "uncertaintyCount": 2,
+    "unresolvedUncertaintyCount": 2,
+    "validationStatus": "PASSED"
+  },
+  "rooms": [
+    {
+      "id": "R-LIVING",
+      "name": "LIVING / DINING",
+      "floorId": "LEVEL-01",
+      "netAreaM2": 21.6,
+      "lengthMm": null,
+      "widthMm": null,
+      "perimeterMm": null,
+      "perimeterM": null,
+      "finishId": null,
+      "finishPattern": null,
+      "calculationMethod": "model_annotated",
+      "confidence": "explicit",
+      "boundaryVertices": 0,
+      "notes": "Boundary corners not supplied; using model annotated area."
+    },
+    {
+      "id": "R-KITCHEN",
+      "name": "KITCHEN",
+      "floorId": "LEVEL-01",
+      "netAreaM2": 9.0,
+      "lengthMm": null,
+      "widthMm": null,
+      "perimeterMm": null,
+      "perimeterM": null,
+      "finishId": null,
+      "finishPattern": null,
+      "calculationMethod": "model_annotated",
+      "confidence": "explicit",
+      "boundaryVertices": 0,
+      "notes": "Boundary corners not supplied; using model annotated area."
+    },
+    {
+      "id": "R-BEDROOM-1",
+      "name": "BEDROOM 1",
+      "floorId": "LEVEL-01",
+      "netAreaM2": 14.44,
+      "lengthMm": null,
+      "widthMm": null,
+      "perimeterMm": null,
+      "perimeterM": null,
+      "finishId": null,
+      "finishPattern": null,
+      "calculationMethod": "model_annotated",
+      "confidence": "explicit",
+      "boundaryVertices": 0,
+      "notes": "Boundary corners not supplied; using model annotated area."
+    }
+  ],
+  "openings": {
+    "doors": [
+      {
+        "id": "D-ENTRY",
+        "type": "door",
+        "floorId": "LEVEL-01",
+        "wallId": "W-EXT-SOUTH",
+        "associatedRoomIds": [],
+        "widthMm": 1000.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "swing": "inward-right",
+        "source": "explicit",
+        "verificationStatus": "verified"
+      }
+    ],
+    "windows": [
+      {
+        "id": "W-KIT",
+        "type": "window",
+        "floorId": "LEVEL-01",
+        "wallId": "W-EXT-WEST",
+        "associatedRoomIds": [],
+        "widthMm": 1200.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "source": "estimated",
+        "verificationStatus": "verified"
+      }
+    ]
+  },
+  "elements": {
+    "summaryByCategory": [],
+    "summaryByBlock": [],
+    "instances": []
+  },
+  "finishes": [],
+  "uncertainties": [
+    {
+      "id": "unc-mid-partition",
+      "category": "sketch_interpretation",
+      "target": "walls.W-INTR-MID.thickness",
+      "description": "Interior partition thickness not explicitly annotated; 150mm proposed.",
+      "assumedValue": null,
+      "confidence": "medium",
+      "status": "unresolved",
+      "provenance": "model_uncertainty_log"
+    },
+    {
+      "id": "UNC-VERT-01",
+      "category": "vertical_geometry",
+      "target": "openings.height",
+      "description": "2 door/window vertical heights unannotated in 2D floor plan.",
+      "assumedValue": null,
+      "confidence": "low",
+      "status": "unresolved (requires downstream approval)",
+      "provenance": "2d_floor_plan_boundary"
+    }
+  ],
+  "audit": {
+    "flags": [],
+    "hostWallValidation": {
+      "valid": true,
+      "invalidOpenings": []
+    },
+    "overlappingRooms": {
+      "detected": false,
+      "overlappingPairs": []
+    },
+    "envelopeClearance": {
+      "allWithinEnvelope": true,
+      "outOfEnvelopeElements": []
+    },
+    "verticalCoordination": {
+      "valid": true,
+      "stairsChecked": 0,
+      "columnsChecked": 0,
+      "misalignments": []
+    },
+    "isApprovedForConstruction": true
+  }
+}

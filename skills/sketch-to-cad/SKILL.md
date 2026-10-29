@@ -1,12 +1,12 @@
 ---
 name: sketch-to-cad
-description: Interprets rough residential floor-plan sketches, creates a structured and dimensioned layout proposal, obtains explicit approval, generates CAD drawings through connected CADCraft MCP tools, validates geometry, performs visual QA, and exports editable CAD formats.
+description: Interprets hand-drawn residential sketches and PDFs (JPG, PNG, PDF), extracts structured architectural observations, enforces revision-aware human approval gates, generates validated 2D CADCraft DXF drawings and companion BIM handoffs, creates professional architectural reports, and runs feature-level visual QA.
 ---
 
 # Sketch-to-CAD
 
 ## Purpose
-Convert user-provided residential floor-plan sketches and design requirements into structured, reviewable, editable CAD drawings using the connected CADCraft MCP server. Supports single-storey and multi-storey residential floor plans with independent per-floor DXF separation, shared Cartesian coordinate referencing, staircase vertical circulation alignment, and companion BIM handoff manifests.
+Convert hand-drawn residential floor-plan sketches (JPG, JPEG, PNG, PDF) into structured, reviewable, editable CAD drawings using connected CADCraft MCP tools. Features an end-to-end automated pipeline comprising deterministic ingestion, structured observation extraction, geometric reconstruction with contradiction detection, human review proposal packaging, revision-aware approval governance, CADCraft DXF drafting, companion BIM handoff compiling, comprehensive architectural reporting (JSON, Markdown, PDF), and source-to-CAD visual QA.
 
 ## Mandatory Principles
 1. **Discover & Adhere to Verified Schemas**: Use only discovered CADCraft MCP tools (`execute`, `new_drawing`, `open`, `save`, `inspect_drawing`, `query_entities`, `find_text`, `render`, `command_line`, `script`, `cancel`). Never invent tool names, parameters, or return fields.
@@ -41,7 +41,7 @@ Classify every measurement and recognized element as:
 - `estimated`: Proportional measurements derived from scale.
 - `inferred`: Architectural defaults (standard wall thickness, door widths, right angles, sanitary fixture in bathroom).
 - `proposed`: Agent-suggested spatial layout additions (requires explicit user confirmation).
-Read [workflows/interpret-sketch.md](workflows/interpret-sketch.md) and refer to [references/residential-drawing-standards.md](references/residential-drawing-standards.md) and [references/architectural-element-library.md](references/architectural-element-library.md).
+Read [workflows/interpret-sketch.md](workflows/interpret-sketch.md) and refer to [references/sketch-interpretation-contract.md](references/sketch-interpretation-contract.md), [references/source-traceability.md](references/source-traceability.md), [references/residential-drawing-standards.md](references/residential-drawing-standards.md), and [references/architectural-element-library.md](references/architectural-element-library.md).
 
 ### Phase 3: Build Structured Model & Obtain User Approval (Approval Gate)
 Synthesize the geometry into a coordinate-based model conforming to [schemas/floor-plan-model.json](schemas/floor-plan-model.json) with status `awaiting_approval`.
@@ -51,9 +51,10 @@ Ensure:
 - Openings are assigned to host walls with explicit center coordinates and widths.
 - Uncertainties are enumerated with proposed values, confidence levels, and impacts.
 
+Generate structured review package conforming to [schemas/approval-package.schema.json](schemas/approval-package.schema.json) and Markdown proposal.
 Present the structured proposal and uncertainty log to the user.
-Wait for explicit confirmation or corrections before drafting.
-**DO NOT proceed to Phase 4 without explicit user approval.**
+Wait for explicit human confirmation or corrections before drafting. AI agents are strictly prohibited from self-approving.
+**DO NOT proceed to Phase 4 without explicit human approval.** Any geometric changes invalidate the approval hash.
 
 ### Phase 4: Deterministic CAD Generation
 Translate the approved model into CADCraft MCP operations via [workflows/generate-drawing.md](workflows/generate-drawing.md):
@@ -75,6 +76,7 @@ Execute the automated checks in [references/validation-checklist.md](references/
 4. Verify all room label centroids reside inside room polygons.
 
 ### Phase 6: Mandatory Visual QA & Source Comparison (Visual Quality Gate)
+Execute automated source-to-CAD visual QA via `scripts/visual_qa.py` (refer to [references/end-to-end-pipeline.md](references/end-to-end-pipeline.md)):
 **A generated CAD drawing is not necessarily a correct drawing.** Before accepting or delivering:
 1. Render high-resolution preview via `render(fit=true)` or raster preview export.
 2. Visually verify dimension readability: Confirm numeric values and tick/arrow marks are readable at standard viewing zoom.
@@ -88,8 +90,9 @@ Execute the automated checks in [references/validation-checklist.md](references/
 2. Generate companion BIM handoff metadata: `<drawing-name>.handoff.json` conforming to [schemas/bim-handoff.schema.json](schemas/bim-handoff.schema.json) and documented in [references/bim-handoff-contract.md](references/bim-handoff-contract.md).
 3. Compile architectural documentation and schedules: `<drawing-name>.report.json`, `<drawing-name>.report.md`, and optional `<drawing-name>.report.pdf` conforming to [schemas/architectural-report.schema.json](schemas/architectural-report.schema.json) and documented in [references/architectural-reporting-guide.md](references/architectural-reporting-guide.md).
 4. Export visual preview PNG: `save(path=".../floor-plan.png")`.
-5. Verify files on disk (existence and non-zero size).
-6. Deliver structured acceptance report with PASSED / FAILED / UNVERIFIED statuses and non-compliance disclaimer.
+5. Compile Visual QA Discrepancy Report: `<drawing-name>.visual-qa.json` and `<drawing-name>.visual-qa.md`.
+6. Verify files on disk (existence and non-zero size).
+7. Deliver structured acceptance report with PASSED / FAILED / UNVERIFIED statuses and non-compliance disclaimer.
 
 ## Recovery
 If an MCP call fails:

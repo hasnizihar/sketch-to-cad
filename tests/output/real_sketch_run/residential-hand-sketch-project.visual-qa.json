@@ -1,0 +1,50 @@
+{
+  "project_name": "Residential Hand Sketch Project",
+  "source_sketch": "sketch-before.jpg",
+  "cad_output": "residential-hand-sketch-project.dxf",
+  "overall_status": "DISCREPANCY_DETECTED",
+  "checks_passed": 4,
+  "total_checks": 5,
+  "checks": [
+    {
+      "check": "footprint_aspect_ratio",
+      "status": "DISCREPANCY",
+      "sketch_aspect_ratio": 1.413,
+      "cad_aspect_ratio": 0.92,
+      "deviation_pct": 34.9,
+      "message": "Aspect ratio comparison: sketch=1.41, CAD=0.92 (deviation 34.9% vs 25% tolerance)."
+    },
+    {
+      "check": "room_topology_and_count",
+      "status": "PASS",
+      "observed_room_count": 3,
+      "cad_room_count": 3,
+      "missing_in_cad": [],
+      "extra_in_cad": [],
+      "message": "Rooms: observed 3, drafted 3. Missing: None."
+    },
+    {
+      "check": "openings_count_and_distribution",
+      "status": "PASS",
+      "observed_doors": 1,
+      "cad_doors": 1,
+      "observed_windows": 1,
+      "cad_windows": 1,
+      "message": "Doors: obs=1 / cad=1. Windows: obs=1 / cad=1."
+    },
+    {
+      "check": "dimensions_fidelity",
+      "status": "PASS",
+      "discrepancies": [],
+      "message": "Dimension fidelity: 2 observed, 0 explicit discrepancies."
+    },
+    {
+      "check": "staircase_alignment",
+      "status": "PASS",
+      "observed_stairs": 1,
+      "cad_stairs": 1,
+      "message": "Staircases: observed 1, drafted 1."
+    }
+  ],
+  "summary": "Visual QA DISCREPANCY_DETECTED: 4/5 checks passed. Feature-level verification completed without automated modifications."
+}
