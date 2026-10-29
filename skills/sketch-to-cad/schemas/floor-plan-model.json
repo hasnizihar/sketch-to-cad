@@ -177,6 +177,73 @@
           "text": { "type": "string" }
         }
       }
+    },
+    "elements": {
+      "type": "array",
+      "description": "Optional collection of architectural building elements, furniture, and fixtures.",
+      "items": {
+        "type": "object",
+        "required": ["id", "blockId", "category", "position", "source"],
+        "properties": {
+          "id": { "type": "string" },
+          "blockId": { "type": "string" },
+          "category": { "type": "string", "enum": ["furniture", "sanitary", "kitchen", "circulation", "structural"] },
+          "position": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "rotation": { "type": "number", "default": 0.0 },
+          "scale": {
+            "oneOf": [
+              { "type": "number", "minimum": 0 },
+              {
+                "type": "array",
+                "items": { "type": "number", "minimum": 0 },
+                "minItems": 2,
+                "maxItems": 2
+              }
+            ]
+          },
+          "dimensions": {
+            "type": "object",
+            "properties": {
+              "width": { "type": "number", "minimum": 0 },
+              "depth": { "type": "number", "minimum": 0 }
+            }
+          },
+          "roomId": { "type": "string" },
+          "levelId": { "type": "string" },
+          "source": { "type": "string", "enum": ["explicit", "estimated", "inferred", "proposed"] },
+          "status": { "type": "string", "enum": ["unresolved", "approved", "confirmed", "rejected"] }
+        }
+      }
+    },
+    "finishes": {
+      "type": "array",
+      "description": "Optional collection of floor finishes and tile patterns.",
+      "items": {
+        "type": "object",
+        "required": ["id", "roomId", "pattern", "boundary"],
+        "properties": {
+          "id": { "type": "string" },
+          "roomId": { "type": "string" },
+          "pattern": { "type": "string", "enum": ["tile_grid", "wood_strip", "diagonal", "hatch_custom"] },
+          "tileSize": { "type": "number", "minimum": 0 },
+          "boundary": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": { "type": "number" },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 2
+          },
+          "source": { "type": "string", "enum": ["explicit", "estimated", "inferred", "proposed"] }
+        }
+      }
     }
   }
 }

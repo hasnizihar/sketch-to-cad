@@ -76,7 +76,9 @@ Sketch-to-CAD is an **AI agent skill and workflow**, not a standalone desktop ap
 - **Dimension Classification**: Flags measurements as `explicit`, `estimated`, or `inferred` to preserve source truth.
 - **Uncertainty Logging**: Automatically captures discrepancies (e.g., room chain $\ne$ envelope) in an actionable review table.
 - **Mandatory User Approval Gate**: Never generates CAD geometry until the user confirms or corrects the proposed model.
-- **AIA Layer Architecture**: Distributes vector entities across 6 standard layers (`A-WALL-EXTR`, `A-WALL-INTR`, `A-DOOR`, `A-GLAZ`, `A-ANNO-TEXT`, `A-ANNO-DIMS`).
+- **AIA Layer Architecture**: Distributes vector entities across standard AIA layers (`A-WALL-EXTR`, `A-WALL-INTR`, `A-DOOR`, `A-GLAZ`, `A-FURN`, `A-FIXT`, `A-STAIR`, `A-COLS`, `A-FLOR-FIN`, `A-ANNO-TEXT`, `A-ANNO-DIMS`).
+- **Reusable Architectural Element Library**: 20 standardized 2D CAD blocks across furniture, sanitary fixtures, kitchen counters/hobs/sinks, structural columns, and straight/L-shaped stairs.
+- **Floor Finishes & Tile Hatches**: Generates boundary perimeters and tile grid patterns (`ANSI37`/`NET`) on `A-FLOR-FIN` for bathrooms and wet areas.
 - **Clean Segmented Openings**: Cuts walls at door/window jambs and seals double-wall cavities with transverse end-caps.
 - **Architectural Dimension Scaling**: Applies scaled styles with rotated vertical chains for clear readability at standard zoom levels.
 - **Multi-Format Export**: Delivers editable `.dxf`, visual `.png` preview, structured `.json` data model, and an acceptance report.

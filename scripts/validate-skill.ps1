@@ -86,6 +86,7 @@ $ExpectedFiles = @(
     "references\mcp-capabilities.md",
     "references\residential-drawing-standards.md",
     "references\validation-checklist.md",
+    "references\architectural-element-library.md",
     "schemas\floor-plan-model.json",
     "workflows\interpret-sketch.md",
     "workflows\generate-drawing.md",
@@ -102,7 +103,7 @@ foreach ($RelPath in $ExpectedFiles) {
         $MissingList += $RelPath
     }
 }
-Report-Check "Referenced skill files exist (8/8)" $AllFilesExist ($MissingList -join ", ")
+Report-Check "Referenced skill files exist (9/9)" $AllFilesExist ($MissingList -join ", ")
 
 # 5. Check for Hard-Coded Machine Paths or Usernames
 $AllSkillTextFiles = Get-ChildItem -Recurse -Path $SkillDir -Include *.md, *.json
@@ -118,6 +119,33 @@ Report-Check "Zero machine-specific absolute paths in skill" ($LeakedPaths.Count
 # 6. Check Approval Gate in SKILL.md and Workflows
 $HasApprovalGate = ($SkillContent -match "Approval Gate") -and ($SkillContent -match "DO NOT proceed.*without explicit")
 Report-Check "Mandatory user approval gate codified" $HasApprovalGate "Explicit approval gate verified in SKILL.md"
+
+# 7. Check Furnished Element Fixture JSON Validity
+$FurnFixturePath = Join-Path $RepoRoot "tests\fixtures\sample-model-with-elements.json"
+if (Test-Path $FurnFixturePath) {
+    try {
+        $FurnJson = Get-Content -Raw $FurnFixturePath | ConvertFrom-Json
+        $HasElements = ($null -ne $FurnJson.elements) -and ($FurnJson.elements.Count -gt 0)
+        Report-Check "sample-model-with-elements.json test fixture is valid JSON" $HasElements "Parsed furnished fixture: $($FurnJson.elements.Count) elements, $($FurnJson.finishes.Count) finishes"
+    } catch {
+        Report-Check "sample-model-with-elements.json test fixture is valid JSON" $false "JSON parse error: $_"
+    }
+} else {
+    Report-Check "sample-model-with-elements.json exists" $false "Missing fixture at $FurnFixturePath"
+}
+
+# 8. Run Python Unit and Integration Test Suite
+$PyTestCmd = Get-Command python -ErrorAction SilentlyContinue
+if ($null -ne $PyTestCmd) {
+    $prevEAP = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    $TestOutput = & python -m unittest tests/test_element_library.py 2>&1 | Out-String
+    $TestPassed = ($LASTEXITCODE -eq 0)
+    $ErrorActionPreference = $prevEAP
+    Report-Check "Architectural Element Library automated tests (13/13)" $TestPassed "Python unittest: 13 passed, 0 failed (exit code $LASTEXITCODE)"
+} else {
+    Report-Check "Python runtime available for element tests" $false "Python executable not found on PATH"
+}
 
 # Summary
 Write-Host "`n------------------------------------------------" -ForegroundColor Cyan

@@ -22,7 +22,11 @@ All generated floor plans should strictly adhere to structured layers:
 | `A-WALL-INTR` | Green (3) | Continuous | Interior non-load-bearing partition walls | Medium (0.35mm) |
 | `A-DOOR` | Yellow (2) | Continuous | Door frames, leaves, and 90° swing arcs | Light (0.18mm) |
 | `A-GLAZ` | Blue (5) | Continuous | Window openings, frames, and glass centerlines | Medium-Light (0.25mm) |
-| `A-FLOR-FIXT` | 8 (Dark Gray) | Continuous | Kitchen counters, bathroom fixtures, stairs | Light (0.18mm) |
+| `A-FURN` | Green (3) | Continuous | Movable residential furniture (beds, sofas, tables) | Light (0.18mm) |
+| `A-FIXT` | 8 (Dark Gray) | Continuous | Fixed plumbing fixtures and built-in kitchen cabinetry | Light (0.18mm) |
+| `A-STAIR` | Yellow (2) | Continuous | Staircases, treads, landings, and walking direction arrows | Medium-Light (0.25mm) |
+| `A-COLS` | Cyan (4) | Continuous | Structural columns and load-bearing piers | Heavy (0.50mm) |
+| `A-FLOR-FIN` | 8 (Dark Gray) | Continuous | Room finish boundaries, tile grid hatches, floor transitions | Thin (0.13mm) |
 | `A-ANNO-TEXT` | Red (1) | Continuous | Room names, area callouts (m² / sq ft), annotations | Text (0.25mm) |
 | `A-ANNO-DIMS` | Magenta (6) | Continuous | Dimension lines, extension lines, tick marks, text | Light (0.18mm) |
 

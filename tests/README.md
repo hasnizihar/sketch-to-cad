@@ -18,12 +18,17 @@ This directory contains test specifications, reference fixtures, and validation 
 
 ## Included Fixtures
 
-- [`fixtures/sample-model.json`](fixtures/sample-model.json): A verified, canonical intermediate floor-plan model representing a 6m x 5m studio apartment with 3 rooms, 2 doors, 2 windows, and 2 dimension chains.
+- [`fixtures/sample-model.json`](fixtures/sample-model.json): Baseline canonical intermediate model representing an unfurnished 6m x 5m studio apartment with 3 rooms, 2 doors, 2 windows, and 2 dimension chains.
+- [`fixtures/sample-model-with-elements.json`](fixtures/sample-model-with-elements.json): Furnished 6m x 5m studio apartment fixture demonstrating architectural blocks across `A-FURN`, `A-FIXT`, `A-COLS`, and tile floor finish on `A-FLOR-FIN`.
 
-## Running Model Validation
+## Automated Test Suites
 
-You can validate the fixture against the schema using the provided helper script:
-
-```powershell
-.\scripts\validate-skill.ps1
-```
+1. **Skill Integrity & Static Check**:
+   ```powershell
+   .\scripts\validate-skill.ps1
+   ```
+2. **Architectural Element Library Test Suite**:
+   ```powershell
+   python -m unittest tests/test_element_library.py
+   ```
+   Covers catalog completeness, positive dimensions, base points, layer mappings, instance validation rules, schema backward compatibility, mocked CADCraft block calls, and real CADCraft CLI execution.

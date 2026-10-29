@@ -25,21 +25,23 @@ The complete end-to-end process follows seven disciplined phases:
 
 ### Phase 1: Discover Capabilities & Gather Requirements
 Inspect connected CADCraft MCP tool inventory and input schemas.
-Refer to [references/mcp-capabilities.md](references/mcp-capabilities.md).
+Refer to [references/mcp-capabilities.md](references/mcp-capabilities.md) and [references/architectural-element-library.md](references/architectural-element-library.md).
 Identify:
 - Source sketch image, scan, or textual brief.
 - Specified dimensions and units (metric millimeters or imperial feet/inches).
 - Overall building footprint and required room program.
 - Openings (doors, windows) and circulation paths.
+- Identified furniture, sanitary fixtures, kitchen fittings, or structural elements.
 - Desired output formats (`.dxf`, `.png`, `.svg`, `.pdf`).
 
 ### Phase 2: Interpret Sketch & Classify Dimensions
-Extract visible walls, wall junctions, room boundaries, openings, and annotations.
-Classify every measurement as:
-- `explicit`: Hand-written or printed dimensions on the sketch.
+Extract visible walls, wall junctions, room boundaries, openings, elements, and annotations.
+Classify every measurement and recognized element as:
+- `explicit`: Hand-written dimensions or explicitly drawn element symbols on the sketch.
 - `estimated`: Proportional measurements derived from scale.
-- `inferred`: Architectural defaults (standard wall thickness, door widths, right angles).
-Read [workflows/interpret-sketch.md](workflows/interpret-sketch.md) and refer to [references/residential-drawing-standards.md](references/residential-drawing-standards.md).
+- `inferred`: Architectural defaults (standard wall thickness, door widths, right angles, sanitary fixture in bathroom).
+- `proposed`: Agent-suggested spatial layout additions (requires explicit user confirmation).
+Read [workflows/interpret-sketch.md](workflows/interpret-sketch.md) and refer to [references/residential-drawing-standards.md](references/residential-drawing-standards.md) and [references/architectural-element-library.md](references/architectural-element-library.md).
 
 ### Phase 3: Build Structured Model & Obtain User Approval (Approval Gate)
 Synthesize the geometry into a coordinate-based model conforming to [schemas/floor-plan-model.json](schemas/floor-plan-model.json) with status `awaiting_approval`.
@@ -56,12 +58,14 @@ Wait for explicit confirmation or corrections before drafting.
 ### Phase 4: Deterministic CAD Generation
 Translate the approved model into CADCraft MCP operations via [workflows/generate-drawing.md](workflows/generate-drawing.md):
 1. Initialize drawing with `new_drawing(metric=true)`.
-2. Establish standard AIA layers (`A-WALL-EXTR`, `A-WALL-INTR`, `A-DOOR`, `A-GLAZ`, `A-ANNO-TEXT`, `A-ANNO-DIMS`).
+2. Establish standard AIA layers (`A-WALL-EXTR`, `A-WALL-INTR`, `A-DOOR`, `A-GLAZ`, `A-FURN`, `A-FIXT`, `A-STAIR`, `A-COLS`, `A-FLOR-FIN`, `A-ANNO-TEXT`, `A-ANNO-DIMS`).
 3. Draw exterior and interior double walls with clean openings and transverse jamb end-caps sealing wall cavities.
 4. Draw door leaves and swing arcs on `A-DOOR` and glazing on `A-GLAZ`.
-5. Configure legible architectural dimension styles (`textHeight >= 150mm`, `arrowSize >= 120mm`) and draw dimension chains on `A-ANNO-DIMS`.
-6. Insert centered, non-colliding room labels on `A-ANNO-TEXT` (use stacked text in narrow circulation spaces).
-7. Frame viewport using `execute(command="zoom", params={"mode": "extents"})`.
+5. Register and insert approved architectural element blocks (`block`, `insert`) from [references/architectural-element-library.md](references/architectural-element-library.md) on `A-FURN`, `A-FIXT`, `A-STAIR`, and `A-COLS`.
+6. Apply room floor finish boundaries and optional tile hatches (`hatch`) on `A-FLOR-FIN` where specified.
+7. Configure legible architectural dimension styles (`textHeight >= 150mm`, `arrowSize >= 120mm`) and draw dimension chains on `A-ANNO-DIMS`.
+8. Insert centered, non-colliding room labels on `A-ANNO-TEXT` (use stacked text in narrow circulation spaces).
+9. Frame viewport using `execute(command="zoom", params={"mode": "extents"})`.
 
 ### Phase 5: Geometric & Topological Validation
 Execute the automated checks in [references/validation-checklist.md](references/validation-checklist.md) and [workflows/validate-and-export.md](workflows/validate-and-export.md):
