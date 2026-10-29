@@ -10,6 +10,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Milestone 5: Architectural Reports & Schedules**:
+  - Implemented deterministic reporting engine `scripts/architectural_reports.py` (mirrored in `skills/sketch-to-cad/scripts/architectural_reports.py`).
+  - Authored Draft-07 JSON Schema `skills/sketch-to-cad/schemas/architectural-report.schema.json` v1.0.0.
+  - Room schedule calculation: Shoelace formula for internal clear net area, perimeters, and axis-aligned rectangle dimensions (no false dimensioning for irregular spaces).
+  - Opening schedules: Separate Door and Window schedules with geometric host-wall validation and preservation of `null` for unannotated 2D heights.
+  - Architectural element inventory: Aggregations by category and block definition plus itemized instances with insertion coordinates.
+  - Floor finish schedule: Surface boundary areas and physical material specification audit (distinguishing graphical CAD hatch from certified materials).
+  - Uncertainty & verification audit: Tracking provenance, invalid host walls, overlapping room polygons, and envelope clearance.
+  - Approval-gate enforcement: Flagging unapproved models as DRAFT / NOT APPROVED FOR CONSTRUCTION.
+  - Multi-format deliverable exports: `.report.json`, `.report.md`, and paginated ReportLab `.report.pdf`.
+  - Added CLI interface in `architectural_reports.py` and integrated `--generate-report` flag into `drawing_generator.py`.
+  - Added comprehensive technical guide `skills/sketch-to-cad/references/architectural-reporting-guide.md`.
+  - Added automated test suite `tests/test_architectural_reports.py` with 18 tests (repository total: 47 passed tests).
+  - Updated `scripts/validate-skill.ps1` with Check 11 (11/11 passed).
 - **Milestone 4: DXF Output Standardization & BIM Handoff Contract**:
   - Authored Draft-07 JSON Schema `skills/sketch-to-cad/schemas/bim-handoff.schema.json` v1.0.0.
   - Implemented `compile_bim_handoff(...)` compiler in `scripts/drawing_generator.py` converting approved models into standardized companion JSON metadata (`<drawing-name>.handoff.json`).

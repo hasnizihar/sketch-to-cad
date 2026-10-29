@@ -1,0 +1,388 @@
+{
+  "schemaVersion": "1.0.0",
+  "project": {
+    "projectName": "Studio-Apartment-Furnished-Fixture",
+    "drawingId": "floor-plan",
+    "units": "mm",
+    "coordinateSystem": "Cartesian2D_RightHanded_YUp",
+    "sourceSketch": "hand-sketch-residential.png",
+    "author": "Antigravity Sketch-to-CAD Agent",
+    "approvalStatus": "approved",
+    "approvedBy": "Architectural Reviewer",
+    "approvedAt": "2026-10-30T01:20:00Z",
+    "createdAt": "2026-10-30T01:15:00Z"
+  },
+  "summary": {
+    "floorCount": 1,
+    "roomCount": 3,
+    "doorCount": 2,
+    "windowCount": 2,
+    "elementCount": 8,
+    "finishCount": 1,
+    "totalNetAreaM2": 25.16,
+    "grossFootprintAreaM2": 30.0,
+    "grossAreaMethod": "exterior_envelope_bounding_box",
+    "uncertaintyCount": 2,
+    "unresolvedUncertaintyCount": 1,
+    "validationStatus": "PASSED"
+  },
+  "rooms": [
+    {
+      "id": "R1",
+      "name": "STUDIO / LIVING",
+      "floorId": "LEVEL-01",
+      "netAreaM2": 18.86,
+      "lengthMm": 4600.0,
+      "widthMm": 4100.0,
+      "perimeterMm": 17400.0,
+      "perimeterM": 17.4,
+      "finishId": null,
+      "finishPattern": null,
+      "calculationMethod": "shoelace_boundary_polygon",
+      "confidence": "explicit",
+      "boundaryVertices": 4,
+      "notes": "Orthogonal rectangular boundary; internal clear dimensions."
+    },
+    {
+      "id": "R2",
+      "name": "BATHROOM",
+      "floorId": "LEVEL-01",
+      "netAreaM2": 2.94,
+      "lengthMm": 2100.0,
+      "widthMm": 1400.0,
+      "perimeterMm": 7000.0,
+      "perimeterM": 7.0,
+      "finishId": "FIN-BATH-1",
+      "finishPattern": "tile_grid",
+      "calculationMethod": "shoelace_boundary_polygon",
+      "confidence": "explicit",
+      "boundaryVertices": 4,
+      "notes": "Orthogonal rectangular boundary; internal clear dimensions."
+    },
+    {
+      "id": "R3",
+      "name": "KITCHEN / ENTRY",
+      "floorId": "LEVEL-01",
+      "netAreaM2": 3.36,
+      "lengthMm": 2400.0,
+      "widthMm": 1400.0,
+      "perimeterMm": 7600.0,
+      "perimeterM": 7.6,
+      "finishId": null,
+      "finishPattern": null,
+      "calculationMethod": "shoelace_boundary_polygon",
+      "confidence": "explicit",
+      "boundaryVertices": 4,
+      "notes": "Orthogonal rectangular boundary; internal clear dimensions."
+    }
+  ],
+  "openings": {
+    "doors": [
+      {
+        "id": "D-ENTR",
+        "type": "door",
+        "floorId": "LEVEL-01",
+        "wallId": "W-EXT-S",
+        "associatedRoomIds": [
+          "R3"
+        ],
+        "widthMm": 900.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "swing": "inward-left",
+        "source": "inferred",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "D-BATH",
+        "type": "door",
+        "floorId": "LEVEL-01",
+        "wallId": "W-INT-H",
+        "associatedRoomIds": [
+          "R2",
+          "R3"
+        ],
+        "widthMm": 750.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "swing": "inward-right",
+        "source": "inferred",
+        "verificationStatus": "verified"
+      }
+    ],
+    "windows": [
+      {
+        "id": "WIN-1",
+        "type": "window",
+        "floorId": "LEVEL-01",
+        "wallId": "W-EXT-S",
+        "associatedRoomIds": [
+          "R1"
+        ],
+        "widthMm": 1800.0,
+        "heightMm": null,
+        "sillHeightMm": 900.0,
+        "source": "estimated",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "WIN-2",
+        "type": "window",
+        "floorId": "LEVEL-01",
+        "wallId": "W-EXT-N",
+        "associatedRoomIds": [
+          "R2"
+        ],
+        "widthMm": 800.0,
+        "heightMm": null,
+        "sillHeightMm": 1400.0,
+        "source": "estimated",
+        "verificationStatus": "verified"
+      }
+    ]
+  },
+  "elements": {
+    "summaryByCategory": [
+      {
+        "category": "furniture",
+        "instanceCount": 2
+      },
+      {
+        "category": "kitchen",
+        "instanceCount": 2
+      },
+      {
+        "category": "sanitary",
+        "instanceCount": 3
+      },
+      {
+        "category": "structural",
+        "instanceCount": 1
+      }
+    ],
+    "summaryByBlock": [
+      {
+        "blockId": "FURN_BED_DOUBLE",
+        "category": "furniture",
+        "dimensions": {},
+        "instanceCount": 1
+      },
+      {
+        "blockId": "FURN_SOFA_2SEAT",
+        "category": "furniture",
+        "dimensions": {},
+        "instanceCount": 1
+      },
+      {
+        "blockId": "FIXT_KITCHEN_SINK",
+        "category": "kitchen",
+        "dimensions": {},
+        "instanceCount": 1
+      },
+      {
+        "blockId": "FIXT_REFRIGERATOR",
+        "category": "kitchen",
+        "dimensions": {},
+        "instanceCount": 1
+      },
+      {
+        "blockId": "FIXT_SHOWER",
+        "category": "sanitary",
+        "dimensions": {},
+        "instanceCount": 1
+      },
+      {
+        "blockId": "FIXT_TOILET",
+        "category": "sanitary",
+        "dimensions": {},
+        "instanceCount": 1
+      },
+      {
+        "blockId": "FIXT_WASHBASIN",
+        "category": "sanitary",
+        "dimensions": {},
+        "instanceCount": 1
+      },
+      {
+        "blockId": "STRUC_COL_SQUARE",
+        "category": "structural",
+        "dimensions": {},
+        "instanceCount": 1
+      }
+    ],
+    "instances": [
+      {
+        "id": "E-BED-1",
+        "blockId": "FURN_BED_DOUBLE",
+        "category": "furniture",
+        "floorId": "LEVEL-01",
+        "roomId": "R1",
+        "position": [
+          400.0,
+          2600.0
+        ],
+        "rotation": 0.0,
+        "dimensions": {},
+        "source": "explicit",
+        "status": "confirmed"
+      },
+      {
+        "id": "E-SOFA-1",
+        "blockId": "FURN_SOFA_2SEAT",
+        "category": "furniture",
+        "floorId": "LEVEL-01",
+        "roomId": "R1",
+        "position": [
+          400.0,
+          500.0
+        ],
+        "rotation": 0.0,
+        "dimensions": {},
+        "source": "proposed",
+        "status": "approved"
+      },
+      {
+        "id": "E-WC-1",
+        "blockId": "FIXT_TOILET",
+        "category": "sanitary",
+        "floorId": "LEVEL-01",
+        "roomId": "R2",
+        "position": [
+          4500.0,
+          4000.0
+        ],
+        "rotation": 0.0,
+        "dimensions": {},
+        "source": "explicit",
+        "status": "confirmed"
+      },
+      {
+        "id": "E-BASIN-1",
+        "blockId": "FIXT_WASHBASIN",
+        "category": "sanitary",
+        "floorId": "LEVEL-01",
+        "roomId": "R2",
+        "position": [
+          5100.0,
+          4200.0
+        ],
+        "rotation": 0.0,
+        "dimensions": {},
+        "source": "inferred",
+        "status": "confirmed"
+      },
+      {
+        "id": "E-SHOWER-1",
+        "blockId": "FIXT_SHOWER",
+        "category": "sanitary",
+        "floorId": "LEVEL-01",
+        "roomId": "R2",
+        "position": [
+          4500.0,
+          2800.0
+        ],
+        "rotation": 0.0,
+        "dimensions": {},
+        "source": "explicit",
+        "status": "confirmed"
+      },
+      {
+        "id": "E-SINK-1",
+        "blockId": "FIXT_KITCHEN_SINK",
+        "category": "kitchen",
+        "floorId": "LEVEL-01",
+        "roomId": "R3",
+        "position": [
+          4500.0,
+          300.0
+        ],
+        "rotation": 0.0,
+        "dimensions": {},
+        "source": "explicit",
+        "status": "confirmed"
+      },
+      {
+        "id": "E-FRIDGE-1",
+        "blockId": "FIXT_REFRIGERATOR",
+        "category": "kitchen",
+        "floorId": "LEVEL-01",
+        "roomId": "R3",
+        "position": [
+          5050.0,
+          1800.0
+        ],
+        "rotation": 0.0,
+        "dimensions": {},
+        "source": "inferred",
+        "status": "confirmed"
+      },
+      {
+        "id": "E-COL-1",
+        "blockId": "STRUC_COL_SQUARE",
+        "category": "structural",
+        "floorId": "LEVEL-01",
+        "roomId": "R1",
+        "position": [
+          4200.0,
+          2500.0
+        ],
+        "rotation": 0.0,
+        "dimensions": {},
+        "source": "inferred",
+        "status": "confirmed"
+      }
+    ]
+  },
+  "finishes": [
+    {
+      "id": "FIN-BATH-1",
+      "roomId": "R2",
+      "roomName": "BATHROOM",
+      "floorId": "LEVEL-01",
+      "pattern": "tile_grid",
+      "tileSizeMm": 300.0,
+      "material": null,
+      "areaCoveredM2": 2.94,
+      "source": "inferred",
+      "verificationStatus": "material_unspecified (graphical hatch pattern only)"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "U1",
+      "category": "sketch_interpretation",
+      "target": "Bathroom Fixture Clearances",
+      "description": "Standard 700mm clearance verified between WC and shower tray.",
+      "assumedValue": "700mm",
+      "confidence": "high",
+      "status": "confirmed",
+      "provenance": "model_uncertainty_log"
+    },
+    {
+      "id": "UNC-VERT-01",
+      "category": "vertical_geometry",
+      "target": "openings.height",
+      "description": "4 door/window vertical heights unannotated in 2D floor plan.",
+      "assumedValue": null,
+      "confidence": "low",
+      "status": "unresolved (requires downstream approval)",
+      "provenance": "2d_floor_plan_boundary"
+    }
+  ],
+  "audit": {
+    "flags": [],
+    "hostWallValidation": {
+      "valid": true,
+      "invalidOpenings": []
+    },
+    "overlappingRooms": {
+      "detected": false,
+      "overlappingPairs": []
+    },
+    "envelopeClearance": {
+      "allWithinEnvelope": true,
+      "outOfEnvelopeElements": []
+    },
+    "isApprovedForConstruction": true
+  }
+}

@@ -43,3 +43,8 @@ This directory contains test specifications, reference fixtures, and validation 
    python -m unittest tests/test_bim_handoff.py
    ```
    Validates Draft-07 compliance of `bim-handoff.schema.json`, full JSON compilation, backward compatibility with un-furnished models, null-preservation of unverified vertical elevations, host-wall relationships, and real CADCraft DXF+JSON consistency.
+5. **Architectural Reports & Schedules Test Suite (Milestone 5)**:
+   ```powershell
+   python -m unittest tests/test_architectural_reports.py
+   ```
+   Validates Shoelace net area calculations, perimeter lengths, axis-aligned rectangle detection without false dimensioning, missing boundary handling, room polygon overlap detection, separate door/window schedules, element category/block aggregations, finish area coverage, uncertainty preservation, approval gate enforcement, legacy fixture compatibility, JSON schema validation (`architectural-report.schema.json`), Markdown/PDF rendering, and unified CADCraft pipeline execution.

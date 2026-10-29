@@ -553,7 +553,9 @@ class DrawingGenerator:
         model: Dict[str, Any],
         output_dxf_path: str,
         output_png_path: Optional[str] = None,
-        output_handoff_path: Optional[Union[str, bool]] = None
+        output_handoff_path: Optional[Union[str, bool]] = None,
+        generate_report: bool = False,
+        output_report_base: Optional[str] = None
     ) -> Dict[str, Any]:
         """Executes full drawing construction in CADCraft."""
         self.validate_preflight(model)
@@ -643,12 +645,50 @@ class DrawingGenerator:
                 with open(output_handoff_path, "w", encoding="utf-8") as hf:
                     json.dump(handoff_dict, hf, indent=2)
 
+            # Stage 12: Architectural Documentation & Schedules (Milestone 5)
+            report_dict = None
+            report_json_path = None
+            report_md_path = None
+            report_pdf_path = None
+
+            if generate_report:
+                from architectural_reports import (
+                    compile_architectural_report,
+                    render_markdown_report,
+                    render_pdf_report
+                )
+                rep_base = output_report_base or os.path.splitext(output_dxf_path)[0]
+                report_dict = compile_architectural_report(
+                    model=model,
+                    handoff=handoff_dict,
+                    dxf_path=output_dxf_path
+                )
+                report_json_path = f"{rep_base}.report.json"
+                report_md_path = f"{rep_base}.report.md"
+                report_pdf_path = f"{rep_base}.report.pdf"
+
+                with open(report_json_path, "w", encoding="utf-8") as jf:
+                    json.dump(report_dict, jf, indent=2)
+
+                with open(report_md_path, "w", encoding="utf-8") as mf:
+                    mf.write(render_markdown_report(report_dict))
+
+                try:
+                    render_pdf_report(report_dict, report_pdf_path)
+                except Exception as ex:
+                    self.warnings.append(f"PDF report generation skipped: {ex}")
+                    report_pdf_path = None
+
             result = {
                 "status": "PASSED",
                 "dxfPath": output_dxf_path,
                 "pngPath": output_png_path,
                 "handoffPath": output_handoff_path if (output_handoff_path and isinstance(output_handoff_path, str)) else None,
                 "handoff": handoff_dict,
+                "reportJsonPath": report_json_path,
+                "reportMdPath": report_md_path,
+                "reportPdfPath": report_pdf_path,
+                "report": report_dict,
                 "entityCount": inspection.get("entityCount", 0),
                 "counts": inspection.get("counts", {}),
                 "blocks": inspection.get("blocks", []),
@@ -876,6 +916,7 @@ def main():
     parser.add_argument("--output-dxf", required=True, help="Destination DXF path")
     parser.add_argument("--output-png", help="Destination PNG preview path")
     parser.add_argument("--output-handoff", help="Destination companion BIM handoff JSON path")
+    parser.add_argument("--generate-report", action="store_true", help="Generate architectural reports and schedules (JSON, MD, PDF)")
     parser.add_argument("--cli", default=CADCRAFT_CLI_DEFAULT, help="Path to cadcraft-cli executable")
     args = parser.parse_args()
 
@@ -888,7 +929,8 @@ def main():
         model=model,
         output_dxf_path=args.output_dxf,
         output_png_path=args.output_png,
-        output_handoff_path=args.output_handoff
+        output_handoff_path=args.output_handoff,
+        generate_report=args.generate_report
     )
     print(json.dumps(res, indent=2))
 

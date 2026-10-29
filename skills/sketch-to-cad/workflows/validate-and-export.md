@@ -53,11 +53,14 @@ Save drawing and exports to explicit output destinations:
 2. **Structured Companion Metadata (BIM Handoff JSON)**:
    Compiled automatically via `compile_bim_handoff(...)` or `build_drawing(..., output_handoff_path=".../floor-plan.handoff.json")`.
    Strictly validated against [`bim-handoff.schema.json`](../schemas/bim-handoff.schema.json).
-3. **Visual Preview (PNG)**:
+3. **Architectural Schedules & Reports (JSON + MD + PDF)**:
+   Compiled automatically via `compile_architectural_report(...)` or `build_drawing(..., generate_report=True)`.
+   Strictly validated against [`architectural-report.schema.json`](../schemas/architectural-report.schema.json).
+4. **Visual Preview (PNG)**:
    ```json
    save(path=".../floor-plan.png")
    ```
-4. Verify on disk that all three files exist and have non-zero file sizes.
+5. Verify on disk that all deliverable files exist and have non-zero file sizes.
 
 ---
 
@@ -85,12 +88,23 @@ Deliver the final validation report categorizing checks into **Passed**, **Faile
 - **Vertical Parameters**: Storey elevations and opening heights explicitly stored as `null` for downstream human approval gate [PASSED]
 - **BIM Handshake**: Verified for ingestion by `dxf-to-3d-bim`.
 
-#### 3. Unverified Scope / Compliance Notice
+#### 3. Architectural Documentation & Schedules (Milestone 5)
+- **Report Schema**: `architectural-report.schema.json` v1.0.0 [PASSED]
+- **Room Schedule**: Net areas calculated via Shoelace formula, perimeters, internal dimensions [PASSED]
+- **Opening Schedules**: Separate Door and Window schedules with validated host walls [PASSED]
+- **Element Inventory**: Category & block aggregations + itemized instance coordinates [PASSED]
+- **Finish Schedule**: Floor finish zones and material audit [PASSED]
+- **Deliverables**: `.report.json`, `.report.md`, `.report.pdf` [PASSED]
+
+#### 4. Unverified Scope / Compliance Notice
 - **Structural Load-Bearing**: Unverified. Requires review by a licensed structural engineer.
 - **Egress / Life-Safety Codes**: Unverified. Subject to local municipal building codes.
 
-#### 4. Output Artifacts
+#### 5. Output Artifacts
 - DXF Drawing: `residential-floor-plan.dxf` (Verified: >35KB)
 - BIM Handoff JSON: `residential-floor-plan.handoff.json` (Verified: >10KB)
+- Architectural Report JSON: `residential-floor-plan.report.json` (Verified: >5KB)
+- Architectural Report Markdown: `residential-floor-plan.report.md` (Verified: >4KB)
+- Architectural Report PDF: `residential-floor-plan.report.pdf` (Verified: >15KB)
 - Visual Preview: `residential-floor-plan.png` (Verified: >300KB)
 ```

@@ -163,12 +163,13 @@ In your workspace, create or edit `.agents/mcp_config.json`:
 
 ## Output Deliverables
 
-Each completed workflow produces five synchronized artifacts:
+Each completed workflow produces six coordinated artifacts:
 
 | Deliverable | Format | Description |
 | :--- | :--- | :--- |
 | **Master CAD Drawing** | `.dxf` | Layered 2D vector CAD drawing compatible with AutoCAD, CADCraft, LibreCAD, and QCAD. |
 | **BIM Handoff Contract** | `.handoff.json` | Structured companion metadata adhering to [`bim-handoff.schema.json`](skills/sketch-to-cad/schemas/bim-handoff.schema.json) for 3D reconstruction in `dxf-to-3d-bim`. |
+| **Architectural Reports & Schedules** | `.report.json`, `.report.md`, `.report.pdf` | Verified room areas (Shoelace), door/window schedules, element inventory, finish schedules, and uncertainty audit adhering to [`architectural-report.schema.json`](skills/sketch-to-cad/schemas/architectural-report.schema.json). |
 | **Visual Preview** | `.png` | High-resolution raster preview for instant visual verification without CAD software. |
 | **Floor Plan Model** | `.json` | Intermediate coordinate data model conforming to [`schemas/floor-plan-model.json`](skills/sketch-to-cad/schemas/floor-plan-model.json). |
 | **Acceptance Report** | `.md` | Itemized audit report with PASSED, FAILED, and UNVERIFIED compliance notices. |
@@ -217,18 +218,21 @@ sketch-to-cad/
 │   └── limitations.md                 # Technical boundaries & version roadmap
 ├── scripts/
 │   ├── install.ps1                    # PowerShell installer with -DryRun support
-│   └── validate-skill.ps1             # Automated schema, links, & safety validator
+│   ├── validate-skill.ps1             # Automated schema, links, & safety validator
+│   ├── drawing_generator.py           # Deterministic CAD drafting & handoff engine
+│   ├── element_library.py             # 20 standard residential CAD blocks
+│   └── architectural_reports.py       # Schedules, quantities, & audit report engine
 ├── skills/
 │   └── sketch-to-cad/                 # The reusable Antigravity skill
 │       ├── SKILL.md                   # Master skill definition
-│       ├── references/                # CADCraft schemas, element library, BIM handoff contract
-│       ├── schemas/                   # JSON schemas (floor-plan-model, bim-handoff)
-│       ├── workflows/                 # Stage-by-stage drafting & validation guides
+│       ├── references/                # CADCraft schemas, element library, BIM handoff, reporting guide
+│       ├── schemas/                   # JSON schemas (floor-plan-model, bim-handoff, architectural-report)
+│       ├── workflows/                 # Stage-by-stage drafting, reporting & validation guides
 │       └── examples/                  # Reference projects and fixtures
 └── tests/
-    ├── README.md                      # Test suite documentation
+    ├── README.md                      # Test suite documentation (47 tests)
     ├── fixtures/                      # Validated floor-plan models and handoff JSON
-    └── output/                        # DXF, PNG, and companion handoff deliverables
+    └── output/                        # DXF, PNG, handoff JSON, and report deliverables
 ```
 
 ---

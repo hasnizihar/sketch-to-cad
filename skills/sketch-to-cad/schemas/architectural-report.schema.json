@@ -1,0 +1,342 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ArchitecturalReport",
+  "description": "Deterministic, auditable architectural documentation and schedules generated from an approved floor-plan model and companion DXF/BIM handoff metadata.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "project",
+    "summary",
+    "rooms",
+    "openings",
+    "elements",
+    "finishes",
+    "uncertainties",
+    "audit"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0",
+      "description": "Semantic version of the report schema."
+    },
+    "project": {
+      "type": "object",
+      "required": [
+        "projectName",
+        "drawingId",
+        "units",
+        "coordinateSystem",
+        "approvalStatus",
+        "createdAt"
+      ],
+      "properties": {
+        "projectName": { "type": "string" },
+        "drawingId": { "type": "string" },
+        "units": { "type": "string", "enum": ["mm", "m", "in", "ft"] },
+        "coordinateSystem": { "type": "string" },
+        "sourceSketch": { "type": "string" },
+        "author": { "type": "string" },
+        "approvalStatus": {
+          "type": "string",
+          "enum": ["approved", "awaiting_approval", "draft", "rejected"]
+        },
+        "approvedBy": { "type": ["string", "null"] },
+        "approvedAt": { "type": ["string", "null"] },
+        "createdAt": { "type": "string" }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "floorCount",
+        "roomCount",
+        "doorCount",
+        "windowCount",
+        "elementCount",
+        "finishCount",
+        "totalNetAreaM2",
+        "grossFootprintAreaM2",
+        "grossAreaMethod",
+        "uncertaintyCount",
+        "unresolvedUncertaintyCount",
+        "validationStatus"
+      ],
+      "properties": {
+        "floorCount": { "type": "integer", "minimum": 0 },
+        "roomCount": { "type": "integer", "minimum": 0 },
+        "doorCount": { "type": "integer", "minimum": 0 },
+        "windowCount": { "type": "integer", "minimum": 0 },
+        "elementCount": { "type": "integer", "minimum": 0 },
+        "finishCount": { "type": "integer", "minimum": 0 },
+        "totalNetAreaM2": { "type": "number", "minimum": 0 },
+        "grossFootprintAreaM2": { "type": ["number", "null"] },
+        "grossAreaMethod": { "type": "string" },
+        "uncertaintyCount": { "type": "integer", "minimum": 0 },
+        "unresolvedUncertaintyCount": { "type": "integer", "minimum": 0 },
+        "validationStatus": {
+          "type": "string",
+          "enum": ["PASSED", "WARNING", "FAILED", "DRAFT"]
+        }
+      }
+    },
+    "rooms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "floorId",
+          "netAreaM2",
+          "calculationMethod",
+          "confidence"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "floorId": { "type": "string" },
+          "netAreaM2": { "type": "number", "minimum": 0 },
+          "lengthMm": { "type": ["number", "null"] },
+          "widthMm": { "type": ["number", "null"] },
+          "perimeterMm": { "type": ["number", "null"] },
+          "perimeterM": { "type": ["number", "null"] },
+          "finishId": { "type": ["string", "null"] },
+          "finishPattern": { "type": ["string", "null"] },
+          "calculationMethod": {
+            "type": "string",
+            "enum": [
+              "shoelace_boundary_polygon",
+              "enclosed_bounding_box",
+              "model_annotated",
+              "uncalculated"
+            ]
+          },
+          "confidence": { "type": "string" },
+          "boundaryVertices": { "type": "integer", "minimum": 0 },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "openings": {
+      "type": "object",
+      "required": ["doors", "windows"],
+      "properties": {
+        "doors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "type",
+              "floorId",
+              "wallId",
+              "widthMm",
+              "source",
+              "verificationStatus"
+            ],
+            "properties": {
+              "id": { "type": "string" },
+              "type": { "type": "string" },
+              "floorId": { "type": "string" },
+              "wallId": { "type": "string" },
+              "associatedRoomIds": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "widthMm": { "type": "number", "minimum": 0 },
+              "heightMm": { "type": ["number", "null"] },
+              "sillHeightMm": { "type": ["number", "null"] },
+              "swing": { "type": ["string", "null"] },
+              "source": { "type": "string" },
+              "verificationStatus": { "type": "string" }
+            }
+          }
+        },
+        "windows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "type",
+              "floorId",
+              "wallId",
+              "widthMm",
+              "source",
+              "verificationStatus"
+            ],
+            "properties": {
+              "id": { "type": "string" },
+              "type": { "type": "string" },
+              "floorId": { "type": "string" },
+              "wallId": { "type": "string" },
+              "associatedRoomIds": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "widthMm": { "type": "number", "minimum": 0 },
+              "heightMm": { "type": ["number", "null"] },
+              "sillHeightMm": { "type": ["number", "null"] },
+              "source": { "type": "string" },
+              "verificationStatus": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "elements": {
+      "type": "object",
+      "required": ["summaryByCategory", "summaryByBlock", "instances"],
+      "properties": {
+        "summaryByCategory": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["category", "instanceCount"],
+            "properties": {
+              "category": { "type": "string" },
+              "instanceCount": { "type": "integer", "minimum": 0 }
+            }
+          }
+        },
+        "summaryByBlock": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["blockId", "category", "instanceCount"],
+            "properties": {
+              "blockId": { "type": "string" },
+              "category": { "type": "string" },
+              "dimensions": { "type": "object" },
+              "instanceCount": { "type": "integer", "minimum": 0 }
+            }
+          }
+        },
+        "instances": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "blockId", "category", "floorId", "source", "status"],
+            "properties": {
+              "id": { "type": "string" },
+              "blockId": { "type": "string" },
+              "category": { "type": "string" },
+              "floorId": { "type": "string" },
+              "roomId": { "type": ["string", "null"] },
+              "position": {
+                "type": "array",
+                "items": { "type": "number" },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "rotation": { "type": "number" },
+              "dimensions": { "type": "object" },
+              "source": { "type": "string" },
+              "status": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "finishes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "roomId",
+          "floorId",
+          "pattern",
+          "areaCoveredM2",
+          "source",
+          "verificationStatus"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "roomId": { "type": "string" },
+          "roomName": { "type": "string" },
+          "floorId": { "type": "string" },
+          "pattern": { "type": "string" },
+          "tileSizeMm": { "type": ["number", "null"] },
+          "material": { "type": ["string", "null"] },
+          "areaCoveredM2": { "type": "number", "minimum": 0 },
+          "source": { "type": "string" },
+          "verificationStatus": { "type": "string" }
+        }
+      }
+    },
+    "uncertainties": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "target", "description", "status"],
+        "properties": {
+          "id": { "type": "string" },
+          "category": { "type": "string" },
+          "target": { "type": "string" },
+          "description": { "type": "string" },
+          "assumedValue": {},
+          "confidence": { "type": "string" },
+          "status": { "type": "string" },
+          "provenance": { "type": "string" }
+        }
+      }
+    },
+    "audit": {
+      "type": "object",
+      "required": [
+        "flags",
+        "hostWallValidation",
+        "overlappingRooms",
+        "envelopeClearance",
+        "isApprovedForConstruction"
+      ],
+      "properties": {
+        "flags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "hostWallValidation": {
+          "type": "object",
+          "required": ["valid", "invalidOpenings"],
+          "properties": {
+            "valid": { "type": "boolean" },
+            "invalidOpenings": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "overlappingRooms": {
+          "type": "object",
+          "required": ["detected", "overlappingPairs"],
+          "properties": {
+            "detected": { "type": "boolean" },
+            "overlappingPairs": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": { "type": "string" },
+                "minItems": 2,
+                "maxItems": 2
+              }
+            }
+          }
+        },
+        "envelopeClearance": {
+          "type": "object",
+          "required": ["allWithinEnvelope", "outOfEnvelopeElements"],
+          "properties": {
+            "allWithinEnvelope": { "type": "boolean" },
+            "outOfEnvelopeElements": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "isApprovedForConstruction": { "type": "boolean" }
+      }
+    }
+  }
+}

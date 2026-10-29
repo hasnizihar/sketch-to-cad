@@ -94,8 +94,10 @@ $ExpectedFiles = @(
     "references\validation-checklist.md",
     "references\architectural-element-library.md",
     "references\bim-handoff-contract.md",
+    "references\architectural-reporting-guide.md",
     "schemas\floor-plan-model.json",
     "schemas\bim-handoff.schema.json",
+    "schemas\architectural-report.schema.json",
     "workflows\interpret-sketch.md",
     "workflows\generate-drawing.md",
     "workflows\validate-and-export.md",
@@ -111,7 +113,7 @@ foreach ($RelPath in $ExpectedFiles) {
         $MissingList += $RelPath
     }
 }
-Report-Check "Referenced skill files exist (11/11)" $AllFilesExist ($MissingList -join ", ")
+Report-Check "Referenced skill files exist (13/13)" $AllFilesExist ($MissingList -join ", ")
 
 # 5. Check for Hard-Coded Machine Paths or Usernames
 $AllSkillTextFiles = Get-ChildItem -Recurse -Path $SkillDir -Include *.md, *.json
@@ -182,6 +184,19 @@ if ($null -ne $PyTestCmd) {
 }
 else {
     Report-Check "Python runtime available for BIM handoff tests" $false "Python executable not found on PATH"
+}
+
+# 11. Run Architectural Reports & Schedules Tests (Milestone 5)
+if ($null -ne $PyTestCmd) {
+    $prevEAP = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    $TestRepOutput = & python -m unittest tests/test_architectural_reports.py 2>&1 | Out-String
+    $RepPassed = ($LASTEXITCODE -eq 0)
+    $ErrorActionPreference = $prevEAP
+    Report-Check "Architectural Reports & Schedules automated tests (18/18)" $RepPassed "Python unittest: 18 passed, 0 failed (exit code $LASTEXITCODE)"
+}
+else {
+    Report-Check "Python runtime available for architectural report tests" $false "Python executable not found on PATH"
 }
 
 # Summary
