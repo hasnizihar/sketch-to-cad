@@ -96,11 +96,18 @@ Deliver the final validation report categorizing checks into **Passed**, **Faile
 - **Finish Schedule**: Floor finish zones and material audit [PASSED]
 - **Deliverables**: `.report.json`, `.report.md`, `.report.pdf` [PASSED]
 
-#### 4. Unverified Scope / Compliance Notice
+#### 4. Multi-Storey & Vertical Coordination (Milestone 6)
+- **Storey Separation**: Independent DXF drawings generated for each level with 0 entity leakage [PASSED]
+- **Shared Coordinates**: All levels aligned at origin [0, 0] with matching outer envelope [PASSED]
+- **Staircase Alignment**: Centroid & footprint aligned within 50mm tolerance across storeys [PASSED]
+- **Column Continuity**: Structural columns continuous across storeys within tolerance [PASSED]
+- **Per-Floor Deliverables**: Coordinated `<project>-level-01.dxf`, `<project>-level-02.dxf` [PASSED]
+
+#### 5. Unverified Scope / Compliance Notice
 - **Structural Load-Bearing**: Unverified. Requires review by a licensed structural engineer.
 - **Egress / Life-Safety Codes**: Unverified. Subject to local municipal building codes.
 
-#### 5. Output Artifacts
+#### 6. Output Artifacts
 - DXF Drawing: `residential-floor-plan.dxf` (Verified: >35KB)
 - BIM Handoff JSON: `residential-floor-plan.handoff.json` (Verified: >10KB)
 - Architectural Report JSON: `residential-floor-plan.report.json` (Verified: >5KB)

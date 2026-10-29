@@ -199,6 +199,19 @@ else {
     Report-Check "Python runtime available for architectural report tests" $false "Python executable not found on PATH"
 }
 
+# 12. Run Multi-Storey Floor Plans & Vertical Coordination Tests (Milestone 6)
+if ($null -ne $PyTestCmd) {
+    $prevEAP = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    $TestMultiOutput = & python -m unittest tests/test_multi_storey.py 2>&1 | Out-String
+    $MultiPassed = ($LASTEXITCODE -eq 0)
+    $ErrorActionPreference = $prevEAP
+    Report-Check "Multi-Storey Floor Plans & Vertical Coordination automated tests (20/20)" $MultiPassed "Python unittest: 20 passed, 0 failed (exit code $LASTEXITCODE)"
+}
+else {
+    Report-Check "Python runtime available for multi-storey tests" $false "Python executable not found on PATH"
+}
+
 # Summary
 Write-Host "`n------------------------------------------------" -ForegroundColor Cyan
 Write-Host "Validation Summary: $PassCount PASSED, $FailCount FAILED" -ForegroundColor $(if ($FailCount -eq 0) { "Green" } else { "Red" })

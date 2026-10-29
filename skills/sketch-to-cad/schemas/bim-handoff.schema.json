@@ -24,37 +24,86 @@
     },
     "project": {
       "type": "object",
-      "required": ["projectName", "drawingId", "units", "coordinateSystem", "createdAt"],
+      "required": [
+        "projectName",
+        "drawingId",
+        "units",
+        "coordinateSystem",
+        "createdAt"
+      ],
       "properties": {
-        "projectName": { "type": "string" },
-        "drawingId": { "type": "string" },
-        "units": { "type": "string", "enum": ["mm", "m", "in", "ft"] },
+        "projectName": {
+          "type": "string"
+        },
+        "drawingId": {
+          "type": "string"
+        },
+        "units": {
+          "type": "string",
+          "enum": [
+            "mm",
+            "m",
+            "in",
+            "ft"
+          ]
+        },
         "coordinateSystem": {
           "type": "string",
-          "enum": ["Cartesian2D_RightHanded_YUp", "Cartesian2D_Standard"],
+          "enum": [
+            "Cartesian2D_RightHanded_YUp",
+            "Cartesian2D_Standard"
+          ],
           "default": "Cartesian2D_RightHanded_YUp"
         },
-        "sourceSketch": { "type": "string" },
-        "author": { "type": "string" },
-        "createdAt": { "type": "string" }
+        "sourceSketch": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        }
       }
     },
     "dxf": {
       "type": "object",
-      "required": ["filename", "units", "layers", "blocks", "entityCount", "extents"],
+      "required": [
+        "filename",
+        "units",
+        "layers",
+        "blocks",
+        "entityCount",
+        "extents"
+      ],
       "properties": {
-        "filename": { "type": "string" },
-        "units": { "type": "string" },
+        "filename": {
+          "type": "string"
+        },
+        "units": {
+          "type": "string"
+        },
         "layers": {
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["name", "category"],
+            "required": [
+              "name",
+              "category"
+            ],
             "properties": {
-              "name": { "type": "string" },
-              "color": { "type": "string" },
-              "category": { "type": "string" },
-              "entityCount": { "type": "integer" }
+              "name": {
+                "type": "string"
+              },
+              "color": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              },
+              "entityCount": {
+                "type": "integer"
+              }
             }
           }
         },
@@ -62,25 +111,46 @@
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["name", "category"],
+            "required": [
+              "name",
+              "category"
+            ],
             "properties": {
-              "name": { "type": "string" },
-              "category": { "type": "string" },
-              "instanceCount": { "type": "integer" }
+              "name": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              },
+              "instanceCount": {
+                "type": "integer"
+              }
             }
           }
         },
-        "entityCount": { "type": "integer", "minimum": 0 },
+        "entityCount": {
+          "type": "integer",
+          "minimum": 0
+        },
         "extents": {
           "type": "array",
           "items": {
             "type": "array",
-            "items": { "type": "number" },
+            "items": {
+              "type": "number"
+            },
             "minItems": 2,
             "maxItems": 2
           },
           "minItems": 2,
           "maxItems": 2
+        },
+        "floorDrawings": {
+          "type": "object",
+          "description": "Mapping from floor ID to relative DXF filename for multi-storey drawings.",
+          "additionalProperties": {
+            "type": "string"
+          }
         }
       }
     },
@@ -89,27 +159,53 @@
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["id", "name", "envelope"],
+        "required": [
+          "id",
+          "name",
+          "envelope"
+        ],
         "properties": {
-          "id": { "type": "string" },
-          "name": { "type": "string" },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
           "elevation": {
-            "type": ["number", "null"],
+            "type": [
+              "number",
+              "null"
+            ],
             "description": "Floor datum elevation in drawing units. Null if unverified in 2D."
           },
           "height": {
-            "type": ["number", "null"],
+            "type": [
+              "number",
+              "null"
+            ],
             "description": "Clear storey height if explicitly known. Null if unverified."
           },
           "envelope": {
             "type": "object",
-            "required": ["width", "depth", "origin"],
+            "required": [
+              "width",
+              "depth",
+              "origin"
+            ],
             "properties": {
-              "width": { "type": "number", "minimum": 0 },
-              "depth": { "type": "number", "minimum": 0 },
+              "width": {
+                "type": "number",
+                "minimum": 0
+              },
+              "depth": {
+                "type": "number",
+                "minimum": 0
+              },
               "origin": {
                 "type": "array",
-                "items": { "type": "number" },
+                "items": {
+                  "type": "number"
+                },
                 "minItems": 2,
                 "maxItems": 2
               }
@@ -122,30 +218,66 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "classification", "start", "end", "thickness", "layer", "floorId"],
+        "required": [
+          "id",
+          "classification",
+          "start",
+          "end",
+          "thickness",
+          "layer",
+          "floorId"
+        ],
         "properties": {
-          "id": { "type": "string" },
-          "classification": { "type": "string", "enum": ["exterior", "interior"] },
+          "id": {
+            "type": "string"
+          },
+          "classification": {
+            "type": "string",
+            "enum": [
+              "exterior",
+              "interior"
+            ]
+          },
           "start": {
             "type": "array",
-            "items": { "type": "number" },
+            "items": {
+              "type": "number"
+            },
             "minItems": 2,
             "maxItems": 2
           },
           "end": {
             "type": "array",
-            "items": { "type": "number" },
+            "items": {
+              "type": "number"
+            },
             "minItems": 2,
             "maxItems": 2
           },
-          "thickness": { "type": "number", "minimum": 0 },
-          "layer": { "type": "string" },
-          "floorId": { "type": "string" },
+          "thickness": {
+            "type": "number",
+            "minimum": 0
+          },
+          "layer": {
+            "type": "string"
+          },
+          "floorId": {
+            "type": "string"
+          },
           "openingIds": {
             "type": "array",
-            "items": { "type": "string" }
+            "items": {
+              "type": "string"
+            }
           },
-          "source": { "type": "string", "enum": ["explicit", "estimated", "inferred"] }
+          "source": {
+            "type": "string",
+            "enum": [
+              "explicit",
+              "estimated",
+              "inferred"
+            ]
+          }
         }
       }
     },
@@ -153,23 +285,67 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "type", "wallId", "center", "width", "floorId"],
+        "required": [
+          "id",
+          "type",
+          "wallId",
+          "center",
+          "width",
+          "floorId"
+        ],
         "properties": {
-          "id": { "type": "string" },
-          "type": { "type": "string", "enum": ["door", "window", "cased_opening"] },
-          "wallId": { "type": "string" },
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "door",
+              "window",
+              "cased_opening"
+            ]
+          },
+          "wallId": {
+            "type": "string"
+          },
           "center": {
             "type": "array",
-            "items": { "type": "number" },
+            "items": {
+              "type": "number"
+            },
             "minItems": 2,
             "maxItems": 2
           },
-          "width": { "type": "number", "minimum": 0 },
-          "height": { "type": ["number", "null"] },
-          "sillHeight": { "type": ["number", "null"] },
-          "swing": { "type": "string" },
-          "floorId": { "type": "string" },
-          "source": { "type": "string", "enum": ["explicit", "estimated", "inferred"] }
+          "width": {
+            "type": "number",
+            "minimum": 0
+          },
+          "height": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "sillHeight": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "swing": {
+            "type": "string"
+          },
+          "floorId": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "explicit",
+              "estimated",
+              "inferred"
+            ]
+          }
         }
       }
     },
@@ -177,16 +353,41 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "name", "floorId", "approximateArea", "labelPosition"],
+        "required": [
+          "id",
+          "name",
+          "floorId",
+          "approximateArea",
+          "labelPosition"
+        ],
         "properties": {
-          "id": { "type": "string" },
-          "name": { "type": "string" },
-          "floorId": { "type": "string" },
-          "approximateArea": { "type": "number", "minimum": 0 },
-          "areaMethod": { "type": "string", "enum": ["polygon_shoelace", "enclosed_bounding_box", "sketch_annotated", "estimated"] },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "floorId": {
+            "type": "string"
+          },
+          "approximateArea": {
+            "type": "number",
+            "minimum": 0
+          },
+          "areaMethod": {
+            "type": "string",
+            "enum": [
+              "polygon_shoelace",
+              "enclosed_bounding_box",
+              "sketch_annotated",
+              "estimated"
+            ]
+          },
           "labelPosition": {
             "type": "array",
-            "items": { "type": "number" },
+            "items": {
+              "type": "number"
+            },
             "minItems": 2,
             "maxItems": 2
           },
@@ -194,7 +395,9 @@
             "type": "array",
             "items": {
               "type": "array",
-              "items": { "type": "number" },
+              "items": {
+                "type": "number"
+              },
               "minItems": 2,
               "maxItems": 2
             }
@@ -206,24 +409,51 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "blockId", "category", "position", "floorId"],
+        "required": [
+          "id",
+          "blockId",
+          "category",
+          "position",
+          "floorId"
+        ],
         "properties": {
-          "id": { "type": "string" },
-          "blockId": { "type": "string" },
-          "category": { "type": "string", "enum": ["furniture", "sanitary", "kitchen", "circulation", "structural"] },
+          "id": {
+            "type": "string"
+          },
+          "blockId": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "furniture",
+              "sanitary",
+              "kitchen",
+              "circulation",
+              "structural"
+            ]
+          },
           "position": {
             "type": "array",
-            "items": { "type": "number" },
+            "items": {
+              "type": "number"
+            },
             "minItems": 2,
             "maxItems": 2
           },
-          "rotation": { "type": "number" },
+          "rotation": {
+            "type": "number"
+          },
           "scale": {
             "oneOf": [
-              { "type": "number" },
+              {
+                "type": "number"
+              },
               {
                 "type": "array",
-                "items": { "type": "number" },
+                "items": {
+                  "type": "number"
+                },
                 "minItems": 2,
                 "maxItems": 2
               }
@@ -232,15 +462,41 @@
           "dimensions": {
             "type": "object",
             "properties": {
-              "width": { "type": "number" },
-              "depth": { "type": "number" }
+              "width": {
+                "type": "number"
+              },
+              "depth": {
+                "type": "number"
+              }
             }
           },
-          "floorId": { "type": "string" },
-          "roomId": { "type": "string" },
-          "layer": { "type": "string" },
-          "source": { "type": "string", "enum": ["explicit", "estimated", "inferred", "proposed"] },
-          "status": { "type": "string", "enum": ["unresolved", "approved", "confirmed", "rejected"] }
+          "floorId": {
+            "type": "string"
+          },
+          "roomId": {
+            "type": "string"
+          },
+          "layer": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "explicit",
+              "estimated",
+              "inferred",
+              "proposed"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "unresolved",
+              "approved",
+              "confirmed",
+              "rejected"
+            ]
+          }
         }
       }
     },
@@ -248,24 +504,50 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "roomId", "floorId", "pattern", "boundary"],
+        "required": [
+          "id",
+          "roomId",
+          "floorId",
+          "pattern",
+          "boundary"
+        ],
         "properties": {
-          "id": { "type": "string" },
-          "roomId": { "type": "string" },
-          "floorId": { "type": "string" },
-          "pattern": { "type": "string" },
-          "tileSize": { "type": "number" },
+          "id": {
+            "type": "string"
+          },
+          "roomId": {
+            "type": "string"
+          },
+          "floorId": {
+            "type": "string"
+          },
+          "pattern": {
+            "type": "string"
+          },
+          "tileSize": {
+            "type": "number"
+          },
           "boundary": {
             "type": "array",
             "items": {
               "type": "array",
-              "items": { "type": "number" },
+              "items": {
+                "type": "number"
+              },
               "minItems": 2,
               "maxItems": 2
             },
             "minItems": 2
           },
-          "source": { "type": "string", "enum": ["explicit", "estimated", "inferred", "proposed"] }
+          "source": {
+            "type": "string",
+            "enum": [
+              "explicit",
+              "estimated",
+              "inferred",
+              "proposed"
+            ]
+          }
         }
       }
     },
@@ -273,45 +555,161 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "target", "description", "status"],
+        "required": [
+          "id",
+          "target",
+          "description",
+          "status"
+        ],
         "properties": {
-          "id": { "type": "string" },
-          "target": { "type": "string" },
-          "description": { "type": "string" },
+          "id": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
           "assumedValue": {},
-          "confidence": { "type": "string", "enum": ["low", "medium", "high"] },
-          "status": { "type": "string", "enum": ["unresolved", "confirmed", "corrected", "approved"] }
+          "confidence": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "unresolved",
+              "confirmed",
+              "corrected",
+              "approved"
+            ]
+          }
         }
       }
     },
     "validation": {
       "type": "object",
-      "required": ["status", "isApproved", "entityIntegrity", "geometryChecks"],
+      "required": [
+        "status",
+        "isApproved",
+        "entityIntegrity",
+        "geometryChecks"
+      ],
       "properties": {
-        "status": { "type": "string", "enum": ["PASSED", "WARNING", "FAILED"] },
-        "isApproved": { "type": "boolean" },
-        "approvedBy": { "type": "string" },
-        "approvedAt": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": [
+            "PASSED",
+            "WARNING",
+            "FAILED"
+          ]
+        },
+        "isApproved": {
+          "type": "boolean"
+        },
+        "approvedBy": {
+          "type": "string"
+        },
+        "approvedAt": {
+          "type": "string"
+        },
         "entityIntegrity": {
           "type": "object",
-          "required": ["entityCount", "layer0Empty"],
+          "required": [
+            "entityCount",
+            "layer0Empty"
+          ],
           "properties": {
-            "entityCount": { "type": "integer" },
-            "blockReferences": { "type": "integer" },
-            "hatches": { "type": "integer" },
-            "layer0Empty": { "type": "boolean" }
+            "entityCount": {
+              "type": "integer"
+            },
+            "blockReferences": {
+              "type": "integer"
+            },
+            "hatches": {
+              "type": "integer"
+            },
+            "layer0Empty": {
+              "type": "boolean"
+            }
           }
         },
         "geometryChecks": {
           "type": "object",
-          "required": ["envelopeMatch", "cleanWallJambs"],
+          "required": [
+            "envelopeMatch",
+            "cleanWallJambs"
+          ],
           "properties": {
-            "envelopeMatch": { "type": "boolean" },
-            "cleanWallJambs": { "type": "boolean" },
+            "envelopeMatch": {
+              "type": "boolean"
+            },
+            "cleanWallJambs": {
+              "type": "boolean"
+            },
             "warnings": {
               "type": "array",
-              "items": { "type": "string" }
+              "items": {
+                "type": "string"
+              }
             }
+          }
+        }
+      }
+    },
+    "stairs": {
+      "type": "array",
+      "description": "Staircases and vertical circulation connecting project levels.",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "sourceFloorId",
+          "destinationFloorId",
+          "footprint"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "sourceFloorId": {
+            "type": "string"
+          },
+          "destinationFloorId": {
+            "type": "string"
+          },
+          "footprint": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 3
+          },
+          "flightWidth": {
+            "type": "number",
+            "minimum": 0
+          },
+          "directionOfTravel": {
+            "type": "string"
+          },
+          "relatedOpeningId": {
+            "type": "string"
+          },
+          "alignmentToleranceMm": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string"
           }
         }
       }

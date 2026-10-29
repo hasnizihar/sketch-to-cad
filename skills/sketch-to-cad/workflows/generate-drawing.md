@@ -209,4 +209,19 @@ Generate `<drawing-name>.handoff.json` using `compile_bim_handoff(...)`:
 - Cross-references all DXF layers, registered blocks, entity counts, wall centerlines, and opening hosts.
 - Preserves `null` for unannotated vertical dimensions (storey elevations, door/window heights) for downstream human approval.
 
+---
+
+## Multi-Storey Floor Plan Generation (Milestone 6)
+
+For multi-storey residential projects:
+1. **Approval Verification**: Verify that every level declared in `floors` has status `"approved"` in `approval.floorApprovals` and `floors[i].status`.
+2. **Independent Sessions**: For each storey in sequence:
+   - Call `new_drawing(metric=true)`.
+   - Setup AIA layers and dimension styles.
+   - Filter walls, openings, rooms, elements, finishes, and dimensions matching the target `floorId`.
+   - Draw entities, frame extents (`zoom extents`), and save to `<project>-<level-id>.dxf` and `<project>-<level-id>.png`.
+3. **Unified Companion Manifest**:
+   - Compile `<project>.handoff.json` mapping all per-floor drawings in `dxf.floorDrawings` and recording vertical circulation in `stairs`.
+   - Compile consolidated reports (`<project>.report.json`, `.report.md`, `.report.pdf`) with floor-by-floor schedules and vertical coordination verification.
+
 Proceed immediately to [`validate-and-export.md`](validate-and-export.md).

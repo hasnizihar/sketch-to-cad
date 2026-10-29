@@ -6,7 +6,7 @@ description: Interprets rough residential floor-plan sketches, creates a structu
 # Sketch-to-CAD
 
 ## Purpose
-Convert user-provided residential floor-plan sketches and design requirements into structured, reviewable, editable CAD drawings using the connected CADCraft MCP server. The initial preview version supports single-storey residential floor plans.
+Convert user-provided residential floor-plan sketches and design requirements into structured, reviewable, editable CAD drawings using the connected CADCraft MCP server. Supports single-storey and multi-storey residential floor plans with independent per-floor DXF separation, shared Cartesian coordinate referencing, staircase vertical circulation alignment, and companion BIM handoff manifests.
 
 ## Mandatory Principles
 1. **Discover & Adhere to Verified Schemas**: Use only discovered CADCraft MCP tools (`execute`, `new_drawing`, `open`, `save`, `inspect_drawing`, `query_entities`, `find_text`, `render`, `command_line`, `script`, `cancel`). Never invent tool names, parameters, or return fields.
@@ -84,7 +84,7 @@ Execute the automated checks in [references/validation-checklist.md](references/
 6. If any visual check fails, halt acceptance, rectify the vector geometry, and re-render.
 
 ### Phase 7: Deliver Final Deliverables
-1. Save master vector DXF: `save(path=".../floor-plan.dxf")`.
+1. Save master vector DXF (single-storey) or per-floor DXF files (`<project>-level-01.dxf`, `<project>-level-02.dxf` for multi-storey projects conforming to [references/multi-storey-floor-plans.md](references/multi-storey-floor-plans.md)).
 2. Generate companion BIM handoff metadata: `<drawing-name>.handoff.json` conforming to [schemas/bim-handoff.schema.json](schemas/bim-handoff.schema.json) and documented in [references/bim-handoff-contract.md](references/bim-handoff-contract.md).
 3. Compile architectural documentation and schedules: `<drawing-name>.report.json`, `<drawing-name>.report.md`, and optional `<drawing-name>.report.pdf` conforming to [schemas/architectural-report.schema.json](schemas/architectural-report.schema.json) and documented in [references/architectural-reporting-guide.md](references/architectural-reporting-guide.md).
 4. Export visual preview PNG: `save(path=".../floor-plan.png")`.

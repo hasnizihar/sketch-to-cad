@@ -21,6 +21,9 @@ This directory contains test specifications, reference fixtures, and validation 
 - [`fixtures/sample-model.json`](fixtures/sample-model.json): Baseline canonical intermediate model representing an unfurnished 6m x 5m studio apartment with 3 rooms, 2 doors, 2 windows, and 2 dimension chains.
 - [`fixtures/sample-model-with-elements.json`](fixtures/sample-model-with-elements.json): Furnished 6m x 5m studio apartment fixture demonstrating architectural blocks across `A-FURN`, `A-FIXT`, `A-COLS`, and tile floor finish on `A-FLOR-FIN`.
 - [`fixtures/sample-model-with-elements.handoff.json`](fixtures/sample-model-with-elements.handoff.json): Validated companion BIM handoff contract fixture conforming to `bim-handoff.schema.json` v1.0.0.
+- [`fixtures/sample-model-two-storey.json`](fixtures/sample-model-two-storey.json): Two-storey duplex residence fixture demonstrating coordinated Ground Floor (`LEVEL-01`) and First Floor (`LEVEL-02`), aligned staircase vertical circulation, and continuous structural columns.
+- [`fixtures/sample-model-two-storey-misaligned.json`](fixtures/sample-model-two-storey-misaligned.json): Diagnostic fixture containing stair and column offsets exceeding 50mm tolerance to verify vertical coordination failure detection.
+- [`fixtures/sample-model-two-storey-unapproved.json`](fixtures/sample-model-two-storey-unapproved.json): Diagnostic fixture with unapproved upper floor to verify per-floor approval gate enforcement.
 
 ## Automated Test Suites
 
@@ -48,3 +51,8 @@ This directory contains test specifications, reference fixtures, and validation 
    python -m unittest tests/test_architectural_reports.py
    ```
    Validates Shoelace net area calculations, perimeter lengths, axis-aligned rectangle detection without false dimensioning, missing boundary handling, room polygon overlap detection, separate door/window schedules, element category/block aggregations, finish area coverage, uncertainty preservation, approval gate enforcement, legacy fixture compatibility, JSON schema validation (`architectural-report.schema.json`), Markdown/PDF rendering, and unified CADCraft pipeline execution.
+6. **Multi-Storey Floor Plans & Vertical Coordination Test Suite (Milestone 6)**:
+   ```powershell
+   python -m unittest tests/test_multi_storey.py
+   ```
+   Validates multi-level floor plan schema rules, per-floor approval gate enforcement, independent DXF drawing generation, entity isolation without inter-floor leakage, shared Cartesian coordinate system, staircase vertical circulation alignment ($<=50\text{mm}$ tolerance), structural column continuity across levels, companion multi-storey BIM handoffs, and real CADCraft multi-floor execution.

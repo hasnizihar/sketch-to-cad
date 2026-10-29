@@ -153,6 +153,119 @@ def detect_polygons_overlap(poly_a: List[List[float]], poly_b: List[List[float]]
 # 2. SCHEDULE COMPILERS
 # ==============================================================================
 
+def validate_vertical_coordination(model: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Validates vertical circulation, staircase alignment, and structural column continuity across storeys.
+    Enforces tolerance checks (default <= 50.0mm) and checks source/destination floor integrity.
+    """
+    floors = model.get("floors", [])
+    floors_by_id = {fl["id"]: fl for fl in floors}
+    stairs = model.get("stairs", [])
+    elements = model.get("elements", [])
+
+    errors: List[str] = []
+    warnings: List[str] = []
+    stair_alignments: List[Dict[str, Any]] = []
+    col_alignments: List[Dict[str, Any]] = []
+
+    # 1. Validate Stair Connectivity & Alignment
+    for st in stairs:
+        st_id = st.get("id", "STAIR")
+        src_id = st.get("sourceFloorId")
+        dest_id = st.get("destinationFloorId")
+        tol = float(st.get("alignmentToleranceMm", 50.0))
+
+        if src_id not in floors_by_id:
+            errors.append(f"Stair '{st_id}': sourceFloorId '{src_id}' does not exist in model floors.")
+            continue
+        if dest_id not in floors_by_id:
+            errors.append(f"Stair '{st_id}': destinationFloorId '{dest_id}' does not exist in model floors.")
+            continue
+
+        # Find stair elements on source and destination floors
+        src_stairs = [
+            e for e in elements
+            if e.get("floorId") == src_id and (e.get("category") == "circulation" or "STAIR" in e.get("blockId", ""))
+        ]
+        dest_stairs = [
+            e for e in elements
+            if e.get("floorId") == dest_id and (e.get("category") == "circulation" or "STAIR" in e.get("blockId", ""))
+        ]
+
+        if src_stairs and dest_stairs:
+            p_src = src_stairs[0]["position"]
+            p_dest = dest_stairs[0]["position"]
+            dx = abs(p_dest[0] - p_src[0])
+            dy = abs(p_dest[1] - p_src[1])
+            aligned = (dx <= tol and dy <= tol)
+            stair_alignments.append({
+                "stairId": st_id,
+                "sourceFloorId": src_id,
+                "destinationFloorId": dest_id,
+                "dxMm": round(dx, 2),
+                "dyMm": round(dy, 2),
+                "toleranceMm": tol,
+                "aligned": aligned,
+                "details": f"dx={dx:.1f}mm, dy={dy:.1f}mm (tol={tol:.1f}mm)"
+            })
+            if not aligned:
+                errors.append(
+                    f"Staircase '{st_id}' vertical misalignment: offset dx={dx:.1f}mm, dy={dy:.1f}mm "
+                    f"exceeds tolerance {tol:.1f}mm between '{src_id}' and '{dest_id}'."
+                )
+        elif not dest_stairs:
+            warnings.append(
+                f"Staircase '{st_id}' connects '{src_id}' to '{dest_id}', "
+                f"but no upper stair void or circulation block was placed on '{dest_id}'."
+            )
+
+    # 2. Validate Column Continuity
+    cols_by_floor: Dict[str, List[Dict[str, Any]]] = {}
+    for e in elements:
+        if e.get("category") == "structural" or "COL" in e.get("blockId", ""):
+            fid = e.get("floorId", "LEVEL-01")
+            cols_by_floor.setdefault(fid, []).append(e)
+
+    sorted_floors = sorted(floors, key=lambda fl: fl.get("sequence", 0))
+    for i in range(len(sorted_floors) - 1):
+        f1 = sorted_floors[i]["id"]
+        f2 = sorted_floors[i + 1]["id"]
+        cols1 = cols_by_floor.get(f1, [])
+        cols2 = cols_by_floor.get(f2, [])
+        for c1 in cols1:
+            p1 = c1["position"]
+            for c2 in cols2:
+                p2 = c2["position"]
+                dist = math.hypot(p2[0] - p1[0], p2[1] - p1[1])
+                if dist < 1000.0:  # Intended column grid alignment check
+                    aligned = (dist <= 50.0)
+                    col_alignments.append({
+                        "column1Id": c1["id"],
+                        "column2Id": c2["id"],
+                        "sourceFloorId": f1,
+                        "destinationFloorId": f2,
+                        "distanceMm": round(dist, 2),
+                        "toleranceMm": 50.0,
+                        "aligned": aligned
+                    })
+                    if not aligned:
+                        warnings.append(
+                            f"Structural column vertical offset: '{c2['id']}' on '{f2}' is offset "
+                            f"{dist:.1f}mm from '{c1['id']}' on '{f1}' (tolerance 50mm)."
+                        )
+
+    return {
+        "valid": (len(errors) == 0),
+        "stairsChecked": len(stairs),
+        "columnsChecked": len(col_alignments),
+        "stairAlignment": stair_alignments,
+        "columnAlignment": col_alignments,
+        "errors": errors,
+        "warnings": warnings,
+        "misalignments": errors + warnings
+    }
+
+
 def compile_room_schedule(
     model: Dict[str, Any],
     finishes: List[Dict[str, Any]]
@@ -513,6 +626,12 @@ def compile_uncertainty_and_audit(
             f"MODEL STATUS '{model.get('status')}': This document is an unapproved diagnostic draft. NOT APPROVED FOR CONSTRUCTION."
         )
 
+    vert_coord = validate_vertical_coordination(model)
+    for err in vert_coord.get("errors", []):
+        warnings.append(f"VERTICAL COORDINATION ERROR: {err}")
+    for w in vert_coord.get("warnings", []):
+        warnings.append(f"VERTICAL COORDINATION WARNING: {w}")
+
     audit_out = {
         "flags": warnings,
         "hostWallValidation": {
@@ -527,7 +646,13 @@ def compile_uncertainty_and_audit(
             "allWithinEnvelope": len(out_of_envelope) == 0,
             "outOfEnvelopeElements": out_of_envelope
         },
-        "isApprovedForConstruction": is_approved and host_walls_valid and len(overlapping_pairs) == 0
+        "verticalCoordination": {
+            "valid": vert_coord["valid"],
+            "stairsChecked": vert_coord["stairsChecked"],
+            "columnsChecked": vert_coord["columnsChecked"],
+            "misalignments": vert_coord["misalignments"]
+        },
+        "isApprovedForConstruction": is_approved and host_walls_valid and len(overlapping_pairs) == 0 and vert_coord["valid"]
     }
 
     return uncertainties_out, audit_out
@@ -621,7 +746,7 @@ def compile_architectural_report(
             "createdAt": created_at
         },
         "summary": {
-            "floorCount": 1,
+            "floorCount": len(model.get("floors", [])) if model.get("floors") else 1,
             "roomCount": len(rooms),
             "doorCount": len(doors),
             "windowCount": len(windows),

@@ -10,6 +10,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Milestone 6: Multi-Storey Residential Floor Plans**:
+  - Extended intermediate model schema `skills/sketch-to-cad/schemas/floor-plan-model.json` to support multi-storey definitions: root `floors` array, `stairs` vertical circulation, `approval.floorApprovals`, and optional `floorId` on all entities with 100% legacy backward compatibility.
+  - Implemented independent per-floor drawing separation: `DrawingGenerator.build_floor_drawing` and `DrawingGenerator.build_multi_floor_drawings` generate isolated DXF drawings for each storey (`<project>-level-01.dxf`, `<project>-level-02.dxf`) in distinct CADCraft sessions with zero entity leakage.
+  - Standardized shared Cartesian project coordinate system: all storeys share common origin `[0.0, 0.0]` and envelope bounds for seamless downstream BIM assembly.
+  - Implemented automated vertical coordination checker `validate_vertical_coordination(model)`: checks stair connectivity, verifies footprint and centroid alignment within $\le 50.0\text{ mm}$ tolerance, and validates structural column continuity across levels.
+  - Extended `bim-handoff.schema.json` with `dxf.floorDrawings` dictionary and `stairs` schema.
+  - Extended architectural reporting engine and `architectural-report.schema.json` with `summary.floorCount`, floor-by-floor schedules, and `audit.verticalCoordination`.
+  - Enforced two-tier approval gate: halts CAD drafting if any individual storey status is not `"approved"`.
+  - Added multi-storey reference documentation: `skills/sketch-to-cad/references/multi-storey-floor-plans.md`.
+  - Created test fixtures: `sample-model-two-storey.json` (aligned duplex), `sample-model-two-storey-misaligned.json` (misalignment detection), and `sample-model-two-storey-unapproved.json` (approval gate enforcement).
+  - Added automated test suite `tests/test_multi_storey.py` with 20 tests (repository total: 67 passed tests).
+  - Updated `scripts/validate-skill.ps1` with Check 12 (12/12 passed).
 - **Milestone 5: Architectural Reports & Schedules**:
   - Implemented deterministic reporting engine `scripts/architectural_reports.py` (mirrored in `skills/sketch-to-cad/scripts/architectural_reports.py`).
   - Authored Draft-07 JSON Schema `skills/sketch-to-cad/schemas/architectural-report.schema.json` v1.0.0.

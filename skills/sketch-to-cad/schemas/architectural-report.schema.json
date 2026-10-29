@@ -31,19 +31,54 @@
         "createdAt"
       ],
       "properties": {
-        "projectName": { "type": "string" },
-        "drawingId": { "type": "string" },
-        "units": { "type": "string", "enum": ["mm", "m", "in", "ft"] },
-        "coordinateSystem": { "type": "string" },
-        "sourceSketch": { "type": "string" },
-        "author": { "type": "string" },
+        "projectName": {
+          "type": "string"
+        },
+        "drawingId": {
+          "type": "string"
+        },
+        "units": {
+          "type": "string",
+          "enum": [
+            "mm",
+            "m",
+            "in",
+            "ft"
+          ]
+        },
+        "coordinateSystem": {
+          "type": "string"
+        },
+        "sourceSketch": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
         "approvalStatus": {
           "type": "string",
-          "enum": ["approved", "awaiting_approval", "draft", "rejected"]
+          "enum": [
+            "approved",
+            "awaiting_approval",
+            "draft",
+            "rejected"
+          ]
         },
-        "approvedBy": { "type": ["string", "null"] },
-        "approvedAt": { "type": ["string", "null"] },
-        "createdAt": { "type": "string" }
+        "approvedBy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "approvedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "createdAt": {
+          "type": "string"
+        }
       }
     },
     "summary": {
@@ -63,20 +98,59 @@
         "validationStatus"
       ],
       "properties": {
-        "floorCount": { "type": "integer", "minimum": 0 },
-        "roomCount": { "type": "integer", "minimum": 0 },
-        "doorCount": { "type": "integer", "minimum": 0 },
-        "windowCount": { "type": "integer", "minimum": 0 },
-        "elementCount": { "type": "integer", "minimum": 0 },
-        "finishCount": { "type": "integer", "minimum": 0 },
-        "totalNetAreaM2": { "type": "number", "minimum": 0 },
-        "grossFootprintAreaM2": { "type": ["number", "null"] },
-        "grossAreaMethod": { "type": "string" },
-        "uncertaintyCount": { "type": "integer", "minimum": 0 },
-        "unresolvedUncertaintyCount": { "type": "integer", "minimum": 0 },
+        "floorCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "roomCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "doorCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "windowCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "elementCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "finishCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "totalNetAreaM2": {
+          "type": "number",
+          "minimum": 0
+        },
+        "grossFootprintAreaM2": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "grossAreaMethod": {
+          "type": "string"
+        },
+        "uncertaintyCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unresolvedUncertaintyCount": {
+          "type": "integer",
+          "minimum": 0
+        },
         "validationStatus": {
           "type": "string",
-          "enum": ["PASSED", "WARNING", "FAILED", "DRAFT"]
+          "enum": [
+            "PASSED",
+            "WARNING",
+            "FAILED",
+            "DRAFT"
+          ]
         }
       }
     },
@@ -93,16 +167,55 @@
           "confidence"
         ],
         "properties": {
-          "id": { "type": "string" },
-          "name": { "type": "string" },
-          "floorId": { "type": "string" },
-          "netAreaM2": { "type": "number", "minimum": 0 },
-          "lengthMm": { "type": ["number", "null"] },
-          "widthMm": { "type": ["number", "null"] },
-          "perimeterMm": { "type": ["number", "null"] },
-          "perimeterM": { "type": ["number", "null"] },
-          "finishId": { "type": ["string", "null"] },
-          "finishPattern": { "type": ["string", "null"] },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "floorId": {
+            "type": "string"
+          },
+          "netAreaM2": {
+            "type": "number",
+            "minimum": 0
+          },
+          "lengthMm": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "widthMm": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "perimeterMm": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "perimeterM": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "finishId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "finishPattern": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
           "calculationMethod": {
             "type": "string",
             "enum": [
@@ -112,15 +225,25 @@
               "uncalculated"
             ]
           },
-          "confidence": { "type": "string" },
-          "boundaryVertices": { "type": "integer", "minimum": 0 },
-          "notes": { "type": "string" }
+          "confidence": {
+            "type": "string"
+          },
+          "boundaryVertices": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "notes": {
+            "type": "string"
+          }
         }
       }
     },
     "openings": {
       "type": "object",
-      "required": ["doors", "windows"],
+      "required": [
+        "doors",
+        "windows"
+      ],
       "properties": {
         "doors": {
           "type": "array",
@@ -136,20 +259,52 @@
               "verificationStatus"
             ],
             "properties": {
-              "id": { "type": "string" },
-              "type": { "type": "string" },
-              "floorId": { "type": "string" },
-              "wallId": { "type": "string" },
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "floorId": {
+                "type": "string"
+              },
+              "wallId": {
+                "type": "string"
+              },
               "associatedRoomIds": {
                 "type": "array",
-                "items": { "type": "string" }
+                "items": {
+                  "type": "string"
+                }
               },
-              "widthMm": { "type": "number", "minimum": 0 },
-              "heightMm": { "type": ["number", "null"] },
-              "sillHeightMm": { "type": ["number", "null"] },
-              "swing": { "type": ["string", "null"] },
-              "source": { "type": "string" },
-              "verificationStatus": { "type": "string" }
+              "widthMm": {
+                "type": "number",
+                "minimum": 0
+              },
+              "heightMm": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "sillHeightMm": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "swing": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "source": {
+                "type": "string"
+              },
+              "verificationStatus": {
+                "type": "string"
+              }
             }
           }
         },
@@ -167,19 +322,46 @@
               "verificationStatus"
             ],
             "properties": {
-              "id": { "type": "string" },
-              "type": { "type": "string" },
-              "floorId": { "type": "string" },
-              "wallId": { "type": "string" },
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "floorId": {
+                "type": "string"
+              },
+              "wallId": {
+                "type": "string"
+              },
               "associatedRoomIds": {
                 "type": "array",
-                "items": { "type": "string" }
+                "items": {
+                  "type": "string"
+                }
               },
-              "widthMm": { "type": "number", "minimum": 0 },
-              "heightMm": { "type": ["number", "null"] },
-              "sillHeightMm": { "type": ["number", "null"] },
-              "source": { "type": "string" },
-              "verificationStatus": { "type": "string" }
+              "widthMm": {
+                "type": "number",
+                "minimum": 0
+              },
+              "heightMm": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "sillHeightMm": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "source": {
+                "type": "string"
+              },
+              "verificationStatus": {
+                "type": "string"
+              }
             }
           }
         }
@@ -187,16 +369,28 @@
     },
     "elements": {
       "type": "object",
-      "required": ["summaryByCategory", "summaryByBlock", "instances"],
+      "required": [
+        "summaryByCategory",
+        "summaryByBlock",
+        "instances"
+      ],
       "properties": {
         "summaryByCategory": {
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["category", "instanceCount"],
+            "required": [
+              "category",
+              "instanceCount"
+            ],
             "properties": {
-              "category": { "type": "string" },
-              "instanceCount": { "type": "integer", "minimum": 0 }
+              "category": {
+                "type": "string"
+              },
+              "instanceCount": {
+                "type": "integer",
+                "minimum": 0
+              }
             }
           }
         },
@@ -204,12 +398,25 @@
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["blockId", "category", "instanceCount"],
+            "required": [
+              "blockId",
+              "category",
+              "instanceCount"
+            ],
             "properties": {
-              "blockId": { "type": "string" },
-              "category": { "type": "string" },
-              "dimensions": { "type": "object" },
-              "instanceCount": { "type": "integer", "minimum": 0 }
+              "blockId": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              },
+              "dimensions": {
+                "type": "object"
+              },
+              "instanceCount": {
+                "type": "integer",
+                "minimum": 0
+              }
             }
           }
         },
@@ -217,23 +424,53 @@
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["id", "blockId", "category", "floorId", "source", "status"],
+            "required": [
+              "id",
+              "blockId",
+              "category",
+              "floorId",
+              "source",
+              "status"
+            ],
             "properties": {
-              "id": { "type": "string" },
-              "blockId": { "type": "string" },
-              "category": { "type": "string" },
-              "floorId": { "type": "string" },
-              "roomId": { "type": ["string", "null"] },
+              "id": {
+                "type": "string"
+              },
+              "blockId": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              },
+              "floorId": {
+                "type": "string"
+              },
+              "roomId": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
               "position": {
                 "type": "array",
-                "items": { "type": "number" },
+                "items": {
+                  "type": "number"
+                },
                 "minItems": 2,
                 "maxItems": 2
               },
-              "rotation": { "type": "number" },
-              "dimensions": { "type": "object" },
-              "source": { "type": "string" },
-              "status": { "type": "string" }
+              "rotation": {
+                "type": "number"
+              },
+              "dimensions": {
+                "type": "object"
+              },
+              "source": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              }
             }
           }
         }
@@ -253,16 +490,43 @@
           "verificationStatus"
         ],
         "properties": {
-          "id": { "type": "string" },
-          "roomId": { "type": "string" },
-          "roomName": { "type": "string" },
-          "floorId": { "type": "string" },
-          "pattern": { "type": "string" },
-          "tileSizeMm": { "type": ["number", "null"] },
-          "material": { "type": ["string", "null"] },
-          "areaCoveredM2": { "type": "number", "minimum": 0 },
-          "source": { "type": "string" },
-          "verificationStatus": { "type": "string" }
+          "id": {
+            "type": "string"
+          },
+          "roomId": {
+            "type": "string"
+          },
+          "roomName": {
+            "type": "string"
+          },
+          "floorId": {
+            "type": "string"
+          },
+          "pattern": {
+            "type": "string"
+          },
+          "tileSizeMm": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "material": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "areaCoveredM2": {
+            "type": "number",
+            "minimum": 0
+          },
+          "source": {
+            "type": "string"
+          },
+          "verificationStatus": {
+            "type": "string"
+          }
         }
       }
     },
@@ -270,16 +534,35 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "target", "description", "status"],
+        "required": [
+          "id",
+          "target",
+          "description",
+          "status"
+        ],
         "properties": {
-          "id": { "type": "string" },
-          "category": { "type": "string" },
-          "target": { "type": "string" },
-          "description": { "type": "string" },
+          "id": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
           "assumedValue": {},
-          "confidence": { "type": "string" },
-          "status": { "type": "string" },
-          "provenance": { "type": "string" }
+          "confidence": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "provenance": {
+            "type": "string"
+          }
         }
       }
     },
@@ -295,29 +578,45 @@
       "properties": {
         "flags": {
           "type": "array",
-          "items": { "type": "string" }
+          "items": {
+            "type": "string"
+          }
         },
         "hostWallValidation": {
           "type": "object",
-          "required": ["valid", "invalidOpenings"],
+          "required": [
+            "valid",
+            "invalidOpenings"
+          ],
           "properties": {
-            "valid": { "type": "boolean" },
+            "valid": {
+              "type": "boolean"
+            },
             "invalidOpenings": {
               "type": "array",
-              "items": { "type": "string" }
+              "items": {
+                "type": "string"
+              }
             }
           }
         },
         "overlappingRooms": {
           "type": "object",
-          "required": ["detected", "overlappingPairs"],
+          "required": [
+            "detected",
+            "overlappingPairs"
+          ],
           "properties": {
-            "detected": { "type": "boolean" },
+            "detected": {
+              "type": "boolean"
+            },
             "overlappingPairs": {
               "type": "array",
               "items": {
                 "type": "array",
-                "items": { "type": "string" },
+                "items": {
+                  "type": "string"
+                },
                 "minItems": 2,
                 "maxItems": 2
               }
@@ -326,16 +625,46 @@
         },
         "envelopeClearance": {
           "type": "object",
-          "required": ["allWithinEnvelope", "outOfEnvelopeElements"],
+          "required": [
+            "allWithinEnvelope",
+            "outOfEnvelopeElements"
+          ],
           "properties": {
-            "allWithinEnvelope": { "type": "boolean" },
+            "allWithinEnvelope": {
+              "type": "boolean"
+            },
             "outOfEnvelopeElements": {
               "type": "array",
-              "items": { "type": "string" }
+              "items": {
+                "type": "string"
+              }
             }
           }
         },
-        "isApprovedForConstruction": { "type": "boolean" }
+        "isApprovedForConstruction": {
+          "type": "boolean"
+        },
+        "verticalCoordination": {
+          "type": "object",
+          "description": "Vertical circulation and multi-storey alignment validation results.",
+          "properties": {
+            "valid": {
+              "type": "boolean"
+            },
+            "stairsChecked": {
+              "type": "integer"
+            },
+            "columnsChecked": {
+              "type": "integer"
+            },
+            "misalignments": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
       }
     }
   }

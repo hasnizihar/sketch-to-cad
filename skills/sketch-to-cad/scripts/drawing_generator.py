@@ -90,7 +90,9 @@ def compile_bim_handoff(
     model: Dict[str, Any],
     dxf_path: str,
     inspection: Optional[Dict[str, Any]] = None,
-    schema_path: Optional[str] = None
+    schema_path: Optional[str] = None,
+    floor_id: Optional[str] = None,
+    floor_drawings: Optional[Dict[str, str]] = None
 ) -> Dict[str, Any]:
     """Compiles an approved floor-plan model and DXF inspection into a validated companion BIM handoff JSON.
 
@@ -188,23 +190,44 @@ def compile_bim_handoff(
         "entityCount": int(inspection.get("entityCount", 0)),
         "extents": extents
     }
+    if floor_drawings:
+        dxf_info["floorDrawings"] = floor_drawings
 
     # 4. Floors
-    floor_id = model.get("floorId", "LEVEL-01")
-    floor_name = model.get("floorName", "Ground Floor")
-    floors = [
-        {
-            "id": floor_id,
-            "name": floor_name,
-            "elevation": model.get("floorElevation", None),
-            "height": model.get("storeyHeight", None),
-            "envelope": {
-                "width": env_w,
-                "depth": env_d,
-                "origin": env_origin
+    if "floors" in model and isinstance(model["floors"], list) and len(model["floors"]) > 0:
+        floors = []
+        for fl in model["floors"]:
+            fl_env = fl.get("envelope", {})
+            floors.append({
+                "id": fl["id"],
+                "name": fl.get("name", fl["id"]),
+                "elevation": fl.get("elevationMm", None),
+                "height": fl.get("heightMm", None),
+                "envelope": {
+                    "width": float(fl_env.get("width", env_w)),
+                    "depth": float(fl_env.get("depth", env_d)),
+                    "origin": [float(x) for x in fl_env.get("origin", env_origin)]
+                }
+            })
+    else:
+        floor_id_val = model.get("floorId", "LEVEL-01")
+        floor_name_val = model.get("floorName", "Ground Floor")
+        floors = [
+            {
+                "id": floor_id_val,
+                "name": floor_name_val,
+                "elevation": model.get("floorElevation", None),
+                "height": model.get("storeyHeight", None),
+                "envelope": {
+                    "width": env_w,
+                    "depth": env_d,
+                    "origin": env_origin
+                }
             }
-        }
-    ]
+        ]
+
+    default_floor_id = model.get("floors", [{}])[0].get("id", "LEVEL-01") if model.get("floors") else model.get("floorId", "LEVEL-01")
+    eff_floor_id = floor_id or default_floor_id
 
     # 5. Walls
     walls_out = []
@@ -223,7 +246,7 @@ def compile_bim_handoff(
             "end": [float(w["end"][0]), float(w["end"][1])],
             "thickness": float(w.get("thickness", 200.0)),
             "layer": lay_val,
-            "floorId": w.get("floorId", floor_id),
+            "floorId": w.get("floorId") or eff_floor_id,
             "openingIds": list(w.get("openingIds", [])),
             "source": w.get("source", "explicit")
         }
@@ -241,7 +264,7 @@ def compile_bim_handoff(
             "width": float(op.get("width", 900.0)),
             "height": float(op["height"]) if "height" in op and op["height"] is not None else None,
             "sillHeight": float(op["sillHeight"]) if "sillHeight" in op and op["sillHeight"] is not None else None,
-            "floorId": op.get("floorId", floor_id),
+            "floorId": op.get("floorId") or eff_floor_id,
             "source": op.get("source", "explicit")
         }
         if op_type == "door":
@@ -254,7 +277,7 @@ def compile_bim_handoff(
         room_item = {
             "id": r["id"],
             "name": r.get("name", "ROOM"),
-            "floorId": r.get("floorId", floor_id),
+            "floorId": r.get("floorId") or eff_floor_id,
             "approximateArea": float(r.get("approximateArea", 0.0)),
             "areaMethod": r.get("areaMethod", "enclosed_bounding_box"),
             "labelPosition": [float(r.get("labelPosition", [0.0, 0.0])[0]), float(r.get("labelPosition", [0.0, 0.0])[1])],
@@ -286,7 +309,7 @@ def compile_bim_handoff(
             "position": [float(el.get("position", [0.0, 0.0])[0]), float(el.get("position", [0.0, 0.0])[1])],
             "rotation": float(el.get("rotation", 0.0)),
             "scale": el.get("scale", 1.0),
-            "floorId": el.get("floorId", floor_id),
+            "floorId": el.get("floorId") or eff_floor_id,
             "layer": lay_name,
             "source": el.get("source", "proposed"),
             "status": el.get("status", "approved")
@@ -305,7 +328,7 @@ def compile_bim_handoff(
         fin_item = {
             "id": fin["id"],
             "roomId": fin.get("roomId", ""),
-            "floorId": fin.get("floorId", floor_id),
+            "floorId": fin.get("floorId") or eff_floor_id,
             "pattern": fin.get("pattern", "tile_grid"),
             "tileSize": float(fin.get("tileSize", 300.0)),
             "boundary": [[float(pt[0]), float(pt[1])] for pt in fin.get("boundary", [])],
@@ -365,6 +388,27 @@ def compile_bim_handoff(
         "uncertainties": uncertainties_out,
         "validation": validation_out
     }
+    if "stairs" in model and isinstance(model["stairs"], list) and len(model["stairs"]) > 0:
+        stairs_out = []
+        for st in model["stairs"]:
+            st_item = {
+                "id": st["id"],
+                "sourceFloorId": st["sourceFloorId"],
+                "destinationFloorId": st["destinationFloorId"],
+                "footprint": [[float(p[0]), float(p[1])] for p in st.get("footprint", [])]
+            }
+            if "flightWidth" in st and st["flightWidth"] is not None:
+                st_item["flightWidth"] = float(st["flightWidth"])
+            if "directionOfTravel" in st and st["directionOfTravel"]:
+                st_item["directionOfTravel"] = str(st["directionOfTravel"])
+            if "relatedOpeningId" in st and st["relatedOpeningId"]:
+                st_item["relatedOpeningId"] = str(st["relatedOpeningId"])
+            if "alignmentToleranceMm" in st and st["alignmentToleranceMm"] is not None:
+                st_item["alignmentToleranceMm"] = float(st["alignmentToleranceMm"])
+            if "status" in st and st["status"]:
+                st_item["status"] = str(st["status"])
+            stairs_out.append(st_item)
+        handoff["stairs"] = stairs_out
 
     # Validate against JSON schema if jsonschema is available
     try:
@@ -485,6 +529,25 @@ class CADCraftClient:
             pass
 
 
+def _matches_floor(
+    entity: Dict[str, Any],
+    target_floor_id: Optional[str],
+    default_floor_id: str,
+    walls_by_id: Optional[Dict[str, Any]] = None
+) -> bool:
+    """Evaluates whether an entity belongs to a target floor level for isolated drafting."""
+    if target_floor_id is None:
+        return True
+    entity_floor = entity.get("floorId")
+    if entity_floor is None and walls_by_id and "wallId" in entity:
+        wall = walls_by_id.get(entity["wallId"])
+        if wall:
+            entity_floor = wall.get("floorId")
+    if entity_floor is None:
+        return target_floor_id == default_floor_id
+    return entity_floor == target_floor_id
+
+
 class DrawingGenerator:
     """Compiles and executes an approved floor-plan model into CADCraft vector drafting."""
 
@@ -493,17 +556,50 @@ class DrawingGenerator:
         self.warnings: List[str] = []
         self.errors: List[str] = []
 
-    def validate_preflight(self, model: Dict[str, Any]):
-        """Enforces the Approval Gate, envelope bounds, and element validation."""
+    def validate_preflight(self, model: Dict[str, Any], floor_id: Optional[str] = None):
+        """Enforces the Approval Gate, envelope bounds, element validation, and multi-storey approval."""
         self.warnings.clear()
         self.errors.clear()
 
-        # 1. Approval Gate
+        # 1. Approval Gate - Model Level
         if model.get("status") != "approved":
             raise ApprovalGateError(
                 f"Approval Gate Violation: Model status is '{model.get('status')}'. "
                 f"CAD drafting must not proceed without explicit human approval."
             )
+
+        # 1b. Multi-Storey Approval Gate Enforcement
+        approval_block = model.get("approval", {})
+        floor_approvals = approval_block.get("floorApprovals", {})
+        floors = model.get("floors", [])
+
+        if floor_id is not None:
+            # Check approval for the specific target floor
+            if floor_id in floor_approvals and floor_approvals[floor_id] != "approved":
+                raise ApprovalGateError(
+                    f"Approval Gate Violation: Floor '{floor_id}' approval status is '{floor_approvals[floor_id]}'. "
+                    f"Floor must be explicitly approved before drafting."
+                )
+            for fl in floors:
+                if fl.get("id") == floor_id and fl.get("status") and fl.get("status") != "approved":
+                    raise ApprovalGateError(
+                        f"Approval Gate Violation: Floor '{floor_id}' status is '{fl.get('status')}'. "
+                        f"Floor must be explicitly approved before drafting."
+                    )
+        else:
+            # Check approval across all declared floors
+            for fid, fstat in floor_approvals.items():
+                if fstat != "approved":
+                    raise ApprovalGateError(
+                        f"Approval Gate Violation: Floor '{fid}' is not approved (status: '{fstat}'). "
+                        f"All storeys must be approved before multi-storey drafting."
+                    )
+            for fl in floors:
+                if fl.get("status") and fl.get("status") != "approved":
+                    raise ApprovalGateError(
+                        f"Approval Gate Violation: Floor '{fl.get('id')}' is not approved (status: '{fl.get('status')}'). "
+                        f"All storeys must be approved before multi-storey drafting."
+                    )
 
         envelope = model.get("envelope", {})
         env_w = envelope.get("width", 0.0)
@@ -512,9 +608,12 @@ class DrawingGenerator:
             raise ValueError(f"Invalid envelope bounds: width={env_w}, depth={env_d}")
 
         # 2. Elements validation
+        default_floor = floors[0].get("id", "LEVEL-01") if floors else model.get("floorId", "LEVEL-01")
         elements = model.get("elements", [])
         seen_element_ids = set()
         for elem in elements:
+            if floor_id is not None and not _matches_floor(elem, floor_id, default_floor):
+                continue
             elem_id = elem.get("id")
             if elem_id in seen_element_ids:
                 self.errors.append(f"Duplicate element ID: '{elem_id}'")
@@ -540,6 +639,8 @@ class DrawingGenerator:
         # 3. Finishes validation
         finishes = model.get("finishes", [])
         for fin in finishes:
+            if floor_id is not None and not _matches_floor(fin, floor_id, default_floor):
+                continue
             fin_id = fin.get("id")
             bound = fin.get("boundary", [])
             if len(bound) < 2:
@@ -555,10 +656,11 @@ class DrawingGenerator:
         output_png_path: Optional[str] = None,
         output_handoff_path: Optional[Union[str, bool]] = None,
         generate_report: bool = False,
-        output_report_base: Optional[str] = None
+        output_report_base: Optional[str] = None,
+        floor_id: Optional[str] = None
     ) -> Dict[str, Any]:
         """Executes full drawing construction in CADCraft."""
-        self.validate_preflight(model)
+        self.validate_preflight(model, floor_id=floor_id)
 
         owns_client = False
         if self.client is None:
@@ -599,22 +701,22 @@ class DrawingGenerator:
             })
 
             # Stage 3: Draw Walls & Jambs
-            self._draw_walls_and_openings(c, model)
+            self._draw_walls_and_openings(c, model, floor_id=floor_id)
 
             # Stage 4: Draw Doors & Windows
-            self._draw_doors_and_windows(c, model)
+            self._draw_doors_and_windows(c, model, floor_id=floor_id)
 
             # Stage 5: Register and Insert Architectural Elements
-            self._insert_elements(c, model)
+            self._insert_elements(c, model, floor_id=floor_id)
 
             # Stage 6: Apply Floor Finishes & Hatches
-            self._apply_finishes(c, model)
+            self._apply_finishes(c, model, floor_id=floor_id)
 
             # Stage 7: Draw Room Text Labels
-            self._draw_room_labels(c, model)
+            self._draw_room_labels(c, model, floor_id=floor_id)
 
             # Stage 8: Draw Dimension Chains
-            self._draw_dimensions(c, model)
+            self._draw_dimensions(c, model, floor_id=floor_id)
 
             # Stage 9: Frame View Extents
             c.execute("zoom", {"mode": "extents"})
@@ -640,7 +742,8 @@ class DrawingGenerator:
                 handoff_dict = compile_bim_handoff(
                     model=model,
                     dxf_path=output_dxf_path,
-                    inspection=inspection
+                    inspection=inspection,
+                    floor_id=floor_id
                 )
                 with open(output_handoff_path, "w", encoding="utf-8") as hf:
                     json.dump(handoff_dict, hf, indent=2)
@@ -704,11 +807,145 @@ class DrawingGenerator:
                 c.close()
                 self.client = None
 
-    def _draw_walls_and_openings(self, c: CADCraftClient, model: Dict[str, Any]):
+    def build_floor_drawing(
+        self,
+        model: Dict[str, Any],
+        floor_id: str,
+        output_dxf_path: str,
+        output_png_path: Optional[str] = None,
+        output_handoff_path: Optional[Union[str, bool]] = None,
+        generate_report: bool = False,
+        output_report_base: Optional[str] = None
+    ) -> Dict[str, Any]:
+        """Draws an isolated single floor from a multi-storey or single-storey model."""
+        return self.build_drawing(
+            model=model,
+            output_dxf_path=output_dxf_path,
+            output_png_path=output_png_path,
+            output_handoff_path=output_handoff_path,
+            generate_report=generate_report,
+            output_report_base=output_report_base,
+            floor_id=floor_id
+        )
+
+    def build_multi_floor_drawings(
+        self,
+        model: Dict[str, Any],
+        output_dir: str,
+        base_filename: Optional[str] = None,
+        generate_report: bool = True,
+        generate_handoff: bool = True
+    ) -> Dict[str, Any]:
+        """
+        Generates coordinated, independent 2D CAD floor plans for each storey of a multi-storey project.
+        """
+        self.validate_preflight(model)
+        os.makedirs(output_dir, exist_ok=True)
+
+        floors = model.get("floors", [])
+        if not floors:
+            default_fid = model.get("floorId", "LEVEL-01")
+            floors = [{"id": default_fid, "name": "Ground Floor", "sequence": 1}]
+
+        floors_sorted = sorted(floors, key=lambda f: f.get("sequence", 0))
+        proj_name = base_filename or model.get("metadata", {}).get("projectName") or "floor-plan"
+
+        floor_results = {}
+        floor_drawings = {}
+
+        for fl in floors_sorted:
+            fid = fl["id"]
+            slug = f"{proj_name}-{fid.lower().replace('_', '-')}"
+            dxf_path = os.path.join(output_dir, f"{slug}.dxf")
+            png_path = os.path.join(output_dir, f"{slug}.png")
+
+            fl_res = self.build_floor_drawing(
+                model=model,
+                floor_id=fid,
+                output_dxf_path=dxf_path,
+                output_png_path=png_path,
+                output_handoff_path=False,
+                generate_report=False
+            )
+            floor_results[fid] = {
+                "floorId": fid,
+                "name": fl.get("name", fid),
+                "dxf": dxf_path,
+                "png": png_path,
+                "entityCount": fl_res.get("entityCount", 0),
+                "counts": fl_res.get("counts", {}),
+                "warnings": fl_res.get("warnings", [])
+            }
+            floor_drawings[fid] = os.path.basename(dxf_path)
+
+        handoff_path = None
+        handoff_dict = None
+        if generate_handoff:
+            handoff_path = os.path.join(output_dir, f"{proj_name}.handoff.json")
+            primary_dxf = floor_results[floors_sorted[0]["id"]]["dxf"]
+            handoff_dict = compile_bim_handoff(
+                model=model,
+                dxf_path=primary_dxf,
+                inspection={"entityCount": sum(r["entityCount"] for r in floor_results.values())},
+                floor_drawings=floor_drawings
+            )
+            with open(handoff_path, "w", encoding="utf-8") as hf:
+                json.dump(handoff_dict, hf, indent=2)
+
+        report_paths = None
+        report_dict = None
+        if generate_report:
+            from architectural_reports import (
+                compile_architectural_report,
+                render_markdown_report,
+                render_pdf_report
+            )
+            rep_base = os.path.join(output_dir, proj_name)
+            report_dict = compile_architectural_report(
+                model=model,
+                handoff=handoff_dict,
+                dxf_path=floor_results[floors_sorted[0]["id"]]["dxf"]
+            )
+            rep_json = f"{rep_base}.report.json"
+            rep_md = f"{rep_base}.report.md"
+            rep_pdf = f"{rep_base}.report.pdf"
+
+            with open(rep_json, "w", encoding="utf-8") as jf:
+                json.dump(report_dict, jf, indent=2)
+
+            md_content = render_markdown_report(report_dict)
+            with open(rep_md, "w", encoding="utf-8") as mf:
+                mf.write(md_content)
+
+            try:
+                render_pdf_report(report_dict, rep_pdf)
+            except Exception as pe:
+                self.warnings.append(f"PDF report rendering warning: {pe}")
+
+            report_paths = {
+                "json": rep_json,
+                "md": rep_md,
+                "pdf": rep_pdf
+            }
+
+        return {
+            "projectName": proj_name,
+            "floorCount": len(floors_sorted),
+            "floors": floor_results,
+            "floorDrawings": floor_drawings,
+            "handoff": handoff_path,
+            "report": report_paths,
+            "warnings": self.warnings
+        }
+
+    def _draw_walls_and_openings(self, c: CADCraftClient, model: Dict[str, Any], floor_id: Optional[str] = None):
         """Generates double-line walls with clean opening cuts and transverse jamb end-caps."""
+        default_floor = model.get("floors", [{}])[0].get("id", "LEVEL-01") if model.get("floors") else model.get("floorId", "LEVEL-01")
         openings_by_id = {op["id"]: op for op in model.get("openings", [])}
 
         for wall in model.get("walls", []):
+            if not _matches_floor(wall, floor_id, default_floor):
+                continue
             layer = wall.get("layer", "A-WALL-EXTR")
             c.execute("layer.current", {"name": layer})
 
@@ -769,11 +1006,14 @@ class DrawingGenerator:
         c.execute("line", {"points": [p1_out, p2_out]})
         c.execute("line", {"points": [p1_in, p2_in]})
 
-    def _draw_doors_and_windows(self, c: CADCraftClient, model: Dict[str, Any]):
+    def _draw_doors_and_windows(self, c: CADCraftClient, model: Dict[str, Any], floor_id: Optional[str] = None):
         """Generates doors with 90 deg swing arcs on A-DOOR and windows on A-GLAZ."""
+        default_floor = model.get("floors", [{}])[0].get("id", "LEVEL-01") if model.get("floors") else model.get("floorId", "LEVEL-01")
         walls_by_id = {w["id"]: w for w in model.get("walls", [])}
 
         for op in model.get("openings", []):
+            if not _matches_floor(op, floor_id, default_floor, walls_by_id):
+                continue
             op_type = op.get("type", "door")
             center = op["center"]
             width = float(op.get("width", 900.0))
@@ -818,9 +1058,11 @@ class DrawingGenerator:
                 # Centerline glass pane
                 c.execute("line", {"points": [p_left, p_right]})
 
-    def _insert_elements(self, c: CADCraftClient, model: Dict[str, Any]):
+    def _insert_elements(self, c: CADCraftClient, model: Dict[str, Any], floor_id: Optional[str] = None):
         """Registers required CAD blocks and inserts instances."""
-        elements = model.get("elements", [])
+        default_floor = model.get("floors", [{}])[0].get("id", "LEVEL-01") if model.get("floors") else model.get("floorId", "LEVEL-01")
+        raw_elements = model.get("elements", [])
+        elements = [el for el in raw_elements if _matches_floor(el, floor_id, default_floor)]
         if not elements:
             return
 
@@ -849,9 +1091,11 @@ class DrawingGenerator:
             scale = elem.get("scale", 1.0)
             insert_cad_element(c.execute, b_id, at=pos, rotation=rot, scale=scale, existing_blocks=existing_blocks)
 
-    def _apply_finishes(self, c: CADCraftClient, model: Dict[str, Any]):
+    def _apply_finishes(self, c: CADCraftClient, model: Dict[str, Any], floor_id: Optional[str] = None):
         """Applies floor finishes and tile grid hatches on A-FLOR-FIN."""
-        finishes = model.get("finishes", [])
+        default_floor = model.get("floors", [{}])[0].get("id", "LEVEL-01") if model.get("floors") else model.get("floorId", "LEVEL-01")
+        raw_finishes = model.get("finishes", [])
+        finishes = [f for f in raw_finishes if _matches_floor(f, floor_id, default_floor)]
         if not finishes:
             return
 
@@ -861,10 +1105,13 @@ class DrawingGenerator:
             scale = float(fin.get("tileSize", 300.0)) / 15.0  # Scale factor for CAD hatch pattern
             create_floor_finish_hatch(c.execute, boundary, pattern=pattern, scale=scale)
 
-    def _draw_room_labels(self, c: CADCraftClient, model: Dict[str, Any]):
+    def _draw_room_labels(self, c: CADCraftClient, model: Dict[str, Any], floor_id: Optional[str] = None):
         """Places centered room labels on A-ANNO-TEXT."""
+        default_floor = model.get("floors", [{}])[0].get("id", "LEVEL-01") if model.get("floors") else model.get("floorId", "LEVEL-01")
         c.execute("layer.current", {"name": "A-ANNO-TEXT"})
         for room in model.get("rooms", []):
+            if not _matches_floor(room, floor_id, default_floor):
+                continue
             name = room.get("name", "ROOM")
             pos = room.get("labelPosition", [0.0, 0.0])
             area = room.get("approximateArea")
@@ -882,10 +1129,13 @@ class DrawingGenerator:
                     "justify": "MC"
                 })
 
-    def _draw_dimensions(self, c: CADCraftClient, model: Dict[str, Any]):
+    def _draw_dimensions(self, c: CADCraftClient, model: Dict[str, Any], floor_id: Optional[str] = None):
         """Draws dimension chains on A-ANNO-DIMS."""
+        default_floor = model.get("floors", [{}])[0].get("id", "LEVEL-01") if model.get("floors") else model.get("floorId", "LEVEL-01")
         c.execute("layer.current", {"name": "A-ANNO-DIMS"})
         for dim in model.get("dimensions", []):
+            if not _matches_floor(dim, floor_id, default_floor):
+                continue
             p1 = dim["p1"]
             p2 = dim["p2"]
             at = dim["at"]

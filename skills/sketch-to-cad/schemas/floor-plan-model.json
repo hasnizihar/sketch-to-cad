@@ -25,7 +25,79 @@
       "properties": {
         "approvedBy": { "type": "string" },
         "approvedAt": { "type": "string" },
-        "approvalNotes": { "type": "string" }
+        "approvalNotes": { "type": "string" },
+        "floorApprovals": {
+          "type": "object",
+          "description": "Per-floor approval states for multi-storey projects.",
+          "additionalProperties": {
+            "type": "string",
+            "enum": ["draft", "awaiting_approval", "approved", "rejected"]
+          }
+        }
+      }
+    },
+    "floorId": {
+      "type": "string",
+      "description": "Default floor level identifier for single-storey models."
+    },
+    "floors": {
+      "type": "array",
+      "description": "Coordinated sequence of floors/levels for multi-storey residential projects.",
+      "items": {
+        "type": "object",
+        "required": ["id", "name"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "sequence": { "type": "integer" },
+          "elevationMm": { "type": ["number", "null"] },
+          "heightMm": { "type": ["number", "null"] },
+          "status": {
+            "type": "string",
+            "enum": ["draft", "awaiting_approval", "approved", "rejected"]
+          },
+          "envelope": {
+            "type": "object",
+            "properties": {
+              "width": { "type": "number", "minimum": 0 },
+              "depth": { "type": "number", "minimum": 0 },
+              "origin": {
+                "type": "array",
+                "items": { "type": "number" },
+                "minItems": 2,
+                "maxItems": 2
+              }
+            }
+          }
+        }
+      }
+    },
+    "stairs": {
+      "type": "array",
+      "description": "Staircases and vertical circulation connecting project levels.",
+      "items": {
+        "type": "object",
+        "required": ["id", "sourceFloorId", "destinationFloorId", "footprint"],
+        "properties": {
+          "id": { "type": "string" },
+          "sourceFloorId": { "type": "string" },
+          "destinationFloorId": { "type": "string" },
+          "footprint": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": { "type": "number" },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 3
+          },
+          "flightWidth": { "type": "number", "minimum": 0 },
+          "directionOfTravel": { "type": "string" },
+          "relatedOpeningId": { "type": "string" },
+          "alignmentToleranceMm": { "type": "number", "default": 50.0 },
+          "status": { "type": "string" }
+        }
       }
     },
     "units": {
@@ -91,7 +163,8 @@
           "openingIds": {
             "type": "array",
             "items": { "type": "string" }
-          }
+          },
+          "floorId": { "type": "string" }
         }
       }
     },
@@ -104,6 +177,7 @@
           "id": { "type": "string" },
           "type": { "type": "string", "enum": ["door", "window", "cased_opening"] },
           "wallId": { "type": "string" },
+          "floorId": { "type": "string" },
           "center": {
             "type": "array",
             "items": { "type": "number" },
@@ -128,6 +202,7 @@
         "properties": {
           "id": { "type": "string" },
           "name": { "type": "string" },
+          "floorId": { "type": "string" },
           "approximateArea": { "type": "number", "minimum": 0 },
           "labelPosition": {
             "type": "array",
@@ -154,6 +229,7 @@
         "required": ["id", "p1", "p2", "at", "source"],
         "properties": {
           "id": { "type": "string" },
+          "floorId": { "type": "string" },
           "tier": { "type": "integer", "enum": [1, 2, 3] },
           "p1": {
             "type": "array",
@@ -215,6 +291,7 @@
           },
           "roomId": { "type": "string" },
           "levelId": { "type": "string" },
+          "floorId": { "type": "string" },
           "source": { "type": "string", "enum": ["explicit", "estimated", "inferred", "proposed"] },
           "status": { "type": "string", "enum": ["unresolved", "approved", "confirmed", "rejected"] }
         }
@@ -229,6 +306,7 @@
         "properties": {
           "id": { "type": "string" },
           "roomId": { "type": "string" },
+          "floorId": { "type": "string" },
           "pattern": { "type": "string", "enum": ["tile_grid", "wood_strip", "diagonal", "hatch_custom"] },
           "tileSize": { "type": "number", "minimum": 0 },
           "boundary": {

@@ -1,0 +1,846 @@
+{
+  "$schema": "../skills/sketch-to-cad/schemas/floor-plan-model.json",
+  "metadata": {
+    "projectName": "Duplex-Residence-Two-Storey",
+    "author": "Antigravity Multi-Storey CAD Agent",
+    "version": "1.0",
+    "createdAt": "2026-10-30T00:00:00Z",
+    "sourceSketch": "duplex-sketch.png"
+  },
+  "status": "approved",
+  "units": "mm",
+  "envelope": {
+    "width": 8000,
+    "depth": 8700,
+    "origin": [
+      0,
+      0
+    ],
+    "widthSource": "explicit",
+    "depthSource": "explicit"
+  },
+  "approval": {
+    "approvedBy": "Lead Architect",
+    "approvedAt": "2026-10-30T01:00:00Z",
+    "approvalNotes": "Approved for independent multi-floor 2D CAD drafting and BIM handoff.",
+    "floorApprovals": {
+      "LEVEL-01": "approved",
+      "LEVEL-02": "approved"
+    }
+  },
+  "floors": [
+    {
+      "id": "LEVEL-01",
+      "name": "Ground Floor",
+      "sequence": 1,
+      "elevationMm": null,
+      "heightMm": null,
+      "status": "approved",
+      "envelope": {
+        "width": 8000,
+        "depth": 8700,
+        "origin": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "LEVEL-02",
+      "name": "First Floor",
+      "sequence": 2,
+      "elevationMm": null,
+      "heightMm": null,
+      "status": "approved",
+      "envelope": {
+        "width": 8000,
+        "depth": 8700,
+        "origin": [
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "stairs": [
+    {
+      "id": "STAIR-MAIN",
+      "sourceFloorId": "LEVEL-01",
+      "destinationFloorId": "LEVEL-02",
+      "footprint": [
+        [
+          4500,
+          5500
+        ],
+        [
+          5500,
+          5500
+        ],
+        [
+          5500,
+          8000
+        ],
+        [
+          4500,
+          8000
+        ]
+      ],
+      "flightWidth": 1000.0,
+      "directionOfTravel": "up",
+      "alignmentToleranceMm": 50.0,
+      "status": "aligned"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "U-ELEV-1",
+      "target": "Storey Elevations",
+      "description": "Vertical floor datum and clear storey heights are omitted from 2D floor plans.",
+      "assumedValue": "Preserved as null; downstream BIM skill will prompt for vertical datums.",
+      "confidence": "high",
+      "status": "confirmed"
+    }
+  ],
+  "walls": [
+    {
+      "id": "W-GF-EXT-S",
+      "floorId": "LEVEL-01",
+      "type": "exterior",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        8000,
+        0
+      ],
+      "thickness": 200,
+      "layer": "A-WALL-EXTR",
+      "openingIds": [
+        "D-GF-ENT",
+        "WIN-GF-LIV"
+      ],
+      "source": "explicit"
+    },
+    {
+      "id": "W-GF-EXT-E",
+      "floorId": "LEVEL-01",
+      "type": "exterior",
+      "start": [
+        8000,
+        0
+      ],
+      "end": [
+        8000,
+        8700
+      ],
+      "thickness": 200,
+      "layer": "A-WALL-EXTR",
+      "openingIds": [],
+      "source": "explicit"
+    },
+    {
+      "id": "W-GF-EXT-N",
+      "floorId": "LEVEL-01",
+      "type": "exterior",
+      "start": [
+        8000,
+        8700
+      ],
+      "end": [
+        0,
+        8700
+      ],
+      "thickness": 200,
+      "layer": "A-WALL-EXTR",
+      "openingIds": [],
+      "source": "explicit"
+    },
+    {
+      "id": "W-GF-EXT-W",
+      "floorId": "LEVEL-01",
+      "type": "exterior",
+      "start": [
+        0,
+        8700
+      ],
+      "end": [
+        0,
+        0
+      ],
+      "thickness": 200,
+      "layer": "A-WALL-EXTR",
+      "openingIds": [
+        "WIN-GF-KIT"
+      ],
+      "source": "explicit"
+    },
+    {
+      "id": "W-GF-INT-1",
+      "floorId": "LEVEL-01",
+      "type": "interior",
+      "start": [
+        0,
+        5000
+      ],
+      "end": [
+        8000,
+        5000
+      ],
+      "thickness": 150,
+      "layer": "A-WALL-INTR",
+      "openingIds": [
+        "D-GF-KIT"
+      ],
+      "source": "explicit"
+    },
+    {
+      "id": "W-GF-INT-2",
+      "floorId": "LEVEL-01",
+      "type": "interior",
+      "start": [
+        4000,
+        5000
+      ],
+      "end": [
+        4000,
+        8700
+      ],
+      "thickness": 150,
+      "layer": "A-WALL-INTR",
+      "openingIds": [],
+      "source": "explicit"
+    },
+    {
+      "id": "W-FF-EXT-S",
+      "floorId": "LEVEL-02",
+      "type": "exterior",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        8000,
+        0
+      ],
+      "thickness": 200,
+      "layer": "A-WALL-EXTR",
+      "openingIds": [
+        "WIN-FF-BED1",
+        "WIN-FF-BED2"
+      ],
+      "source": "explicit"
+    },
+    {
+      "id": "W-FF-EXT-E",
+      "floorId": "LEVEL-02",
+      "type": "exterior",
+      "start": [
+        8000,
+        0
+      ],
+      "end": [
+        8000,
+        8700
+      ],
+      "thickness": 200,
+      "layer": "A-WALL-EXTR",
+      "openingIds": [],
+      "source": "explicit"
+    },
+    {
+      "id": "W-FF-EXT-N",
+      "floorId": "LEVEL-02",
+      "type": "exterior",
+      "start": [
+        8000,
+        8700
+      ],
+      "end": [
+        0,
+        8700
+      ],
+      "thickness": 200,
+      "layer": "A-WALL-EXTR",
+      "openingIds": [],
+      "source": "explicit"
+    },
+    {
+      "id": "W-FF-EXT-W",
+      "floorId": "LEVEL-02",
+      "type": "exterior",
+      "start": [
+        0,
+        8700
+      ],
+      "end": [
+        0,
+        0
+      ],
+      "thickness": 200,
+      "layer": "A-WALL-EXTR",
+      "openingIds": [],
+      "source": "explicit"
+    },
+    {
+      "id": "W-FF-INT-1",
+      "floorId": "LEVEL-02",
+      "type": "interior",
+      "start": [
+        0,
+        4500
+      ],
+      "end": [
+        8000,
+        4500
+      ],
+      "thickness": 150,
+      "layer": "A-WALL-INTR",
+      "openingIds": [
+        "D-FF-BED1",
+        "D-FF-BED2"
+      ],
+      "source": "explicit"
+    },
+    {
+      "id": "W-FF-INT-2",
+      "floorId": "LEVEL-02",
+      "type": "interior",
+      "start": [
+        4000,
+        0
+      ],
+      "end": [
+        4000,
+        4500
+      ],
+      "thickness": 150,
+      "layer": "A-WALL-INTR",
+      "openingIds": [],
+      "source": "explicit"
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-GF-ENT",
+      "floorId": "LEVEL-01",
+      "type": "door",
+      "wallId": "W-GF-EXT-S",
+      "center": [
+        4000,
+        0
+      ],
+      "width": 900,
+      "swing": "inward-right",
+      "source": "explicit"
+    },
+    {
+      "id": "D-GF-KIT",
+      "floorId": "LEVEL-01",
+      "type": "door",
+      "wallId": "W-GF-INT-1",
+      "center": [
+        2000,
+        5000
+      ],
+      "width": 800,
+      "swing": "inward-left",
+      "source": "explicit"
+    },
+    {
+      "id": "WIN-GF-LIV",
+      "floorId": "LEVEL-01",
+      "type": "window",
+      "wallId": "W-GF-EXT-S",
+      "center": [
+        2000,
+        0
+      ],
+      "width": 1500,
+      "source": "explicit"
+    },
+    {
+      "id": "WIN-GF-KIT",
+      "floorId": "LEVEL-01",
+      "type": "window",
+      "wallId": "W-GF-EXT-W",
+      "center": [
+        0,
+        6800
+      ],
+      "width": 1200,
+      "source": "explicit"
+    },
+    {
+      "id": "D-FF-BED1",
+      "floorId": "LEVEL-02",
+      "type": "door",
+      "wallId": "W-FF-INT-1",
+      "center": [
+        2000,
+        4500
+      ],
+      "width": 800,
+      "swing": "inward-left",
+      "source": "explicit"
+    },
+    {
+      "id": "D-FF-BED2",
+      "floorId": "LEVEL-02",
+      "type": "door",
+      "wallId": "W-FF-INT-1",
+      "center": [
+        6000,
+        4500
+      ],
+      "width": 800,
+      "swing": "inward-right",
+      "source": "explicit"
+    },
+    {
+      "id": "WIN-FF-BED1",
+      "floorId": "LEVEL-02",
+      "type": "window",
+      "wallId": "W-FF-EXT-S",
+      "center": [
+        2000,
+        0
+      ],
+      "width": 1500,
+      "source": "explicit"
+    },
+    {
+      "id": "WIN-FF-BED2",
+      "floorId": "LEVEL-02",
+      "type": "window",
+      "wallId": "W-FF-EXT-S",
+      "center": [
+        6000,
+        0
+      ],
+      "width": 1500,
+      "source": "explicit"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "RM-GF-LIV",
+      "floorId": "LEVEL-01",
+      "name": "LIVING & DINING",
+      "approximateArea": 37.0,
+      "labelPosition": [
+        4000,
+        2500
+      ],
+      "boundaryCorners": [
+        [
+          200,
+          200
+        ],
+        [
+          7800,
+          200
+        ],
+        [
+          7800,
+          4850
+        ],
+        [
+          200,
+          4850
+        ]
+      ]
+    },
+    {
+      "id": "RM-GF-KIT",
+      "floorId": "LEVEL-01",
+      "name": "KITCHEN",
+      "approximateArea": 12.0,
+      "labelPosition": [
+        2000,
+        6800
+      ],
+      "boundaryCorners": [
+        [
+          200,
+          5150
+        ],
+        [
+          3850,
+          5150
+        ],
+        [
+          3850,
+          8500
+        ],
+        [
+          200,
+          8500
+        ]
+      ]
+    },
+    {
+      "id": "RM-GF-CIRC",
+      "floorId": "LEVEL-01",
+      "name": "STAIR & ENTRY",
+      "approximateArea": 12.0,
+      "labelPosition": [
+        6000,
+        6800
+      ],
+      "boundaryCorners": [
+        [
+          4150,
+          5150
+        ],
+        [
+          7800,
+          5150
+        ],
+        [
+          7800,
+          8500
+        ],
+        [
+          4150,
+          8500
+        ]
+      ]
+    },
+    {
+      "id": "RM-FF-BED1",
+      "floorId": "LEVEL-02",
+      "name": "MASTER BEDROOM",
+      "approximateArea": 16.0,
+      "labelPosition": [
+        2000,
+        2200
+      ],
+      "boundaryCorners": [
+        [
+          200,
+          200
+        ],
+        [
+          3850,
+          200
+        ],
+        [
+          3850,
+          4350
+        ],
+        [
+          200,
+          4350
+        ]
+      ]
+    },
+    {
+      "id": "RM-FF-BED2",
+      "floorId": "LEVEL-02",
+      "name": "BEDROOM 2",
+      "approximateArea": 16.0,
+      "labelPosition": [
+        6000,
+        2200
+      ],
+      "boundaryCorners": [
+        [
+          4150,
+          200
+        ],
+        [
+          7800,
+          200
+        ],
+        [
+          7800,
+          4350
+        ],
+        [
+          4150,
+          4350
+        ]
+      ]
+    },
+    {
+      "id": "RM-FF-LAND",
+      "floorId": "LEVEL-02",
+      "name": "UPPER LANDING",
+      "approximateArea": 29.0,
+      "labelPosition": [
+        5000,
+        6500
+      ],
+      "boundaryCorners": [
+        [
+          200,
+          4650
+        ],
+        [
+          7800,
+          4650
+        ],
+        [
+          7800,
+          8500
+        ],
+        [
+          200,
+          8500
+        ]
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-GF-1",
+      "floorId": "LEVEL-01",
+      "tier": 1,
+      "p1": [
+        0,
+        8700
+      ],
+      "p2": [
+        8000,
+        8700
+      ],
+      "at": [
+        4000,
+        9300
+      ],
+      "source": "explicit",
+      "text": "8000"
+    },
+    {
+      "id": "DIM-GF-2",
+      "floorId": "LEVEL-01",
+      "tier": 1,
+      "p1": [
+        8000,
+        0
+      ],
+      "p2": [
+        8000,
+        8700
+      ],
+      "at": [
+        8600,
+        4350
+      ],
+      "source": "explicit",
+      "text": "8700"
+    },
+    {
+      "id": "DIM-FF-1",
+      "floorId": "LEVEL-02",
+      "tier": 1,
+      "p1": [
+        0,
+        8700
+      ],
+      "p2": [
+        8000,
+        8700
+      ],
+      "at": [
+        4000,
+        9300
+      ],
+      "source": "explicit",
+      "text": "8000"
+    },
+    {
+      "id": "DIM-FF-2",
+      "floorId": "LEVEL-02",
+      "tier": 1,
+      "p1": [
+        8000,
+        0
+      ],
+      "p2": [
+        8000,
+        8700
+      ],
+      "at": [
+        8600,
+        4350
+      ],
+      "source": "explicit",
+      "text": "8700"
+    }
+  ],
+  "elements": [
+    {
+      "id": "E-GF-SOFA",
+      "floorId": "LEVEL-01",
+      "blockId": "FURN_SOFA_3SEAT",
+      "category": "furniture",
+      "position": [
+        2500,
+        1200
+      ],
+      "rotation": 0.0,
+      "source": "explicit",
+      "status": "approved"
+    },
+    {
+      "id": "E-GF-DINING",
+      "floorId": "LEVEL-01",
+      "blockId": "FURN_DINING_TABLE",
+      "category": "furniture",
+      "position": [
+        5500,
+        2500
+      ],
+      "rotation": 0.0,
+      "source": "explicit",
+      "status": "approved"
+    },
+    {
+      "id": "E-GF-SINK",
+      "floorId": "LEVEL-01",
+      "blockId": "FIXT_KITCHEN_SINK",
+      "category": "kitchen",
+      "position": [
+        1200,
+        8200
+      ],
+      "rotation": 0.0,
+      "source": "explicit",
+      "status": "approved"
+    },
+    {
+      "id": "E-GF-COL",
+      "floorId": "LEVEL-01",
+      "blockId": "STRUC_COL_SQUARE",
+      "category": "structural",
+      "position": [
+        4000,
+        5000
+      ],
+      "rotation": 0.0,
+      "source": "explicit",
+      "status": "approved"
+    },
+    {
+      "id": "E-GF-STAIR",
+      "floorId": "LEVEL-01",
+      "blockId": "CIRC_STAIR_STRAIGHT",
+      "category": "circulation",
+      "position": [
+        5000,
+        6000
+      ],
+      "rotation": 0.0,
+      "source": "explicit",
+      "status": "approved"
+    },
+    {
+      "id": "E-FF-BED1",
+      "floorId": "LEVEL-02",
+      "blockId": "FURN_BED_DOUBLE",
+      "category": "furniture",
+      "position": [
+        2000,
+        1800
+      ],
+      "rotation": 0.0,
+      "source": "explicit",
+      "status": "approved"
+    },
+    {
+      "id": "E-FF-BED2",
+      "floorId": "LEVEL-02",
+      "blockId": "FURN_BED_SINGLE",
+      "category": "furniture",
+      "position": [
+        6000,
+        1800
+      ],
+      "rotation": 0.0,
+      "source": "explicit",
+      "status": "approved"
+    },
+    {
+      "id": "E-FF-COL",
+      "floorId": "LEVEL-02",
+      "blockId": "STRUC_COL_SQUARE",
+      "category": "structural",
+      "position": [
+        4000,
+        5000
+      ],
+      "rotation": 0.0,
+      "source": "explicit",
+      "status": "approved"
+    },
+    {
+      "id": "E-FF-STAIR",
+      "floorId": "LEVEL-02",
+      "blockId": "CIRC_STAIR_STRAIGHT",
+      "category": "circulation",
+      "position": [
+        5000,
+        6000
+      ],
+      "rotation": 0.0,
+      "source": "explicit",
+      "status": "approved"
+    }
+  ],
+  "finishes": [
+    {
+      "id": "FIN-GF-KIT",
+      "floorId": "LEVEL-01",
+      "roomId": "RM-GF-KIT",
+      "pattern": "tile_grid",
+      "tileSize": 600,
+      "boundary": [
+        [
+          200,
+          5150
+        ],
+        [
+          3850,
+          5150
+        ],
+        [
+          3850,
+          8500
+        ],
+        [
+          200,
+          8500
+        ]
+      ],
+      "source": "explicit"
+    },
+    {
+      "id": "FIN-FF-LAND",
+      "floorId": "LEVEL-02",
+      "roomId": "RM-FF-LAND",
+      "pattern": "wood_strip",
+      "tileSize": 150,
+      "boundary": [
+        [
+          200,
+          4650
+        ],
+        [
+          7800,
+          4650
+        ],
+        [
+          7800,
+          8500
+        ],
+        [
+          200,
+          8500
+        ]
+      ],
+      "source": "explicit"
+    }
+  ]
+}
