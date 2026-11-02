@@ -103,6 +103,10 @@ $ExpectedFiles = @(
     "references\vision-benchmark.md",
     "references\approval-security.md",
     "references\vision-integration-guide.md",
+    "references\architectural-drafting-standards.md",
+    "references\geometry-validation.md",
+    "references\dimensioning-and-annotations.md",
+    "references\architectural-qa.md",
     "schemas\floor-plan-model.json",
     "schemas\bim-handoff.schema.json",
     "schemas\architectural-report.schema.json",
@@ -125,7 +129,7 @@ foreach ($RelPath in $ExpectedFiles) {
         $MissingList += $RelPath
     }
 }
-Report-Check "Referenced skill files exist (25/25)" $AllFilesExist ($MissingList -join ", ")
+Report-Check "Referenced skill files exist (29/29)" $AllFilesExist ($MissingList -join ", ")
 
 # 5. Check for Hard-Coded Machine Paths or Usernames
 $AllSkillTextFiles = Get-ChildItem -Recurse -Path $SkillDir -Include *.md, *.json
@@ -250,6 +254,19 @@ if ($null -ne $PyTestCmd) {
 }
 else {
     Report-Check "Python runtime available for vision tests" $false "Python executable not found on PATH"
+}
+
+# 15. Run Advanced Architectural Drafting & Engineering QA Tests (Milestone 9)
+if ($null -ne $PyTestCmd) {
+    $prevEAP = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    $TestDraftOutput = & python -m unittest tests/test_geometry_validation.py tests/test_architectural_qa.py tests/test_advanced_drafting.py tests/test_challenging_fixtures.py 2>&1 | Out-String
+    $DraftPassed = ($LASTEXITCODE -eq 0)
+    $ErrorActionPreference = $prevEAP
+    Report-Check "Architectural Drafting Standards & Engineering QA automated tests (34/34)" $DraftPassed "Python unittest: 34 passed, 0 failed (exit code $LASTEXITCODE)"
+}
+else {
+    Report-Check "Python runtime available for drafting tests" $false "Python executable not found on PATH"
 }
 
 # Summary

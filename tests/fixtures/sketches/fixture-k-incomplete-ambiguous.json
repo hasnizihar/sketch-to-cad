@@ -1,0 +1,218 @@
+{
+  "$schema": "../../skills/sketch-to-cad/schemas/floor-plan-model.json",
+  "metadata": {
+    "projectName": "Fixture K: Incomplete and Ambiguous Plan",
+    "author": "Architectural Drafting Standards",
+    "version": "1.0",
+    "createdAt": "2026-11-02T00:00:00Z"
+  },
+  "status": "awaiting_approval",
+  "units": "mm",
+  "envelope": {
+    "width": 8000.0,
+    "depth": 6000.0,
+    "origin": [
+      0.0,
+      0.0
+    ],
+    "widthSource": "explicit",
+    "depthSource": "estimated"
+  },
+  "walls": [
+    {
+      "id": "W-EXT-NORTH",
+      "type": "exterior",
+      "classification": "exterior",
+      "start": [
+        0.0,
+        6000.0
+      ],
+      "end": [
+        8000.0,
+        6000.0
+      ],
+      "thickness": 200.0,
+      "layer": "A-WALL-EXTR",
+      "openingIds": [],
+      "source": "explicit"
+    },
+    {
+      "id": "W-EXT-EAST",
+      "type": "exterior",
+      "classification": "exterior",
+      "start": [
+        8000.0,
+        6000.0
+      ],
+      "end": [
+        8000.0,
+        0.0
+      ],
+      "thickness": 200.0,
+      "layer": "A-WALL-EXTR",
+      "openingIds": [],
+      "source": "explicit"
+    },
+    {
+      "id": "W-EXT-SOUTH",
+      "type": "exterior",
+      "classification": "exterior",
+      "start": [
+        8000.0,
+        0.0
+      ],
+      "end": [
+        0.0,
+        0.0
+      ],
+      "thickness": 200.0,
+      "layer": "A-WALL-EXTR",
+      "openingIds": [
+        "D-ENTRY"
+      ],
+      "source": "explicit"
+    },
+    {
+      "id": "W-EXT-WEST",
+      "type": "exterior",
+      "classification": "exterior",
+      "start": [
+        0.0,
+        0.0
+      ],
+      "end": [
+        0.0,
+        6000.0
+      ],
+      "thickness": 200.0,
+      "layer": "A-WALL-EXTR",
+      "openingIds": [],
+      "source": "explicit"
+    },
+    {
+      "id": "W-PART-GAP",
+      "type": "interior",
+      "classification": "interior",
+      "start": [
+        4000.0,
+        120.0
+      ],
+      "end": [
+        4000.0,
+        6000.0
+      ],
+      "thickness": 100.0,
+      "layer": "A-WALL-INTR",
+      "openingIds": [],
+      "source": "inferred"
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-ENTRY",
+      "type": "door",
+      "wallId": "W-EXT-SOUTH",
+      "center": [
+        4000.0,
+        0.0
+      ],
+      "width": 1000.0,
+      "swing": "inward-right",
+      "source": "estimated"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-1",
+      "name": "UNRESOLVED ROOM 1",
+      "approximateArea": 24.0,
+      "labelPosition": [
+        2000.0,
+        3000.0
+      ],
+      "boundaryCorners": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          4000.0,
+          0.0
+        ],
+        [
+          4000.0,
+          6000.0
+        ],
+        [
+          0.0,
+          6000.0
+        ]
+      ]
+    },
+    {
+      "id": "R-2",
+      "name": "UNRESOLVED ROOM 2",
+      "approximateArea": 24.0,
+      "labelPosition": [
+        6000.0,
+        3000.0
+      ],
+      "boundaryCorners": [
+        [
+          4000.0,
+          0.0
+        ],
+        [
+          8000.0,
+          0.0
+        ],
+        [
+          8000.0,
+          6000.0
+        ],
+        [
+          4000.0,
+          6000.0
+        ]
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-WIDTH",
+      "tier": 1,
+      "p1": [
+        0.0,
+        -600.0
+      ],
+      "p2": [
+        8000.0,
+        -600.0
+      ],
+      "at": [
+        4000.0,
+        -600.0
+      ],
+      "text": "8000",
+      "source": "explicit"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "UNC-DIM-DEPTH",
+      "target": "Overall Building Depth",
+      "description": "Missing explicit overall depth dimension in source sketch linework. Estimated at 6000mm from drawing proportions.",
+      "assumedValue": "6000mm",
+      "confidence": "low",
+      "status": "unresolved"
+    },
+    {
+      "id": "UNC-WALL-GAP",
+      "target": "Interior Partition Connection",
+      "description": "Wall W-PART-GAP start point has a 120mm gap to south exterior wall. Requires confirmation to snap or leave open.",
+      "assumedValue": "snap_to_wall",
+      "confidence": "medium",
+      "status": "unresolved"
+    }
+  ]
+}

@@ -1,0 +1,318 @@
+{
+  "$schema": "../../skills/sketch-to-cad/schemas/floor-plan-model.json",
+  "metadata": {
+    "projectName": "Fixture G: Complex Openings",
+    "author": "Architectural Drafting Standards",
+    "version": "1.0",
+    "createdAt": "2026-11-02T00:00:00Z"
+  },
+  "status": "approved",
+  "approval": {
+    "approvedBy": "Marcus Vance, AIA, Principal Architect",
+    "approvedAt": "2026-11-02T12:00:00Z",
+    "approvalNotes": "Approved double-leaf, sliding, and closely spaced opening configurations."
+  },
+  "units": "mm",
+  "envelope": {
+    "width": 9000.0,
+    "depth": 7000.0,
+    "origin": [
+      0.0,
+      0.0
+    ],
+    "widthSource": "explicit",
+    "depthSource": "explicit"
+  },
+  "walls": [
+    {
+      "id": "W-EXT-NORTH",
+      "type": "exterior",
+      "classification": "exterior",
+      "start": [
+        0.0,
+        7000.0
+      ],
+      "end": [
+        9000.0,
+        7000.0
+      ],
+      "thickness": 200.0,
+      "layer": "A-WALL-EXTR",
+      "openingIds": [
+        "W-SLIDING-LIVING"
+      ],
+      "source": "explicit"
+    },
+    {
+      "id": "W-EXT-EAST",
+      "type": "exterior",
+      "classification": "exterior",
+      "start": [
+        9000.0,
+        7000.0
+      ],
+      "end": [
+        9000.0,
+        0.0
+      ],
+      "thickness": 200.0,
+      "layer": "A-WALL-EXTR",
+      "openingIds": [
+        "W-CASEMENT-BED"
+      ],
+      "source": "explicit"
+    },
+    {
+      "id": "W-EXT-SOUTH",
+      "type": "exterior",
+      "classification": "exterior",
+      "start": [
+        9000.0,
+        0.0
+      ],
+      "end": [
+        0.0,
+        0.0
+      ],
+      "thickness": 200.0,
+      "layer": "A-WALL-EXTR",
+      "openingIds": [
+        "D-ENTRY-DOUBLE"
+      ],
+      "source": "explicit"
+    },
+    {
+      "id": "W-EXT-WEST",
+      "type": "exterior",
+      "classification": "exterior",
+      "start": [
+        0.0,
+        0.0
+      ],
+      "end": [
+        0.0,
+        7000.0
+      ],
+      "thickness": 200.0,
+      "layer": "A-WALL-EXTR",
+      "openingIds": [
+        "D-PATIO-SLIDING"
+      ],
+      "source": "explicit"
+    },
+    {
+      "id": "W-INTR-MID",
+      "type": "interior",
+      "classification": "interior",
+      "start": [
+        4500.0,
+        0.0
+      ],
+      "end": [
+        4500.0,
+        7000.0
+      ],
+      "thickness": 150.0,
+      "layer": "A-WALL-INTR",
+      "openingIds": [
+        "D-BED",
+        "D-BATH"
+      ],
+      "source": "explicit"
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-ENTRY-DOUBLE",
+      "type": "door",
+      "wallId": "W-EXT-SOUTH",
+      "center": [
+        4500.0,
+        0.0
+      ],
+      "width": 1800.0,
+      "swing": "double",
+      "source": "explicit"
+    },
+    {
+      "id": "D-PATIO-SLIDING",
+      "type": "door",
+      "wallId": "W-EXT-WEST",
+      "center": [
+        0.0,
+        3500.0
+      ],
+      "width": 2000.0,
+      "swing": "sliding",
+      "source": "explicit"
+    },
+    {
+      "id": "D-BATH",
+      "type": "door",
+      "wallId": "W-INTR-MID",
+      "center": [
+        4500.0,
+        2200.0
+      ],
+      "width": 750.0,
+      "swing": "inward-left",
+      "source": "explicit"
+    },
+    {
+      "id": "D-BED",
+      "type": "door",
+      "wallId": "W-INTR-MID",
+      "center": [
+        4500.0,
+        3200.0
+      ],
+      "width": 900.0,
+      "swing": "inward-right",
+      "source": "explicit"
+    },
+    {
+      "id": "W-SLIDING-LIVING",
+      "type": "window",
+      "wallId": "W-EXT-NORTH",
+      "center": [
+        3000.0,
+        7000.0
+      ],
+      "width": 2000.0,
+      "source": "explicit"
+    },
+    {
+      "id": "W-CASEMENT-BED",
+      "type": "window",
+      "wallId": "W-EXT-EAST",
+      "center": [
+        9000.0,
+        4500.0
+      ],
+      "width": 1200.0,
+      "source": "explicit"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-LIVING",
+      "name": "LIVING / DINING",
+      "approximateArea": 30.5,
+      "labelPosition": [
+        2200.0,
+        3500.0
+      ],
+      "boundaryCorners": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          4500.0,
+          0.0
+        ],
+        [
+          4500.0,
+          7000.0
+        ],
+        [
+          0.0,
+          7000.0
+        ]
+      ]
+    },
+    {
+      "id": "R-BED",
+      "name": "BEDROOM",
+      "approximateArea": 18.0,
+      "labelPosition": [
+        6700.0,
+        4500.0
+      ],
+      "boundaryCorners": [
+        [
+          4500.0,
+          2500.0
+        ],
+        [
+          9000.0,
+          2500.0
+        ],
+        [
+          9000.0,
+          7000.0
+        ],
+        [
+          4500.0,
+          7000.0
+        ]
+      ]
+    },
+    {
+      "id": "R-BATH",
+      "name": "BATHROOM",
+      "approximateArea": 8.5,
+      "labelPosition": [
+        6700.0,
+        1200.0
+      ],
+      "boundaryCorners": [
+        [
+          4500.0,
+          0.0
+        ],
+        [
+          9000.0,
+          0.0
+        ],
+        [
+          9000.0,
+          2500.0
+        ],
+        [
+          4500.0,
+          2500.0
+        ]
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-WIDTH",
+      "tier": 1,
+      "p1": [
+        0.0,
+        -600.0
+      ],
+      "p2": [
+        9000.0,
+        -600.0
+      ],
+      "at": [
+        4500.0,
+        -600.0
+      ],
+      "text": "9000",
+      "source": "explicit"
+    },
+    {
+      "id": "DIM-DEPTH",
+      "tier": 1,
+      "p1": [
+        -600.0,
+        0.0
+      ],
+      "p2": [
+        -600.0,
+        7000.0
+      ],
+      "at": [
+        -600.0,
+        3500.0
+      ],
+      "text": "7000",
+      "source": "explicit"
+    }
+  ],
+  "uncertainties": []
+}

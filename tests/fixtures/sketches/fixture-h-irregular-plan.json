@@ -1,0 +1,298 @@
+{
+  "$schema": "../../skills/sketch-to-cad/schemas/floor-plan-model.json",
+  "metadata": {
+    "projectName": "Fixture H: Irregular Residential Plan",
+    "author": "Architectural Drafting Standards",
+    "version": "1.0",
+    "createdAt": "2026-11-02T00:00:00Z"
+  },
+  "status": "approved",
+  "approval": {
+    "approvedBy": "Marcus Vance, AIA, Principal Architect",
+    "approvedAt": "2026-11-02T12:00:00Z",
+    "approvalNotes": "Approved angled chamfered wall geometry."
+  },
+  "units": "mm",
+  "envelope": {
+    "width": 9500.0,
+    "depth": 8500.0,
+    "origin": [
+      0.0,
+      0.0
+    ],
+    "widthSource": "explicit",
+    "depthSource": "explicit"
+  },
+  "walls": [
+    {
+      "id": "W-NORTH",
+      "type": "exterior",
+      "classification": "exterior",
+      "start": [
+        0.0,
+        8500.0
+      ],
+      "end": [
+        6500.0,
+        8500.0
+      ],
+      "thickness": 250.0,
+      "layer": "A-WALL-EXTR",
+      "openingIds": [
+        "W-N"
+      ],
+      "source": "explicit"
+    },
+    {
+      "id": "W-ANGLED",
+      "type": "exterior",
+      "classification": "exterior",
+      "start": [
+        6500.0,
+        8500.0
+      ],
+      "end": [
+        9500.0,
+        5500.0
+      ],
+      "thickness": 250.0,
+      "layer": "A-WALL-EXTR",
+      "openingIds": [
+        "W-ANG"
+      ],
+      "source": "explicit"
+    },
+    {
+      "id": "W-EAST",
+      "type": "exterior",
+      "classification": "exterior",
+      "start": [
+        9500.0,
+        5500.0
+      ],
+      "end": [
+        9500.0,
+        0.0
+      ],
+      "thickness": 250.0,
+      "layer": "A-WALL-EXTR",
+      "openingIds": [
+        "W-E"
+      ],
+      "source": "explicit"
+    },
+    {
+      "id": "W-SOUTH",
+      "type": "exterior",
+      "classification": "exterior",
+      "start": [
+        9500.0,
+        0.0
+      ],
+      "end": [
+        0.0,
+        0.0
+      ],
+      "thickness": 250.0,
+      "layer": "A-WALL-EXTR",
+      "openingIds": [
+        "D-ENTRY"
+      ],
+      "source": "explicit"
+    },
+    {
+      "id": "W-WEST",
+      "type": "exterior",
+      "classification": "exterior",
+      "start": [
+        0.0,
+        0.0
+      ],
+      "end": [
+        0.0,
+        8500.0
+      ],
+      "thickness": 250.0,
+      "layer": "A-WALL-EXTR",
+      "openingIds": [],
+      "source": "explicit"
+    },
+    {
+      "id": "W-PART-INT",
+      "type": "interior",
+      "classification": "interior",
+      "start": [
+        4500.0,
+        0.0
+      ],
+      "end": [
+        4500.0,
+        5500.0
+      ],
+      "thickness": 125.0,
+      "layer": "A-WALL-INTR",
+      "openingIds": [
+        "D-INT"
+      ],
+      "source": "explicit"
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-ENTRY",
+      "type": "door",
+      "wallId": "W-SOUTH",
+      "center": [
+        2500.0,
+        0.0
+      ],
+      "width": 1000.0,
+      "swing": "inward-right",
+      "source": "explicit"
+    },
+    {
+      "id": "D-INT",
+      "type": "door",
+      "wallId": "W-PART-INT",
+      "center": [
+        4500.0,
+        3000.0
+      ],
+      "width": 900.0,
+      "swing": "inward-right",
+      "source": "explicit"
+    },
+    {
+      "id": "W-N",
+      "type": "window",
+      "wallId": "W-NORTH",
+      "center": [
+        3000.0,
+        8500.0
+      ],
+      "width": 1500.0,
+      "source": "explicit"
+    },
+    {
+      "id": "W-ANG",
+      "type": "window",
+      "wallId": "W-ANGLED",
+      "center": [
+        8000.0,
+        7000.0
+      ],
+      "width": 1200.0,
+      "source": "explicit"
+    },
+    {
+      "id": "W-E",
+      "type": "window",
+      "wallId": "W-EAST",
+      "center": [
+        9500.0,
+        2500.0
+      ],
+      "width": 1200.0,
+      "source": "explicit"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-STUDIO",
+      "name": "ANGLED STUDIO",
+      "approximateArea": 32.0,
+      "labelPosition": [
+        2500.0,
+        4000.0
+      ],
+      "boundaryCorners": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          4500.0,
+          0.0
+        ],
+        [
+          4500.0,
+          8500.0
+        ],
+        [
+          0.0,
+          8500.0
+        ]
+      ]
+    },
+    {
+      "id": "R-SALON",
+      "name": "ANGLED SALON",
+      "approximateArea": 35.0,
+      "labelPosition": [
+        7000.0,
+        3500.0
+      ],
+      "boundaryCorners": [
+        [
+          4500.0,
+          0.0
+        ],
+        [
+          9500.0,
+          0.0
+        ],
+        [
+          9500.0,
+          5500.0
+        ],
+        [
+          6500.0,
+          8500.0
+        ],
+        [
+          4500.0,
+          5500.0
+        ]
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-WIDTH",
+      "tier": 1,
+      "p1": [
+        0.0,
+        -600.0
+      ],
+      "p2": [
+        9500.0,
+        -600.0
+      ],
+      "at": [
+        4750.0,
+        -600.0
+      ],
+      "text": "9500",
+      "source": "explicit"
+    },
+    {
+      "id": "DIM-DEPTH",
+      "tier": 1,
+      "p1": [
+        -600.0,
+        0.0
+      ],
+      "p2": [
+        -600.0,
+        8500.0
+      ],
+      "at": [
+        -600.0,
+        4250.0
+      ],
+      "text": "8500",
+      "source": "explicit"
+    }
+  ],
+  "uncertainties": []
+}

@@ -243,7 +243,7 @@ sketch-to-cad/
 │       ├── workflows/                 # Stage-by-stage drafting, reporting & validation guides
 │       └── examples/                  # Reference projects and fixtures
 └── tests/
-    ├── README.md                      # Test suite documentation (120 tests, 14 checks)
+    ├── README.md                      # Test suite documentation (154 tests, 15 checks)
     ├── fixtures/                      # Validated floor-plan models and handoff JSON
     └── output/                        # DXF, PNG, handoff JSON, and report deliverables
 ```

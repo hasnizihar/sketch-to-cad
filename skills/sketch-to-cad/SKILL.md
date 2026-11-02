@@ -68,23 +68,23 @@ Refer to [references/approval-security.md](references/approval-security.md):
 Translate the approved model into CADCraft MCP operations via [workflows/generate-drawing.md](workflows/generate-drawing.md):
 1. Initialize drawing with `new_drawing(metric=true)`.
 2. Establish standard AIA layers (`A-WALL-EXTR`, `A-WALL-INTR`, `A-DOOR`, `A-GLAZ`, `A-FURN`, `A-FIXT`, `A-STAIR`, `A-COLS`, `A-FLOR-FIN`, `A-ANNO-TEXT`, `A-ANNO-DIMS`).
-3. Draw exterior and interior double walls with clean openings and transverse jamb end-caps sealing wall cavities.
-4. Draw door leaves and swing arcs on `A-DOOR` and glazing on `A-GLAZ`.
+3. Draw exterior and interior double walls with clean openings, transverse jamb end-caps sealing wall cavities, and T-junction cavity trimming per [references/architectural-drafting-standards.md](references/architectural-drafting-standards.md).
+4. Draw door leaves (inward/outward single-leaf, double-leaf, sliding) on `A-DOOR` and glazing (casement, sliding) on `A-GLAZ` per [references/architectural-drafting-standards.md](references/architectural-drafting-standards.md).
 5. Register and insert approved architectural element blocks (`block`, `insert`) from [references/architectural-element-library.md](references/architectural-element-library.md) on `A-FURN`, `A-FIXT`, `A-STAIR`, and `A-COLS`.
 6. Apply room floor finish boundaries and optional tile hatches (`hatch`) on `A-FLOR-FIN` where specified.
-7. Configure legible architectural dimension styles (`textHeight >= 150mm`, `arrowSize >= 120mm`) and draw dimension chains on `A-ANNO-DIMS`.
+7. Configure tiered dimension chains on `A-ANNO-DIMS`, sheet title block header, and conditional North Arrow per [references/dimensioning-and-annotations.md](references/dimensioning-and-annotations.md).
 8. Insert centered, non-colliding room labels on `A-ANNO-TEXT` (use stacked text in narrow circulation spaces).
 9. Frame viewport using `execute(command="zoom", params={"mode": "extents"})`.
 
 ### Phase 5: Geometric & Topological Validation
-Execute the automated checks in [references/validation-checklist.md](references/validation-checklist.md) and [workflows/validate-and-export.md](workflows/validate-and-export.md):
+Execute automated geometric validation per [references/geometry-validation.md](references/geometry-validation.md), [references/validation-checklist.md](references/validation-checklist.md), and [workflows/validate-and-export.md](workflows/validate-and-export.md):
 1. Query active topology via `inspect_drawing(entities=true)`.
 2. Verify bounding extents match building envelope plus dimension margins.
 3. Verify entity counts and ensure default layer `0` contains zero entities.
 4. Verify all room label centroids reside inside room polygons.
 
 ### Phase 6: Mandatory Visual QA & Source Comparison (Visual Quality Gate)
-Execute automated source-to-CAD visual QA via `scripts/visual_qa.py` (refer to [references/end-to-end-pipeline.md](references/end-to-end-pipeline.md)):
+Execute unified Architectural & Engineering QA via `scripts/architectural_qa.py` (refer to [references/architectural-qa.md](references/architectural-qa.md) and [references/end-to-end-pipeline.md](references/end-to-end-pipeline.md)):
 **A generated CAD drawing is not necessarily a correct drawing.** Before accepting or delivering:
 1. Render high-resolution preview via `render(fit=true)` or raster preview export.
 2. Classify all detected discrepancies under the 4-tier architectural severity model: `blocking_discrepancy`, `major_discrepancy`, `warning`, or `informational`.

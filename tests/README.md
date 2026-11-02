@@ -112,16 +112,46 @@ This directory contains test specifications, reference fixtures, and validation 
     ```
     Validates architectural benchmark manifest evaluation across all 5 standard test cases (Cases A–E), normalized bounding box IoU calculation, precision and recall for walls/openings/rooms, dimension extraction accuracy within 50mm tolerance, contradiction detection rate, Markdown/JSON report export, and Draft-07 schema compliance of `vision-benchmark-result.schema.json`.
 
+12. **Architectural Geometry Validation Test Suite (Milestone 9)**:
+    `powershell
+    python -m unittest tests/test_geometry_validation.py
+    `
+    Validates wall network graph topology, junction classification (L, T, Cross, disconnected endpoints), degenerate wall detection (<10mm blocking), 50mm corner clearance structural return, overlapping openings detection, door swing clearance conflicts, Gauss Shoelace area computation, self-intersection (bowtie polygon) detection, interior room overlap detection, envelope boundary containment, and multi-storey level filtering.
+
+13. **Architectural QA & Engineering Standards Test Suite (Milestone 9)**:
+    `powershell
+    python -m unittest tests/test_architectural_qa.py
+    `
+    Validates 4-tier architectural severity model (locking, major, warning, informational), BIM handoff referential integrity checks, coordinate system verification, comprehensive QA execution, and Markdown engineering audit report generation.
+
+14. **Advanced Architectural Drafting Standards Test Suite (Milestone 9)**:
+    `powershell
+    python -m unittest tests/test_advanced_drafting.py
+    `
+    Validates wall T-junction cavity trimming (partition double lines trimmed by host wall half-thickness), single-leaf swing geometry (inward-left, inward-right, outward-left, outward-right), double-leaf doors (double), sliding/pocket doors (sliding), sliding bypass windows, sheet title block headers, conditional North Arrow drafting (drawn if orientation known; strictly omitted if unknown), and real CADCraft CLI execution.
+
+15. **Challenging Architectural Test Fixtures Suite (Milestone 9)**:
+    `powershell
+    python -m unittest tests/test_challenging_fixtures.py
+    `
+    Validates end-to-end processing across all 6 challenging test cases:
+    - Case F (ixture-f-complex-junctions.json): Complex junctions, thickness transitions (200mm exterior, 100mm interior), clean cavity trimming.
+    - Case G (ixture-g-complex-openings.json): Diverse opening types (double doors, sliding doors, sliding windows) and corner clearance verification.
+    - Case H (ixture-h-irregular-plan.json): Irregular L-shaped building footprint, 5-vertex non-convex salon polygon, Shoelace area calculation.
+    - Case I (ixture-i-compact-plan.json): Compact 32 m² studio/ADU plan with dense furniture and sanitary clearances.
+    - Case J (ixture-j-multi-storey-complex.json): 2-storey residence with shared envelope, vertical stair & structural column alignment.
+    - Case K (ixture-k-incomplete-ambiguous.json): Incomplete ambiguous sketch with unapproved status (waiting_approval) - verifies mandatory Approval Gate rejection.
+
 ---
 
 ### Overall Test Suite Execution
 
-Run all 120 automated tests:
+Run all 154 automated tests:
 ```powershell
 python -m unittest discover tests
 ```
 
-Run skill integrity validation (14 automated checks):
+Run skill integrity validation (15 automated checks):
 ```powershell
 .\scripts\validate-skill.ps1
 ```

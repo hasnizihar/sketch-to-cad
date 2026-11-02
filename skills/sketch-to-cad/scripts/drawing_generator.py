@@ -718,6 +718,9 @@ class DrawingGenerator:
             # Stage 8: Draw Dimension Chains
             self._draw_dimensions(c, model, floor_id=floor_id)
 
+            # Stage 8b: Draw Sheet Header, Scale, and Conditional North Arrow (Milestone 9)
+            self._draw_sheet_annotations(c, model, floor_id=floor_id)
+
             # Stage 9: Frame View Extents
             c.execute("zoom", {"mode": "extents"})
 
@@ -939,13 +942,48 @@ class DrawingGenerator:
         }
 
     def _draw_walls_and_openings(self, c: CADCraftClient, model: Dict[str, Any], floor_id: Optional[str] = None):
-        """Generates double-line walls with clean opening cuts and transverse jamb end-caps."""
+        """Generates double-line walls with clean opening cuts, transverse jamb end-caps, and trimmed T-junctions."""
         default_floor = model.get("floors", [{}])[0].get("id", "LEVEL-01") if model.get("floors") else model.get("floorId", "LEVEL-01")
         openings_by_id = {op["id"]: op for op in model.get("openings", [])}
+        walls = [w for w in model.get("walls", []) if _matches_floor(w, floor_id, default_floor)]
 
-        for wall in model.get("walls", []):
-            if not _matches_floor(wall, floor_id, default_floor):
-                continue
+        # Analyze T-junction trimming to prevent double lines penetrating host wall cavities
+        trim_offsets: Dict[str, Tuple[float, float]] = {}
+        for i, w in enumerate(walls):
+            wid = w["id"]
+            s = [float(w["start"][0]), float(w["start"][1])]
+            e = [float(w["end"][0]), float(w["end"][1])]
+            s_trim = 0.0
+            e_trim = 0.0
+
+            for j, other_w in enumerate(walls):
+                if i == j:
+                    continue
+                os_pt = [float(other_w["start"][0]), float(other_w["start"][1])]
+                oe_pt = [float(other_w["end"][0]), float(other_w["end"][1])]
+                other_th = float(other_w.get("thickness", 200.0))
+
+                dx_o = oe_pt[0] - os_pt[0]
+                dy_o = oe_pt[1] - os_pt[1]
+                l_sq = dx_o * dx_o + dy_o * dy_o
+                if l_sq > 1e-6:
+                    t_s = ((s[0] - os_pt[0]) * dx_o + (s[1] - os_pt[1]) * dy_o) / l_sq
+                    if 0.03 < t_s < 0.97:
+                        proj_s = [os_pt[0] + t_s * dx_o, os_pt[1] + t_s * dy_o]
+                        dist_s = math.hypot(s[0] - proj_s[0], s[1] - proj_s[1])
+                        if dist_s <= 35.0:
+                            s_trim = max(s_trim, other_th / 2.0)
+
+                    t_e = ((e[0] - os_pt[0]) * dx_o + (e[1] - os_pt[1]) * dy_o) / l_sq
+                    if 0.03 < t_e < 0.97:
+                        proj_e = [os_pt[0] + t_e * dx_o, os_pt[1] + t_e * dy_o]
+                        dist_e = math.hypot(e[0] - proj_e[0], e[1] - proj_e[1])
+                        if dist_e <= 35.0:
+                            e_trim = max(e_trim, other_th / 2.0)
+
+            trim_offsets[wid] = (s_trim, e_trim)
+
+        for wall in walls:
             layer = wall.get("layer", "A-WALL-EXTR")
             c.execute("layer.current", {"name": layer})
 
@@ -964,25 +1002,28 @@ class DrawingGenerator:
             nx = -uy * (thickness / 2.0)
             ny = ux * (thickness / 2.0)
 
+            s_trim, e_trim = trim_offsets.get(wall["id"], (0.0, 0.0))
+            wall_start_t = min(s_trim, length * 0.4)
+            wall_end_t = max(wall_start_t, length - min(e_trim, length * 0.4))
+
             wall_openings = []
             for op_id in wall.get("openingIds", []):
                 if op_id in openings_by_id:
                     op = openings_by_id[op_id]
                     op_center = op["center"]
-                    # Project center onto wall axis
                     op_t = (op_center[0] - start[0]) * ux + (op_center[1] - start[1]) * uy
                     op_w = float(op.get("width", 900.0))
                     wall_openings.append({
                         "id": op_id,
-                        "t1": max(0.0, op_t - op_w / 2.0),
-                        "t2": min(length, op_t + op_w / 2.0),
+                        "t1": max(wall_start_t, op_t - op_w / 2.0),
+                        "t2": min(wall_end_t, op_t + op_w / 2.0),
                         "type": op.get("type", "door")
                     })
 
             wall_openings.sort(key=lambda o: o["t1"])
 
             # Segments of solid wall
-            current_t = 0.0
+            current_t = wall_start_t
             for op in wall_openings:
                 if op["t1"] > current_t:
                     self._draw_wall_segment(c, start, ux, uy, nx, ny, current_t, op["t1"])
@@ -995,8 +1036,8 @@ class DrawingGenerator:
                 c.execute("line", {"points": [p2_out, p2_in]})
                 current_t = op["t2"]
 
-            if current_t < length:
-                self._draw_wall_segment(c, start, ux, uy, nx, ny, current_t, length)
+            if current_t < wall_end_t:
+                self._draw_wall_segment(c, start, ux, uy, nx, ny, current_t, wall_end_t)
 
     def _draw_wall_segment(self, c: CADCraftClient, start, ux, uy, nx, ny, t1, t2):
         p1_out = [start[0] + t1 * ux + nx, start[1] + t1 * uy + ny]
@@ -1007,7 +1048,7 @@ class DrawingGenerator:
         c.execute("line", {"points": [p1_in, p2_in]})
 
     def _draw_doors_and_windows(self, c: CADCraftClient, model: Dict[str, Any], floor_id: Optional[str] = None):
-        """Generates doors with 90 deg swing arcs on A-DOOR and windows on A-GLAZ."""
+        """Generates doors with accurate swing arcs, double leaves, sliding doors on A-DOOR, and windows on A-GLAZ."""
         default_floor = model.get("floors", [{}])[0].get("id", "LEVEL-01") if model.get("floors") else model.get("floorId", "LEVEL-01")
         walls_by_id = {w["id"]: w for w in model.get("walls", [])}
 
@@ -1029,34 +1070,174 @@ class DrawingGenerator:
             else:
                 ux, uy = 1.0, 0.0
 
+            nx, ny = -uy, ux  # perpendicular normal
+
             if op_type == "door":
                 c.execute("layer.current", {"name": "A-DOOR"})
-                # Door hinge at center - width/2 along wall
-                hx = center[0] - (width / 2.0) * ux
-                hy = center[1] - (width / 2.0) * uy
-                # Perpendicular direction for swing
-                nx, ny = -uy, ux
-                leaf_end = [hx + width * nx, hy + width * ny]
-                c.execute("line", {"points": [[hx, hy], leaf_end]})
-                
-                # Compute swing arc angles in degrees
+                sub_type = str(op.get("sub_type", op.get("subtype", "single_swing"))).lower()
+                swing_dir = str(op.get("swing", op.get("swing_direction", "inward_right"))).lower()
+
+                # Left jamb and right jamb points along wall
+                p_left = [center[0] - (width / 2.0) * ux, center[1] - (width / 2.0) * uy]
+                p_right = [center[0] + (width / 2.0) * ux, center[1] + (width / 2.0) * uy]
                 base_angle = math.degrees(math.atan2(uy, ux))
-                swing_start = base_angle
-                swing_end = base_angle + 90.0
-                c.execute("arc", {
-                    "center": [hx, hy],
-                    "radius": width,
-                    "start": swing_start,
-                    "end": swing_end
-                })
+
+                if "double" in sub_type or "double" in swing_dir or "double" in op.get("id", "").lower():
+                    # Double leaf door: dual leaves from both jambs meeting at center
+                    half_w = width / 2.0
+                    leaf_left_end = [p_left[0] + half_w * nx, p_left[1] + half_w * ny]
+                    c.execute("line", {"points": [p_left, leaf_left_end]})
+                    c.execute("arc", {
+                        "center": p_left,
+                        "radius": half_w,
+                        "start": base_angle,
+                        "end": base_angle + 90.0,
+                    })
+                    leaf_right_end = [p_right[0] + half_w * nx, p_right[1] + half_w * ny]
+                    c.execute("line", {"points": [p_right, leaf_right_end]})
+                    rev_angle = (base_angle + 180.0) % 360.0
+                    c.execute("arc", {
+                        "center": p_right,
+                        "radius": half_w,
+                        "start": rev_angle - 90.0,
+                        "end": rev_angle,
+                    })
+
+                elif "sliding" in sub_type or "sliding" in swing_dir or "sliding" in op.get("id", "").lower():
+                    # Sliding door: 2 parallel offset overlapping panel lines
+                    off = 20.0
+                    p1_a = [center[0] - (width / 2.0) * ux + off * nx, center[1] - (width / 2.0) * uy + off * ny]
+                    p1_b = [center[0] + 50.0 * ux + off * nx, center[1] + 50.0 * uy + off * ny]
+                    p2_a = [center[0] - 50.0 * ux - off * nx, center[1] - 50.0 * uy - off * ny]
+                    p2_b = [center[0] + (width / 2.0) * ux - off * nx, center[1] + (width / 2.0) * uy - off * ny]
+                    c.execute("line", {"points": [p1_a, p1_b]})
+                    c.execute("line", {"points": [p2_a, p2_b]})
+
+                else:
+                    # Single swing door
+                    if "left" in swing_dir:
+                        hx, hy = p_right[0], p_right[1]
+                        leaf_dir = -1.0 if "outward" in swing_dir else 1.0
+                        leaf_end = [hx + width * leaf_dir * nx, hy + width * leaf_dir * ny]
+                        c.execute("line", {"points": [[hx, hy], leaf_end]})
+                        rev_angle = (base_angle + 180.0) % 360.0
+                        start_ang = rev_angle - 90.0 if leaf_dir > 0 else rev_angle
+                        end_ang = rev_angle if leaf_dir > 0 else rev_angle + 90.0
+                        c.execute("arc", {
+                            "center": [hx, hy],
+                            "radius": width,
+                            "start": start_ang,
+                            "end": end_ang,
+                        })
+                    else:
+                        hx, hy = p_left[0], p_left[1]
+                        leaf_dir = -1.0 if "outward" in swing_dir else 1.0
+                        leaf_end = [hx + width * leaf_dir * nx, hy + width * leaf_dir * ny]
+                        c.execute("line", {"points": [[hx, hy], leaf_end]})
+                        start_ang = base_angle if leaf_dir > 0 else base_angle - 90.0
+                        end_ang = base_angle + 90.0 if leaf_dir > 0 else base_angle
+                        c.execute("arc", {
+                            "center": [hx, hy],
+                            "radius": width,
+                            "start": start_ang,
+                            "end": end_ang,
+                        })
 
             elif op_type == "window":
                 c.execute("layer.current", {"name": "A-GLAZ"})
+                sub_type = str(op.get("sub_type", op.get("subtype", "standard"))).lower()
                 half_w = width / 2.0
                 p_left = [center[0] - half_w * ux, center[1] - half_w * uy]
                 p_right = [center[0] + half_w * ux, center[1] + half_w * uy]
-                # Centerline glass pane
-                c.execute("line", {"points": [p_left, p_right]})
+
+                if "sliding" in sub_type or "sliding" in str(op.get("swing", "")).lower() or "sliding" in op.get("id", "").lower():
+                    # Sliding window: dual offset glass panes
+                    off = 15.0
+                    p1_a = [center[0] - half_w * ux + off * nx, center[1] - half_w * uy + off * ny]
+                    p1_b = [center[0] + 50.0 * ux + off * nx, center[1] + 50.0 * uy + off * ny]
+                    p2_a = [center[0] - 50.0 * ux - off * nx, center[1] - 50.0 * uy - off * ny]
+                    p2_b = [center[0] + half_w * ux - off * nx, center[1] + half_w * uy - off * ny]
+                    c.execute("line", {"points": [p1_a, p1_b]})
+                    c.execute("line", {"points": [p2_a, p2_b]})
+                else:
+                    # Standard / Casement / Fixed window
+                    c.execute("line", {"points": [p_left, p_right]})
+
+    def _draw_sheet_annotations(self, c: CADCraftClient, model: Dict[str, Any], floor_id: Optional[str] = None):
+        """Draws professional drawing title header, scale annotation, and conditional north arrow."""
+        metadata = model.get("metadata", {})
+        envelope = model.get("envelope", {})
+        env_w = float(envelope.get("width", 8000.0))
+        env_d = float(envelope.get("depth", 8700.0))
+
+        c.execute("layer.current", {"name": "A-ANNO-TEXT"})
+
+        # 1. Sheet Header below floor plan (outside dimension margins)
+        proj_name = metadata.get("projectName", "Residential Floor Plan")
+        floor_name = "Ground Floor"
+        for fl in model.get("floors", []):
+            if fl.get("id") == floor_id:
+                floor_name = fl.get("name", floor_id)
+                break
+        scale_text = metadata.get("scale", "1:100")
+        units_text = metadata.get("units", "mm")
+
+        header_x = 0.0
+        header_y = -750.0
+
+        c.execute("text", {
+            "at": [header_x, header_y],
+            "text": proj_name.upper(),
+            "height": 180.0,
+            "justify": "BL",
+        })
+        c.execute("text", {
+            "at": [header_x, header_y - 240.0],
+            "text": f"LEVEL: {floor_name.upper()} | SCALE: {scale_text} | UNITS: {units_text}",
+            "height": 130.0,
+            "justify": "BL",
+        })
+
+        # 2. North Arrow: ONLY placed when orientation is explicitly provided!
+        north_angle = metadata.get("northAngle")
+        orientation = metadata.get("orientation")
+
+        if north_angle is not None or orientation is not None:
+            angle_deg = float(north_angle) if north_angle is not None else 0.0
+            if orientation == "NORTH":
+                angle_deg = 0.0
+            elif orientation == "EAST":
+                angle_deg = 90.0
+            elif orientation == "SOUTH":
+                angle_deg = 180.0
+            elif orientation == "WEST":
+                angle_deg = 270.0
+
+            arrow_x = env_w + 600.0
+            arrow_y = env_d + 400.0
+            radius = 200.0
+
+            c.execute("circle", {"center": [arrow_x, arrow_y], "radius": radius})
+
+            rad = math.radians(angle_deg + 90.0)
+            tip_x = arrow_x + radius * math.cos(rad)
+            tip_y = arrow_y + radius * math.sin(rad)
+            base_l_x = arrow_x + (radius * 0.4) * math.cos(rad + math.pi * 0.75)
+            base_l_y = arrow_y + (radius * 0.4) * math.sin(rad + math.pi * 0.75)
+            base_r_x = arrow_x + (radius * 0.4) * math.cos(rad - math.pi * 0.75)
+            base_r_y = arrow_y + (radius * 0.4) * math.sin(rad - math.pi * 0.75)
+
+            c.execute("line", {"points": [[base_l_x, base_l_y], [tip_x, tip_y]]})
+            c.execute("line", {"points": [[base_r_x, base_r_y], [tip_x, tip_y]]})
+            c.execute("line", {"points": [[base_l_x, base_l_y], [arrow_x, arrow_y]]})
+            c.execute("line", {"points": [[base_r_x, base_r_y], [arrow_x, arrow_y]]})
+
+            c.execute("text", {
+                "at": [tip_x + 60.0 * math.cos(rad), tip_y + 60.0 * math.sin(rad)],
+                "text": "N",
+                "height": 140.0,
+                "justify": "MC",
+            })
 
     def _insert_elements(self, c: CADCraftClient, model: Dict[str, Any], floor_id: Optional[str] = None):
         """Registers required CAD blocks and inserts instances."""
