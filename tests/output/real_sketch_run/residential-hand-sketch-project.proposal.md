@@ -1,6 +1,6 @@
 # Architectural Floor Plan Proposal: Residential Hand Sketch Project
 
-> **Model Revision:** `c3d86284cb2f` | **Status:** `AWAITING_APPROVAL` | **Source:** `sketch-before.jpg`
+> **Model Revision:** `f45202cb5182` | **Status:** `AWAITING_APPROVAL` | **Source:** `sketch-before.jpg`
 
 ## 1. Footprint & Envelope Summary
 
@@ -37,8 +37,8 @@
 
 ### How to Approve or Correct (Headless Protocol)
 
-To approve this proposal, execute the approval command with a human reviewer name:
+To approve this proposal, execute the approval command with a verified human reviewer name:
 ```json
-{"reviewer_name": "Jane Doe, Architect", "action": "approve", "details": {"notes": "Approved as drafted."}}
+{"reviewer_name": "Dr. Aris Thorne, Licensed Architect", "action": "approve", "details": {"notes": "Approved as drafted."}}
 ```
-*Note: AI agents cannot self-approve. CAD generation will halt until valid human approval is recorded.*
+*Notice: Reviewer identities are recorded as unverified assertions. AI agents are strictly prohibited from self-approving.*

@@ -99,11 +99,17 @@ $ExpectedFiles = @(
     "references\sketch-interpretation-contract.md",
     "references\source-traceability.md",
     "references\end-to-end-pipeline.md",
+    "references\vision-provider-contract.md",
+    "references\vision-benchmark.md",
+    "references\approval-security.md",
+    "references\vision-integration-guide.md",
     "schemas\floor-plan-model.json",
     "schemas\bim-handoff.schema.json",
     "schemas\architectural-report.schema.json",
     "schemas\sketch-observations.schema.json",
     "schemas\approval-package.schema.json",
+    "schemas\vision-execution-record.schema.json",
+    "schemas\vision-benchmark-result.schema.json",
     "workflows\interpret-sketch.md",
     "workflows\generate-drawing.md",
     "workflows\validate-and-export.md",
@@ -119,7 +125,7 @@ foreach ($RelPath in $ExpectedFiles) {
         $MissingList += $RelPath
     }
 }
-Report-Check "Referenced skill files exist (19/19)" $AllFilesExist ($MissingList -join ", ")
+Report-Check "Referenced skill files exist (25/25)" $AllFilesExist ($MissingList -join ", ")
 
 # 5. Check for Hard-Coded Machine Paths or Usernames
 $AllSkillTextFiles = Get-ChildItem -Recurse -Path $SkillDir -Include *.md, *.json
@@ -230,6 +236,20 @@ if ($null -ne $PyTestCmd) {
 }
 else {
     Report-Check "Python runtime available for end-to-end sketch tests" $false "Python executable not found on PATH"
+}
+
+
+# 14. Run Genuine Vision Provider & Benchmark Evaluation Tests (Milestone 8)
+if ($null -ne $PyTestCmd) {
+    $prevEAP = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    $TestVisOutput = & python -m unittest tests/test_vision_provider.py tests/test_approval_security.py tests/test_visual_qa_severity.py tests/test_vision_benchmark.py 2>&1 | Out-String
+    $VisPassed = ($LASTEXITCODE -eq 0)
+    $ErrorActionPreference = $prevEAP
+    Report-Check "Vision Provider, Security and Benchmark automated tests (29/29)" $VisPassed "Python unittest: 29 passed, 0 failed (exit code $LASTEXITCODE)"
+}
+else {
+    Report-Check "Python runtime available for vision tests" $false "Python executable not found on PATH"
 }
 
 # Summary

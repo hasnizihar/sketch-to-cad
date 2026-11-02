@@ -1491,7 +1491,7 @@ Straight flight with 10 treads (270mm run) and walking line
   0
 LWPOLYLINE
   5
-153
+14B
 330
 1172
 100
@@ -1523,6 +1523,198 @@ AcDbPolyline
   0
 LINE
   5
+14C
+330
+1172
+100
+AcDbEntity
+  8
+A-STAIR
+100
+AcDbLine
+ 10
+0.0
+ 20
+270.0
+ 30
+0.0
+ 11
+1000.0
+ 21
+270.0
+ 31
+0.0
+  0
+LINE
+  5
+14D
+330
+1172
+100
+AcDbEntity
+  8
+A-STAIR
+100
+AcDbLine
+ 10
+0.0
+ 20
+540.0
+ 30
+0.0
+ 11
+1000.0
+ 21
+540.0
+ 31
+0.0
+  0
+LINE
+  5
+14E
+330
+1172
+100
+AcDbEntity
+  8
+A-STAIR
+100
+AcDbLine
+ 10
+0.0
+ 20
+810.0
+ 30
+0.0
+ 11
+1000.0
+ 21
+810.0
+ 31
+0.0
+  0
+LINE
+  5
+14F
+330
+1172
+100
+AcDbEntity
+  8
+A-STAIR
+100
+AcDbLine
+ 10
+0.0
+ 20
+1080.0
+ 30
+0.0
+ 11
+1000.0
+ 21
+1080.0
+ 31
+0.0
+  0
+LINE
+  5
+150
+330
+1172
+100
+AcDbEntity
+  8
+A-STAIR
+100
+AcDbLine
+ 10
+0.0
+ 20
+1350.0
+ 30
+0.0
+ 11
+1000.0
+ 21
+1350.0
+ 31
+0.0
+  0
+LINE
+  5
+151
+330
+1172
+100
+AcDbEntity
+  8
+A-STAIR
+100
+AcDbLine
+ 10
+0.0
+ 20
+1620.0
+ 30
+0.0
+ 11
+1000.0
+ 21
+1620.0
+ 31
+0.0
+  0
+LINE
+  5
+152
+330
+1172
+100
+AcDbEntity
+  8
+A-STAIR
+100
+AcDbLine
+ 10
+0.0
+ 20
+1890.0
+ 30
+0.0
+ 11
+1000.0
+ 21
+1890.0
+ 31
+0.0
+  0
+LINE
+  5
+153
+330
+1172
+100
+AcDbEntity
+  8
+A-STAIR
+100
+AcDbLine
+ 10
+0.0
+ 20
+2160.0
+ 30
+0.0
+ 11
+1000.0
+ 21
+2160.0
+ 31
+0.0
+  0
+LINE
+  5
 154
 330
 1172
@@ -1535,211 +1727,19 @@ AcDbLine
  10
 0.0
  20
-270.0
+2430.0
  30
 0.0
  11
 1000.0
  21
-270.0
+2430.0
  31
 0.0
   0
 LINE
   5
 155
-330
-1172
-100
-AcDbEntity
-  8
-A-STAIR
-100
-AcDbLine
- 10
-0.0
- 20
-540.0
- 30
-0.0
- 11
-1000.0
- 21
-540.0
- 31
-0.0
-  0
-LINE
-  5
-156
-330
-1172
-100
-AcDbEntity
-  8
-A-STAIR
-100
-AcDbLine
- 10
-0.0
- 20
-810.0
- 30
-0.0
- 11
-1000.0
- 21
-810.0
- 31
-0.0
-  0
-LINE
-  5
-157
-330
-1172
-100
-AcDbEntity
-  8
-A-STAIR
-100
-AcDbLine
- 10
-0.0
- 20
-1080.0
- 30
-0.0
- 11
-1000.0
- 21
-1080.0
- 31
-0.0
-  0
-LINE
-  5
-158
-330
-1172
-100
-AcDbEntity
-  8
-A-STAIR
-100
-AcDbLine
- 10
-0.0
- 20
-1350.0
- 30
-0.0
- 11
-1000.0
- 21
-1350.0
- 31
-0.0
-  0
-LINE
-  5
-159
-330
-1172
-100
-AcDbEntity
-  8
-A-STAIR
-100
-AcDbLine
- 10
-0.0
- 20
-1620.0
- 30
-0.0
- 11
-1000.0
- 21
-1620.0
- 31
-0.0
-  0
-LINE
-  5
-15A
-330
-1172
-100
-AcDbEntity
-  8
-A-STAIR
-100
-AcDbLine
- 10
-0.0
- 20
-1890.0
- 30
-0.0
- 11
-1000.0
- 21
-1890.0
- 31
-0.0
-  0
-LINE
-  5
-15B
-330
-1172
-100
-AcDbEntity
-  8
-A-STAIR
-100
-AcDbLine
- 10
-0.0
- 20
-2160.0
- 30
-0.0
- 11
-1000.0
- 21
-2160.0
- 31
-0.0
-  0
-LINE
-  5
-15C
-330
-1172
-100
-AcDbEntity
-  8
-A-STAIR
-100
-AcDbLine
- 10
-0.0
- 20
-2430.0
- 30
-0.0
- 11
-1000.0
- 21
-2430.0
- 31
-0.0
-  0
-LINE
-  5
-15D
 330
 1172
 100
@@ -1763,7 +1763,7 @@ AcDbLine
   0
 LINE
   5
-15E
+156
 330
 1172
 100
@@ -1787,7 +1787,7 @@ AcDbLine
   0
 LINE
   5
-15F
+157
 330
 1172
 100
@@ -1851,7 +1851,7 @@ Double-basin kitchen sink 800x500mm with mixer faucet
   0
 LWPOLYLINE
   5
-142
+15C
 330
 1173
 100
@@ -1883,7 +1883,7 @@ AcDbPolyline
   0
 LWPOLYLINE
   5
-143
+15D
 330
 1173
 100
@@ -1915,7 +1915,7 @@ AcDbPolyline
   0
 LWPOLYLINE
   5
-144
+15E
 330
 1173
 100
@@ -1947,7 +1947,7 @@ AcDbPolyline
   0
 CIRCLE
   5
-145
+15F
 330
 1173
 100
@@ -2007,7 +2007,7 @@ Dining table 1500x900mm with 4 chair footprints
   0
 LWPOLYLINE
   5
-127
+139
 330
 1174
 100
@@ -2039,7 +2039,7 @@ AcDbPolyline
   0
 LWPOLYLINE
   5
-128
+13A
 330
 1174
 100
@@ -2071,7 +2071,7 @@ AcDbPolyline
   0
 LWPOLYLINE
   5
-129
+13B
 330
 1174
 100
@@ -2103,7 +2103,7 @@ AcDbPolyline
   0
 LWPOLYLINE
   5
-12A
+13C
 330
 1174
 100
@@ -2135,7 +2135,7 @@ AcDbPolyline
   0
 LWPOLYLINE
   5
-12B
+13D
 330
 1174
 100
@@ -2207,7 +2207,7 @@ Three-seater sofa 2100x850mm with backrest and three cushions
   0
 LWPOLYLINE
   5
-138
+128
 330
 1175
 100
@@ -2239,7 +2239,7 @@ AcDbPolyline
   0
 LINE
   5
-139
+129
 330
 1175
 100
@@ -2263,7 +2263,7 @@ AcDbLine
   0
 LINE
   5
-13A
+12A
 330
 1175
 100
@@ -2287,7 +2287,7 @@ AcDbLine
   0
 LINE
   5
-13B
+12B
 330
 1175
 100
@@ -2311,7 +2311,7 @@ AcDbLine
   0
 LINE
   5
-13C
+12C
 330
 1175
 100
@@ -2335,7 +2335,7 @@ AcDbLine
   0
 LINE
   5
-13D
+12D
 330
 1175
 100
@@ -2399,7 +2399,7 @@ Square reinforced concrete column 200x200mm
   0
 LWPOLYLINE
   5
-12F
+131
 330
 1176
 100
@@ -2431,7 +2431,7 @@ AcDbPolyline
   0
 LINE
   5
-130
+132
 330
 1176
 100
@@ -2455,7 +2455,7 @@ AcDbLine
   0
 LINE
   5
-131
+133
 330
 1176
 100

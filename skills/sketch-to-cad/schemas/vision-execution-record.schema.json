@@ -1,0 +1,115 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "VisionExecutionRecord",
+  "description": "Structured execution record for multimodal vision model interpretations in Sketch-to-CAD, providing provenance and auditability.",
+  "type": "object",
+  "required": [
+    "record_id",
+    "execution_type",
+    "provider_name",
+    "model_identifier",
+    "source_image",
+    "timestamp",
+    "prompt_version",
+    "status",
+    "validation_result",
+    "processing_duration_ms"
+  ],
+  "properties": {
+    "record_id": {
+      "type": "string",
+      "description": "Unique identifier for this vision execution run."
+    },
+    "execution_type": {
+      "type": "string",
+      "enum": ["real_api", "agent_native", "mocked", "manual_override", "deterministic_heuristic"],
+      "description": "Classification of the vision execution path to prevent claiming mocked runs as real vision integration."
+    },
+    "provider_name": {
+      "type": "string",
+      "description": "Name of the vision provider (e.g., google_gemini, openai, antigravity_agent, mock_provider)."
+    },
+    "model_identifier": {
+      "type": "string",
+      "description": "Exact multimodal model identifier (e.g., gemini-2.5-flash, gemini-1.5-pro, gpt-4o, mock-v1)."
+    },
+    "provider_config_version": {
+      "type": "string"
+    },
+    "source_image": {
+      "type": "object",
+      "required": ["file_name", "sha256", "dimensions_pixels"],
+      "properties": {
+        "file_name": { "type": "string" },
+        "page_number": { "type": "integer", "minimum": 1 },
+        "total_pages": { "type": "integer", "minimum": 1 },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "dimensions_pixels": {
+          "type": "object",
+          "required": ["width", "height"],
+          "properties": {
+            "width": { "type": "integer", "minimum": 1 },
+            "height": { "type": "integer", "minimum": 1 }
+          }
+        },
+        "dpi": { "type": "number", "minimum": 1.0 }
+      }
+    },
+    "timestamp": {
+      "type": "string",
+      "description": "ISO 8601 UTC timestamp of the request."
+    },
+    "prompt_version": {
+      "type": "string",
+      "description": "Version identifier of the architectural prompt template."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["success", "schema_validation_failed", "api_error", "timeout", "rate_limited", "invalid_response"]
+    },
+    "raw_response_path": {
+      "type": ["string", "null"],
+      "description": "Path to the securely stored raw model response text or JSON, without credentials."
+    },
+    "parsed_observation_path": {
+      "type": ["string", "null"],
+      "description": "Path to the parsed structured observations JSON file."
+    },
+    "validation_result": {
+      "type": "object",
+      "required": ["is_valid", "error_count"],
+      "properties": {
+        "is_valid": { "type": "boolean" },
+        "error_count": { "type": "integer", "minimum": 0 },
+        "errors": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "processing_duration_ms": {
+      "type": "number",
+      "minimum": 0.0,
+      "description": "Total round-trip duration in milliseconds."
+    },
+    "token_usage": {
+      "type": ["object", "null"],
+      "properties": {
+        "prompt_tokens": { "type": "integer" },
+        "completion_tokens": { "type": "integer" },
+        "total_tokens": { "type": "integer" }
+      }
+    },
+    "error_details": {
+      "type": ["object", "null"],
+      "properties": {
+        "error_code": { "type": "string" },
+        "error_message": { "type": "string" },
+        "http_status": { "type": ["integer", "null"] }
+      }
+    }
+  }
+}

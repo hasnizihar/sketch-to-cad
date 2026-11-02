@@ -88,6 +88,44 @@ This directory contains test specifications, reference fixtures, and validation 
    - Source-to-CAD feature-level visual quality assurance (`perform_visual_qa`).
    - Complete end-to-end fixture execution from sketch image to approved deliverables.
 
+8. **Vision Provider Interface Test Suite (Milestone 8)**:
+   ```powershell
+   python -m unittest tests/test_vision_provider.py
+   ```
+   Validates base provider abstract interface, Google Gemini 2.5 Flash formatting, OpenAI GPT-4o vision requests, Antigravity Agent native vision, deterministic mock provider, simulated network failure modes (timeout, rate limit HTTP 429, malformed JSON), schema validation error reporting, source image SHA-256 fingerprinting, duration tracking, and secret masking (`mask_secret`).
+
+9. **Human Approval Security Test Suite (Milestone 8)**:
+   ```powershell
+   python -m unittest tests/test_approval_security.py
+   ```
+   Validates token-based rejection of AI agent self-approvals, rejection of placeholder/demonstration identities (`Jane Doe`, `John Doe`, `Test Reviewer`) in strict production mode, allowance of genuine professional credentials (e.g. `AIA` registration numbers), plain-text `identity_assertion` audit logging with explicit security advisories, and SHA-256 geometry hash invalidation upon model alterations.
+
+10. **Visual QA Severity & Out-of-Scale Reasoning Test Suite (Milestone 8)**:
+    ```powershell
+    python -m unittest tests/test_visual_qa_severity.py
+    ```
+    Validates 4-tier architectural severity model (`blocking_discrepancy`, `major_discrepancy`, `warning`, `informational`), explicit architectural reasoning for out-of-scale hand sketches (e.g., 1.41 image aspect ratio vs 0.92 explicit CAD ratio), duplicate entity detection across walls, openings, and rooms, and non-destructive reporting policies.
+
+11. **Vision Benchmark Suite & Evaluation Engine (Milestone 8)**:
+    ```powershell
+    python -m unittest tests/test_vision_benchmark.py
+    ```
+    Validates architectural benchmark manifest evaluation across all 5 standard test cases (Cases A–E), normalized bounding box IoU calculation, precision and recall for walls/openings/rooms, dimension extraction accuracy within 50mm tolerance, contradiction detection rate, Markdown/JSON report export, and Draft-07 schema compliance of `vision-benchmark-result.schema.json`.
+
+---
+
+### Overall Test Suite Execution
+
+Run all 120 automated tests:
+```powershell
+python -m unittest discover tests
+```
+
+Run skill integrity validation (14 automated checks):
+```powershell
+.\scripts\validate-skill.ps1
+```
+
 ### Sketch Fixtures (Milestone 7)
 
 Located in `tests/fixtures/sketches/`:

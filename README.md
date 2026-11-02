@@ -81,7 +81,12 @@ Sketch-to-CAD is an **AI agent skill and workflow**, not a standalone desktop ap
 - **Floor Finishes & Tile Hatches**: Generates boundary perimeters and tile grid patterns (`ANSI37`/`NET`) on `A-FLOR-FIN` for bathrooms and wet areas.
 - **Clean Segmented Openings**: Cuts walls at door/window jambs and seals double-wall cavities with transverse end-caps.
 - **Architectural Dimension Scaling**: Applies scaled styles with rotated vertical chains for clear readability at standard zoom levels.
-- **Multi-Format Export**: Delivers editable `.dxf`, visual `.png` preview, structured `.json` data model, and an acceptance report.
+- **Pluggable Multimodal Vision Providers**: Verifiable interface supporting Gemini 2.5 Flash, GPT-4o, Antigravity Agent native vision, and deterministic mock providers with credential masking and zero secret leakage.
+- **Vision Execution Audit Records**: Logs `<project>.vision-execution.json` with source image SHA-256 fingerprint, model identifiers, duration, and schema validation.
+- **Strengthened Approval Security**: Rejects AI self-approvals, blocks placeholder identities in production, and provides plain-text assertion security notes.
+- **4-Tier Visual QA Severity**: Classifies discrepancies into `blocking_discrepancy`, `major_discrepancy`, `warning`, and `informational` with explicit architectural reasoning for out-of-scale hand sketches.
+- **Architectural Benchmark Suite**: Evaluates model performance across 5 canonical cases measuring IoU, precision/recall, 50mm dimension fidelity, and contradiction detection.
+- **Multi-Format Export**: Delivers editable `.dxf`, companion `.handoff.json`, `.report.json`/`.md`/`.pdf`, `.vision-execution.json`, `.visual-qa.json`/`.md`, and visual `.png` preview.
 
 *Scope: Version 0.1.0 targets single-storey orthogonal residential floor plans.*
 
@@ -171,6 +176,7 @@ Each completed workflow produces six coordinated artifacts:
 | **BIM Handoff Contract** | `.handoff.json` | Structured companion metadata adhering to [`bim-handoff.schema.json`](skills/sketch-to-cad/schemas/bim-handoff.schema.json) for 3D reconstruction in `dxf-to-3d-bim`. |
 | **Architectural Reports & Schedules** | `.report.json`, `.report.md`, `.report.pdf` | Verified room areas (Shoelace), door/window schedules, element inventory, finish schedules, and uncertainty audit adhering to [`architectural-report.schema.json`](skills/sketch-to-cad/schemas/architectural-report.schema.json). |
 | **Visual Preview** | `.png` | High-resolution raster preview for instant visual verification without CAD software. |
+| **Vision Execution Record** | `.vision-execution.json` | Auditable vision run log capturing model ID, source SHA-256 fingerprint, duration, and schema validation adhering to [`vision-execution-record.schema.json`](skills/sketch-to-cad/schemas/vision-execution-record.schema.json). |
 | **Floor Plan Model** | `.json` | Intermediate coordinate data model conforming to [`schemas/floor-plan-model.json`](skills/sketch-to-cad/schemas/floor-plan-model.json). |
 | **Acceptance Report** | `.md` | Itemized audit report with PASSED, FAILED, and UNVERIFIED compliance notices. |
 
@@ -219,6 +225,9 @@ sketch-to-cad/
 ├── scripts/
 │   ├── install.ps1                    # PowerShell installer with -DryRun support
 │   ├── validate-skill.ps1             # Automated schema, links, & safety validator
+│   ├── vision_config.py               # Vision provider configuration and secret masking
+│   ├── vision_provider.py             # Multimodal vision provider interface (Gemini, GPT-4o, Agent, Mock)
+│   ├── evaluate_vision.py             # Benchmark evaluation engine (IoU, precision, recall, dimensions)
 │   ├── sketch_interpreter.py          # Multimodal ingestion, observation extraction & geometry reconstruction
 │   ├── approval_package.py            # Revision-aware human review proposal packaging & approval gate
 │   ├── visual_qa.py                   # Feature-level source-to-CAD visual QA discrepancy reporter
@@ -234,7 +243,7 @@ sketch-to-cad/
 │       ├── workflows/                 # Stage-by-stage drafting, reporting & validation guides
 │       └── examples/                  # Reference projects and fixtures
 └── tests/
-    ├── README.md                      # Test suite documentation (91 tests, 13 checks)
+    ├── README.md                      # Test suite documentation (120 tests, 14 checks)
     ├── fixtures/                      # Validated floor-plan models and handoff JSON
     └── output/                        # DXF, PNG, handoff JSON, and report deliverables
 ```

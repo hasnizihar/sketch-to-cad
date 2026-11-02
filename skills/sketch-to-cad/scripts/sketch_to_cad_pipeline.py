@@ -3,7 +3,8 @@ End-to-End Sketch-to-CAD Pipeline Orchestrator.
 
 Orchestrates the entire workflow from hand-drawn floor-plan sketch (JPG, PNG, PDF)
 to editable 2D CADCraft DXF, BIM handoff JSON, architectural PDF/Markdown reports,
-and source-to-CAD visual QA discrepancy reporting, strictly enforcing the human approval gate.
+vision execution records, and source-to-CAD visual QA discrepancy reporting,
+strictly enforcing the human approval gate.
 """
 
 from __future__ import annotations
@@ -23,6 +24,7 @@ from scripts.approval_package import (
     create_approval_package,
     apply_review_decision,
     generate_proposal_markdown,
+    verify_approval_integrity,
 )
 from scripts.drawing_generator import DrawingGenerator, compile_bim_handoff
 from scripts.architectural_reports import (
@@ -31,12 +33,24 @@ from scripts.architectural_reports import (
     render_pdf_report,
 )
 from scripts.visual_qa import perform_visual_qa, generate_visual_qa_markdown
+from scripts.vision_config import VisionConfig, resolve_vision_config
+from scripts.vision_provider import (
+    BaseVisionProvider,
+    VisionResult,
+    create_vision_provider,
+    save_vision_execution_record,
+)
 
 
 class SketchToCADPipeline:
-    """End-to-End Orchestrator for Sketch-to-CAD conversion."""
+    """End-to-End Orchestrator for Sketch-to-CAD conversion with multimodal vision integration."""
 
-    def __init__(self, cadcraft_cli: Optional[str] = None):
+    def __init__(
+        self,
+        cadcraft_cli: Optional[str] = None,
+        vision_provider: Optional[BaseVisionProvider] = None,
+        vision_config: Optional[VisionConfig] = None,
+    ):
         self.cadcraft_cli = cadcraft_cli
         if cadcraft_cli:
             from scripts.drawing_generator import CADCraftClient
@@ -45,6 +59,12 @@ class SketchToCADPipeline:
         else:
             self.generator = DrawingGenerator()
 
+        if vision_provider is not None:
+            self.vision_provider = vision_provider
+        else:
+            cfg = vision_config or resolve_vision_config()
+            self.vision_provider = create_vision_provider(cfg)
+
     def run_pipeline(
         self,
         source_sketch_path: str,
@@ -52,6 +72,7 @@ class SketchToCADPipeline:
         approval_decision: Optional[Dict[str, Any]] = None,
         observations_override: Optional[Dict[str, Any]] = None,
         project_name: str = "Residential Floor Plan",
+        allow_demo_identities: bool = True,
     ) -> Dict[str, Any]:
         """
         Execute the complete Sketch-to-CAD pipeline.
@@ -66,86 +87,63 @@ class SketchToCADPipeline:
         # Step 1: Input Sketch Inspection & Metadata
         source_meta = load_sketch_input(source_sketch_path)
 
-        # Step 2: Extract & Validate Structured Observations
+        # Step 2: Multimodal Vision Interpretation / Observation Extraction
+        vision_rec_path = out_p / f"{slug}.vision-execution.json"
+
         if observations_override is not None:
             observations = observations_override
-        else:
-            # Synthetic/heuristic extraction fallback when no vision payload provided
-            observations = {
-                "source_metadata": source_meta,
-                "status": "extracted",
-                "confidence_summary": {
-                    "overall_confidence": 0.92,
-                    "dimension_reliability": "high",
-                    "notes": "Extracted via SketchToCAD vision pipeline",
+            vision_result = VisionResult(
+                status="success",
+                execution_record={
+                    "record_id": f"VR-OVERRIDE-{slug}",
+                    "execution_type": "manual_override",
+                    "provider_name": "manual_override",
+                    "model_identifier": "manual_ground_truth",
+                    "provider_config_version": "1.0.0",
+                    "source_image": {
+                        "file_name": source_meta["source_file"],
+                        "page_number": source_meta.get("page_number", 1),
+                        "total_pages": source_meta.get("total_pages", 1),
+                        "sha256": "0" * 64,
+                        "dimensions_pixels": source_meta["dimensions_pixels"],
+                        "dpi": source_meta.get("dpi", 72.0),
+                    },
+                    "timestamp": source_meta.get("timestamp", "2026-11-02T00:00:00Z"),
+                    "prompt_version": "manual-override-v1",
+                    "status": "success",
+                    "raw_response_path": None,
+                    "parsed_observation_path": None,
+                    "validation_result": {"is_valid": True, "error_count": 0, "errors": []},
+                    "processing_duration_ms": 0.0,
+                    "token_usage": None,
+                    "error_details": None,
                 },
-                "walls": [
-                    {
-                        "id": "W-EXT-NORTH",
-                        "wall_type": "exterior",
-                        "thickness_mm": 200.0,
-                        "thickness_category": "explicit",
-                        "confidence": 0.95,
-                        "provenance": "source_sketch",
-                        "source_bbox": [0.05, 0.05, 0.07, 0.95],
-                    },
-                    {
-                        "id": "W-EXT-SOUTH",
-                        "wall_type": "exterior",
-                        "thickness_mm": 200.0,
-                        "thickness_category": "explicit",
-                        "confidence": 0.95,
-                        "provenance": "source_sketch",
-                        "source_bbox": [0.93, 0.05, 0.95, 0.95],
-                    },
-                ],
-                "openings": [
-                    {
-                        "id": "D-01",
-                        "type": "door",
-                        "width_mm": 900.0,
-                        "width_category": "explicit",
-                        "host_wall_ref": "W-EXT-SOUTH",
-                        "swing_direction": "inward_right",
-                        "confidence": 0.92,
-                        "provenance": "source_sketch",
-                        "source_bbox": [0.92, 0.45, 0.96, 0.55],
-                    }
-                ],
-                "rooms": [
-                    {
-                        "id": "R-01",
-                        "raw_label": "LIVING / DINING",
-                        "standardized_type": "LIVING",
-                        "floor_level": "ground",
-                        "approx_width_mm": 6000.0,
-                        "approx_depth_mm": 5000.0,
-                        "dimension_provenance": "explicit",
-                        "confidence": 0.94,
-                        "source_bbox": [0.1, 0.1, 0.9, 0.9],
-                    }
-                ],
-                "dimensions": [
-                    {
-                        "id": "DIM-1",
-                        "source_text": "6000",
-                        "value_mm": 6000.0,
-                        "category": "explicit",
-                        "target_entity_type": "overall_width",
-                        "source_bbox": [0.02, 0.1, 0.05, 0.9],
-                    },
-                    {
-                        "id": "DIM-2",
-                        "source_text": "5000",
-                        "value_mm": 5000.0,
-                        "category": "explicit",
-                        "target_entity_type": "overall_depth",
-                        "source_bbox": [0.1, 0.01, 0.9, 0.04],
-                    },
-                ],
-                "uncertainties": [],
-            }
+                observations=observations,
+            )
+        else:
+            # Execute actual vision provider
+            vision_result = self.vision_provider.interpret_sketch(
+                source_path=source_sketch_path,
+                page_number=source_meta.get("page_number", 1),
+                source_metadata=source_meta,
+            )
+            if vision_result.status != "success" or vision_result.observations is None:
+                # Save execution record for debugging and audit
+                save_vision_execution_record(vision_result.execution_record, str(vision_rec_path))
+                return {
+                    "status": "vision_extraction_failed",
+                    "vision_status": vision_result.status,
+                    "error_message": vision_result.error_message,
+                    "vision_execution_path": str(vision_rec_path),
+                    "execution_record": vision_result.execution_record,
+                    "message": f"Multimodal vision extraction failed with status '{vision_result.status}': {vision_result.error_message}",
+                }
+            observations = vision_result.observations
 
+        # Save structured vision execution record
+        save_vision_execution_record(vision_result.execution_record, str(vision_rec_path))
+
+        # Validate structured observations against schema
         is_valid_obs, obs_errors = validate_observations(observations)
         if not is_valid_obs:
             raise ValueError(f"Observations schema validation failed: {obs_errors}")
@@ -173,6 +171,7 @@ class SketchToCADPipeline:
                 "status": "awaiting_approval",
                 "package_path": str(package_path),
                 "proposal_path": str(proposal_path),
+                "vision_execution_path": str(vision_rec_path),
                 "revision_hash": package["revision_hash"],
                 "draft_model": draft_model,
                 "approval_package": package,
@@ -183,7 +182,12 @@ class SketchToCADPipeline:
             }
 
         # Apply approval decision
-        package, approved_model = apply_review_decision(package, draft_model, approval_decision)
+        package, approved_model = apply_review_decision(
+            package,
+            draft_model,
+            approval_decision,
+            allow_demo_identities=allow_demo_identities,
+        )
 
         # Re-save updated package with approval metadata
         with open(package_path, "w", encoding="utf-8") as f:
@@ -194,6 +198,7 @@ class SketchToCADPipeline:
                 "status": approved_model.get("status", "rejected"),
                 "package_path": str(package_path),
                 "proposal_path": str(proposal_path),
+                "vision_execution_path": str(vision_rec_path),
                 "message": f"Proposal review concluded with status '{approved_model.get('status')}'. CAD generation halted.",
             }
 
@@ -252,6 +257,7 @@ class SketchToCADPipeline:
             "report_md_path": f"{report_base}.report.md",
             "approval_package_path": str(package_path),
             "proposal_md_path": str(proposal_path),
+            "vision_execution_path": str(vision_rec_path),
             "visual_qa_json_path": str(qa_json_path),
             "visual_qa_md_path": str(qa_md_path),
             "visual_qa_status": qa_report["overall_status"],

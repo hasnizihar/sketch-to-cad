@@ -244,7 +244,7 @@
       "id": "R-LIVING",
       "name": "LIVING / DINING",
       "floorId": "LEVEL-01",
-      "approximateArea": 21.6,
+      "approximateArea": 34.8,
       "areaMethod": "enclosed_bounding_box",
       "labelPosition": [
         4000.0,
@@ -255,7 +255,7 @@
       "id": "R-KITCHEN",
       "name": "KITCHEN",
       "floorId": "LEVEL-01",
-      "approximateArea": 9.0,
+      "approximateArea": 17.4,
       "areaMethod": "enclosed_bounding_box",
       "labelPosition": [
         4000.0,
@@ -266,7 +266,7 @@
       "id": "R-BEDROOM-1",
       "name": "BEDROOM 1",
       "floorId": "LEVEL-01",
-      "approximateArea": 14.44,
+      "approximateArea": 17.4,
       "areaMethod": "enclosed_bounding_box",
       "labelPosition": [
         4000.0,
@@ -278,9 +278,9 @@
   "finishes": [],
   "uncertainties": [
     {
-      "id": "unc-mid-partition",
-      "target": "walls.W-INTR-MID.thickness",
-      "description": "Interior partition thickness not explicitly annotated; 150mm proposed.",
+      "id": "UNC-01",
+      "target": "dimensions.scale",
+      "description": "Hand sketch image aspect ratio (1.41) deviates from explicit annotated dimensions (8000x8700 mm, ratio 0.92). Explicit dimensions govern CAD reconstruction.",
       "assumedValue": null,
       "confidence": "medium",
       "status": "unresolved"

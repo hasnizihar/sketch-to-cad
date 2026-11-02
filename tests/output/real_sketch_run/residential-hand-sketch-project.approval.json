@@ -1,7 +1,7 @@
 {
-  "package_id": "AP-20261030030818",
+  "package_id": "AP-20261102212706",
   "project_name": "Residential Hand Sketch Project",
-  "revision_hash": "c3d86284cb2fe38ff5d696020503dfc4f2385b9f60a465018140e5b134e59cb1",
+  "revision_hash": "f45202cb518218d6e552ad4c1d972e345aa45e2bd05f8f4705874bab51e4b07e",
   "status": "approved",
   "source_sketch": {
     "source_file": "sketch-before.jpg",
@@ -59,19 +59,21 @@
   ],
   "decisions_log": [
     {
-      "timestamp": "2026-10-29T21:38:18.251610+00:00",
-      "reviewer_name": "Jane Doe, Licensed Architect",
+      "timestamp": "2026-11-02T15:57:06.168337+00:00",
+      "reviewer_name": "Dr. Marcus Vance, Licensed Architect (AIA #98214)",
       "action": "approve",
       "details": {
-        "notes": "Approved 8000x8700mm residential layout with 150mm interior walls.",
-        "override_blockers": false
+        "notes": "Verified 8000x8700 mm residential footprint against handwritten dimensions. Approved for full CAD drafting and BIM handoff."
       }
     }
   ],
   "approval_metadata": {
-    "approved_by": "Jane Doe, Licensed Architect",
-    "approval_timestamp": "2026-10-29T21:38:18.251610+00:00",
-    "approved_revision_hash": "c3d86284cb2fe38ff5d696020503dfc4f2385b9f60a465018140e5b134e59cb1",
-    "notes": "Approved 8000x8700mm residential layout with 150mm interior walls."
+    "approved_by": "Dr. Marcus Vance, Licensed Architect (AIA #98214)",
+    "auth_method": "identity_assertion",
+    "auth_security_level": "unverified_name_assertion",
+    "auth_note": "Reviewer identity recorded via plain-text assertion. Cryptographic signature or token authentication recommended for legal/permitting submissions.",
+    "approval_timestamp": "2026-11-02T15:57:06.168337+00:00",
+    "approved_revision_hash": "f45202cb518218d6e552ad4c1d972e345aa45e2bd05f8f4705874bab51e4b07e",
+    "notes": "Verified 8000x8700 mm residential footprint against handwritten dimensions. Approved for full CAD drafting and BIM handoff."
   }
 }

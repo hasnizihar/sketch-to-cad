@@ -2,8 +2,8 @@
 Approval Package and Human Review Gate for Sketch-to-CAD.
 
 Creates structured human review packages and enforces revision-aware approval
-governance without requiring a graphical user interface. AI agents are strictly
-prohibited from self-approving their own proposals.
+governance without requiring a graphical user interface. AI agents and demo identities
+are strictly prohibited from approving proposals in production mode.
 """
 
 from __future__ import annotations
@@ -12,6 +12,7 @@ import datetime
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Union
 
@@ -26,7 +27,7 @@ SCHEMA_DIR = Path(__file__).resolve().parent.parent / "skills" / "sketch-to-cad"
 APPROVAL_SCHEMA_PATH = SCHEMA_DIR / "approval-package.schema.json"
 
 
-# Disallowed self-approval identities
+# Disallowed self-approval identities (AI agents, assistants, automated processes)
 DISALLOWED_AGENT_IDENTITIES = {
     "agent",
     "antigravity",
@@ -39,6 +40,24 @@ DISALLOWED_AGENT_IDENTITIES = {
     "self",
     "automated",
     "sketch-to-cad",
+}
+
+# Placeholder / demo identities that must NOT be accepted in production without explicit test mode
+DISALLOWED_PLACEHOLDER_IDENTITIES = {
+    "janedoe",
+    "johndoe",
+    "jane",
+    "john",
+    "demo",
+    "placeholder",
+    "sampleuser",
+    "sample",
+    "example",
+    "testuser",
+    "test",
+    "architectname",
+    "reviewername",
+    "anonymous",
 }
 
 
@@ -171,11 +190,11 @@ def generate_proposal_markdown(package: Dict[str, Any]) -> str:
         "",
         "### How to Approve or Correct (Headless Protocol)",
         "",
-        "To approve this proposal, execute the approval command with a human reviewer name:",
+        "To approve this proposal, execute the approval command with a verified human reviewer name:",
         "```json",
-        "{\"reviewer_name\": \"Jane Doe, Architect\", \"action\": \"approve\", \"details\": {\"notes\": \"Approved as drafted.\"}}",
+        "{\"reviewer_name\": \"Dr. Aris Thorne, Licensed Architect\", \"action\": \"approve\", \"details\": {\"notes\": \"Approved as drafted.\"}}",
         "```",
-        "*Note: AI agents cannot self-approve. CAD generation will halt until valid human approval is recorded.*",
+        "*Notice: Reviewer identities are recorded as unverified assertions. AI agents are strictly prohibited from self-approving.*",
     ])
 
     return "\n".join(lines)
@@ -188,7 +207,6 @@ def create_approval_package(
 ) -> Dict[str, Any]:
     """
     Construct a structured approval package and Markdown proposal for human review.
-    
     Calculates the exact SHA-256 geometry hash.
     Validates output against approval-package.schema.json.
     """
@@ -325,14 +343,16 @@ def apply_review_decision(
     approval_package: Dict[str, Any],
     draft_model: Dict[str, Any],
     decision: Dict[str, Any],
+    allow_demo_identities: bool = True,
 ) -> Tuple[Dict[str, Any], Dict[str, Any]]:
     """
     Apply a human review decision to an approval package and draft model.
     
     Enforces:
     1. AI agents cannot self-approve.
-    2. Model geometry hash must match the approved package hash.
-    3. Any geometry changes invalidate prior approval.
+    2. Placeholder / demo identities are rejected if allow_demo_identities is False.
+    3. Model geometry hash must match the approved package hash.
+    4. Any geometry changes invalidate prior approval.
     """
     reviewer_name = str(decision.get("reviewer_name", "")).strip()
     action = str(decision.get("action", "")).strip().lower()
@@ -341,16 +361,28 @@ def apply_review_decision(
     if not reviewer_name:
         raise ValueError("Missing reviewer_name: A verified reviewer identity is required.")
 
-    # Prevent agent self-approval
-    clean_name = reviewer_name.lower().replace(" ", "")
+    # 1. Prevent agent self-approval using word tokens and clean substring
+    tokens = set(re.findall(r"[a-zA-Z0-9]+", reviewer_name.lower()))
+    clean_name = reviewer_name.lower().replace(" ", "").replace("_", "").replace("-", "")
+
     for disallowed in DISALLOWED_AGENT_IDENTITIES:
-        if disallowed in clean_name:
+        # Match whole word token or compound word like 'antigravity-bot' / 'sketch-to-cad'
+        if disallowed in tokens or (len(disallowed) > 2 and disallowed in clean_name):
             raise PermissionError(
                 f"Self-approval rejected: Reviewer identity '{reviewer_name}' appears to be an automated agent or AI. "
                 "The approval gate strictly mandates human review before CAD generation."
             )
 
-    # Verify geometry revision hash
+    # 2. Check for placeholder identities in strict production mode
+    if not allow_demo_identities:
+        for placeholder in DISALLOWED_PLACEHOLDER_IDENTITIES:
+            if placeholder in tokens or placeholder in clean_name:
+                raise ValueError(
+                    f"Placeholder reviewer identity '{reviewer_name}' rejected: "
+                    "Production approvals require an actual human certifier. Demonstration identities are prohibited."
+                )
+
+    # 3. Verify geometry revision hash
     current_hash = calculate_geometry_hash(draft_model)
     expected_hash = approval_package.get("revision_hash")
 
@@ -385,7 +417,6 @@ def apply_review_decision(
         updated = False
         for d in draft_model.get("dimensions", []):
             if d.get("id") == target_id:
-                # Update dimension
                 p1 = d.get("p1", [0, 0])
                 d["p2"] = [p1[0] + new_value, p1[1]]
                 d["source"] = "explicit"
@@ -393,17 +424,15 @@ def apply_review_decision(
                 break
 
         if not updated:
-            # Update envelope width or depth
-            if target_id == "overall_width" or target_id == "DIM-OVERALL-WIDTH":
+            if target_id in ("overall_width", "DIM-OVERALL-WIDTH"):
                 draft_model["envelope"]["width"] = new_value
                 draft_model["envelope"]["widthSource"] = "explicit"
                 updated = True
-            elif target_id == "overall_depth" or target_id == "DIM-OVERALL-DEPTH":
+            elif target_id in ("overall_depth", "DIM-OVERALL-DEPTH"):
                 draft_model["envelope"]["depth"] = new_value
                 draft_model["envelope"]["depthSource"] = "explicit"
                 updated = True
 
-        # Recalculate revision hash after modification
         new_rev = calculate_geometry_hash(draft_model)
         approval_package["revision_hash"] = new_rev
         approval_package["status"] = "awaiting_approval"  # Requires renewal of approval
@@ -446,12 +475,17 @@ def apply_review_decision(
 
         approval_package["approval_metadata"] = {
             "approved_by": reviewer_name,
+            "auth_method": "identity_assertion",
+            "auth_security_level": "unverified_name_assertion",
+            "auth_note": (
+                "Reviewer identity recorded via plain-text assertion. "
+                "Cryptographic signature or token authentication recommended for legal/permitting submissions."
+            ),
             "approval_timestamp": timestamp,
             "approved_revision_hash": current_hash,
             "notes": str(details.get("notes", "Approved for drafting")),
         }
 
-        # Mark actions as resolved
         for act in approval_package.get("approval_actions_required", []):
             act["status"] = "resolved"
             act["resolved_choice"] = "Approved by human reviewer"
@@ -465,4 +499,28 @@ def apply_review_decision(
         return approval_package, draft_model
 
     else:
-        raise ValueError(f"Unknown review action '{action}'. Supported: approve, reject, correct_dimension, correct_room_label.")
+        raise ValueError(
+            f"Unknown review action '{action}'. Supported actions: approve, reject, correct_dimension, correct_room_label."
+        )
+
+
+def verify_approval_integrity(package: Dict[str, Any], model: Dict[str, Any]) -> Tuple[bool, str]:
+    """
+    Verify that an architectural model has an active, valid, non-tampered human approval.
+    Returns (is_approved, explanation_message).
+    """
+    if package.get("status") != "approved":
+        return False, f"Package status is '{package.get('status')}', not 'approved'."
+    if model.get("status") != "approved":
+        return False, f"Model status is '{model.get('status')}', not 'approved'."
+
+    meta = package.get("approval_metadata")
+    if not meta or not meta.get("approved_by"):
+        return False, "Missing approval metadata or reviewer name."
+
+    rev = meta.get("approved_revision_hash")
+    current_rev = calculate_geometry_hash(model)
+    if rev != current_rev:
+        return False, f"Model geometry altered (hash {current_rev[:12]}) since approval was granted (hash {rev[:12]})."
+
+    return True, f"Approval integrity verified for reviewer '{meta.get('approved_by')}'."

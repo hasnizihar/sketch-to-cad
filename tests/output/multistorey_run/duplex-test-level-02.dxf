@@ -1833,7 +1833,7 @@ Double bed 1800x2000mm with dual pillows and duvet fold
   0
 LWPOLYLINE
   5
-14C
+146
 330
 1162
 100
@@ -1865,7 +1865,7 @@ AcDbPolyline
   0
 LWPOLYLINE
   5
-14D
+147
 330
 1162
 100
@@ -1897,7 +1897,7 @@ AcDbPolyline
   0
 LWPOLYLINE
   5
-14E
+148
 330
 1162
 100
@@ -1929,7 +1929,7 @@ AcDbPolyline
   0
 LINE
   5
-14F
+149
 330
 1162
 100
@@ -1993,7 +1993,7 @@ Single bed 1000x2000mm with pillow and duvet fold
   0
 LWPOLYLINE
   5
-125
+14D
 330
 1163
 100
@@ -2025,7 +2025,7 @@ AcDbPolyline
   0
 LWPOLYLINE
   5
-126
+14E
 330
 1163
 100
@@ -2057,7 +2057,7 @@ AcDbPolyline
   0
 LINE
   5
-127
+14F
 330
 1163
 100
@@ -2121,7 +2121,7 @@ Square reinforced concrete column 200x200mm
   0
 LWPOLYLINE
   5
-145
+125
 330
 1164
 100
@@ -2153,7 +2153,7 @@ AcDbPolyline
   0
 LINE
   5
-146
+126
 330
 1164
 100
@@ -2177,7 +2177,7 @@ AcDbLine
   0
 LINE
   5
-147
+127
 330
 1164
 100

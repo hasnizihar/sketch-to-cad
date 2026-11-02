@@ -11,7 +11,7 @@
 | Parameter | Metric / Value | Calculation & Scope Notes |
 | :--- | :--- | :--- |
 | **Floors Represented** | 1 Storey | Single-storey ground level (`LEVEL-01`) |
-| **Verified Net Area** | **45.04 m²** | Sum of internal clear room polygons (Shoelace formula) |
+| **Verified Net Area** | **69.60 m²** | Sum of internal clear room polygons (Shoelace formula) |
 | **Gross Footprint Area** | 69.60 m² | Exterior bounding box footprint (exterior_envelope_bounding_box) |
 | **Room Enclosures** | 3 Rooms | Verified room boundaries with centroids |
 | **Door Openings** | 1 Doors | Capped jambs with swing arcs |
@@ -27,9 +27,9 @@
 
 | Room ID | Room Name | Floor | Length (m) | Width (m) | Net Area (m²) | Perimeter (m) | Finish Pattern | Calculation Method | Notes |
 | :--- | :--- | :--- | :---: | :---: | :---: | :---: | :--- | :--- | :--- |
-| `R-LIVING` | **LIVING / DINING** | LEVEL-01 | N/A | N/A | **21.60** | N/A | Standard / Unspecified | `model_annotated` | Boundary corners not supplied; using model annotated area. |
-| `R-KITCHEN` | **KITCHEN** | LEVEL-01 | N/A | N/A | **9.00** | N/A | Standard / Unspecified | `model_annotated` | Boundary corners not supplied; using model annotated area. |
-| `R-BEDROOM-1` | **BEDROOM 1** | LEVEL-01 | N/A | N/A | **14.44** | N/A | Standard / Unspecified | `model_annotated` | Boundary corners not supplied; using model annotated area. |
+| `R-LIVING` | **LIVING / DINING** | LEVEL-01 | N/A | N/A | **34.80** | N/A | Standard / Unspecified | `model_annotated` | Boundary corners not supplied; using model annotated area. |
+| `R-KITCHEN` | **KITCHEN** | LEVEL-01 | N/A | N/A | **17.40** | N/A | Standard / Unspecified | `model_annotated` | Boundary corners not supplied; using model annotated area. |
+| `R-BEDROOM-1` | **BEDROOM 1** | LEVEL-01 | N/A | N/A | **17.40** | N/A | Standard / Unspecified | `model_annotated` | Boundary corners not supplied; using model annotated area. |
 
 > **Calculation Conventions**: Net room areas are calculated strictly from internal wall-face boundary vertices using the Shoelace formula. Non-rectangular rooms report `N/A` for length and width to prevent misleading orthogonal simplifications.
 
@@ -80,7 +80,7 @@
 
 | Issue ID | Scope | Target | Status | Confidence | Description |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `unc-mid-partition` | sketch_interpretation | `walls.W-INTR-MID.thickness` | `unresolved` | `medium` | Interior partition thickness not explicitly annotated; 150mm proposed. |
+| `UNC-01` | sketch_interpretation | `dimensions.scale` | `unresolved` | `medium` | Hand sketch image aspect ratio (1.41) deviates from explicit annotated dimensions (8000x8700 mm, ratio 0.92). Explicit dimensions govern CAD reconstruction. |
 | `UNC-VERT-01` | vertical_geometry | `openings.height` | `unresolved (requires downstream approval)` | `low` | 2 door/window vertical heights unannotated in 2D floor plan. |
 
 ### 6.1 Integrity Audit Results

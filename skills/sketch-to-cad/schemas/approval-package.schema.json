@@ -151,6 +151,9 @@
       "type": "object",
       "properties": {
         "approved_by": { "type": "string" },
+        "auth_method": { "type": "string", "enum": ["identity_assertion", "cryptographic_signature", "session_token"] },
+        "auth_security_level": { "type": "string" },
+        "auth_note": { "type": "string" },
         "approval_timestamp": { "type": "string" },
         "approved_revision_hash": { "type": "string" },
         "notes": { "type": "string" }
@@ -158,4 +161,3 @@
     }
   }
 }
-

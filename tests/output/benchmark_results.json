@@ -1,0 +1,92 @@
+{
+  "benchmark_id": "BM-1793634118",
+  "timestamp": "2026-11-02T15:41:58.837735+00:00",
+  "provider_name": "mock",
+  "model_identifier": "mock-architectural-v1",
+  "test_cases_count": 5,
+  "metrics_summary": {
+    "wall_detection_precision": 1.0,
+    "wall_detection_recall": 1.0,
+    "opening_detection_precision": 1.0,
+    "opening_detection_recall": 1.0,
+    "room_detection_precision": 1.0,
+    "room_detection_recall": 1.0,
+    "dimension_extraction_accuracy": 1.0,
+    "label_extraction_accuracy": 1.0,
+    "mean_bounding_box_iou": 1.0,
+    "uncertainty_identification_rate": 1.0,
+    "contradiction_detection_rate": 1.0
+  },
+  "case_results": [
+    {
+      "fixture_id": "CASE-A",
+      "fixture_name": "Fixture A: Clean Single-Storey Plan",
+      "status": "evaluated",
+      "wall_precision": 1.0,
+      "wall_recall": 1.0,
+      "opening_precision": 1.0,
+      "opening_recall": 1.0,
+      "room_precision": 1.0,
+      "room_recall": 1.0,
+      "dimension_accuracy": 1.0,
+      "contradiction_detected": true,
+      "notes": "Evaluated with provider 'mock'"
+    },
+    {
+      "fixture_id": "CASE-B",
+      "fixture_name": "Fixture B: Incomplete Sketch (Missing Dimensions)",
+      "status": "evaluated",
+      "wall_precision": 1.0,
+      "wall_recall": 1.0,
+      "opening_precision": 1.0,
+      "opening_recall": 1.0,
+      "room_precision": 1.0,
+      "room_recall": 1.0,
+      "dimension_accuracy": 1.0,
+      "contradiction_detected": true,
+      "notes": "Evaluated with provider 'mock'"
+    },
+    {
+      "fixture_id": "CASE-C",
+      "fixture_name": "Fixture C: Contradictory Dimensions & Chains",
+      "status": "evaluated",
+      "wall_precision": 1.0,
+      "wall_recall": 1.0,
+      "opening_precision": 1.0,
+      "opening_recall": 1.0,
+      "room_precision": 1.0,
+      "room_recall": 1.0,
+      "dimension_accuracy": 1.0,
+      "contradiction_detected": true,
+      "notes": "Evaluated with provider 'mock'"
+    },
+    {
+      "fixture_id": "CASE-D",
+      "fixture_name": "Fixture D: Multi-Page Two-Storey PDF Set",
+      "status": "evaluated",
+      "wall_precision": 1.0,
+      "wall_recall": 1.0,
+      "opening_precision": 1.0,
+      "opening_recall": 1.0,
+      "room_precision": 1.0,
+      "room_recall": 1.0,
+      "dimension_accuracy": 1.0,
+      "contradiction_detected": true,
+      "notes": "Evaluated with provider 'mock'"
+    },
+    {
+      "fixture_id": "CASE-E",
+      "fixture_name": "Fixture E: Non-Rectangular Angled Boundary Plan",
+      "status": "evaluated",
+      "wall_precision": 1.0,
+      "wall_recall": 1.0,
+      "opening_precision": 1.0,
+      "opening_recall": 1.0,
+      "room_precision": 1.0,
+      "room_recall": 1.0,
+      "dimension_accuracy": 1.0,
+      "contradiction_detected": true,
+      "notes": "Evaluated with provider 'mock'"
+    }
+  ]
+}

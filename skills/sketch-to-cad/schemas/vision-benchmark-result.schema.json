@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "VisionBenchmarkResult",
+  "description": "Schema for evaluating multimodal vision model performance against architectural floor-plan benchmarks.",
+  "type": "object",
+  "required": [
+    "benchmark_id",
+    "timestamp",
+    "provider_name",
+    "model_identifier",
+    "test_cases_count",
+    "metrics_summary",
+    "case_results"
+  ],
+  "properties": {
+    "benchmark_id": { "type": "string" },
+    "timestamp": { "type": "string" },
+    "provider_name": { "type": "string" },
+    "model_identifier": { "type": "string" },
+    "test_cases_count": { "type": "integer", "minimum": 1 },
+    "metrics_summary": {
+      "type": "object",
+      "required": [
+        "wall_detection_precision",
+        "wall_detection_recall",
+        "opening_detection_precision",
+        "opening_detection_recall",
+        "room_detection_precision",
+        "room_detection_recall",
+        "dimension_extraction_accuracy",
+        "contradiction_detection_rate"
+      ],
+      "properties": {
+        "wall_detection_precision": { "type": ["number", "null"] },
+        "wall_detection_recall": { "type": ["number", "null"] },
+        "opening_detection_precision": { "type": ["number", "null"] },
+        "opening_detection_recall": { "type": ["number", "null"] },
+        "room_detection_precision": { "type": ["number", "null"] },
+        "room_detection_recall": { "type": ["number", "null"] },
+        "dimension_extraction_accuracy": { "type": ["number", "null"] },
+        "label_extraction_accuracy": { "type": ["number", "null"] },
+        "mean_bounding_box_iou": { "type": ["number", "null"] },
+        "uncertainty_identification_rate": { "type": ["number", "null"] },
+        "contradiction_detection_rate": { "type": ["number", "null"] }
+      }
+    },
+    "case_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["fixture_id", "fixture_name", "status"],
+        "properties": {
+          "fixture_id": { "type": "string" },
+          "fixture_name": { "type": "string" },
+          "status": { "type": "string", "enum": ["evaluated", "skipped", "error"] },
+          "wall_precision": { "type": ["number", "null"] },
+          "wall_recall": { "type": ["number", "null"] },
+          "opening_precision": { "type": ["number", "null"] },
+          "opening_recall": { "type": ["number", "null"] },
+          "room_precision": { "type": ["number", "null"] },
+          "room_recall": { "type": ["number", "null"] },
+          "dimension_accuracy": { "type": ["number", "null"] },
+          "contradiction_detected": { "type": ["boolean", "null"] },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  }
+}

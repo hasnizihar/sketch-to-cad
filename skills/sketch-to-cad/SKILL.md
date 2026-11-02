@@ -35,13 +35,16 @@ Identify:
 - Desired output formats (`.dxf`, `.png`, `.svg`, `.pdf`).
 
 ### Phase 2: Interpret Sketch & Classify Dimensions
-Extract visible walls, wall junctions, room boundaries, openings, elements, and annotations.
+Extract visible walls, wall junctions, room boundaries, openings, elements, and annotations using pluggable multimodal vision providers (Gemini 2.5 Flash, GPT-4o, Antigravity Agent native vision, or deterministic mock).
 Classify every measurement and recognized element as:
 - `explicit`: Hand-written dimensions or explicitly drawn element symbols on the sketch.
 - `estimated`: Proportional measurements derived from scale.
 - `inferred`: Architectural defaults (standard wall thickness, door widths, right angles, sanitary fixture in bathroom).
 - `proposed`: Agent-suggested spatial layout additions (requires explicit user confirmation).
-Read [workflows/interpret-sketch.md](workflows/interpret-sketch.md) and refer to [references/sketch-interpretation-contract.md](references/sketch-interpretation-contract.md), [references/source-traceability.md](references/source-traceability.md), [references/residential-drawing-standards.md](references/residential-drawing-standards.md), and [references/architectural-element-library.md](references/architectural-element-library.md).
+
+Log structured vision execution records conforming to [schemas/vision-execution-record.schema.json](schemas/vision-execution-record.schema.json).
+Read [workflows/interpret-sketch.md](workflows/interpret-sketch.md) and refer to [references/sketch-interpretation-contract.md](references/sketch-interpretation-contract.md), [references/source-traceability.md](references/source-traceability.md), [references/vision-provider-contract.md](references/vision-provider-contract.md), [references/vision-integration-guide.md](references/vision-integration-guide.md), [references/residential-drawing-standards.md](references/residential-drawing-standards.md), and [references/architectural-element-library.md](references/architectural-element-library.md).
+Benchmark accuracy and edge-case resilience are evaluated against [schemas/vision-benchmark-result.schema.json](schemas/vision-benchmark-result.schema.json) and [references/vision-benchmark.md](references/vision-benchmark.md).
 
 ### Phase 3: Build Structured Model & Obtain User Approval (Approval Gate)
 Synthesize the geometry into a coordinate-based model conforming to [schemas/floor-plan-model.json](schemas/floor-plan-model.json) with status `awaiting_approval`.
@@ -53,8 +56,13 @@ Ensure:
 
 Generate structured review package conforming to [schemas/approval-package.schema.json](schemas/approval-package.schema.json) and Markdown proposal.
 Present the structured proposal and uncertainty log to the user.
-Wait for explicit human confirmation or corrections before drafting. AI agents are strictly prohibited from self-approving.
-**DO NOT proceed to Phase 4 without explicit human approval.** Any geometric changes invalidate the approval hash.
+Wait for explicit human confirmation or corrections before drafting.
+Refer to [references/approval-security.md](references/approval-security.md):
+- AI agents and automated bots are strictly prohibited from self-approving.
+- Placeholder reviewer identities (`Jane Doe`, `John Doe`, etc.) are rejected in production mode.
+- Plain-text reviewer assertions are logged with `auth_method: "identity_assertion"` and explicit security warnings.
+- Any subsequent geometry modification immediately invalidates the approval revision hash.
+**DO NOT proceed to Phase 4 without explicit human approval.**
 
 ### Phase 4: Deterministic CAD Generation
 Translate the approved model into CADCraft MCP operations via [workflows/generate-drawing.md](workflows/generate-drawing.md):
@@ -79,20 +87,21 @@ Execute the automated checks in [references/validation-checklist.md](references/
 Execute automated source-to-CAD visual QA via `scripts/visual_qa.py` (refer to [references/end-to-end-pipeline.md](references/end-to-end-pipeline.md)):
 **A generated CAD drawing is not necessarily a correct drawing.** Before accepting or delivering:
 1. Render high-resolution preview via `render(fit=true)` or raster preview export.
-2. Visually verify dimension readability: Confirm numeric values and tick/arrow marks are readable at standard viewing zoom.
-3. Compare against original sketch: Confirm opening orientations (e.g. entrance wall face), door swing arcs, and room adjacencies strictly match the sketch.
-4. Inspect wall junctions & jambs: Check that wall cavities are capped at openings and partition intersections have 0 gaps or crossing collision lines.
-5. Inspect annotation clearance: Verify room labels do not collide with wall linework, door arcs, or circulation boundaries.
-6. If any visual check fails, halt acceptance, rectify the vector geometry, and re-render.
+2. Classify all detected discrepancies under the 4-tier architectural severity model: `blocking_discrepancy`, `major_discrepancy`, `warning`, or `informational`.
+3. Out-of-scale sketch reasoning: When handwritten annotations conflict with distorted pixel aspect ratios, verify explicit dimensions govern and classify discrepancy as a non-fatal warning (`out_of_scale_source_sketch`).
+4. Duplicate entity detection: Audit CAD model entities for identical IDs across walls, openings, and rooms.
+5. Compare against original sketch: Confirm opening orientations, door swing arcs, and room adjacencies strictly match the sketch without silent geometric drift.
+6. Non-destructive reporting: Visual QA findings are auditable review evidence; they never silently alter approved CAD geometry.
 
 ### Phase 7: Deliver Final Deliverables
 1. Save master vector DXF (single-storey) or per-floor DXF files (`<project>-level-01.dxf`, `<project>-level-02.dxf` for multi-storey projects conforming to [references/multi-storey-floor-plans.md](references/multi-storey-floor-plans.md)).
-2. Generate companion BIM handoff metadata: `<drawing-name>.handoff.json` conforming to [schemas/bim-handoff.schema.json](schemas/bim-handoff.schema.json) and documented in [references/bim-handoff-contract.md](references/bim-handoff-contract.md).
-3. Compile architectural documentation and schedules: `<drawing-name>.report.json`, `<drawing-name>.report.md`, and optional `<drawing-name>.report.pdf` conforming to [schemas/architectural-report.schema.json](schemas/architectural-report.schema.json) and documented in [references/architectural-reporting-guide.md](references/architectural-reporting-guide.md).
-4. Export visual preview PNG: `save(path=".../floor-plan.png")`.
-5. Compile Visual QA Discrepancy Report: `<drawing-name>.visual-qa.json` and `<drawing-name>.visual-qa.md`.
-6. Verify files on disk (existence and non-zero size).
-7. Deliver structured acceptance report with PASSED / FAILED / UNVERIFIED statuses and non-compliance disclaimer.
+2. Save structured vision execution record: `<drawing-name>.vision-execution.json` conforming to [schemas/vision-execution-record.schema.json](schemas/vision-execution-record.schema.json) capturing model ID, source SHA-256, validation, and duration.
+3. Generate companion BIM handoff metadata: `<drawing-name>.handoff.json` conforming to [schemas/bim-handoff.schema.json](schemas/bim-handoff.schema.json) and documented in [references/bim-handoff-contract.md](references/bim-handoff-contract.md).
+4. Compile architectural documentation and schedules: `<drawing-name>.report.json`, `<drawing-name>.report.md`, and optional `<drawing-name>.report.pdf` conforming to [schemas/architectural-report.schema.json](schemas/architectural-report.schema.json) and documented in [references/architectural-reporting-guide.md](references/architectural-reporting-guide.md).
+5. Export visual preview PNG: `save(path=".../floor-plan.png")`.
+6. Compile Visual QA Discrepancy Report: `<drawing-name>.visual-qa.json` and `<drawing-name>.visual-qa.md` with severity counts and discrepancy breakdown.
+7. Verify files on disk (existence and non-zero size).
+8. Deliver structured acceptance report with PASSED / FAILED / UNVERIFIED statuses and non-compliance disclaimer.
 
 ## Recovery
 If an MCP call fails:
