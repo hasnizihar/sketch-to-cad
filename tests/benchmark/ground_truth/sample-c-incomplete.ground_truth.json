@@ -1,0 +1,85 @@
+{
+  "sampleId": "BENCH-CAT-C-01",
+  "category": "Category C: Incomplete Plans",
+  "envelope": {
+    "width": 6000.0,
+    "depth": null,
+    "visibility": "ambiguous"
+  },
+  "walls": [
+    {
+      "id": "W-SOUTH",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        6000,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior",
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "W-WEST",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        0,
+        3000
+      ],
+      "thickness": 200,
+      "classification": "exterior",
+      "visibility": "clearly_visible"
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-MAIN",
+      "type": "door",
+      "wallId": "W-SOUTH",
+      "center": [
+        2000,
+        0
+      ],
+      "width": 900,
+      "swing": "inward-right",
+      "visibility": "clearly_visible"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-STUDIO",
+      "name": "STUDIO",
+      "boundaryCorners": [],
+      "approximateArea": 0.0,
+      "visibility": "ambiguous"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-WIDTH",
+      "text": "6000",
+      "value": 6000.0,
+      "visibility": "clearly_visible"
+    }
+  ],
+  "floors": [
+    "LEVEL-01"
+  ],
+  "uncertainties": [
+    {
+      "target": "envelope_depth",
+      "description": "Building depth dimension not present on sketch.",
+      "visibility": "not_present"
+    },
+    {
+      "target": "unclosed_boundary",
+      "description": "North and East boundary walls missing.",
+      "visibility": "not_present"
+    }
+  ]
+}

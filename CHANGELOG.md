@@ -10,14 +10,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Milestone 10: Real-World Validation, Benchmarking & Production Reliability**:
+  - Implemented real-world architectural sketch benchmark dataset (	ests/benchmark/) across 6 categories (A through F): Clean Hand-Drawn Plans (BENCH-CAT-A-01), Rough Hand-Drawn Plans (BENCH-CAT-B-01), Incomplete Plans (BENCH-CAT-C-01), Complex Non-Rectangular Plans (BENCH-CAT-D-01), Multi-Storey PDF Plans (BENCH-CAT-E-01), and Low-Quality Degraded Inputs (BENCH-CAT-F-01).
+  - Authored dataset catalog manifest 	ests/benchmark/metadata/dataset_manifest.json indexing file formats, image dimensions, SHA-256 cryptographic hashes, and provenance metadata.
+  - Authored certified ground-truth annotation files in 	ests/benchmark/ground_truth/ with exact millimeter coordinates for walls, openings, rooms, explicit handwritten dimensions, and expected uncertainty flags.
+  - Built spatial bipartite benchmark evaluation engine scripts/benchmark_engine.py (mirrored in skills/sketch-to-cad/scripts/benchmark_engine.py): orientation-invariant wall endpoint matching, opening center proximity and width error tracking, room polygon IoU clipping and net area relative error, and explicit dimension extraction tolerance (<=50mm).
+  - Enforced strict benchmark provenance policy: explicit tagging of is_genuine_ai and execution_type (
+eal_api, gent_native, mocked), preventing synthetic or mock inference from being represented as genuine AI vision accuracy.
+  - Implemented independent architectural and structural DXF inspector scripts/dxf_inspector.py (mirrored in skills/sketch-to-cad/scripts/dxf_inspector.py): DXF header verification (=4 mm, DXF version, bounding extents), AIA layer compliance, layer 0 cleanliness, entity inventory counting, duplicate entity detection, degenerate segment detection (<10mm blocking), model-to-DXF-to-BIM consistency cross-auditing, and Markdown audit report generation.
+  - Implemented downstream BIM integration and interoperability validator scripts/bim_integration_validator.py (mirrored in skills/sketch-to-cad/scripts/bim_integration_validator.py): validates handoff contract against downstream dxf-to-3d-bim requirements, checks coordinate systems and units, verifies opening host referential integrity, defaults window sill heights (900mm) to prevent downstream NoneType multiplication errors, maps uncertainty statuses to valid downstream enums, and executes genuine downstream preflight inspection (dxf_to_3d_bim inspect) and intermediate model preparation (dxf_to_3d_bim prepare).
+  - Proved downstream interoperability through genuine CLI execution with dxf-to-3d-bim, generating native .bimcraft models, IFC4 exports, axonometric 3D projections, elevations, and building sections.
+  - Implemented enterprise-grade production reliability engine scripts/pipeline_reliability.py (mirrored in skills/sketch-to-cad/scripts/pipeline_reliability.py): retry strategy with exponential backoff and randomized jitter, transient vs permanent error classification (is_error_retryable), and atomic file write operations (tomic_write_text, tomic_write_json, tomic_write_bytes) with rollback preventing partial or corrupt deliverables.
+  - Implemented high-resolution performance and resource profiling framework scripts/performance_profiler.py (mirrored in skills/sketch-to-cad/scripts/performance_profiler.py): captures phase durations, entity processing counts, and renders Markdown performance audit reports.
+  - Authored 5 comprehensive reference specifications: 
+eferences/real-world-benchmark.md, 
+eferences/vision-accuracy-metrics.md, 
+eferences/dxf-inspection.md, 
+eferences/bim-integration-validation.md, and 
+eferences/production-reliability.md.
+  - Authored dataset documentation in 	ests/benchmark/README.md.
+  - Added 34 new automated tests across 5 test suites (	ests/test_benchmark_engine.py, 	ests/test_dxf_inspector.py, 	ests/test_bim_integration.py, 	ests/test_pipeline_reliability.py, 	ests/test_performance_profiler.py), expanding test coverage to 188 tests (100% passing).
+  - Updated scripts/validate-skill.ps1 with Validation Check 16 (16/16 checks passed, 34/34 reference and schema files verified).
 - **Milestone 9: Advanced Architectural Drafting & Engineering Standards**:
   - Implemented advanced wall geometry and junction handling: clean cavity trimming, transverse jamb end-caps sealing openings, and deterministic T-junction trimming (partition double lines trimmed by host wall half-thickness to prevent penetration into host cavity).
   - Enhanced door and window drafting in scripts/drawing_generator.py: support for single-leaf swing doors (inward-left, inward-right, outward-left, outward-right), double-leaf doors (double), sliding/pocket doors (sliding), and sliding bypass windows with dual offset sashes on A-GLAZ.
-  - Upgraded dimensioning and architectural annotation system: tiered dimension hierarchy, room area callouts (m�), standardized drawing title block header (LEVEL: ... | SCALE: ... | UNITS: ...), and strict conditional North Arrow policy (drawn if and only if orientation or north angle is provided; strictly omitted if unknown to prevent unverified assumptions).
+  - Upgraded dimensioning and architectural annotation system: tiered dimension hierarchy, room area callouts (m²), standardized drawing title block header (LEVEL: ... | SCALE: ... | UNITS: ...), and strict conditional North Arrow policy (drawn if and only if orientation or north angle is provided; strictly omitted if unknown to prevent unverified assumptions).
   - Implemented comprehensive Architectural Geometry Validation Engine scripts/geometry_validation.py (mirrored in skills/sketch-to-cad/scripts/geometry_validation.py): wall network connectivity, junction typology (L, T, Cross, disconnected endpoints), degenerate wall detection (<10mm blocking), minimum 50mm corner clearance structural return, overlapping openings detection, door swing clearance conflicts, Gauss Shoelace area computation, self-intersection (bowtie polygon) detection, interior room overlap detection, envelope boundary containment, and multi-storey level filtering.
-  - Implemented unified Architectural & Engineering QA Validator scripts/architectural_qa.py: 4-tier architectural severity model (locking, major, warning, informational), BIM handoff referential integrity checks, and Markdown audit report rendering (generate_engineering_qa_markdown).
-  - Authored 6 challenging architectural test fixtures in 	ests/fixtures/sketches/: Case F (complex junctions & thickness transitions), Case G (diverse openings & corner clearances), Case H (irregular L-shaped footprint with 5-vertex non-convex salon polygon), Case I (compact 32 m� studio/ADU plan with dense symbols), Case J (2-storey duplex with vertical stair and column alignment), and Case K (incomplete ambiguous sketch rejected by Approval Gate).
-  - Authored 4 comprehensive architectural reference standards: eferences/architectural-drafting-standards.md, eferences/geometry-validation.md, eferences/dimensioning-and-annotations.md, and eferences/architectural-qa.md.
+  - Implemented unified Architectural & Engineering QA Validator scripts/architectural_qa.py: 4-tier architectural severity model (locking, major, warning, informational), BIM handoff referential integrity checks, and Markdown audit report rendering (generate_engineering_qa_markdown).
+  - Authored 6 challenging architectural test fixtures in 	ests/fixtures/sketches/: Case F (complex junctions & thickness transitions), Case G (diverse openings & corner clearances), Case H (irregular L-shaped footprint with 5-vertex non-convex salon polygon), Case I (compact 32 m² studio/ADU plan with dense symbols), Case J (2-storey duplex with vertical stair and column alignment), and Case K (incomplete ambiguous sketch rejected by Approval Gate).
+  - Authored 4 comprehensive architectural reference standards: 
+eferences/architectural-drafting-standards.md, 
+eferences/geometry-validation.md, 
+eferences/dimensioning-and-annotations.md, and 
+eferences/architectural-qa.md.
   - Added 34 new automated tests across 4 test suites (	ests/test_geometry_validation.py, 	ests/test_architectural_qa.py, 	ests/test_advanced_drafting.py, 	ests/test_challenging_fixtures.py), bringing repository total to 154 tests (100% passing).
   - Updated scripts/validate-skill.ps1 with Validation Check 15 (15/15 checks passed).
 - **Milestone 8: Genuine Vision Integration & Production Reliability**:
@@ -111,7 +136,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Updated `scripts/validate-skill.ps1` with Validation Check 13 (13/13 passed).
 - **Initial Public Preview Release** of the reusable `sketch-to-cad` skill for Google Antigravity.
 - **7-Stage Quality Gate Workflow**:
-  - `Sketch → Interpretation → User Approval → CAD Generation → Geometric Validation → Visual QA & Source Comparison → Final Deliverables`.
+  - `Sketch â†’ Interpretation â†’ User Approval â†’ CAD Generation â†’ Geometric Validation â†’ Visual QA & Source Comparison â†’ Final Deliverables`.
 - **Mandatory User Approval Gate**:
   - Halts drafting until dimensional conflicts, room classifications, and layout assumptions are reviewed and approved by the user.
 - **Structured Intermediate Model**:

@@ -117,7 +117,7 @@
         "instanceCount": 2
       }
     ],
-    "entityCount": 97,
+    "entityCount": 101,
     "extents": [
       [
         -500.0,
@@ -423,7 +423,7 @@
       ],
       "width": 1500.0,
       "height": null,
-      "sillHeight": null,
+      "sillHeight": 900.0,
       "floorId": "LEVEL-01",
       "source": "explicit"
     },
@@ -437,7 +437,7 @@
       ],
       "width": 1200.0,
       "height": null,
-      "sillHeight": null,
+      "sillHeight": 900.0,
       "floorId": "LEVEL-01",
       "source": "explicit"
     },
@@ -481,7 +481,7 @@
       ],
       "width": 1500.0,
       "height": null,
-      "sillHeight": null,
+      "sillHeight": 900.0,
       "floorId": "LEVEL-02",
       "source": "explicit"
     },
@@ -495,7 +495,7 @@
       ],
       "width": 1500.0,
       "height": null,
-      "sillHeight": null,
+      "sillHeight": 900.0,
       "floorId": "LEVEL-02",
       "source": "explicit"
     }
@@ -874,7 +874,7 @@
       "description": "Vertical floor datum and clear storey heights are omitted from 2D floor plans.",
       "assumedValue": "Preserved as null; downstream BIM skill will prompt for vertical datums.",
       "confidence": "high",
-      "status": "confirmed"
+      "status": "approved"
     }
   ],
   "validation": {
@@ -883,7 +883,7 @@
     "approvedBy": "User (Antigravity Approval Gate)",
     "approvedAt": "2026-10-30T00:00:00Z",
     "entityIntegrity": {
-      "entityCount": 97,
+      "entityCount": 101,
       "blockReferences": 9,
       "hatches": 2,
       "layer0Empty": true

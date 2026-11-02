@@ -103,6 +103,15 @@ Execute unified Architectural & Engineering QA via `scripts/architectural_qa.py`
 7. Verify files on disk (existence and non-zero size).
 8. Deliver structured acceptance report with PASSED / FAILED / UNVERIFIED statuses and non-compliance disclaimer.
 
+### Phase 8: Independent Quality Auditing & Downstream Preflight (Milestone 10)
+Execute automated post-generation checks before external handoff:
+1. **Independent Structural DXF Inspection**: Run scripts/dxf_inspector.py per [references/dxf-inspection.md](references/dxf-inspection.md) to verify =4 (mm), DXF version, AIA layer adherence, zero entities on layer 0, duplicate entity elimination, degenerate segment (<10mm) absence, and model-to-DXF-to-BIM cross-consistency.
+2. **Downstream BIM Integration Validation**: Run scripts/bim_integration_validator.py per [references/bim-integration-validation.md](references/bim-integration-validation.md) to verify semantic handoff contract, window sill heights (default 900mm), and execute genuine downstream preflight inspection (dxf_to_3d_bim inspect) and intermediate model preparation (dxf_to_3d_bim prepare) when dxf-to-3d-bim is present.
+3. **Real-World Architectural Benchmark Validation**: Benchmark vision models against the 6 canonical architectural categories in 	ests/benchmark/ using scripts/benchmark_engine.py per [references/real-world-benchmark.md](references/real-world-benchmark.md) and [references/vision-accuracy-metrics.md](references/vision-accuracy-metrics.md). Enforce strict provenance tagging (
+eal_api, gent_native, mocked).
+4. **Production Reliability & Atomic File Operations**: Employ scripts/pipeline_reliability.py and scripts/performance_profiler.py per [references/production-reliability.md](references/production-reliability.md) for retry backoff with jitter on transient errors, atomic file writes with automatic rollback, secret masking, and phase-level resource profiling.
+
+
 ## Recovery
 If an MCP call fails:
 1. Inspect the error message and tool schema.

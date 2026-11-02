@@ -1,0 +1,249 @@
+{
+  "sampleId": "BENCH-CAT-A-01",
+  "category": "Category A: Clean Hand-Drawn Plans",
+  "envelope": {
+    "width": 6000.0,
+    "depth": 5000.0,
+    "visibility": "clearly_visible"
+  },
+  "walls": [
+    {
+      "id": "W-SOUTH",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        6000,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior",
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "W-EAST",
+      "start": [
+        6000,
+        0
+      ],
+      "end": [
+        6000,
+        5000
+      ],
+      "thickness": 200,
+      "classification": "exterior",
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "W-NORTH",
+      "start": [
+        6000,
+        5000
+      ],
+      "end": [
+        0,
+        5000
+      ],
+      "thickness": 200,
+      "classification": "exterior",
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "W-WEST",
+      "start": [
+        0,
+        5000
+      ],
+      "end": [
+        0,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior",
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "W-INT-V",
+      "start": [
+        4200,
+        0
+      ],
+      "end": [
+        4200,
+        5000
+      ],
+      "thickness": 100,
+      "classification": "interior",
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "W-INT-H",
+      "start": [
+        4200,
+        2600
+      ],
+      "end": [
+        6000,
+        2600
+      ],
+      "thickness": 100,
+      "classification": "interior",
+      "visibility": "clearly_visible"
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-MAIN",
+      "type": "door",
+      "wallId": "W-SOUTH",
+      "center": [
+        2000,
+        0
+      ],
+      "width": 900,
+      "swing": "inward-right",
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "D-BED",
+      "type": "door",
+      "wallId": "W-INT-V",
+      "center": [
+        4200,
+        1500
+      ],
+      "width": 800,
+      "swing": "inward-left",
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "W-LIVING",
+      "type": "window",
+      "wallId": "W-WEST",
+      "center": [
+        0,
+        2500
+      ],
+      "width": 1500,
+      "swing": "fixed",
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "W-BED",
+      "type": "window",
+      "wallId": "W-EAST",
+      "center": [
+        6000,
+        1300
+      ],
+      "width": 1200,
+      "swing": "fixed",
+      "visibility": "clearly_visible"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-LIVING",
+      "name": "LIVING ROOM",
+      "boundaryCorners": [
+        [
+          0,
+          0
+        ],
+        [
+          4200,
+          0
+        ],
+        [
+          4200,
+          5000
+        ],
+        [
+          0,
+          5000
+        ]
+      ],
+      "approximateArea": 21.0,
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "R-BED",
+      "name": "BEDROOM",
+      "boundaryCorners": [
+        [
+          4200,
+          0
+        ],
+        [
+          6000,
+          0
+        ],
+        [
+          6000,
+          2600
+        ],
+        [
+          4200,
+          2600
+        ]
+      ],
+      "approximateArea": 4.68,
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "R-BATH",
+      "name": "BATHROOM",
+      "boundaryCorners": [
+        [
+          4200,
+          2600
+        ],
+        [
+          6000,
+          2600
+        ],
+        [
+          6000,
+          5000
+        ],
+        [
+          4200,
+          5000
+        ]
+      ],
+      "approximateArea": 4.32,
+      "visibility": "clearly_visible"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-WIDTH",
+      "text": "6000",
+      "value": 6000.0,
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "DIM-DEPTH",
+      "text": "5000",
+      "value": 5000.0,
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "DIM-LIV-W",
+      "text": "4200",
+      "value": 4200.0,
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "DIM-BED-W",
+      "text": "1800",
+      "value": 1800.0,
+      "visibility": "clearly_visible"
+    }
+  ],
+  "floors": [
+    "LEVEL-01"
+  ],
+  "uncertainties": []
+}

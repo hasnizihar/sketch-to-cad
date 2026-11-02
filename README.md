@@ -225,6 +225,11 @@ sketch-to-cad/
 ├── scripts/
 │   ├── install.ps1                    # PowerShell installer with -DryRun support
 │   ├── validate-skill.ps1             # Automated schema, links, & safety validator
+│   ├── benchmark_engine.py            # Spatial bipartite matching & vision accuracy benchmark
+│   ├── dxf_inspector.py               # Independent architectural & structural DXF quality auditor
+│   ├── bim_integration_validator.py   # Downstream dxf-to-3d-bim interoperability validator & preflight runner
+│   ├── pipeline_reliability.py        # Fault tolerance, retry with backoff, & atomic writes
+│   ├── performance_profiler.py        # High-resolution phase timing & resource profiler
 │   ├── vision_config.py               # Vision provider configuration and secret masking
 │   ├── vision_provider.py             # Multimodal vision provider interface (Gemini, GPT-4o, Agent, Mock)
 │   ├── evaluate_vision.py             # Benchmark evaluation engine (IoU, precision, recall, dimensions)
@@ -238,12 +243,13 @@ sketch-to-cad/
 ├── skills/
 │   └── sketch-to-cad/                 # The reusable Antigravity skill
 │       ├── SKILL.md                   # Master skill definition
-│       ├── references/                # CADCraft schemas, element library, BIM handoff, reporting guide
-│       ├── schemas/                   # JSON schemas (floor-plan-model, bim-handoff, architectural-report)
+│       ├── references/                # 23 architectural specifications, standards & integration guides
+│       ├── schemas/                   # 7 JSON schemas (models, handoffs, reports, benchmarks)
 │       ├── workflows/                 # Stage-by-stage drafting, reporting & validation guides
 │       └── examples/                  # Reference projects and fixtures
 └── tests/
-    ├── README.md                      # Test suite documentation (154 tests, 15 checks)
+    ├── README.md                      # Test suite documentation (188 tests, 16 checks)
+    ├── benchmark/                     # Real-world benchmark dataset (6 categories, ground-truth, reports)
     ├── fixtures/                      # Validated floor-plan models and handoff JSON
     └── output/                        # DXF, PNG, handoff JSON, and report deliverables
 ```

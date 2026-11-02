@@ -263,7 +263,7 @@ def compile_bim_handoff(
             "center": [float(op["center"][0]), float(op["center"][1])],
             "width": float(op.get("width", 900.0)),
             "height": float(op["height"]) if "height" in op and op["height"] is not None else None,
-            "sillHeight": float(op["sillHeight"]) if "sillHeight" in op and op["sillHeight"] is not None else None,
+            "sillHeight": float(op["sillHeight"]) if "sillHeight" in op and op["sillHeight"] is not None else (900.0 if op_type == "window" else None),
             "floorId": op.get("floorId") or eff_floor_id,
             "source": op.get("source", "explicit")
         }
@@ -345,7 +345,7 @@ def compile_bim_handoff(
             "description": u.get("description", ""),
             "assumedValue": u.get("assumedValue"),
             "confidence": u.get("confidence", "medium"),
-            "status": u.get("status", "unresolved")
+            "status": ("approved" if u.get("status") in ("confirmed", "approved") else u.get("status", "unresolved"))
         }
         uncertainties_out.append(u_item)
 

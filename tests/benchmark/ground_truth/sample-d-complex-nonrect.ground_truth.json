@@ -1,0 +1,211 @@
+{
+  "sampleId": "BENCH-CAT-D-01",
+  "category": "Category D: Complex Residential Plans",
+  "envelope": {
+    "width": 9500.0,
+    "depth": 8500.0,
+    "visibility": "clearly_visible"
+  },
+  "walls": [
+    {
+      "id": "W-SOUTH",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        9500,
+        0
+      ],
+      "thickness": 250,
+      "classification": "exterior",
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "W-EAST",
+      "start": [
+        9500,
+        0
+      ],
+      "end": [
+        9500,
+        5500
+      ],
+      "thickness": 250,
+      "classification": "exterior",
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "W-ANGLED",
+      "start": [
+        9500,
+        5500
+      ],
+      "end": [
+        6500,
+        8500
+      ],
+      "thickness": 250,
+      "classification": "exterior",
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "W-NORTH",
+      "start": [
+        6500,
+        8500
+      ],
+      "end": [
+        0,
+        8500
+      ],
+      "thickness": 250,
+      "classification": "exterior",
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "W-WEST",
+      "start": [
+        0,
+        8500
+      ],
+      "end": [
+        0,
+        0
+      ],
+      "thickness": 250,
+      "classification": "exterior",
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "W-INT-1",
+      "start": [
+        4500,
+        0
+      ],
+      "end": [
+        4500,
+        5500
+      ],
+      "thickness": 120,
+      "classification": "interior",
+      "visibility": "clearly_visible"
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-MAIN-DOUBLE",
+      "type": "door",
+      "wallId": "W-SOUTH",
+      "center": [
+        4500,
+        0
+      ],
+      "width": 1600,
+      "swing": "double",
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "D-PATIO-SLIDING",
+      "type": "door",
+      "wallId": "W-WEST",
+      "center": [
+        0,
+        4500
+      ],
+      "width": 1800,
+      "swing": "sliding",
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "W-CHAMFER",
+      "type": "window",
+      "wallId": "W-ANGLED",
+      "center": [
+        8000,
+        7000
+      ],
+      "width": 1400,
+      "swing": "fixed",
+      "visibility": "clearly_visible"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-SALON",
+      "name": "SALON",
+      "boundaryCorners": [
+        [
+          4500,
+          0
+        ],
+        [
+          9500,
+          0
+        ],
+        [
+          9500,
+          5500
+        ],
+        [
+          6500,
+          8500
+        ],
+        [
+          4500,
+          8500
+        ]
+      ],
+      "approximateArea": 36.38,
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "R-STUDIO",
+      "name": "STUDIO",
+      "boundaryCorners": [
+        [
+          0,
+          0
+        ],
+        [
+          4500,
+          0
+        ],
+        [
+          4500,
+          8500
+        ],
+        [
+          0,
+          8500
+        ]
+      ],
+      "approximateArea": 38.25,
+      "visibility": "clearly_visible"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-WIDTH",
+      "text": "9500",
+      "value": 9500.0,
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "DIM-DEPTH",
+      "text": "8500",
+      "value": 8500.0,
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "DIM-ANGLED-SPAN",
+      "text": "3000",
+      "value": 3000.0,
+      "visibility": "clearly_visible"
+    }
+  ],
+  "floors": [
+    "LEVEL-01"
+  ],
+  "uncertainties": []
+}

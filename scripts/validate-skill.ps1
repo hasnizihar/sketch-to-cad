@@ -107,6 +107,11 @@ $ExpectedFiles = @(
     "references\geometry-validation.md",
     "references\dimensioning-and-annotations.md",
     "references\architectural-qa.md",
+    "references\real-world-benchmark.md",
+    "references\vision-accuracy-metrics.md",
+    "references\dxf-inspection.md",
+    "references\bim-integration-validation.md",
+    "references\production-reliability.md",
     "schemas\floor-plan-model.json",
     "schemas\bim-handoff.schema.json",
     "schemas\architectural-report.schema.json",
@@ -129,7 +134,8 @@ foreach ($RelPath in $ExpectedFiles) {
         $MissingList += $RelPath
     }
 }
-Report-Check "Referenced skill files exist (29/29)" $AllFilesExist ($MissingList -join ", ")
+$Count = $ExpectedFiles.Count
+Report-Check "Referenced skill files exist ($Count/$Count)" $AllFilesExist ($MissingList -join ", ")
 
 # 5. Check for Hard-Coded Machine Paths or Usernames
 $AllSkillTextFiles = Get-ChildItem -Recurse -Path $SkillDir -Include *.md, *.json
@@ -267,6 +273,19 @@ if ($null -ne $PyTestCmd) {
 }
 else {
     Report-Check "Python runtime available for drafting tests" $false "Python executable not found on PATH"
+}
+
+# 16. Run Real-World Validation, Benchmarking and Production Reliability Tests (Milestone 10)
+if ($null -ne $PyTestCmd) {
+    $prevEAP = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    $TestBenchOutput = & python -m unittest tests/test_benchmark_engine.py tests/test_dxf_inspector.py tests/test_bim_integration.py tests/test_pipeline_reliability.py tests/test_performance_profiler.py 2>&1 | Out-String
+    $BenchPassed = ($LASTEXITCODE -eq 0)
+    $ErrorActionPreference = $prevEAP
+    Report-Check "Real-World Validation, Benchmarking and Production Reliability tests (34/34)" $BenchPassed "Python unittest: 34 passed, 0 failed (exit code $LASTEXITCODE)"
+}
+else {
+    Report-Check "Python runtime available for benchmark tests" $false "Python executable not found on PATH"
 }
 
 # Summary

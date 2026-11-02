@@ -1,0 +1,114 @@
+{
+  "datasetName": "Sketch-to-CAD Architectural Benchmark Dataset",
+  "datasetVersion": "1.0.0",
+  "totalSamples": 6,
+  "categories": {
+    "Category A": "Clean Hand-Drawn Plans",
+    "Category B": "Rough Hand-Drawn Plans",
+    "Category C": "Incomplete Plans",
+    "Category D": "Complex Residential Plans",
+    "Category E": "Multi-Storey Plans",
+    "Category F": "Low-Quality Inputs"
+  },
+  "samples": [
+    {
+      "sampleId": "BENCH-CAT-A-01",
+      "fileName": "sample-a-clean-ortho.png",
+      "fileFormat": "PNG",
+      "relativePath": "images/sample-a-clean-ortho.png",
+      "category": "Category A: Clean Hand-Drawn Plans",
+      "floorCount": 1,
+      "imageDimensions": [
+        1200,
+        900
+      ],
+      "sha256": "e6d2d62cec6483047cfbbadcd42b6ecf8edc7f9688d54f5d14898bf1edd95981",
+      "provenance": "synthetic_drawn_for_testing",
+      "annotationStatus": "manually_reviewed",
+      "reviewerStatus": "verified",
+      "description": "Clean orthogonal single-storey hand plan with full explicit dimensions."
+    },
+    {
+      "sampleId": "BENCH-CAT-B-01",
+      "fileName": "sample-b-rough-sketch.jpg",
+      "fileFormat": "JPEG",
+      "relativePath": "images/sample-b-rough-sketch.jpg",
+      "category": "Category B: Rough Hand-Drawn Plans",
+      "floorCount": 1,
+      "imageDimensions": [
+        1200,
+        849
+      ],
+      "sha256": "8683c2cd307c28ca22a9bcb1790a66e7dfc9bb8a3e923cbf32c022cebbe6ea60",
+      "provenance": "user_provided",
+      "annotationStatus": "manually_reviewed",
+      "reviewerStatus": "verified",
+      "description": "Canonical user hand-drawn residential sketch with uneven lines and arithmetic contradictions."
+    },
+    {
+      "sampleId": "BENCH-CAT-C-01",
+      "fileName": "sample-c-incomplete.png",
+      "fileFormat": "PNG",
+      "relativePath": "images/sample-c-incomplete.png",
+      "category": "Category C: Incomplete Plans",
+      "floorCount": 1,
+      "imageDimensions": [
+        1200,
+        900
+      ],
+      "sha256": "e4974b89ba704d7343313d063d3618e122f5644195ee9282b05ec9fc881f5d27",
+      "provenance": "synthetic_drawn_for_testing",
+      "annotationStatus": "manually_reviewed",
+      "reviewerStatus": "verified",
+      "description": "Incomplete plan with unclosed perimeter and missing building depth."
+    },
+    {
+      "sampleId": "BENCH-CAT-D-01",
+      "fileName": "sample-d-complex-nonrect.png",
+      "fileFormat": "PNG",
+      "relativePath": "images/sample-d-complex-nonrect.png",
+      "category": "Category D: Complex Residential Plans",
+      "floorCount": 1,
+      "imageDimensions": [
+        1400,
+        1000
+      ],
+      "sha256": "7709f9abe3bd35362209cc4931f2b531090cbd50fe64500807ec4027a955d823",
+      "provenance": "synthetic_drawn_for_testing",
+      "annotationStatus": "manually_reviewed",
+      "reviewerStatus": "verified",
+      "description": "Complex non-rectangular floor plan with 45-degree angled chamfered exterior wall."
+    },
+    {
+      "sampleId": "BENCH-CAT-E-01",
+      "fileName": "sample-e-multistorey.pdf",
+      "fileFormat": "PDF",
+      "relativePath": "pdfs/sample-e-multistorey.pdf",
+      "category": "Category E: Multi-Storey Plans",
+      "floorCount": 2,
+      "pageCount": 2,
+      "sha256": "4f2006004a22cf48435825eb12f9ae52a785937b10b580bbcc7cd8568ccdacb1",
+      "provenance": "synthetic_drawn_for_testing",
+      "annotationStatus": "manually_reviewed",
+      "reviewerStatus": "verified",
+      "description": "2-page multi-storey residential PDF with coordinated staircase and structural columns."
+    },
+    {
+      "sampleId": "BENCH-CAT-F-01",
+      "fileName": "sample-f-lowqual-tilted.jpg",
+      "fileFormat": "JPEG",
+      "relativePath": "images/sample-f-lowqual-tilted.jpg",
+      "category": "Category F: Low-Quality Inputs",
+      "floorCount": 1,
+      "imageDimensions": [
+        1200,
+        849
+      ],
+      "sha256": "6379dc02c8d88745e1208cefc214568e181666c97ee59608e1fb476dd4982d50",
+      "provenance": "user_provided_degraded",
+      "annotationStatus": "manually_reviewed",
+      "reviewerStatus": "verified",
+      "description": "Perspective-tilted, shadowed photograph of canonical sketch simulating mobile capture."
+    }
+  ]
+}

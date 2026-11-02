@@ -144,17 +144,49 @@ This directory contains test specifications, reference fixtures, and validation 
 
 ---
 
+### 16. **Real-World Architectural Benchmark Engine Suite (Milestone 10)**:
+    `powershell
+    python -m unittest tests/test_benchmark_engine.py
+    `
+    Validates benchmark dataset manifest loading, ground-truth parsing across all 6 categories (A through F), polygon IoU computation, spatial wall bipartite matching, opening center proximity and width errors, dimension numeric accuracy within 50mm tolerance, execution type provenance enforcement, and Markdown benchmark audit report rendering.
+
+17. **Independent Architectural & Structural DXF Inspector Suite (Milestone 10)**:
+    `powershell
+    python -m unittest tests/test_dxf_inspector.py
+    `
+    Validates DXF file integrity, SHA-256 hashing, header inspection (=4 mm, DXF version, bounding extents), layer compliance, layer 0 cleanliness, entity inventory counting, duplicate entity detection, degenerate geometry detection (<10mm blocking), model-to-DXF-to-BIM consistency cross-auditing, and Markdown audit report formatting.
+
+18. **Downstream BIM Integration & Interoperability Validator Suite (Milestone 10)**:
+    `powershell
+    python -m unittest tests/test_bim_integration.py
+    `
+    Validates downstream environment detection, handoff semantic contract verification, referential integrity (orphan openings, duplicate wall IDs), window sill height specification warnings, Markdown integration report formatting, and genuine downstream CLI preflight (inspect) and prepare execution.
+
+19. **Production Reliability, Retry Backoff & Atomic Operations Suite (Milestone 10)**:
+    `powershell
+    python -m unittest tests/test_pipeline_reliability.py
+    `
+    Validates RetryConfig defaults, transient vs permanent error classification, exponential backoff with jitter, immediate failure on permanent auth or schema errors, atomic text writing, atomic JSON writing, atomic binary bytes writing, and rollback on interrupted write operations.
+
+20. **Pipeline Performance & Resource Profiling Suite (Milestone 10)**:
+    `powershell
+    python -m unittest tests/test_performance_profiler.py
+    `
+    Validates phase start/end timing lifecycle, sequential pipeline stage transitions, architectural entity tracking, source metadata recording, profile dictionary serialization, and Markdown performance report rendering.
+
+---
+
 ### Overall Test Suite Execution
 
-Run all 154 automated tests:
-```powershell
+Run all 188 automated tests:
+`powershell
 python -m unittest discover tests
-```
+`
 
-Run skill integrity validation (15 automated checks):
-```powershell
+Run skill integrity validation (16 automated checks):
+`powershell
 .\scripts\validate-skill.ps1
-```
+`
 
 ### Sketch Fixtures (Milestone 7)
 

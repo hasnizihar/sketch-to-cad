@@ -1,0 +1,198 @@
+{
+  "sampleId": "BENCH-CAT-F-01",
+  "category": "Category F: Low-Quality Inputs",
+  "envelope": {
+    "width": 8000.0,
+    "depth": 8700.0,
+    "visibility": "ambiguous"
+  },
+  "walls": [
+    {
+      "id": "W-SOUTH",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        8000,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior",
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "W-EAST",
+      "start": [
+        8000,
+        0
+      ],
+      "end": [
+        8000,
+        8700
+      ],
+      "thickness": 200,
+      "classification": "exterior",
+      "visibility": "ambiguous"
+    },
+    {
+      "id": "W-NORTH",
+      "start": [
+        8000,
+        8700
+      ],
+      "end": [
+        0,
+        8700
+      ],
+      "thickness": 200,
+      "classification": "exterior",
+      "visibility": "ambiguous"
+    },
+    {
+      "id": "W-WEST",
+      "start": [
+        0,
+        8700
+      ],
+      "end": [
+        0,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior",
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "W-INT-SPINE",
+      "start": [
+        4200,
+        0
+      ],
+      "end": [
+        4200,
+        8700
+      ],
+      "thickness": 100,
+      "classification": "interior",
+      "visibility": "ambiguous"
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-MAIN",
+      "type": "door",
+      "wallId": "W-EAST",
+      "center": [
+        8000,
+        1500
+      ],
+      "width": 900,
+      "swing": "inward-left",
+      "visibility": "ambiguous"
+    },
+    {
+      "id": "D-BED1",
+      "type": "door",
+      "wallId": "W-INT-SPINE",
+      "center": [
+        4200,
+        6000
+      ],
+      "width": 850,
+      "swing": "inward-right",
+      "visibility": "ambiguous"
+    },
+    {
+      "id": "W-LIVING",
+      "type": "window",
+      "wallId": "W-SOUTH",
+      "center": [
+        2000,
+        0
+      ],
+      "width": 1800,
+      "swing": "fixed",
+      "visibility": "clearly_visible"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-LIVING",
+      "name": "LIVING ROOM",
+      "boundaryCorners": [
+        [
+          0,
+          0
+        ],
+        [
+          4200,
+          0
+        ],
+        [
+          4200,
+          5000
+        ],
+        [
+          0,
+          5000
+        ]
+      ],
+      "approximateArea": 21.0,
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "R-FOYER",
+      "name": "FOYER",
+      "boundaryCorners": [
+        [
+          4200,
+          0
+        ],
+        [
+          8000,
+          0
+        ],
+        [
+          8000,
+          3000
+        ],
+        [
+          4200,
+          3000
+        ]
+      ],
+      "approximateArea": 11.4,
+      "visibility": "ambiguous"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-WIDTH-EXT",
+      "text": "8000",
+      "value": 8000.0,
+      "visibility": "clearly_visible"
+    },
+    {
+      "id": "DIM-DEPTH-EXT",
+      "text": "8700",
+      "value": 8700.0,
+      "visibility": "ambiguous"
+    }
+  ],
+  "floors": [
+    "LEVEL-01"
+  ],
+  "uncertainties": [
+    {
+      "target": "perspective_distortion",
+      "description": "Image captured with ~3.5 deg perspective tilt and non-uniform lighting shadow.",
+      "visibility": "clearly_visible"
+    },
+    {
+      "target": "shadow_degradation",
+      "description": "Bottom-right corner and right exterior wall have diminished contrast from lighting falloff.",
+      "visibility": "ambiguous"
+    }
+  ]
+}
