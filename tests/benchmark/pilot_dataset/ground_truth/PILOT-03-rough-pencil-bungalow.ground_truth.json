@@ -1,0 +1,283 @@
+{
+  "sampleId": "PILOT-03",
+  "category": "Rough Pencil Sketches",
+  "envelope": {
+    "width": 8000.0,
+    "depth": 6000.0,
+    "visibility": "clearly_visible"
+  },
+  "walls": [
+    {
+      "id": "W-S",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        8000,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-E",
+      "start": [
+        8000,
+        0
+      ],
+      "end": [
+        8000,
+        6000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-N",
+      "start": [
+        8000,
+        6000
+      ],
+      "end": [
+        0,
+        6000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-W",
+      "start": [
+        0,
+        6000
+      ],
+      "end": [
+        0,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-INT-MID",
+      "start": [
+        4000,
+        0
+      ],
+      "end": [
+        4000,
+        6000
+      ],
+      "thickness": 100,
+      "classification": "interior"
+    },
+    {
+      "id": "W-INT-W",
+      "start": [
+        0,
+        3000
+      ],
+      "end": [
+        4000,
+        3000
+      ],
+      "thickness": 100,
+      "classification": "interior"
+    },
+    {
+      "id": "W-INT-E",
+      "start": [
+        4000,
+        3000
+      ],
+      "end": [
+        8000,
+        3000
+      ],
+      "thickness": 100,
+      "classification": "interior"
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-01",
+      "type": "door",
+      "center": [
+        2000,
+        0
+      ],
+      "width": 900.0,
+      "wallId": "W-S",
+      "swing": "inward-right"
+    },
+    {
+      "id": "D-02",
+      "type": "door",
+      "center": [
+        4000,
+        1500
+      ],
+      "width": 800.0,
+      "wallId": "W-INT-MID",
+      "swing": "inward-left"
+    },
+    {
+      "id": "D-03",
+      "type": "door",
+      "center": [
+        2000,
+        3000
+      ],
+      "width": 800.0,
+      "wallId": "W-INT-W",
+      "swing": "inward-right"
+    },
+    {
+      "id": "WIN-01",
+      "type": "window",
+      "center": [
+        0,
+        1500
+      ],
+      "width": 1200.0,
+      "wallId": "W-W",
+      "sillHeight": 900.0
+    },
+    {
+      "id": "WIN-02",
+      "type": "window",
+      "center": [
+        8000,
+        1500
+      ],
+      "width": 1200.0,
+      "wallId": "W-E",
+      "sillHeight": 900.0
+    },
+    {
+      "id": "WIN-03",
+      "type": "window",
+      "center": [
+        6000,
+        6000
+      ],
+      "width": 1000.0,
+      "wallId": "W-N",
+      "sillHeight": 900.0
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-1",
+      "name": "LIVING",
+      "approximateArea": 12.0,
+      "boundaryCorners": [
+        [
+          0,
+          0
+        ],
+        [
+          4000,
+          0
+        ],
+        [
+          4000,
+          3000
+        ],
+        [
+          0,
+          3000
+        ]
+      ]
+    },
+    {
+      "id": "R-2",
+      "name": "DINING / KITCHEN",
+      "approximateArea": 12.0,
+      "boundaryCorners": [
+        [
+          0,
+          3000
+        ],
+        [
+          4000,
+          3000
+        ],
+        [
+          4000,
+          6000
+        ],
+        [
+          0,
+          6000
+        ]
+      ]
+    },
+    {
+      "id": "R-3",
+      "name": "BEDROOM",
+      "approximateArea": 12.0,
+      "boundaryCorners": [
+        [
+          4000,
+          0
+        ],
+        [
+          8000,
+          0
+        ],
+        [
+          8000,
+          3000
+        ],
+        [
+          4000,
+          3000
+        ]
+      ]
+    },
+    {
+      "id": "R-4",
+      "name": "BATH / UTILITY",
+      "approximateArea": 12.0,
+      "boundaryCorners": [
+        [
+          4000,
+          3000
+        ],
+        [
+          8000,
+          3000
+        ],
+        [
+          8000,
+          6000
+        ],
+        [
+          4000,
+          6000
+        ]
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-W",
+      "text": "8000",
+      "value": 8000.0
+    },
+    {
+      "id": "DIM-D",
+      "text": "6000",
+      "value": 6000.0
+    }
+  ],
+  "floors": [
+    "LEVEL-01"
+  ],
+  "uncertainties": [],
+  "provenance": "rough_pencil_field_sketch",
+  "annotator": "Independent Architectural Annotator",
+  "reviewMethod": "independent_drawing_audit"
+}

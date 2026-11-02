@@ -1,0 +1,224 @@
+{
+  "sampleId": "PILOT-10",
+  "category": "Non-Rectangular Footprints",
+  "envelope": {
+    "width": 8000.0,
+    "depth": 6000.0,
+    "visibility": "clearly_visible"
+  },
+  "walls": [
+    {
+      "id": "W-S",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        8000,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-E1",
+      "start": [
+        8000,
+        0
+      ],
+      "end": [
+        8000,
+        3000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-RECESSED-H",
+      "start": [
+        8000,
+        3000
+      ],
+      "end": [
+        4500,
+        3000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-RECESSED-V",
+      "start": [
+        4500,
+        3000
+      ],
+      "end": [
+        4500,
+        6000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-N",
+      "start": [
+        4500,
+        6000
+      ],
+      "end": [
+        0,
+        6000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-W",
+      "start": [
+        0,
+        6000
+      ],
+      "end": [
+        0,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-INT",
+      "start": [
+        0,
+        3000
+      ],
+      "end": [
+        4500,
+        3000
+      ],
+      "thickness": 100,
+      "classification": "interior"
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-01",
+      "type": "door",
+      "center": [
+        2500,
+        0
+      ],
+      "width": 900.0,
+      "wallId": "W-S",
+      "swing": "inward-right"
+    },
+    {
+      "id": "WIN-01",
+      "type": "window",
+      "center": [
+        0,
+        4500
+      ],
+      "width": 1200.0,
+      "wallId": "W-W",
+      "sillHeight": 900.0
+    },
+    {
+      "id": "WIN-02",
+      "type": "window",
+      "center": [
+        6500,
+        0
+      ],
+      "width": 1200.0,
+      "wallId": "W-S",
+      "sillHeight": 900.0
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-1",
+      "name": "LIVING WING",
+      "approximateArea": 13.5,
+      "boundaryCorners": [
+        [
+          0,
+          0
+        ],
+        [
+          4500,
+          0
+        ],
+        [
+          4500,
+          3000
+        ],
+        [
+          0,
+          3000
+        ]
+      ]
+    },
+    {
+      "id": "R-2",
+      "name": "BEDROOM WING",
+      "approximateArea": 13.5,
+      "boundaryCorners": [
+        [
+          0,
+          3000
+        ],
+        [
+          4500,
+          3000
+        ],
+        [
+          4500,
+          6000
+        ],
+        [
+          0,
+          6000
+        ]
+      ]
+    },
+    {
+      "id": "R-3",
+      "name": "KITCHEN / DINING",
+      "approximateArea": 10.5,
+      "boundaryCorners": [
+        [
+          4500,
+          0
+        ],
+        [
+          8000,
+          0
+        ],
+        [
+          8000,
+          3000
+        ],
+        [
+          4500,
+          3000
+        ]
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-W",
+      "text": "8000",
+      "value": 8000.0
+    },
+    {
+      "id": "DIM-D",
+      "text": "6000",
+      "value": 6000.0
+    }
+  ],
+  "uncertainties": [],
+  "provenance": "digitized_field_sketch",
+  "annotator": "Independent Architectural Annotator",
+  "reviewMethod": "independent_drawing_audit"
+}

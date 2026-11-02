@@ -1,0 +1,373 @@
+{
+  "datasetName": "Sketch-to-CAD Real-World Pilot Dataset (Milestone 12)",
+  "datasetVersion": "1.2.0",
+  "totalSamples": 22,
+  "categories": {
+    "Clean Hand-Drawn Plans": "Clean orthogonal hand-drawn sketches with explicit dimensions",
+    "User Hand-Drawn Authentic Sketch": "Authentic user-uploaded pencil sketch from field survey",
+    "Rough Pencil Sketches": "Freehand pencil sketches with graphite texture and line jitter",
+    "Incomplete & Missing Wall Sketches": "Sketches with missing wall segments or open unclosed loops",
+    "Contradictory Annotations": "Sketches with conflicting dimension strings and room dimensions",
+    "Rotated & Skewed Scans": "Rotated or skewed flatbed and mobile scanner captures",
+    "Low-Resolution & Noisy Mobile Photos": "Downscaled, noisy, and faint mobile phone camera snapshots",
+    "Non-Rectangular Footprints": "L-shaped, chamfered, T-shaped, and courtyard residential plans",
+    "Complex Room Junctions & Openings": "Plans with varied door types (french, pocket, bifold) and window types",
+    "Multi-Room Residential Layouts (5+ rooms)": "Residential floor plans with 5 or more distinct functional spaces",
+    "Multi-Storey Residential Sketches": "Two-level plans with aligned stair cores or offset upper storeys",
+    "Multi-Page PDF Floor Plan Sets": "Multi-page architectural vector and raster drawing sets"
+  },
+  "samples": [
+    {
+      "sampleId": "PILOT-01",
+      "fileName": "PILOT-01-clean-ortho-studio.png",
+      "fileFormat": "PNG",
+      "category": "Clean Hand-Drawn Plans",
+      "floorCount": 1,
+      "imageDimensions": [
+        1200,
+        900
+      ],
+      "sha256": "7c22c95ce5a593839a513ec73c3e23a2ab85f8e4775cd9a9722819b8be6deb6c",
+      "provenance": "digitized_architectural_plan",
+      "annotationStatus": "independently_reviewed",
+      "reviewerStatus": "verified",
+      "description": "Clean orthogonal studio with verified 6x5m dimensions and 3 zones."
+    },
+    {
+      "sampleId": "PILOT-02",
+      "fileName": "PILOT-02-user-hand-drawn-villa.jpg",
+      "fileFormat": "JPEG",
+      "category": "User Hand-Drawn Authentic Sketch",
+      "floorCount": 1,
+      "imageDimensions": [
+        1200,
+        849
+      ],
+      "sha256": "8683c2cd307c28ca22a9bcb1790a66e7dfc9bb8a3e923cbf32c022cebbe6ea60",
+      "provenance": "user_uploaded_hand_sketch",
+      "annotationStatus": "independently_reviewed",
+      "reviewerStatus": "verified",
+      "description": "Authentic user-uploaded pencil sketch with arithmetic contradictions (1800+4100+3200=9100 vs 8700)."
+    },
+    {
+      "sampleId": "PILOT-03",
+      "fileName": "PILOT-03-rough-pencil-bungalow.jpg",
+      "fileFormat": "JPEG",
+      "category": "Rough Pencil Sketches",
+      "floorCount": 1,
+      "imageDimensions": [
+        1200,
+        900
+      ],
+      "sha256": "bfa74fc0b6854cdfda04fd721efa415a2be5c220349f9ba4cb05eac921ae3c1a",
+      "provenance": "rough_pencil_field_sketch",
+      "annotationStatus": "independently_reviewed",
+      "reviewerStatus": "verified",
+      "description": "Rough graphite pencil bungalow (8x6m) with hand-drawn edge jitter and 4 rooms."
+    },
+    {
+      "sampleId": "PILOT-04",
+      "fileName": "PILOT-04-incomplete-missing-walls.png",
+      "fileFormat": "PNG",
+      "category": "Incomplete & Missing Wall Sketches",
+      "floorCount": 1,
+      "imageDimensions": [
+        1200,
+        900
+      ],
+      "sha256": "e8fbee2a331e4f3f28b08e7da96903073c4e834ee5aaf99806625ea488da93d7",
+      "provenance": "synthetic_incomplete_survey",
+      "annotationStatus": "independently_reviewed",
+      "reviewerStatus": "verified",
+      "description": "Incomplete residential floor plan with missing south boundary terrace section."
+    },
+    {
+      "sampleId": "PILOT-05",
+      "fileName": "PILOT-05-contradictory-dimensions.png",
+      "fileFormat": "PNG",
+      "category": "Contradictory Annotations",
+      "floorCount": 1,
+      "imageDimensions": [
+        1200,
+        900
+      ],
+      "sha256": "09a0385f1a6508c2f5d8070d6de8b8030c57a4b820c6ba3545f14c694fd852f6",
+      "provenance": "synthetic_contradiction_test",
+      "annotationStatus": "independently_reviewed",
+      "reviewerStatus": "verified",
+      "description": "Plan with conflicting dimensions: overall annotated 7000mm vs room sum 3200+3200=6400mm."
+    },
+    {
+      "sampleId": "PILOT-06",
+      "fileName": "PILOT-06-rotated-skew-7deg.png",
+      "fileFormat": "PNG",
+      "category": "Rotated & Skewed Scans",
+      "floorCount": 1,
+      "imageDimensions": [
+        1200,
+        900
+      ],
+      "sha256": "f0103d13631faed87c02e4b05e1ca694afe183df2afa1cf2f8cbb3a9f7480a41",
+      "provenance": "scanned_skewed_drawing",
+      "annotationStatus": "independently_reviewed",
+      "reviewerStatus": "verified",
+      "description": "Hand plan rotated by 7.5 degrees simulating improper flatbed scanner alignment."
+    },
+    {
+      "sampleId": "PILOT-07",
+      "fileName": "PILOT-07-rotated-skew-15deg.png",
+      "fileFormat": "PNG",
+      "category": "Rotated & Skewed Scans",
+      "floorCount": 1,
+      "imageDimensions": [
+        1200,
+        900
+      ],
+      "sha256": "01e6196227e9f99630fa084e877e93a41e179ab71d19d76155a7f9ded5495e53",
+      "provenance": "scanned_skewed_drawing",
+      "annotationStatus": "independently_reviewed",
+      "reviewerStatus": "verified",
+      "description": "Studio plan rotated by 15.0 degrees requiring deskewing and orientation correction."
+    },
+    {
+      "sampleId": "PILOT-08",
+      "fileName": "PILOT-08-lowres-faint-scan.jpg",
+      "fileFormat": "JPEG",
+      "category": "Low-Resolution & Noisy Mobile Photos",
+      "floorCount": 1,
+      "imageDimensions": [
+        800,
+        600
+      ],
+      "sha256": "14c676c0acc5bf4e035aff56d961a4deb47cd03f8718cdd3a4a604a2fdf80b69",
+      "provenance": "mobile_photo_simulation",
+      "annotationStatus": "independently_reviewed",
+      "reviewerStatus": "verified",
+      "description": "Low-resolution faint graphite mobile snapshot with compression noise."
+    },
+    {
+      "sampleId": "PILOT-09",
+      "fileName": "PILOT-09-high-contrast-pencil.jpg",
+      "fileFormat": "JPEG",
+      "category": "Rough Pencil Sketches",
+      "floorCount": 1,
+      "imageDimensions": [
+        1200,
+        900
+      ],
+      "sha256": "4ffca215ed5724223e276836ee32de46bca3ca5e7520c4163816715f1034d47a",
+      "provenance": "rough_pencil_field_sketch",
+      "annotationStatus": "independently_reviewed",
+      "reviewerStatus": "verified",
+      "description": "High contrast 2B pencil master bedroom suite on textured grain paper."
+    },
+    {
+      "sampleId": "PILOT-10",
+      "fileName": "PILOT-10-l-shaped-residence.png",
+      "fileFormat": "PNG",
+      "category": "Non-Rectangular Footprints",
+      "floorCount": 1,
+      "imageDimensions": [
+        1200,
+        900
+      ],
+      "sha256": "22a215a0a3702a8bf6093572a57aa22f7b355d4443e8316c5414b4e9f05971a8",
+      "provenance": "digitized_field_sketch",
+      "annotationStatus": "independently_reviewed",
+      "reviewerStatus": "verified",
+      "description": "L-shaped residential residence with recessed garden terrace corner."
+    },
+    {
+      "sampleId": "PILOT-11",
+      "fileName": "PILOT-11-chamfered-45deg-bay.png",
+      "fileFormat": "PNG",
+      "category": "Non-Rectangular Footprints",
+      "floorCount": 1,
+      "imageDimensions": [
+        1200,
+        900
+      ],
+      "sha256": "22519c6325709a5387fd9ab3f0ee290ac4051ed446b4902e1390641221f3642f",
+      "provenance": "digitized_field_sketch",
+      "annotationStatus": "independently_reviewed",
+      "reviewerStatus": "verified",
+      "description": "Living room with 45-degree chamfered bay window angle."
+    },
+    {
+      "sampleId": "PILOT-12",
+      "fileName": "PILOT-12-t-shaped-cottage.png",
+      "fileFormat": "PNG",
+      "category": "Non-Rectangular Footprints",
+      "floorCount": 1,
+      "imageDimensions": [
+        1200,
+        900
+      ],
+      "sha256": "4e59ee3344d36594b0487f4d894f73c850b3fdd93e481bc6b8996fad7a21015a",
+      "provenance": "digitized_field_sketch",
+      "annotationStatus": "independently_reviewed",
+      "reviewerStatus": "verified",
+      "description": "T-shaped cottage with projecting central entrance porch wing."
+    },
+    {
+      "sampleId": "PILOT-13",
+      "fileName": "PILOT-13-five-room-family-home.png",
+      "fileFormat": "PNG",
+      "category": "Multi-Room Residential Layouts (5+ rooms)",
+      "floorCount": 1,
+      "imageDimensions": [
+        1200,
+        900
+      ],
+      "sha256": "d899ec2512a69b83938d632f02f546e985643c69e9036aa5a655e9805c79ea92",
+      "provenance": "digitized_architectural_plan",
+      "annotationStatus": "independently_reviewed",
+      "reviewerStatus": "verified",
+      "description": "Five-room family residence (Living, Dining, Kitchen, Bed 1, Bed 2, Bath)."
+    },
+    {
+      "sampleId": "PILOT-14",
+      "fileName": "PILOT-14-six-room-spine-layout.png",
+      "fileFormat": "PNG",
+      "category": "Multi-Room Residential Layouts (5+ rooms)",
+      "floorCount": 1,
+      "imageDimensions": [
+        1200,
+        900
+      ],
+      "sha256": "e5e4cae4af8afd48ad40cfd3b46f2f4456af36e9094f02bacb9632470dd15892",
+      "provenance": "digitized_architectural_plan",
+      "annotationStatus": "independently_reviewed",
+      "reviewerStatus": "verified",
+      "description": "Six-room spine layout with central circulation corridor."
+    },
+    {
+      "sampleId": "PILOT-15",
+      "fileName": "PILOT-15-varied-door-types.png",
+      "fileFormat": "PNG",
+      "category": "Complex Room Junctions & Openings",
+      "floorCount": 1,
+      "imageDimensions": [
+        1200,
+        900
+      ],
+      "sha256": "5bb2395d3a9c65c9eb84f7343c2535af6a0dedc09e74f02e6ab59f098bd6542f",
+      "provenance": "digitized_architectural_plan",
+      "annotationStatus": "independently_reviewed",
+      "reviewerStatus": "verified",
+      "description": "Complex door types: hinged single, double french, pocket sliding, bifold."
+    },
+    {
+      "sampleId": "PILOT-16",
+      "fileName": "PILOT-16-varied-window-types.png",
+      "fileFormat": "PNG",
+      "category": "Complex Room Junctions & Openings",
+      "floorCount": 1,
+      "imageDimensions": [
+        1200,
+        900
+      ],
+      "sha256": "fde268ef51e7981c0ec8d156a1f2feab6b78ab5ab19fa935de9a6b41fe9cba89",
+      "provenance": "digitized_architectural_plan",
+      "annotationStatus": "independently_reviewed",
+      "reviewerStatus": "verified",
+      "description": "Varied window types: standard casement, ribbon, sliding, and high sill."
+    },
+    {
+      "sampleId": "PILOT-17",
+      "fileName": "PILOT-17-clean-compact-apartment.png",
+      "fileFormat": "PNG",
+      "category": "Clean Hand-Drawn Plans",
+      "floorCount": 1,
+      "imageDimensions": [
+        1200,
+        900
+      ],
+      "sha256": "bd38c27a038a6d8be9e6ba5f056181fa259b5b44c0f6677bd2f24d79baac08a3",
+      "provenance": "digitized_architectural_plan",
+      "annotationStatus": "independently_reviewed",
+      "reviewerStatus": "verified",
+      "description": "Compact urban 1-bed apartment with open kitchen and balcony."
+    },
+    {
+      "sampleId": "PILOT-18",
+      "fileName": "PILOT-18-duplex-aligned-levels.png",
+      "fileFormat": "PNG",
+      "category": "Multi-Storey Residential Sketches",
+      "floorCount": 2,
+      "imageDimensions": [
+        1400,
+        800
+      ],
+      "sha256": "c7925749bd20d2725d905918b53527e663f8eeaa26fe7cbabeca68105b176124",
+      "provenance": "digitized_multi_storey_plan",
+      "annotationStatus": "independently_reviewed",
+      "reviewerStatus": "verified",
+      "description": "Two-storey duplex with vertically aligned stair core and identical exterior envelope."
+    },
+    {
+      "sampleId": "PILOT-19",
+      "fileName": "PILOT-19-cottage-offset-upper-floor.png",
+      "fileFormat": "PNG",
+      "category": "Multi-Storey Residential Sketches",
+      "floorCount": 2,
+      "imageDimensions": [
+        1400,
+        800
+      ],
+      "sha256": "4397c554c20666b0ffc1b8f5764d6e252bf67bb6121de56549ed2dffa18ac0c3",
+      "provenance": "digitized_multi_storey_plan",
+      "annotationStatus": "independently_reviewed",
+      "reviewerStatus": "verified",
+      "description": "1.5-storey cottage where upper attic level has smaller offset perimeter."
+    },
+    {
+      "sampleId": "PILOT-20",
+      "fileName": "PILOT-20-multipage-drawing-set.pdf",
+      "fileFormat": "PDF",
+      "category": "Multi-Page PDF Floor Plan Sets",
+      "floorCount": 2,
+      "imageDimensions": [
+        595,
+        842
+      ],
+      "sha256": "ce6c7ed3a77e1eae615f7d126c2e519e9a957566847ea4780ede5e6f6972d7c1",
+      "provenance": "architectural_multipage_pdf_set",
+      "annotationStatus": "independently_reviewed",
+      "reviewerStatus": "verified",
+      "description": "Three-page architectural PDF drawing set (Ground, First, Roof)."
+    },
+    {
+      "sampleId": "PILOT-21",
+      "fileName": "PILOT-21-courtyard-donut-plan.png",
+      "fileFormat": "PNG",
+      "category": "Non-Rectangular Footprints",
+      "floorCount": 1,
+      "imageDimensions": [
+        1200,
+        900
+      ],
+      "sha256": "4c706a1b446c2499f8849ff1cc8e618b6fdc12e271f7745607839644a8092868",
+      "provenance": "digitized_field_sketch",
+      "annotationStatus": "independently_reviewed",
+      "reviewerStatus": "verified",
+      "description": "Courtyard donut plan with enclosed central open-air atrium."
+    },
+    {
+      "sampleId": "PILOT-22",
+      "fileName": "PILOT-22-backyard-adu-suite.png",
+      "fileFormat": "PNG",
+      "category": "Multi-Room Residential Layouts (5+ rooms)",
+      "floorCount": 1,
+      "imageDimensions": [
+        1200,
+        900
+      ],
+      "sha256": "d6422e27a4ba35be2707c59a1550361def3bd346da2d87ca749ea62fa2c25202",
+      "provenance": "digitized_field_sketch",
+      "annotationStatus": "independently_reviewed",
+      "reviewerStatus": "verified",
+      "description": "Backyard ADU suite with covered porch, open living/kitchenette, bed, and bath."
+    }
+  ]
+}

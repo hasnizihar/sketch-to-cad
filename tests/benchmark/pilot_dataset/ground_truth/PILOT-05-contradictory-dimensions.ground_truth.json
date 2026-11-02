@@ -1,0 +1,180 @@
+{
+  "sampleId": "PILOT-05",
+  "category": "Contradictory Annotations",
+  "envelope": {
+    "width": 7000.0,
+    "depth": 5000.0,
+    "visibility": "clearly_visible"
+  },
+  "walls": [
+    {
+      "id": "W-S",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        7000,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-E",
+      "start": [
+        7000,
+        0
+      ],
+      "end": [
+        7000,
+        5000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-N",
+      "start": [
+        7000,
+        5000
+      ],
+      "end": [
+        0,
+        5000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-W",
+      "start": [
+        0,
+        5000
+      ],
+      "end": [
+        0,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-INT",
+      "start": [
+        3500,
+        0
+      ],
+      "end": [
+        3500,
+        5000
+      ],
+      "thickness": 100,
+      "classification": "interior"
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-01",
+      "type": "door",
+      "center": [
+        1750,
+        0
+      ],
+      "width": 900.0,
+      "wallId": "W-S",
+      "swing": "inward-right"
+    },
+    {
+      "id": "D-02",
+      "type": "door",
+      "center": [
+        5250,
+        0
+      ],
+      "width": 900.0,
+      "wallId": "W-S",
+      "swing": "inward-right"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-1",
+      "name": "BED 1",
+      "approximateArea": 17.5,
+      "boundaryCorners": [
+        [
+          0,
+          0
+        ],
+        [
+          3500,
+          0
+        ],
+        [
+          3500,
+          5000
+        ],
+        [
+          0,
+          5000
+        ]
+      ]
+    },
+    {
+      "id": "R-2",
+      "name": "BED 2",
+      "approximateArea": 17.5,
+      "boundaryCorners": [
+        [
+          3500,
+          0
+        ],
+        [
+          7000,
+          0
+        ],
+        [
+          7000,
+          5000
+        ],
+        [
+          3500,
+          5000
+        ]
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-OVERALL",
+      "text": "7000",
+      "value": 7000.0
+    },
+    {
+      "id": "DIM-R1",
+      "text": "3200",
+      "value": 3200.0
+    },
+    {
+      "id": "DIM-R2",
+      "text": "3200",
+      "value": 3200.0
+    },
+    {
+      "id": "DIM-D",
+      "text": "5000",
+      "value": 5000.0
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "UNC-DIM-01",
+      "type": "dimension_contradiction",
+      "description": "Sum of internal room dimensions 3200+3200=6400 does not equal overall annotated dimension 7000mm (discrepancy 600mm)"
+    }
+  ],
+  "provenance": "synthetic_contradiction_test",
+  "annotator": "Independent Architectural Annotator",
+  "reviewMethod": "independent_drawing_audit"
+}

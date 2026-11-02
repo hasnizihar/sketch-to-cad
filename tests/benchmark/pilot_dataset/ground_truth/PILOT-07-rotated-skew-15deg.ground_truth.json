@@ -1,0 +1,134 @@
+{
+  "sampleId": "PILOT-07",
+  "category": "Rotated & Skewed Scans",
+  "envelope": {
+    "width": 6000.0,
+    "depth": 3000.0,
+    "visibility": "clearly_visible"
+  },
+  "walls": [
+    {
+      "id": "W-S",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        6000,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-E",
+      "start": [
+        6000,
+        0
+      ],
+      "end": [
+        6000,
+        3000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-N",
+      "start": [
+        6000,
+        3000
+      ],
+      "end": [
+        0,
+        3000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-W",
+      "start": [
+        0,
+        3000
+      ],
+      "end": [
+        0,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-01",
+      "type": "door",
+      "center": [
+        3000,
+        0
+      ],
+      "width": 900.0,
+      "wallId": "W-S",
+      "swing": "inward-right"
+    },
+    {
+      "id": "WIN-01",
+      "type": "window",
+      "center": [
+        0,
+        1500
+      ],
+      "width": 1000.0,
+      "wallId": "W-W",
+      "sillHeight": 900.0
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-1",
+      "name": "STUDIO",
+      "approximateArea": 18.0,
+      "boundaryCorners": [
+        [
+          0,
+          0
+        ],
+        [
+          6000,
+          0
+        ],
+        [
+          6000,
+          3000
+        ],
+        [
+          0,
+          3000
+        ]
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-W",
+      "text": "6000",
+      "value": 6000.0
+    },
+    {
+      "id": "DIM-D",
+      "text": "3000",
+      "value": 3000.0
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "UNC-ROT-02",
+      "type": "scan_rotation",
+      "description": "Scan rotated by 15.0 degrees"
+    }
+  ],
+  "provenance": "scanned_skewed_drawing",
+  "annotator": "Independent Architectural Annotator",
+  "reviewMethod": "independent_drawing_audit"
+}

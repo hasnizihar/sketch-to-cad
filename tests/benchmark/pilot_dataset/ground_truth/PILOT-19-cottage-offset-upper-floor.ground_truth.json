@@ -1,0 +1,219 @@
+{
+  "sampleId": "PILOT-19",
+  "category": "Multi-Storey Residential Sketches",
+  "envelope": {
+    "width": 9000.0,
+    "depth": 7000.0,
+    "visibility": "clearly_visible"
+  },
+  "walls": [
+    {
+      "id": "W-L1-S",
+      "floorId": "LEVEL-01",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        9000,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-L1-E",
+      "floorId": "LEVEL-01",
+      "start": [
+        9000,
+        0
+      ],
+      "end": [
+        9000,
+        7000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-L1-N",
+      "floorId": "LEVEL-01",
+      "start": [
+        9000,
+        7000
+      ],
+      "end": [
+        0,
+        7000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-L1-W",
+      "floorId": "LEVEL-01",
+      "start": [
+        0,
+        7000
+      ],
+      "end": [
+        0,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-L2-S",
+      "floorId": "LEVEL-02",
+      "start": [
+        1500,
+        1000
+      ],
+      "end": [
+        7500,
+        1000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-L2-E",
+      "floorId": "LEVEL-02",
+      "start": [
+        7500,
+        1000
+      ],
+      "end": [
+        7500,
+        6000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-L2-N",
+      "floorId": "LEVEL-02",
+      "start": [
+        7500,
+        6000
+      ],
+      "end": [
+        1500,
+        6000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-L2-W",
+      "floorId": "LEVEL-02",
+      "start": [
+        1500,
+        6000
+      ],
+      "end": [
+        1500,
+        1000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-01",
+      "floorId": "LEVEL-01",
+      "type": "door",
+      "center": [
+        3000,
+        0
+      ],
+      "width": 900.0,
+      "wallId": "W-L1-S",
+      "swing": "inward-right"
+    },
+    {
+      "id": "WIN-L2",
+      "floorId": "LEVEL-02",
+      "type": "window",
+      "center": [
+        4500,
+        1000
+      ],
+      "width": 1200.0,
+      "wallId": "W-L2-S",
+      "sillHeight": 900.0
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-L1",
+      "floorId": "LEVEL-01",
+      "name": "GREAT HALL & KITCHEN",
+      "approximateArea": 63.0,
+      "boundaryCorners": [
+        [
+          0,
+          0
+        ],
+        [
+          9000,
+          0
+        ],
+        [
+          9000,
+          7000
+        ],
+        [
+          0,
+          7000
+        ]
+      ]
+    },
+    {
+      "id": "R-L2",
+      "floorId": "LEVEL-02",
+      "name": "LOFT BEDROOM",
+      "approximateArea": 30.0,
+      "boundaryCorners": [
+        [
+          1500,
+          1000
+        ],
+        [
+          7500,
+          1000
+        ],
+        [
+          7500,
+          6000
+        ],
+        [
+          1500,
+          6000
+        ]
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-L1-W",
+      "text": "9000",
+      "value": 9000.0
+    },
+    {
+      "id": "DIM-L2-W",
+      "text": "6000",
+      "value": 6000.0
+    }
+  ],
+  "floors": [
+    "LEVEL-01",
+    "LEVEL-02"
+  ],
+  "uncertainties": [],
+  "provenance": "digitized_multi_storey_plan",
+  "annotator": "Independent Architectural Annotator",
+  "reviewMethod": "independent_drawing_audit"
+}

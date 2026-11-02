@@ -1,0 +1,180 @@
+{
+  "sampleId": "PILOT-21",
+  "category": "Non-Rectangular Footprints",
+  "envelope": {
+    "width": 10000.0,
+    "depth": 10000.0,
+    "visibility": "clearly_visible"
+  },
+  "walls": [
+    {
+      "id": "W-OUT-S",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        10000,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-OUT-E",
+      "start": [
+        10000,
+        0
+      ],
+      "end": [
+        10000,
+        10000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-OUT-N",
+      "start": [
+        10000,
+        10000
+      ],
+      "end": [
+        0,
+        10000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-OUT-W",
+      "start": [
+        0,
+        10000
+      ],
+      "end": [
+        0,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-IN-S",
+      "start": [
+        3000,
+        3000
+      ],
+      "end": [
+        7000,
+        3000
+      ],
+      "thickness": 150,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-IN-E",
+      "start": [
+        7000,
+        3000
+      ],
+      "end": [
+        7000,
+        7000
+      ],
+      "thickness": 150,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-IN-N",
+      "start": [
+        7000,
+        7000
+      ],
+      "end": [
+        3000,
+        7000
+      ],
+      "thickness": 150,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-IN-W",
+      "start": [
+        3000,
+        7000
+      ],
+      "end": [
+        3000,
+        3000
+      ],
+      "thickness": 150,
+      "classification": "exterior"
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-ENTRY",
+      "type": "door",
+      "center": [
+        5000,
+        0
+      ],
+      "width": 1000.0,
+      "wallId": "W-OUT-S",
+      "swing": "inward-right"
+    },
+    {
+      "id": "D-COURTYARD",
+      "type": "door",
+      "center": [
+        5000,
+        3000
+      ],
+      "width": 900.0,
+      "wallId": "W-IN-S",
+      "swing": "inward-right"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-1",
+      "name": "SURROUNDING HABITABLE GALLERY",
+      "approximateArea": 84.0,
+      "boundaryCorners": [
+        [
+          0,
+          0
+        ],
+        [
+          10000,
+          0
+        ],
+        [
+          10000,
+          10000
+        ],
+        [
+          0,
+          10000
+        ]
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-W",
+      "text": "10000",
+      "value": 10000.0
+    },
+    {
+      "id": "DIM-D",
+      "text": "10000",
+      "value": 10000.0
+    }
+  ],
+  "uncertainties": [],
+  "provenance": "digitized_field_sketch",
+  "annotator": "Independent Architectural Annotator",
+  "reviewMethod": "independent_drawing_audit"
+}

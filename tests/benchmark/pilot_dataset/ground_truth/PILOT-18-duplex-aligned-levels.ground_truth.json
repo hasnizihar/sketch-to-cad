@@ -1,0 +1,247 @@
+{
+  "sampleId": "PILOT-18",
+  "category": "Multi-Storey Residential Sketches",
+  "envelope": {
+    "width": 8000.0,
+    "depth": 7000.0,
+    "visibility": "clearly_visible"
+  },
+  "walls": [
+    {
+      "id": "W-L1-S",
+      "floorId": "LEVEL-01",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        8000,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-L1-E",
+      "floorId": "LEVEL-01",
+      "start": [
+        8000,
+        0
+      ],
+      "end": [
+        8000,
+        7000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-L1-N",
+      "floorId": "LEVEL-01",
+      "start": [
+        8000,
+        7000
+      ],
+      "end": [
+        0,
+        7000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-L1-W",
+      "floorId": "LEVEL-01",
+      "start": [
+        0,
+        7000
+      ],
+      "end": [
+        0,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-L2-S",
+      "floorId": "LEVEL-02",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        8000,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-L2-E",
+      "floorId": "LEVEL-02",
+      "start": [
+        8000,
+        0
+      ],
+      "end": [
+        8000,
+        7000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-L2-N",
+      "floorId": "LEVEL-02",
+      "start": [
+        8000,
+        7000
+      ],
+      "end": [
+        0,
+        7000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-L2-W",
+      "floorId": "LEVEL-02",
+      "start": [
+        0,
+        7000
+      ],
+      "end": [
+        0,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-01",
+      "floorId": "LEVEL-01",
+      "type": "door",
+      "center": [
+        2500,
+        0
+      ],
+      "width": 900.0,
+      "wallId": "W-L1-S",
+      "swing": "inward-right"
+    },
+    {
+      "id": "WIN-L1",
+      "floorId": "LEVEL-01",
+      "type": "window",
+      "center": [
+        0,
+        3500
+      ],
+      "width": 1500.0,
+      "wallId": "W-L1-W",
+      "sillHeight": 900.0
+    },
+    {
+      "id": "WIN-L2",
+      "floorId": "LEVEL-02",
+      "type": "window",
+      "center": [
+        0,
+        3500
+      ],
+      "width": 1500.0,
+      "wallId": "W-L2-W",
+      "sillHeight": 900.0
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-L1-LIVING",
+      "floorId": "LEVEL-01",
+      "name": "LIVING / DINING",
+      "approximateArea": 45.0,
+      "boundaryCorners": [
+        [
+          0,
+          0
+        ],
+        [
+          8000,
+          0
+        ],
+        [
+          8000,
+          7000
+        ],
+        [
+          0,
+          7000
+        ]
+      ]
+    },
+    {
+      "id": "R-L2-BED",
+      "floorId": "LEVEL-02",
+      "name": "BEDROOM SUITE",
+      "approximateArea": 45.0,
+      "boundaryCorners": [
+        [
+          0,
+          0
+        ],
+        [
+          8000,
+          0
+        ],
+        [
+          8000,
+          7000
+        ],
+        [
+          0,
+          7000
+        ]
+      ]
+    }
+  ],
+  "stairs": [
+    {
+      "id": "STAIR-CORE-01",
+      "location": [
+        5500,
+        0
+      ],
+      "width": 2500.0,
+      "length": 3500.0,
+      "connects": [
+        "LEVEL-01",
+        "LEVEL-02"
+      ],
+      "alignment": "vertically_aligned"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-W",
+      "text": "8000",
+      "value": 8000.0
+    },
+    {
+      "id": "DIM-D",
+      "text": "7000",
+      "value": 7000.0
+    }
+  ],
+  "floors": [
+    "LEVEL-01",
+    "LEVEL-02"
+  ],
+  "uncertainties": [],
+  "provenance": "digitized_multi_storey_plan",
+  "annotator": "Independent Architectural Annotator",
+  "reviewMethod": "independent_drawing_audit"
+}

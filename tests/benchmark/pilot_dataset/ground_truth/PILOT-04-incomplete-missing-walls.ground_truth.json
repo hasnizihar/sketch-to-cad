@@ -1,0 +1,141 @@
+{
+  "sampleId": "PILOT-04",
+  "category": "Incomplete & Missing Wall Sketches",
+  "envelope": {
+    "width": 7000.0,
+    "depth": 5000.0,
+    "visibility": "partially_inferred"
+  },
+  "walls": [
+    {
+      "id": "W-S-PARTIAL",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        3500,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-E",
+      "start": [
+        7000,
+        0
+      ],
+      "end": [
+        7000,
+        5000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-N",
+      "start": [
+        7000,
+        5000
+      ],
+      "end": [
+        0,
+        5000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-W",
+      "start": [
+        0,
+        5000
+      ],
+      "end": [
+        0,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-INT",
+      "start": [
+        3500,
+        0
+      ],
+      "end": [
+        3500,
+        3000
+      ],
+      "thickness": 100,
+      "classification": "interior"
+    }
+  ],
+  "openings": [
+    {
+      "id": "WIN-01",
+      "type": "window",
+      "center": [
+        0,
+        2500
+      ],
+      "width": 1500.0,
+      "wallId": "W-W",
+      "sillHeight": 900.0
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-1",
+      "name": "MAIN ROOM",
+      "approximateArea": 17.5,
+      "boundaryCorners": [
+        [
+          0,
+          0
+        ],
+        [
+          3500,
+          0
+        ],
+        [
+          3500,
+          5000
+        ],
+        [
+          0,
+          5000
+        ]
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-W",
+      "text": "7000",
+      "value": 7000.0
+    },
+    {
+      "id": "DIM-D",
+      "text": "5000",
+      "value": 5000.0
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "UNC-01",
+      "type": "unclosed_boundary",
+      "description": "South boundary wall missing between x=3500 and x=7000"
+    },
+    {
+      "id": "UNC-02",
+      "type": "unassigned_space",
+      "description": "Terrace bay boundary unclosed at south perimeter"
+    }
+  ],
+  "provenance": "synthetic_incomplete_survey",
+  "annotator": "Independent Architectural Annotator",
+  "reviewMethod": "independent_drawing_audit"
+}

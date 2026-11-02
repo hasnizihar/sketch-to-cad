@@ -1,0 +1,186 @@
+{
+  "sampleId": "PILOT-15",
+  "category": "Complex Room Junctions & Openings",
+  "envelope": {
+    "width": 8000.0,
+    "depth": 5000.0,
+    "visibility": "clearly_visible"
+  },
+  "walls": [
+    {
+      "id": "W-S",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        8000,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-E",
+      "start": [
+        8000,
+        0
+      ],
+      "end": [
+        8000,
+        5000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-N",
+      "start": [
+        8000,
+        5000
+      ],
+      "end": [
+        0,
+        5000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-W",
+      "start": [
+        0,
+        5000
+      ],
+      "end": [
+        0,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-INT",
+      "start": [
+        4000,
+        0
+      ],
+      "end": [
+        4000,
+        5000
+      ],
+      "thickness": 100,
+      "classification": "interior"
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-HINGED",
+      "type": "door",
+      "center": [
+        2000,
+        0
+      ],
+      "width": 900.0,
+      "wallId": "W-S",
+      "swing": "inward-right"
+    },
+    {
+      "id": "D-FRENCH",
+      "type": "door",
+      "center": [
+        6000,
+        0
+      ],
+      "width": 1800.0,
+      "wallId": "W-S",
+      "swing": "double-outward"
+    },
+    {
+      "id": "D-POCKET",
+      "type": "door",
+      "center": [
+        4000,
+        2500
+      ],
+      "width": 1000.0,
+      "wallId": "W-INT",
+      "swing": "pocket-sliding"
+    },
+    {
+      "id": "D-BIFOLD",
+      "type": "door",
+      "center": [
+        2500,
+        5000
+      ],
+      "width": 1500.0,
+      "wallId": "W-N",
+      "swing": "bifold"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-1",
+      "name": "SALON",
+      "approximateArea": 20.0,
+      "boundaryCorners": [
+        [
+          0,
+          0
+        ],
+        [
+          4000,
+          0
+        ],
+        [
+          4000,
+          5000
+        ],
+        [
+          0,
+          5000
+        ]
+      ]
+    },
+    {
+      "id": "R-2",
+      "name": "PATIO ROOM",
+      "approximateArea": 20.0,
+      "boundaryCorners": [
+        [
+          4000,
+          0
+        ],
+        [
+          8000,
+          0
+        ],
+        [
+          8000,
+          5000
+        ],
+        [
+          4000,
+          5000
+        ]
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-W",
+      "text": "8000",
+      "value": 8000.0
+    },
+    {
+      "id": "DIM-D",
+      "text": "5000",
+      "value": 5000.0
+    }
+  ],
+  "uncertainties": [],
+  "provenance": "digitized_architectural_plan",
+  "annotator": "Independent Architectural Annotator",
+  "reviewMethod": "independent_drawing_audit"
+}

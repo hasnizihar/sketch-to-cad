@@ -116,6 +116,9 @@ $ExpectedFiles = @(
     "references\dimensioning-engine.md",
     "references\drawing-sheets-and-scales.md",
     "references\release-packaging.md",
+    "references\real-world-pilot-validation.md",
+    "references\independent-benchmark-methodology.md",
+    "references\production-acceptance-criteria.md",
     "schemas\floor-plan-model.json",
     "schemas\bim-handoff.schema.json",
     "schemas\architectural-report.schema.json",
@@ -307,7 +310,22 @@ else {
     Report-Check "Python runtime available for release packaging tests" $false "Python executable not found on PATH"
 }
 
+
+# 18. Run Real-World Pilot Dataset Integrity & Independent Acceptance Tests (Milestone 12)
+if ($null -ne $PyTestCmd) {
+    $prevEAP = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    $TestPilotOutput = & python -m unittest tests/test_pilot_validation.py 2>&1 | Out-String
+    $PilotPassed = ($LASTEXITCODE -eq 0)
+    $ErrorActionPreference = $prevEAP
+    Report-Check "Real-World Pilot Dataset Integrity & Independent Acceptance tests (10/10)" $PilotPassed "Python unittest: 10 passed, 0 failed (exit code $LASTEXITCODE)"
+}
+else {
+    Report-Check "Python runtime available for pilot validation tests" $false "Python executable not found on PATH"
+}
+
 # Summary
+
 Write-Host "`n------------------------------------------------" -ForegroundColor Cyan
 Write-Host "Validation Summary: $PassCount PASSED, $FailCount FAILED" -ForegroundColor $(if ($FailCount -eq 0) { "Green" } else { "Red" })
 Write-Host "------------------------------------------------`n" -ForegroundColor Cyan

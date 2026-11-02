@@ -1,0 +1,145 @@
+{
+  "sampleId": "PILOT-11",
+  "category": "Non-Rectangular Footprints",
+  "envelope": {
+    "width": 7500.0,
+    "depth": 5500.0,
+    "visibility": "clearly_visible"
+  },
+  "walls": [
+    {
+      "id": "W-S",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        6000,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-CHAMFER",
+      "start": [
+        6000,
+        0
+      ],
+      "end": [
+        7500,
+        1500
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-E",
+      "start": [
+        7500,
+        1500
+      ],
+      "end": [
+        7500,
+        5500
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-N",
+      "start": [
+        7500,
+        5500
+      ],
+      "end": [
+        0,
+        5500
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-W",
+      "start": [
+        0,
+        5500
+      ],
+      "end": [
+        0,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    }
+  ],
+  "openings": [
+    {
+      "id": "WIN-BAY",
+      "type": "window",
+      "center": [
+        6750,
+        750
+      ],
+      "width": 1500.0,
+      "wallId": "W-CHAMFER",
+      "sillHeight": 900.0
+    },
+    {
+      "id": "D-01",
+      "type": "door",
+      "center": [
+        3000,
+        0
+      ],
+      "width": 900.0,
+      "wallId": "W-S",
+      "swing": "inward-right"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-1",
+      "name": "GREAT ROOM",
+      "approximateArea": 40.1,
+      "boundaryCorners": [
+        [
+          0,
+          0
+        ],
+        [
+          6000,
+          0
+        ],
+        [
+          7500,
+          1500
+        ],
+        [
+          7500,
+          5500
+        ],
+        [
+          0,
+          5500
+        ]
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-W",
+      "text": "7500",
+      "value": 7500.0
+    },
+    {
+      "id": "DIM-D",
+      "text": "5500",
+      "value": 5500.0
+    }
+  ],
+  "uncertainties": [],
+  "provenance": "digitized_field_sketch",
+  "annotator": "Independent Architectural Annotator",
+  "reviewMethod": "independent_drawing_audit"
+}

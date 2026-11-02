@@ -1,0 +1,170 @@
+{
+  "sampleId": "PILOT-06",
+  "category": "Rotated & Skewed Scans",
+  "envelope": {
+    "width": 7000.0,
+    "depth": 4000.0,
+    "visibility": "clearly_visible"
+  },
+  "walls": [
+    {
+      "id": "W-S",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        7000,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-E",
+      "start": [
+        7000,
+        0
+      ],
+      "end": [
+        7000,
+        4000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-N",
+      "start": [
+        7000,
+        4000
+      ],
+      "end": [
+        0,
+        4000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-W",
+      "start": [
+        0,
+        4000
+      ],
+      "end": [
+        0,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-INT",
+      "start": [
+        3500,
+        0
+      ],
+      "end": [
+        3500,
+        4000
+      ],
+      "thickness": 100,
+      "classification": "interior"
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-01",
+      "type": "door",
+      "center": [
+        2000,
+        0
+      ],
+      "width": 900.0,
+      "wallId": "W-S",
+      "swing": "inward-right"
+    },
+    {
+      "id": "WIN-01",
+      "type": "window",
+      "center": [
+        0,
+        2000
+      ],
+      "width": 1200.0,
+      "wallId": "W-W",
+      "sillHeight": 900.0
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-1",
+      "name": "ROOM A",
+      "approximateArea": 14.0,
+      "boundaryCorners": [
+        [
+          0,
+          0
+        ],
+        [
+          3500,
+          0
+        ],
+        [
+          3500,
+          4000
+        ],
+        [
+          0,
+          4000
+        ]
+      ]
+    },
+    {
+      "id": "R-2",
+      "name": "ROOM B",
+      "approximateArea": 14.0,
+      "boundaryCorners": [
+        [
+          3500,
+          0
+        ],
+        [
+          7000,
+          0
+        ],
+        [
+          7000,
+          4000
+        ],
+        [
+          3500,
+          4000
+        ]
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-W",
+      "text": "7000",
+      "value": 7000.0
+    },
+    {
+      "id": "DIM-D",
+      "text": "4000",
+      "value": 4000.0
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "UNC-ROT-01",
+      "type": "scan_rotation",
+      "description": "Scan rotated by approximately 7.5 degrees; rectification recommended"
+    }
+  ],
+  "provenance": "scanned_skewed_drawing",
+  "annotator": "Independent Architectural Annotator",
+  "reviewMethod": "independent_drawing_audit"
+}

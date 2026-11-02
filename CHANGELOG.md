@@ -10,6 +10,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Milestone 12: Real-World Pilot, Independent Validation & Production Acceptance**:
+  - Reconciled and audited test count baseline across all 23 test modules (confirming 220 tests cleanly discovered).
+  - Formalized human review governance: explicitly defined review as an asserted identity (`auth_method: "identity_assertion"`) with formal disclaimers regarding professional licensing authentication.
+  - Created dedicated 22-sample Real-World Pilot Dataset (`tests/benchmark/pilot_dataset/`) spanning 12 distinct challenge categories: Clean Hand-Drawn Plans, User Hand-Drawn Authentic Sketch, Rough Pencil Sketches, Incomplete & Missing Wall Sketches, Contradictory Annotations, Rotated & Skewed Scans, Low-Resolution Mobile Photos, Non-Rectangular Footprints, Complex Room Junctions & Openings, Multi-Room Residential Layouts (5+ rooms), Multi-Storey Residential Sketches, and Multi-Page PDF Sets.
+  - Indexed all pilot samples in `tests/benchmark/pilot_dataset/metadata/pilot_manifest.json` with audited SHA-256 digests and independent ground truth annotations.
+  - Implemented `scripts/pilot_benchmark_runner.py` executing spatial bipartite matching for walls, openings, rooms, and dimensions, generating machine-readable `pilot_benchmark_report.json` and executive audit report `pilot_benchmark_report.md`.
+  - Enforced strict provenance tracking distinguishing `real_api`, `agent_native`, and `mocked` execution, evaluating the authentic user sketch (`PILOT-02`) under `agent_native` vision execution.
+  - Authored 3 comprehensive reference standards in `skills/sketch-to-cad/references/`:
+    * `references/real-world-pilot-validation.md`: Dataset taxonomy, empirical findings, and operational tolerances.
+    * `references/independent-benchmark-methodology.md`: Mathematical bipartite matching formulations, tolerances, IoU metrics, and uncertainty capture rates.
+    * `references/production-acceptance-criteria.md`: Formal acceptance decisions (`ACCEPTED_FOR_CONTROLLED_PILOT`, `ACCEPTED_WITH_LIMITATIONS`, `NOT_READY_FOR_PRODUCTION`), 10 engineering gates, and reviewer assertion governance.
+  - Added 10 automated unit and integration tests in `tests/test_pilot_validation.py`, expanding repository test coverage to **230 tests** (100% passing in 6.8s).
+  - Updated `scripts/validate-skill.ps1` with Validation Check 18 (18/18 checks passed, 41/41 reference and schema files verified).
 - **Milestone 11: Professional Drawing Output, Human Review & Release Readiness**:
   - Implemented professional visual drawing hierarchy in `scripts/drawing_generator.py`: strict AIA layer lineweights (0.50mm exterior walls/columns, 0.35mm interior partitions/stairs, 0.25mm doors/windows/text, 0.18mm dimensions/furniture, 0.13mm finishes), door swing representation, multi-line glazing and sills on `A-GLAZ`.
   - Codified window sill-height non-silent provenance policy: fallback 900mm for unannotated windows is explicitly tagged with `sillHeightProvenance = "assumed_default_unverified"` and `source = "inferred"` in `compile_bim_handoff` and logged in `uncertainties` register with status `unresolved`.

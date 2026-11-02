@@ -1,0 +1,195 @@
+{
+  "sampleId": "PILOT-20",
+  "category": "Multi-Page PDF Floor Plan Sets",
+  "envelope": {
+    "width": 8000.0,
+    "depth": 6000.0,
+    "visibility": "clearly_visible"
+  },
+  "walls": [
+    {
+      "id": "W-L1-S",
+      "floorId": "LEVEL-01",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        8000,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-L1-E",
+      "floorId": "LEVEL-01",
+      "start": [
+        8000,
+        0
+      ],
+      "end": [
+        8000,
+        6000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-L1-N",
+      "floorId": "LEVEL-01",
+      "start": [
+        8000,
+        6000
+      ],
+      "end": [
+        0,
+        6000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-L1-W",
+      "floorId": "LEVEL-01",
+      "start": [
+        0,
+        6000
+      ],
+      "end": [
+        0,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-L2-S",
+      "floorId": "LEVEL-02",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        8000,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-L2-E",
+      "floorId": "LEVEL-02",
+      "start": [
+        8000,
+        0
+      ],
+      "end": [
+        8000,
+        6000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-L2-N",
+      "floorId": "LEVEL-02",
+      "start": [
+        8000,
+        6000
+      ],
+      "end": [
+        0,
+        6000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-L2-W",
+      "floorId": "LEVEL-02",
+      "start": [
+        0,
+        6000
+      ],
+      "end": [
+        0,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    }
+  ],
+  "openings": [],
+  "rooms": [
+    {
+      "id": "R-L1",
+      "floorId": "LEVEL-01",
+      "name": "GROUND FLOOR SUITE",
+      "approximateArea": 48.0,
+      "boundaryCorners": [
+        [
+          0,
+          0
+        ],
+        [
+          8000,
+          0
+        ],
+        [
+          8000,
+          6000
+        ],
+        [
+          0,
+          6000
+        ]
+      ]
+    },
+    {
+      "id": "R-L2",
+      "floorId": "LEVEL-02",
+      "name": "FIRST FLOOR BEDROOMS",
+      "approximateArea": 48.0,
+      "boundaryCorners": [
+        [
+          0,
+          0
+        ],
+        [
+          8000,
+          0
+        ],
+        [
+          8000,
+          6000
+        ],
+        [
+          0,
+          6000
+        ]
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-W",
+      "text": "8000",
+      "value": 8000.0
+    },
+    {
+      "id": "DIM-D",
+      "text": "6000",
+      "value": 6000.0
+    }
+  ],
+  "floors": [
+    "LEVEL-01",
+    "LEVEL-02",
+    "ROOF-LEVEL"
+  ],
+  "uncertainties": [],
+  "provenance": "architectural_multipage_pdf_set",
+  "annotator": "Independent Architectural Annotator",
+  "reviewMethod": "independent_drawing_audit"
+}

@@ -1,0 +1,332 @@
+{
+  "sampleId": "PILOT-14",
+  "category": "Multi-Room Residential Layouts (5+ rooms)",
+  "envelope": {
+    "width": 12000.0,
+    "depth": 7000.0,
+    "visibility": "clearly_visible"
+  },
+  "walls": [
+    {
+      "id": "W-S",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        12000,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-E",
+      "start": [
+        12000,
+        0
+      ],
+      "end": [
+        12000,
+        7000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-N",
+      "start": [
+        12000,
+        7000
+      ],
+      "end": [
+        0,
+        7000
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-W",
+      "start": [
+        0,
+        7000
+      ],
+      "end": [
+        0,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-CORR-S",
+      "start": [
+        0,
+        3100
+      ],
+      "end": [
+        12000,
+        3100
+      ],
+      "thickness": 100,
+      "classification": "interior"
+    },
+    {
+      "id": "W-CORR-N",
+      "start": [
+        0,
+        3900
+      ],
+      "end": [
+        12000,
+        3900
+      ],
+      "thickness": 100,
+      "classification": "interior"
+    },
+    {
+      "id": "W-DIV-S1",
+      "start": [
+        4200,
+        0
+      ],
+      "end": [
+        4200,
+        3100
+      ],
+      "thickness": 100,
+      "classification": "interior"
+    },
+    {
+      "id": "W-DIV-S2",
+      "start": [
+        8400,
+        0
+      ],
+      "end": [
+        8400,
+        3100
+      ],
+      "thickness": 100,
+      "classification": "interior"
+    },
+    {
+      "id": "W-DIV-N1",
+      "start": [
+        4200,
+        3900
+      ],
+      "end": [
+        4200,
+        7000
+      ],
+      "thickness": 100,
+      "classification": "interior"
+    },
+    {
+      "id": "W-DIV-N2",
+      "start": [
+        8400,
+        3900
+      ],
+      "end": [
+        8400,
+        7000
+      ],
+      "thickness": 100,
+      "classification": "interior"
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-ENTRY",
+      "type": "door",
+      "center": [
+        0,
+        3500
+      ],
+      "width": 800.0,
+      "wallId": "W-W",
+      "swing": "inward-right"
+    },
+    {
+      "id": "D-01",
+      "type": "door",
+      "center": [
+        2500,
+        3100
+      ],
+      "width": 800.0,
+      "wallId": "W-CORR-S",
+      "swing": "inward-right"
+    },
+    {
+      "id": "D-02",
+      "type": "door",
+      "center": [
+        6300,
+        3100
+      ],
+      "width": 800.0,
+      "wallId": "W-CORR-S",
+      "swing": "inward-right"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-1",
+      "name": "LIVING",
+      "approximateArea": 13.0,
+      "boundaryCorners": [
+        [
+          0,
+          0
+        ],
+        [
+          4200,
+          0
+        ],
+        [
+          4200,
+          3100
+        ],
+        [
+          0,
+          3100
+        ]
+      ]
+    },
+    {
+      "id": "R-2",
+      "name": "DINING",
+      "approximateArea": 13.0,
+      "boundaryCorners": [
+        [
+          4200,
+          0
+        ],
+        [
+          8400,
+          0
+        ],
+        [
+          8400,
+          3100
+        ],
+        [
+          4200,
+          3100
+        ]
+      ]
+    },
+    {
+      "id": "R-3",
+      "name": "KITCHEN",
+      "approximateArea": 11.1,
+      "boundaryCorners": [
+        [
+          8400,
+          0
+        ],
+        [
+          12000,
+          0
+        ],
+        [
+          12000,
+          3100
+        ],
+        [
+          8400,
+          3100
+        ]
+      ]
+    },
+    {
+      "id": "R-4",
+      "name": "BED 1",
+      "approximateArea": 13.0,
+      "boundaryCorners": [
+        [
+          0,
+          3900
+        ],
+        [
+          4200,
+          3900
+        ],
+        [
+          4200,
+          7000
+        ],
+        [
+          0,
+          7000
+        ]
+      ]
+    },
+    {
+      "id": "R-5",
+      "name": "BED 2",
+      "approximateArea": 13.0,
+      "boundaryCorners": [
+        [
+          4200,
+          3900
+        ],
+        [
+          8400,
+          3900
+        ],
+        [
+          8400,
+          7000
+        ],
+        [
+          4200,
+          7000
+        ]
+      ]
+    },
+    {
+      "id": "R-6",
+      "name": "BED 3 & BATH",
+      "approximateArea": 11.1,
+      "boundaryCorners": [
+        [
+          8400,
+          3900
+        ],
+        [
+          12000,
+          3900
+        ],
+        [
+          12000,
+          7000
+        ],
+        [
+          8400,
+          7000
+        ]
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-W",
+      "text": "12000",
+      "value": 12000.0
+    },
+    {
+      "id": "DIM-D",
+      "text": "7000",
+      "value": 7000.0
+    }
+  ],
+  "uncertainties": [],
+  "provenance": "digitized_architectural_plan",
+  "annotator": "Independent Architectural Annotator",
+  "reviewMethod": "independent_drawing_audit"
+}

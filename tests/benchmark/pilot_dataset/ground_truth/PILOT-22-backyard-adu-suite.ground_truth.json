@@ -1,0 +1,233 @@
+{
+  "sampleId": "PILOT-22",
+  "category": "Multi-Room Residential Layouts (5+ rooms)",
+  "envelope": {
+    "width": 7200.0,
+    "depth": 4800.0,
+    "visibility": "clearly_visible"
+  },
+  "walls": [
+    {
+      "id": "W-S",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        7200,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-E",
+      "start": [
+        7200,
+        0
+      ],
+      "end": [
+        7200,
+        4800
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-N",
+      "start": [
+        7200,
+        4800
+      ],
+      "end": [
+        0,
+        4800
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-W",
+      "start": [
+        0,
+        4800
+      ],
+      "end": [
+        0,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-INT-V",
+      "start": [
+        4200,
+        0
+      ],
+      "end": [
+        4200,
+        4800
+      ],
+      "thickness": 100,
+      "classification": "interior"
+    },
+    {
+      "id": "W-INT-H",
+      "start": [
+        4200,
+        2400
+      ],
+      "end": [
+        7200,
+        2400
+      ],
+      "thickness": 100,
+      "classification": "interior"
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-01",
+      "type": "door",
+      "center": [
+        2500,
+        0
+      ],
+      "width": 900.0,
+      "wallId": "W-S",
+      "swing": "inward-right"
+    },
+    {
+      "id": "D-02",
+      "type": "door",
+      "center": [
+        4200,
+        1200
+      ],
+      "width": 800.0,
+      "wallId": "W-INT-V",
+      "swing": "inward-left"
+    },
+    {
+      "id": "D-03",
+      "type": "door",
+      "center": [
+        5700,
+        2400
+      ],
+      "width": 800.0,
+      "wallId": "W-INT-H",
+      "swing": "inward-right"
+    },
+    {
+      "id": "WIN-01",
+      "type": "window",
+      "center": [
+        0,
+        2400
+      ],
+      "width": 1500.0,
+      "wallId": "W-W",
+      "sillHeight": 900.0
+    },
+    {
+      "id": "WIN-02",
+      "type": "window",
+      "center": [
+        7200,
+        1200
+      ],
+      "width": 1200.0,
+      "wallId": "W-E",
+      "sillHeight": 900.0
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-1",
+      "name": "ADU LIVING & KITCHEN",
+      "approximateArea": 20.16,
+      "boundaryCorners": [
+        [
+          0,
+          0
+        ],
+        [
+          4200,
+          0
+        ],
+        [
+          4200,
+          4800
+        ],
+        [
+          0,
+          4800
+        ]
+      ]
+    },
+    {
+      "id": "R-2",
+      "name": "BEDROOM",
+      "approximateArea": 7.2,
+      "boundaryCorners": [
+        [
+          4200,
+          0
+        ],
+        [
+          7200,
+          0
+        ],
+        [
+          7200,
+          2400
+        ],
+        [
+          4200,
+          2400
+        ]
+      ]
+    },
+    {
+      "id": "R-3",
+      "name": "BATH",
+      "approximateArea": 7.2,
+      "boundaryCorners": [
+        [
+          4200,
+          2400
+        ],
+        [
+          7200,
+          2400
+        ],
+        [
+          7200,
+          4800
+        ],
+        [
+          4200,
+          4800
+        ]
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-W",
+      "text": "7200",
+      "value": 7200.0
+    },
+    {
+      "id": "DIM-D",
+      "text": "4800",
+      "value": 4800.0
+    }
+  ],
+  "uncertainties": [],
+  "provenance": "digitized_field_sketch",
+  "annotator": "Independent Architectural Annotator",
+  "reviewMethod": "independent_drawing_audit"
+}

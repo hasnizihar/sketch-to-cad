@@ -1,0 +1,222 @@
+{
+  "sampleId": "PILOT-17",
+  "category": "Clean Hand-Drawn Plans",
+  "envelope": {
+    "width": 7500.0,
+    "depth": 5500.0,
+    "visibility": "clearly_visible"
+  },
+  "walls": [
+    {
+      "id": "W-S",
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        7500,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-E",
+      "start": [
+        7500,
+        0
+      ],
+      "end": [
+        7500,
+        5500
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-N",
+      "start": [
+        7500,
+        5500
+      ],
+      "end": [
+        0,
+        5500
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-W",
+      "start": [
+        0,
+        5500
+      ],
+      "end": [
+        0,
+        0
+      ],
+      "thickness": 200,
+      "classification": "exterior"
+    },
+    {
+      "id": "W-INT-V",
+      "start": [
+        4000,
+        0
+      ],
+      "end": [
+        4000,
+        5500
+      ],
+      "thickness": 100,
+      "classification": "interior"
+    },
+    {
+      "id": "W-INT-H",
+      "start": [
+        0,
+        2500
+      ],
+      "end": [
+        4000,
+        2500
+      ],
+      "thickness": 100,
+      "classification": "interior"
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-ENTRY",
+      "type": "door",
+      "center": [
+        2000,
+        0
+      ],
+      "width": 800.0,
+      "wallId": "W-S",
+      "swing": "inward-right"
+    },
+    {
+      "id": "D-BED",
+      "type": "door",
+      "center": [
+        4000,
+        1500
+      ],
+      "width": 800.0,
+      "wallId": "W-INT-V",
+      "swing": "inward-left"
+    },
+    {
+      "id": "WIN-BED",
+      "type": "window",
+      "center": [
+        6000,
+        5500
+      ],
+      "width": 1200.0,
+      "wallId": "W-N",
+      "sillHeight": 900.0
+    },
+    {
+      "id": "WIN-BALC",
+      "type": "window",
+      "center": [
+        2500,
+        5500
+      ],
+      "width": 1800.0,
+      "wallId": "W-N",
+      "sillHeight": 0.0
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-1",
+      "name": "ENTRY / KITCHEN",
+      "approximateArea": 10.0,
+      "boundaryCorners": [
+        [
+          0,
+          0
+        ],
+        [
+          4000,
+          0
+        ],
+        [
+          4000,
+          2500
+        ],
+        [
+          0,
+          2500
+        ]
+      ]
+    },
+    {
+      "id": "R-2",
+      "name": "LIVING / BALCONY",
+      "approximateArea": 12.0,
+      "boundaryCorners": [
+        [
+          0,
+          2500
+        ],
+        [
+          4000,
+          2500
+        ],
+        [
+          4000,
+          5500
+        ],
+        [
+          0,
+          5500
+        ]
+      ]
+    },
+    {
+      "id": "R-3",
+      "name": "BEDROOM SUITE",
+      "approximateArea": 19.25,
+      "boundaryCorners": [
+        [
+          4000,
+          0
+        ],
+        [
+          7500,
+          0
+        ],
+        [
+          7500,
+          5500
+        ],
+        [
+          4000,
+          5500
+        ]
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-W",
+      "text": "7500",
+      "value": 7500.0
+    },
+    {
+      "id": "DIM-D",
+      "text": "5500",
+      "value": 5500.0
+    }
+  ],
+  "uncertainties": [],
+  "provenance": "digitized_architectural_plan",
+  "annotator": "Independent Architectural Annotator",
+  "reviewMethod": "independent_drawing_audit"
+}

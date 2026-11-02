@@ -200,14 +200,22 @@ This directory contains test specifications, reference fixtures, and validation 
 
 ---
 
+25. **Real-World Pilot Dataset Integrity & Independent Acceptance Test Suite (Milestone 12)**:
+    ```powershell
+    python -m unittest tests/test_pilot_validation.py
+    ```
+    Validates manifest integrity, 22 independent ground truth files, 22 source file hashes, provenance segregation (`agent_native` vs `mocked`), contradiction detection (`PILOT-02`, `PILOT-05`), uncertainty detection (`PILOT-04`, `06`, `07`, `08`, `16`), multi-storey floor plan handling, non-rectangular room IoU matching, end-to-end DXF generation, and human review identity assertion security gates.
+
+---
+
 ### Overall Test Suite Execution
 
-Run all 220 automated tests:
+Run all 230 automated tests:
 `powershell
 python -m unittest discover tests
 `
 
-Run skill integrity validation (17 automated checks):
+Run skill integrity validation (18 automated checks):
 `powershell
 .\scripts\validate-skill.ps1
 `

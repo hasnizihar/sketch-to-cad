@@ -121,6 +121,13 @@ Produce publication-grade deliverables and assemble isolated project release pac
 5. **Release Integrity Verification**: Audit deliverable integrity via `ReleasePackager.verify_package_integrity(package_dir)` and enforce AI agent self-approval security gates.
 
 
+### Phase 10: Real-World Pilot Validation, Benchmarking & Acceptance (Milestone 12)
+Execute empirical validation across the dedicated 22-sample pilot dataset via `scripts/pilot_benchmark_runner.py`:
+1. **Dedicated 22-Sample Pilot Dataset**: Test against 12 challenge categories (clean, rough pencil, incomplete loops, arithmetic contradictions, hardware scan skew 7.5°/15°, low-res mobile photos, non-rectangular footprints, varied opening types, 5+ room layouts, multi-storey, multi-page PDF sets) documented in [references/real-world-pilot-validation.md](references/real-world-pilot-validation.md).
+2. **Independent Benchmark Methodology**: Execute spatial bipartite matching for walls, openings, rooms, and dimensions with strict execution modality segregation (`real_api`, `agent_native`, `mocked`) documented in [references/independent-benchmark-methodology.md](references/independent-benchmark-methodology.md).
+3. **Formal Production Acceptance Criteria**: Evaluate against the 10 engineering criteria and classify outcomes (`ACCEPTED_FOR_CONTROLLED_PILOT`, `ACCEPTED_WITH_LIMITATIONS`, `NOT_READY_FOR_PRODUCTION`) documented in [references/production-acceptance-criteria.md](references/production-acceptance-criteria.md).
+4. **Asserted Identity Review Governance**: Clarify human review as an asserted identity (`auth_method: "identity_assertion"`), disclaim professional licensing authentication, and enforce security blocks against AI agent self-approval.
+
 ## Recovery
 If an MCP call fails:
 1. Inspect the error message and tool schema.
