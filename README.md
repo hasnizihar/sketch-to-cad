@@ -238,17 +238,20 @@ sketch-to-cad/
 │   ├── visual_qa.py                   # Feature-level source-to-CAD visual QA discrepancy reporter
 │   ├── sketch_to_cad_pipeline.py      # End-to-end automated pipeline orchestrator
 │   ├── drawing_generator.py           # Deterministic CAD drafting & handoff engine
+│   ├── dimension_engine.py            # 3-tier dimension strings & collision avoidance
+│   ├── sheet_generator.py             # ISO printable sheets (A4-A1) & vector PDF rendering
+│   ├── release_packager.py            # Production release packager & cryptographic manifest
 │   ├── element_library.py             # 20 standard residential CAD blocks
 │   └── architectural_reports.py       # Schedules, quantities, & audit report engine
 ├── skills/
 │   └── sketch-to-cad/                 # The reusable Antigravity skill
 │       ├── SKILL.md                   # Master skill definition
-│       ├── references/                # 23 architectural specifications, standards & integration guides
+│       ├── references/                # 27 architectural specifications, standards & integration guides
 │       ├── schemas/                   # 7 JSON schemas (models, handoffs, reports, benchmarks)
 │       ├── workflows/                 # Stage-by-stage drafting, reporting & validation guides
 │       └── examples/                  # Reference projects and fixtures
 └── tests/
-    ├── README.md                      # Test suite documentation (188 tests, 16 checks)
+    ├── README.md                      # Test suite documentation (220 tests, 17 checks)
     ├── benchmark/                     # Real-world benchmark dataset (6 categories, ground-truth, reports)
     ├── fixtures/                      # Validated floor-plan models and handoff JSON
     └── output/                        # DXF, PNG, handoff JSON, and report deliverables

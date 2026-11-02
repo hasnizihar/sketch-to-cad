@@ -86,6 +86,50 @@ def get_handoff_schema_path() -> str:
     raise FileNotFoundError("bim-handoff.schema.json not found in repository candidate paths.")
 
 
+AIA_LAYER_STANDARDS = {
+    "A-WALL-EXTR": (4, 50, "AIA: Exterior walls"),          # Cyan, 0.50mm
+    "A-WALL-INTR": (3, 35, "AIA: Interior partitions"),      # Green, 0.35mm
+    "A-WALL": (4, 50, "AIA: Architectural walls"),           # Cyan, 0.50mm
+    "A-DOOR": (2, 25, "AIA: Doors and swing arcs"),         # Yellow, 0.25mm
+    "A-GLAZ": (5, 25, "AIA: Windows and glazing"),          # Blue, 0.25mm
+    "A-FURN": (8, 18, "AIA: Furniture"),                    # Gray, 0.18mm
+    "A-FIXT": (8, 18, "AIA: Sanitary fixtures"),            # Gray, 0.18mm
+    "A-STAIR": (2, 25, "AIA: Stairs"),                      # Yellow, 0.25mm
+    "A-COLS": (4, 50, "AIA: Structural columns"),           # Cyan, 0.50mm
+    "A-FLOR-FIN": (8, 13, "AIA: Floor finish hatches"),      # Gray, 0.13mm
+    "A-ANNO-TEXT": (1, 25, "AIA: Text labels"),             # Red, 0.25mm
+    "A-ANNO-DIMS": (6, 18, "AIA: Dimensions"),              # Magenta, 0.18mm
+    "A-ANNO-SYMB": (1, 25, "AIA: Symbols & north arrow"),   # Red, 0.25mm
+    "A-ANNO-TITL": (7, 35, "AIA: Sheet title block"),       # White, 0.35mm
+}
+
+
+def enhance_dxf_presentation(dxf_path: str) -> bool:
+    """Post-processes DXF file to embed standard AIA lineweights, layer descriptions,
+    and standard metric header variables ($INSUNITS=4, $MEASUREMENT=1)."""
+    try:
+        import ezdxf
+        p = Path(dxf_path)
+        if not p.is_file():
+            return False
+        doc = ezdxf.readfile(str(p))
+
+        for name, (col, lw, desc) in AIA_LAYER_STANDARDS.items():
+            if name in doc.layers:
+                lay = doc.layers.get(name)
+                lay.color = col
+                lay.dxf.lineweight = lw
+                lay.description = desc
+
+        doc.header["$INSUNITS"] = 4      # Millimeters
+        doc.header["$MEASUREMENT"] = 1   # Metric
+        doc.header["$LTSCALE"] = 100.0
+
+        doc.saveas(str(p))
+        return True
+    except Exception:
+        return False
+
 def compile_bim_handoff(
     model: Dict[str, Any],
     dxf_path: str,
@@ -256,16 +300,22 @@ def compile_bim_handoff(
     openings_out = []
     for op in model.get("openings", []):
         op_type = op.get("type", "door")
+        op_center = op.get("center") or (
+            [(op["start"][0] + op["end"][0]) / 2.0, (op["start"][1] + op["end"][1]) / 2.0]
+            if "start" in op and "end" in op
+            else [0.0, 0.0]
+        )
         op_item = {
             "id": op["id"],
             "type": op_type,
             "wallId": op.get("wallId", ""),
-            "center": [float(op["center"][0]), float(op["center"][1])],
+            "center": [float(op_center[0]), float(op_center[1])],
             "width": float(op.get("width", 900.0)),
             "height": float(op["height"]) if "height" in op and op["height"] is not None else None,
             "sillHeight": float(op["sillHeight"]) if "sillHeight" in op and op["sillHeight"] is not None else (900.0 if op_type == "window" else None),
+            "sillHeightProvenance": "assumed_default_unverified" if (op_type == "window" and ("sillHeight" not in op or op.get("sillHeight") is None)) else "explicit",
             "floorId": op.get("floorId") or eff_floor_id,
-            "source": op.get("source", "explicit")
+            "source": "inferred" if (op_type == "window" and ("sillHeight" not in op or op.get("sillHeight") is None)) else op.get("source", "explicit")
         }
         if op_type == "door":
             op_item["swing"] = op.get("swing", "90_deg_single")
@@ -340,14 +390,32 @@ def compile_bim_handoff(
     uncertainties_out = []
     for u in model.get("uncertainties", []):
         u_item = {
-            "id": u["id"],
+            "id": u.get("id") or f"unc_{len(uncertainties_out)+1}",
             "target": u.get("target", "unspecified"),
             "description": u.get("description", ""),
             "assumedValue": u.get("assumedValue"),
             "confidence": u.get("confidence", "medium"),
             "status": ("approved" if u.get("status") in ("confirmed", "approved") else u.get("status", "unresolved"))
         }
+        if "provenance" in u:
+            u_item["provenance"] = u["provenance"]
         uncertainties_out.append(u_item)
+
+    # Automatically register unverified assumptions for windows without explicit sill height
+    recorded_targets = {u.get("target") for u in uncertainties_out}
+    for op in model.get("openings", []):
+        if op.get("type") == "window" and op.get("sillHeight") is None:
+            tgt = f"openings[{op['id']}].sillHeight"
+            if tgt not in recorded_targets:
+                uncertainties_out.append({
+                    "id": f"unc_{op['id']}_sill",
+                    "target": tgt,
+                    "description": f"Window {op['id']} sill height unannotated in sketch; standard 900mm assumed pending reviewer verification",
+                    "assumedValue": 900.0,
+                    "confidence": "low",
+                    "status": "unresolved"
+                })
+                recorded_targets.add(tgt)
 
     # 11. Validation summary
     counts = inspection.get("counts", {})
@@ -727,6 +795,7 @@ class DrawingGenerator:
             # Stage 10: Save Deliverables
             os.makedirs(os.path.dirname(os.path.abspath(output_dxf_path)), exist_ok=True)
             c.save(output_dxf_path)
+            enhance_dxf_presentation(output_dxf_path)
 
             if output_png_path:
                 os.makedirs(os.path.dirname(os.path.abspath(output_png_path)), exist_ok=True)
@@ -1056,7 +1125,11 @@ class DrawingGenerator:
             if not _matches_floor(op, floor_id, default_floor, walls_by_id):
                 continue
             op_type = op.get("type", "door")
-            center = op["center"]
+            center = op.get("center") or (
+                [(op["start"][0] + op["end"][0]) / 2.0, (op["start"][1] + op["end"][1]) / 2.0]
+                if "start" in op and "end" in op
+                else [0.0, 0.0]
+            )
             width = float(op.get("width", 900.0))
             wall = walls_by_id.get(op.get("wallId"))
 

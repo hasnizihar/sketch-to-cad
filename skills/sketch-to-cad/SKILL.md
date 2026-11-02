@@ -112,6 +112,15 @@ eal_api, gent_native, mocked).
 4. **Production Reliability & Atomic File Operations**: Employ scripts/pipeline_reliability.py and scripts/performance_profiler.py per [references/production-reliability.md](references/production-reliability.md) for retry backoff with jitter on transient errors, atomic file writes with automatic rollback, secret masking, and phase-level resource profiling.
 
 
+### Phase 9: Professional Drawing Presentation, Sheet Printing & Release Packaging (Milestone 11)
+Produce publication-grade deliverables and assemble isolated project release packages via `scripts/release_packager.py`:
+1. **Professional Visual Drawing Hierarchy**: Enforce AIA lineweights (0.50mm exterior walls/columns, 0.35mm interior partitions/stairs, 0.25mm doors/windows/text, 0.18mm dimensions/furniture, 0.13mm finishes) and explicit non-silent window sill height provenance (`assumed_default_unverified` for 900mm fallback) per [references/professional-drawing-standards.md](references/professional-drawing-standards.md).
+2. **Dimensioning & Annotation Engine**: Generate 3-tier dimension chains (Tier 1 overall footprint, Tier 2 chained exterior openings, Tier 3 internal room callouts) with automated collision detection and offset resolution via `scripts/dimension_engine.py` per [references/dimensioning-engine.md](references/dimensioning-engine.md).
+3. **Printable Vector Drawing Sheets**: Render vector PDF sheets in standard ISO formats (A4 through A1) at architectural scales (1:50, 1:100, 1:200) with strict viewport fitting (`ScaleOverflowError`), ANSI/ISO/AIA title blocks, and conditional North Arrow validation via `scripts/sheet_generator.py` per [references/drawing-sheets-and-scales.md](references/drawing-sheets-and-scales.md).
+4. **Production Release Packaging**: Assemble structured project packages under `output/<project_name>/` containing `source/`, `review/`, `drawings/`, `sheets/`, `handoff/`, `reports/`, `qa/`, and a cryptographic `manifest.json` with SHA-256 hashes for all deliverables via `scripts/release_packager.py` per [references/release-packaging.md](references/release-packaging.md).
+5. **Release Integrity Verification**: Audit deliverable integrity via `ReleasePackager.verify_package_integrity(package_dir)` and enforce AI agent self-approval security gates.
+
+
 ## Recovery
 If an MCP call fails:
 1. Inspect the error message and tool schema.

@@ -394,6 +394,7 @@
       "width": 900.0,
       "height": null,
       "sillHeight": null,
+      "sillHeightProvenance": "explicit",
       "floorId": "LEVEL-01",
       "source": "explicit",
       "swing": "inward-right"
@@ -409,6 +410,7 @@
       "width": 800.0,
       "height": null,
       "sillHeight": null,
+      "sillHeightProvenance": "explicit",
       "floorId": "LEVEL-01",
       "source": "explicit",
       "swing": "inward-left"
@@ -424,8 +426,9 @@
       "width": 1500.0,
       "height": null,
       "sillHeight": 900.0,
+      "sillHeightProvenance": "assumed_default_unverified",
       "floorId": "LEVEL-01",
-      "source": "explicit"
+      "source": "inferred"
     },
     {
       "id": "WIN-GF-KIT",
@@ -438,8 +441,9 @@
       "width": 1200.0,
       "height": null,
       "sillHeight": 900.0,
+      "sillHeightProvenance": "assumed_default_unverified",
       "floorId": "LEVEL-01",
-      "source": "explicit"
+      "source": "inferred"
     },
     {
       "id": "D-FF-BED1",
@@ -452,6 +456,7 @@
       "width": 800.0,
       "height": null,
       "sillHeight": null,
+      "sillHeightProvenance": "explicit",
       "floorId": "LEVEL-02",
       "source": "explicit",
       "swing": "inward-left"
@@ -467,6 +472,7 @@
       "width": 800.0,
       "height": null,
       "sillHeight": null,
+      "sillHeightProvenance": "explicit",
       "floorId": "LEVEL-02",
       "source": "explicit",
       "swing": "inward-right"
@@ -482,8 +488,9 @@
       "width": 1500.0,
       "height": null,
       "sillHeight": 900.0,
+      "sillHeightProvenance": "assumed_default_unverified",
       "floorId": "LEVEL-02",
-      "source": "explicit"
+      "source": "inferred"
     },
     {
       "id": "WIN-FF-BED2",
@@ -496,8 +503,9 @@
       "width": 1500.0,
       "height": null,
       "sillHeight": 900.0,
+      "sillHeightProvenance": "assumed_default_unverified",
       "floorId": "LEVEL-02",
-      "source": "explicit"
+      "source": "inferred"
     }
   ],
   "rooms": [
@@ -875,6 +883,38 @@
       "assumedValue": "Preserved as null; downstream BIM skill will prompt for vertical datums.",
       "confidence": "high",
       "status": "approved"
+    },
+    {
+      "id": "unc_WIN-GF-LIV_sill",
+      "target": "openings[WIN-GF-LIV].sillHeight",
+      "description": "Window WIN-GF-LIV sill height unannotated in sketch; standard 900mm assumed pending reviewer verification",
+      "assumedValue": 900.0,
+      "confidence": "low",
+      "status": "unresolved"
+    },
+    {
+      "id": "unc_WIN-GF-KIT_sill",
+      "target": "openings[WIN-GF-KIT].sillHeight",
+      "description": "Window WIN-GF-KIT sill height unannotated in sketch; standard 900mm assumed pending reviewer verification",
+      "assumedValue": 900.0,
+      "confidence": "low",
+      "status": "unresolved"
+    },
+    {
+      "id": "unc_WIN-FF-BED1_sill",
+      "target": "openings[WIN-FF-BED1].sillHeight",
+      "description": "Window WIN-FF-BED1 sill height unannotated in sketch; standard 900mm assumed pending reviewer verification",
+      "assumedValue": 900.0,
+      "confidence": "low",
+      "status": "unresolved"
+    },
+    {
+      "id": "unc_WIN-FF-BED2_sill",
+      "target": "openings[WIN-FF-BED2].sillHeight",
+      "description": "Window WIN-FF-BED2 sill height unannotated in sketch; standard 900mm assumed pending reviewer verification",
+      "assumedValue": 900.0,
+      "confidence": "low",
+      "status": "unresolved"
     }
   ],
   "validation": {

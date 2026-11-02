@@ -460,12 +460,13 @@ class ArchitecturalGeometryValidator:
                 )
             seen_ids.add(wid)
 
-        endpoints: List[Tuple[str, str, List[float]]] = []
+        endpoints: List[Tuple[str, str, List[float], Optional[str]]] = []
         for w in walls:
             s = [float(w["start"][0]), float(w["start"][1])]
             e = [float(w["end"][0]), float(w["end"][1])]
-            endpoints.append((w["id"], "start", s))
-            endpoints.append((w["id"], "end", e))
+            w_fid = w.get("floorId", w.get("level"))
+            endpoints.append((w["id"], "start", s, w_fid))
+            endpoints.append((w["id"], "end", e, w_fid))
 
             length = point_distance(s, e)
             if length < 10.0:
@@ -498,12 +499,16 @@ class ArchitecturalGeometryValidator:
                     requires_human_approval=False,
                 )
 
-        # Check duplicate or collinear overlapping wall segments
+        # Check duplicate or collinear overlapping wall segments (within same floor)
         for i in range(len(walls)):
             w1 = walls[i]
             s1, e1 = w1["start"], w1["end"]
+            f1 = w1.get("floorId", w1.get("level"))
             for j in range(i + 1, len(walls)):
                 w2 = walls[j]
+                f2 = w2.get("floorId", w2.get("level"))
+                if f1 is not None and f2 is not None and f1 != f2:
+                    continue
                 s2, e2 = w2["start"], w2["end"]
 
                 if (points_almost_equal(s1, s2) and points_almost_equal(e1, e2)) or (
@@ -518,11 +523,13 @@ class ArchitecturalGeometryValidator:
                         requires_human_approval=False,
                     )
 
-        # Classify junctions and detect disconnected endpoints
-        for wid, end_type, pt in endpoints:
+        # Classify junctions and detect disconnected endpoints (floor-aware)
+        for wid, end_type, pt, w_fid in endpoints:
             connected_endpoints = []
-            for other_wid, other_end_type, other_pt in endpoints:
+            for other_wid, other_end_type, other_pt, other_fid in endpoints:
                 if other_wid == wid:
+                    continue
+                if w_fid is not None and other_fid is not None and w_fid != other_fid:
                     continue
                 if points_almost_equal(pt, other_pt, tol=30.0):
                     connected_endpoints.append((other_wid, other_end_type))
@@ -530,6 +537,9 @@ class ArchitecturalGeometryValidator:
             t_junction_hosts = []
             for other_w in walls:
                 if other_w["id"] == wid:
+                    continue
+                other_fid = other_w.get("floorId", other_w.get("level"))
+                if w_fid is not None and other_fid is not None and w_fid != other_fid:
                     continue
                 d, t = distance_point_to_segment(pt, other_w["start"], other_w["end"])
                 if d <= 35.0 and 0.05 < t < 0.95:
@@ -546,6 +556,9 @@ class ArchitecturalGeometryValidator:
                 near_walls = []
                 for other_w in walls:
                     if other_w["id"] == wid:
+                        continue
+                    other_fid = other_w.get("floorId", other_w.get("level"))
+                    if w_fid is not None and other_fid is not None and w_fid != other_fid:
                         continue
                     d, _ = distance_point_to_segment(pt, other_w["start"], other_w["end"])
                     if 35.0 < d <= 250.0:
@@ -725,12 +738,14 @@ class ArchitecturalGeometryValidator:
                     requires_human_approval=False,
                 )
 
-            room_polygons.append((rid, poly_pts))
+            room_polygons.append((rid, poly_pts, r.get("floorId", r.get("level"))))
 
         for i in range(len(room_polygons)):
-            r1_id, poly1 = room_polygons[i]
+            r1_id, poly1, f1 = room_polygons[i]
             for j in range(i + 1, len(room_polygons)):
-                r2_id, poly2 = room_polygons[j]
+                r2_id, poly2, f2 = room_polygons[j]
+                if f1 is not None and f2 is not None and f1 != f2:
+                    continue
                 if polygons_overlap(poly1, poly2):
                     self.add_issue(
                         severity="blocking",
@@ -792,13 +807,62 @@ class ArchitecturalGeometryValidator:
         return ent_floor == self.target_floor_id
 
     def _get_walls(self) -> List[Dict[str, Any]]:
-        return [w for w in self.model.get("walls", []) if self._matches_floor(w)]
+        walls = self.model.get("walls", [])
+        if not walls and "floors" in self.model:
+            out = []
+            for fl in self.model.get("floors", []):
+                fid = fl.get("id")
+                if self.target_floor_id is None or self.target_floor_id == fid:
+                    for idx, w in enumerate(fl.get("walls", [])):
+                        w_copy = dict(w)
+                        w_copy.setdefault("id", f"W-{fid}-{idx+1}")
+                        w_copy.setdefault("floorId", fid)
+                        out.append(w_copy)
+            return out
+        return [w for w in walls if self._matches_floor(w)]
 
     def _get_openings(self) -> List[Dict[str, Any]]:
-        return [op for op in self.model.get("openings", []) if self._matches_floor(op)]
+        openings = self.model.get("openings", [])
+        if not openings and "floors" in self.model:
+            out = []
+            for fl in self.model.get("floors", []):
+                fid = fl.get("id")
+                if self.target_floor_id is None or self.target_floor_id == fid:
+                    floor_ops = fl.get("openings", []) + fl.get("doors", []) + fl.get("windows", [])
+                    for idx, op in enumerate(floor_ops):
+                        op_copy = dict(op)
+                        op_copy.setdefault("id", f"OP-{fid}-{idx+1}")
+                        op_copy.setdefault("floorId", fid)
+                        out.append(op_copy)
+            return out
+        return [op for op in openings if self._matches_floor(op)]
 
     def _get_rooms(self) -> List[Dict[str, Any]]:
-        return [r for r in self.model.get("rooms", []) if self._matches_floor(r)]
+        rooms = self.model.get("rooms", [])
+        if not rooms and "floors" in self.model:
+            out = []
+            for fl in self.model.get("floors", []):
+                fid = fl.get("id")
+                if self.target_floor_id is None or self.target_floor_id == fid:
+                    for idx, r in enumerate(fl.get("rooms", [])):
+                        r_copy = dict(r)
+                        r_copy.setdefault("id", f"RM-{fid}-{idx+1}")
+                        r_copy.setdefault("floorId", fid)
+                        out.append(r_copy)
+            return out
+        return [r for r in rooms if self._matches_floor(r)]
 
     def _get_elements(self) -> List[Dict[str, Any]]:
-        return [el for el in self.model.get("elements", []) if self._matches_floor(el)]
+        elements = self.model.get("elements", [])
+        if not elements and "floors" in self.model:
+            out = []
+            for fl in self.model.get("floors", []):
+                fid = fl.get("id")
+                if self.target_floor_id is None or self.target_floor_id == fid:
+                    for idx, el in enumerate(fl.get("elements", [])):
+                        el_copy = dict(el)
+                        el_copy.setdefault("id", f"EL-{fid}-{idx+1}")
+                        el_copy.setdefault("floorId", fid)
+                        out.append(el_copy)
+            return out
+        return [el for el in elements if self._matches_floor(el)]

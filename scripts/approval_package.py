@@ -11,6 +11,7 @@ from __future__ import annotations
 import datetime
 import hashlib
 import json
+import math
 import os
 import re
 from pathlib import Path
@@ -219,6 +220,15 @@ def create_approval_package(
     rooms = draft_model.get("rooms", [])
     dims = draft_model.get("dimensions", [])
     uncs = draft_model.get("uncertainties", [])
+    floors = draft_model.get("floors", [])
+
+    if floors:
+        if not walls:
+            walls = [w for fl in floors for w in fl.get("walls", [])]
+        if not rooms:
+            rooms = [r for fl in floors for r in fl.get("rooms", [])]
+        if not openings:
+            openings = [op for fl in floors for op in (fl.get("doors", []) + fl.get("windows", []) + fl.get("openings", []))]
 
     src_sketch_info = {
         "source_file": "unknown.png",
@@ -283,7 +293,7 @@ def create_approval_package(
                 "status": "pending",
                 "resolved_choice": None,
             })
-        elif "missing" in desc.lower() or "not annotated" in desc.lower() or "estimated" in desc.lower():
+        else:
             unknowns.append({
                 "id": f"unk-{len(unknowns)+1}",
                 "field": target,
@@ -312,7 +322,7 @@ def create_approval_package(
                 "width_mm": float(env.get("width", 8000.0)),
                 "depth_mm": float(env.get("depth", 8700.0)),
             },
-            "levels_count": len(draft_model.get("levels", [])) or 1,
+            "levels_count": len(draft_model.get("levels", [])) or len(floors) or draft_model.get("building", {}).get("totalLevels", 1) or 1,
             "rooms_count": len(rooms),
             "walls_count": len(walls),
             "openings_count": len(openings),

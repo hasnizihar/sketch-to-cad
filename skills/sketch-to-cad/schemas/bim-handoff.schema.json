@@ -345,6 +345,15 @@
               "estimated",
               "inferred"
             ]
+          },
+          "sillHeightProvenance": {
+            "type": "string",
+            "enum": [
+              "explicit",
+              "assumed_default_unverified",
+              "reviewer_verified",
+              "inferred"
+            ]
           }
         }
       }
@@ -588,6 +597,9 @@
               "corrected",
               "approved"
             ]
+          },
+          "provenance": {
+            "type": "string"
           }
         }
       }

@@ -174,16 +174,40 @@ This directory contains test specifications, reference fixtures, and validation 
     `
     Validates phase start/end timing lifecycle, sequential pipeline stage transitions, architectural entity tracking, source metadata recording, profile dictionary serialization, and Markdown performance report rendering.
 
+21. **Dimensioning & Annotation Engine Suite (Milestone 11)**:
+    `powershell
+    python -m unittest tests/test_dimension_engine.py
+    `
+    Validates 3-tier dimension generation (overall footprint, chained openings, room callouts), formatting in millimeters and meters, text position offset calculation, collision detection with room labels, and offset staggering collision resolution.
+
+22. **Printable Drawing Sheet Generator Suite (Milestone 11)**:
+    `powershell
+    python -m unittest tests/test_sheet_generator.py
+    `
+    Validates paper dimensions (A4-A1 landscape/portrait), printable viewport bounds, strict scale enforcement raising ScaleOverflowError on overflow, ANSI/ISO title block formatting, conditional North Arrow validation, and vector PDF sheet rendering.
+
+23. **Production Release Packager Suite (Milestone 11)**:
+    `powershell
+    python -m unittest tests/test_release_packager.py
+    `
+    Validates unapproved model rejection, AI agent self-approval blocking, complete 7-directory release assembly, manifest SHA-256 deliverable inventory, and ReleasePackager.verify_package_integrity tamper detection.
+
+24. **Exhaustive Release Regression Suite (Milestone 11 - 15 Scenarios)**:
+    `powershell
+    python -m unittest tests/test_release_regression.py
+    `
+    Validates all 15 release scenarios: small 6x5m plan, large multi-room plan, 2-storey duplex with stairs, non-rectangular angled walls, door subtypes, window configurations, dense dimension collision avoidance, conflicting dimensions detection, incomplete sketches, rotated low-quality inputs, explicit unannotated sill provenance, unapproved revision hash invalidation, invalid wall gaps, duplicate DXF entities, and unresolved BIM handoff assumptions.
+
 ---
 
 ### Overall Test Suite Execution
 
-Run all 188 automated tests:
+Run all 220 automated tests:
 `powershell
 python -m unittest discover tests
 `
 
-Run skill integrity validation (16 automated checks):
+Run skill integrity validation (17 automated checks):
 `powershell
 .\scripts\validate-skill.ps1
 `

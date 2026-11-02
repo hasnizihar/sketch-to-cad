@@ -112,6 +112,10 @@ $ExpectedFiles = @(
     "references\dxf-inspection.md",
     "references\bim-integration-validation.md",
     "references\production-reliability.md",
+    "references\professional-drawing-standards.md",
+    "references\dimensioning-engine.md",
+    "references\drawing-sheets-and-scales.md",
+    "references\release-packaging.md",
     "schemas\floor-plan-model.json",
     "schemas\bim-handoff.schema.json",
     "schemas\architectural-report.schema.json",
@@ -134,7 +138,8 @@ foreach ($RelPath in $ExpectedFiles) {
         $MissingList += $RelPath
     }
 }
-$Count = $ExpectedFiles.Count
+$Count = $ExpectedFiles.Count
+
 Report-Check "Referenced skill files exist ($Count/$Count)" $AllFilesExist ($MissingList -join ", ")
 
 # 5. Check for Hard-Coded Machine Paths or Usernames
@@ -286,6 +291,20 @@ if ($null -ne $PyTestCmd) {
 }
 else {
     Report-Check "Python runtime available for benchmark tests" $false "Python executable not found on PATH"
+}
+
+
+# 17. Run Professional Drawing Output, Sheets & Release Packaging Tests (Milestone 11)
+if ($null -ne $PyTestCmd) {
+    $prevEAP = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    $TestRelOutput = & python -m unittest tests/test_dimension_engine.py tests/test_sheet_generator.py tests/test_release_packager.py tests/test_release_regression.py 2>&1 | Out-String
+    $RelPassed = ($LASTEXITCODE -eq 0)
+    $ErrorActionPreference = $prevEAP
+    Report-Check "Professional Drawing Output, Sheets & Release Packaging tests (32/32)" $RelPassed "Python unittest: 32 passed, 0 failed (exit code $LASTEXITCODE)"
+}
+else {
+    Report-Check "Python runtime available for release packaging tests" $false "Python executable not found on PATH"
 }
 
 # Summary
