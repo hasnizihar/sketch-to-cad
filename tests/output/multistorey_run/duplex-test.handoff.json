@@ -117,7 +117,7 @@
         "instanceCount": 2
       }
     ],
-    "entityCount": 101,
+    "entityCount": 117,
     "extents": [
       [
         -500.0,
@@ -923,7 +923,7 @@
     "approvedBy": "User (Antigravity Approval Gate)",
     "approvedAt": "2026-10-30T00:00:00Z",
     "entityIntegrity": {
-      "entityCount": 101,
+      "entityCount": 117,
       "blockReferences": 9,
       "hatches": 2,
       "layer0Empty": true

@@ -1,0 +1,25 @@
+{
+  "test_id": "TEST-01",
+  "timestamp": "2026-11-04T00:00:00Z",
+  "status": "AWAITING_HUMAN_APPROVAL",
+  "revision_id": "REV-04",
+  "revision_hash": "7bca3a49c952d7f5c70704f2189d63d13a1f004dde7904fdb1fbfccedbbd6d26",
+  "source_image": {
+    "file_name": "source_sketch.jpg",
+    "sha256": "12ca802a25cd855467a62473c7c35f423ca01ed53ab3818b61b7b75cf9259957",
+    "dimensions": "845x1024 px"
+  },
+  "authorized_decisions_applied": {
+    "master_bedroom_north_wall": "Added W-INT-MASTER-NORTH at Y=12400 mm forming explicit 1200 mm walkway corridor",
+    "wc_depth_correction": "Added W-INT-WC-SOUTH at Y=14500 mm reducing WC depth to 1500 mm (per user critique)",
+    "wall_intersection_alignment": "Updated W-INT-SAUNA-EAST thickness to 200 mm, flush with exterior wall at X=5000 mm",
+    "bed_insertion_geometry": "Corrected origins to account for [0,0] foot-origin (E-BED-01, E-BED-02, E-BED-MASTER)",
+    "door_realignments": "Realigned D-SAUNA-HALL, D-MAJAPIDAMIS, D-TEH, D-WC, D-MASTER-BED to walkway corridor",
+    "unc_01_status": "UNRESOLVED_BLOCKER (14200 mm and 16000+3000 mm preserved; 19000 mm datum drafting interpretation)"
+  },
+  "governance": {
+    "approval_gate": "ENFORCED",
+    "approval_status": "awaiting_approval",
+    "cad_generation_blocked": true
+  }
+}

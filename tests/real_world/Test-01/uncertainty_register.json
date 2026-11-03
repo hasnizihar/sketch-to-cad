@@ -1,0 +1,98 @@
+{
+  "project": "Real-World Test 01 - Nordic Residential Villa",
+  "source_file": "source_sketch.jpg",
+  "source_sha256": "12ca802a25cd855467a62473c7c35f423ca01ed53ab3818b61b7b75cf9259957",
+  "audit_status": "AWAITING_HUMAN_APPROVAL",
+  "revision_id": "REV-04",
+  "revision_hash": "646c0d8b8c9a76d13be3ca34c0d0e041fea53a878d433316eeecd543a393a301",
+  "total_uncertainties": 8,
+  "blocking_count": 1,
+  "warning_count": 5,
+  "info_count": 2,
+  "uncertainties": [
+    {
+      "id": "UNC-01",
+      "field": "dimensions.depth_chain_arithmetic",
+      "description": "Arithmetic conflict between West dimension chain (5000 + 14200 = 19200 mm) and East dimension chain (16000 + 3000 = 19000 mm). Difference is 200 mm. Both original measurements are preserved. Building datum 19000 mm is retained only as a current drafting interpretation; the discrepancy remains an active unresolved blocker.",
+      "severity": "blocker",
+      "suggested_action": "Seek author/client clarification or verify on site. Document as variance on drawing sheet.",
+      "conflicting_values": [
+        "19200 mm (West side: 5000 mm sauna wing + 14200 mm terrace run)",
+        "19000 mm (East side: 16000 mm main house + 3000 mm terrace)"
+      ]
+    },
+    {
+      "id": "UNC-02",
+      "field": "walls.W-INT-MASTER-BATH_position",
+      "description": "Bathroom partition source contradiction: Visible ink line is drawn at Y \u2248 460 px (yielding Y = 9200 mm, clear area 10.01 m\u00b2), whereas written text annotation specifies 'vannituba 6,5 m\u00b2'. Drafting interpretation Alternative 1A retained per human instruction; conflict preserved in records.",
+      "severity": "warning",
+      "suggested_action": "Retain Y=9200 mm for drafting to accommodate bathtub and door clearances; record label conflict.",
+      "conflicting_values": [
+        "10.01 m\u00b2 clear area (from drawn partition line at Y=9200 mm)",
+        "6.5 m\u00b2 (from handwritten room text label)"
+      ]
+    },
+    {
+      "id": "UNC-03",
+      "field": "walls.W-INT-SAUNA-HORIZ_position",
+      "description": "Shower / Sauna partition placement: Revised to Y \u2248 13000 mm per Alternative 2A, providing a 3.0m deep shower (clear 4.70 m\u00b2) and 2.0m deep sauna (clear 3.05 m\u00b2). This is supported by drawn pixel ratio (136 px : 84 px = 1.62:1) and written labels (6 m\u00b2 : 4 m\u00b2 = 1.50:1), but remains an interpreted coordinate rather than an explicit dimension.",
+      "severity": "warning",
+      "suggested_action": "Approved for drafting as source-supported interpretation REV-03.",
+      "conflicting_values": [
+        "Y = 13000 mm (Alternative 2A: source-supported 3m/2m split)",
+        "Y = 13500 mm (Former Alternative 2B: arbitrary 50/50 midpoint)"
+      ]
+    },
+    {
+      "id": "UNC-04",
+      "field": "rooms.R-CORRIDOR_boundary",
+      "description": "Central corridor is an unannotated circulation zone open to the living room at Y = 6500 mm. No separating wall is drawn. Modeled area (10.65 m\u00b2 centerline, 9.87 m\u00b2 clear) is an inferred spatial boundary.",
+      "severity": "info",
+      "suggested_action": "Preserve as open circulation space without physical divider.",
+      "conflicting_values": [
+        "None (unannotated circulation)"
+      ]
+    },
+    {
+      "id": "UNC-05",
+      "field": "walls.interior_thickness",
+      "description": "Wall thicknesses unannotated on sketch. Proposed drafting defaults: 200 mm exterior envelope, 100 mm interior partitions, 150 mm plumbing core / party wall.",
+      "severity": "warning",
+      "suggested_action": "Confirm or adjust wall thicknesses prior to final CAD/BIM export.",
+      "conflicting_values": [
+        "Proposed: 200mm ext / 100mm int / 150mm core (Unverified)"
+      ]
+    },
+    {
+      "id": "UNC-06",
+      "field": "openings.window_widths",
+      "description": "Opening widths unannotated numerically. Proposed standard modular sizes: 600-1800 mm windows, 700-900 mm doors, 1500/2400 mm patio sliders.",
+      "severity": "warning",
+      "suggested_action": "Confirm or adjust opening schedules.",
+      "conflicting_values": [
+        "Proposed modular opening widths (Unverified)"
+      ]
+    },
+    {
+      "id": "UNC-07",
+      "field": "openings.window_sill_heights",
+      "description": "Window sill heights unannotated on 2D floor plan. Designated UNKNOWN in 2D CAD model; deferred to downstream 3D BIM integration preflight.",
+      "severity": "info",
+      "suggested_action": "Review in downstream 3D BIM preflight.",
+      "conflicting_values": [
+        "UNKNOWN in 2D"
+      ]
+    },
+    {
+      "id": "UNC-08",
+      "field": "rooms.R-WC_geometry",
+      "description": "WC compact powder room reconciliation: In source sketch, labeled 'WC 2.4 m\u00b2'. Modeled as width 900 mm (X=9600..10500) and depth 1500 mm (Y=14500..16000), yielding clear area 1.12 m\u00b2 (gross 1.35 m\u00b2). The previous 2400 mm deep tubular space was identified by user as conflicting with the sketch. Compact 1500 mm depth is adopted per human instruction; 2.4 m\u00b2 label discrepancy is recorded as an authentic variance.",
+      "severity": "warning",
+      "suggested_action": "Retain 900x1500 mm compact powder room with south door; document 2.4 m\u00b2 label variance.",
+      "conflicting_values": [
+        "1.12 m\u00b2 clear / 1.35 m\u00b2 gross (from compact 1500 mm depth partition)",
+        "2.4 m\u00b2 (from handwritten source text label)"
+      ]
+    }
+  ]
+}

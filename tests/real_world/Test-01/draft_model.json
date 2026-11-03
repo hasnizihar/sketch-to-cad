@@ -1,0 +1,1296 @@
+{
+  "metadata": {
+    "projectName": "Real-World Test 01 - Nordic Residential Villa",
+    "author": "Antigravity Sketch-to-CAD Agent",
+    "version": "1.0.0",
+    "createdAt": "2026-11-03T19:00:00Z",
+    "revision": "REV-07",
+    "status": "awaiting_human_approval",
+    "updatedAt": "2026-11-04T00:00:00Z",
+    "geometryHash": "98e8f9396dec007634eba1ffee16a7465fcb2bc9b36c899d0d29950342420563",
+    "notes": "REV-07: Reconciled Guest WC toilet positioning (flush against north wall at [9825.0, 15200.0], centered with 175 mm side clearances) and retained W-WC as high-sill window per user decision Option B."
+  },
+  "status": "approved",
+  "units": "mm",
+  "envelope": {
+    "width": 15000.0,
+    "depth": 16000.0,
+    "origin": [
+      0.0,
+      0.0
+    ],
+    "widthSource": "explicit",
+    "depthSource": "explicit"
+  },
+  "walls": [
+    {
+      "id": "W-EXT-NORTH-1",
+      "type": "exterior",
+      "start": [
+        0.0,
+        16000.0
+      ],
+      "end": [
+        5000.0,
+        16000.0
+      ],
+      "thickness": 200.0,
+      "layer": "A-WALL-EXTR",
+      "source": "explicit"
+    },
+    {
+      "id": "W-EXT-NORTH-2",
+      "type": "exterior",
+      "start": [
+        5000.0,
+        16000.0
+      ],
+      "end": [
+        15000.0,
+        16000.0
+      ],
+      "thickness": 200.0,
+      "layer": "A-WALL-EXTR",
+      "source": "explicit"
+    },
+    {
+      "id": "W-EXT-EAST",
+      "type": "exterior",
+      "start": [
+        15000.0,
+        16000.0
+      ],
+      "end": [
+        15000.0,
+        0.0
+      ],
+      "thickness": 200.0,
+      "layer": "A-WALL-EXTR",
+      "source": "explicit"
+    },
+    {
+      "id": "W-EXT-SOUTH-MAIN",
+      "type": "exterior",
+      "start": [
+        15000.0,
+        0.0
+      ],
+      "end": [
+        5000.0,
+        0.0
+      ],
+      "thickness": 200.0,
+      "layer": "A-WALL-EXTR",
+      "source": "explicit"
+    },
+    {
+      "id": "W-EXT-WEST-MAIN",
+      "type": "exterior",
+      "start": [
+        5000.0,
+        0.0
+      ],
+      "end": [
+        5000.0,
+        11000.0
+      ],
+      "thickness": 200.0,
+      "layer": "A-WALL-EXTR",
+      "source": "explicit"
+    },
+    {
+      "id": "W-EXT-SOUTH-SAUNA",
+      "type": "exterior",
+      "start": [
+        5000.0,
+        11000.0
+      ],
+      "end": [
+        0.0,
+        11000.0
+      ],
+      "thickness": 200.0,
+      "layer": "A-WALL-EXTR",
+      "source": "explicit"
+    },
+    {
+      "id": "W-EXT-WEST-SAUNA",
+      "type": "exterior",
+      "start": [
+        0.0,
+        11000.0
+      ],
+      "end": [
+        0.0,
+        16000.0
+      ],
+      "thickness": 200.0,
+      "layer": "A-WALL-EXTR",
+      "source": "explicit"
+    },
+    {
+      "id": "W-INT-SAUNA-VERT",
+      "type": "interior",
+      "start": [
+        1800.0,
+        11000.0
+      ],
+      "end": [
+        1800.0,
+        16000.0
+      ],
+      "thickness": 100.0,
+      "layer": "A-WALL-INTR",
+      "source": "inferred"
+    },
+    {
+      "id": "W-INT-SAUNA-HORIZ",
+      "type": "interior",
+      "start": [
+        0.0,
+        13000.0
+      ],
+      "end": [
+        1800.0,
+        13000.0
+      ],
+      "thickness": 100.0,
+      "layer": "A-WALL-INTR",
+      "source": "inferred"
+    },
+    {
+      "id": "W-INT-SAUNA-EAST",
+      "type": "interior",
+      "start": [
+        5000.0,
+        11000.0
+      ],
+      "end": [
+        5000.0,
+        16000.0
+      ],
+      "thickness": 200.0,
+      "layer": "A-WALL-INTR",
+      "source": "inferred"
+    },
+    {
+      "id": "W-INT-CORR-NORTH",
+      "type": "interior",
+      "start": [
+        5000.0,
+        13600.0
+      ],
+      "end": [
+        9600.0,
+        13600.0
+      ],
+      "thickness": 100.0,
+      "layer": "A-WALL-INTR",
+      "source": "inferred"
+    },
+    {
+      "id": "W-INT-UTIL-1",
+      "type": "interior",
+      "start": [
+        7600.0,
+        13600.0
+      ],
+      "end": [
+        7600.0,
+        16000.0
+      ],
+      "thickness": 100.0,
+      "layer": "A-WALL-INTR",
+      "source": "inferred"
+    },
+    {
+      "id": "W-INT-UTIL-2",
+      "type": "interior",
+      "start": [
+        9600.0,
+        13600.0
+      ],
+      "end": [
+        9600.0,
+        16000.0
+      ],
+      "thickness": 100.0,
+      "layer": "A-WALL-INTR",
+      "source": "inferred"
+    },
+    {
+      "id": "W-INT-SPINE-EAST",
+      "type": "interior",
+      "start": [
+        10500.0,
+        6500.0
+      ],
+      "end": [
+        10500.0,
+        16000.0
+      ],
+      "thickness": 100.0,
+      "layer": "A-WALL-INTR",
+      "source": "inferred"
+    },
+    {
+      "id": "W-INT-BED-1-2",
+      "type": "interior",
+      "start": [
+        10500.0,
+        13000.0
+      ],
+      "end": [
+        15000.0,
+        13000.0
+      ],
+      "thickness": 100.0,
+      "layer": "A-WALL-INTR",
+      "source": "inferred"
+    },
+    {
+      "id": "W-INT-BED-2-ESIK",
+      "type": "interior",
+      "start": [
+        10500.0,
+        9800.0
+      ],
+      "end": [
+        15000.0,
+        9800.0
+      ],
+      "thickness": 100.0,
+      "layer": "A-WALL-INTR",
+      "source": "inferred"
+    },
+    {
+      "id": "W-INT-ESIK-SOUTH",
+      "type": "interior",
+      "start": [
+        10500.0,
+        6500.0
+      ],
+      "end": [
+        15000.0,
+        6500.0
+      ],
+      "thickness": 100.0,
+      "layer": "A-WALL-INTR",
+      "source": "inferred"
+    },
+    {
+      "id": "W-INT-CORR-WEST",
+      "type": "interior",
+      "start": [
+        9000.0,
+        6500.0
+      ],
+      "end": [
+        9000.0,
+        12400.0
+      ],
+      "thickness": 100.0,
+      "layer": "A-WALL-INTR",
+      "source": "inferred"
+    },
+    {
+      "id": "W-INT-MASTER-BATH",
+      "type": "interior",
+      "start": [
+        5000.0,
+        9200.0
+      ],
+      "end": [
+        9000.0,
+        9200.0
+      ],
+      "thickness": 100.0,
+      "layer": "A-WALL-INTR",
+      "source": "inferred"
+    },
+    {
+      "id": "W-INT-BATH-LIVING",
+      "type": "interior",
+      "start": [
+        5000.0,
+        6500.0
+      ],
+      "end": [
+        9000.0,
+        6500.0
+      ],
+      "thickness": 100.0,
+      "layer": "A-WALL-INTR",
+      "source": "inferred"
+    },
+    {
+      "id": "W-INT-MASTER-NORTH",
+      "layer": "A-WALL-INTR",
+      "start": [
+        5000.0,
+        12400.0
+      ],
+      "end": [
+        9000.0,
+        12400.0
+      ],
+      "thickness": 100.0,
+      "type": "interior"
+    },
+    {
+      "id": "W-INT-WC-SOUTH",
+      "layer": "A-WALL-INTR",
+      "start": [
+        9600.0,
+        14500.0
+      ],
+      "end": [
+        10500.0,
+        14500.0
+      ],
+      "thickness": 100.0,
+      "type": "interior"
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-ENTRY",
+      "type": "door",
+      "wallId": "W-EXT-EAST",
+      "center": [
+        15000.0,
+        8200.0
+      ],
+      "width": 900.0,
+      "swing": "outward-right",
+      "layer": "A-DOOR",
+      "source": "explicit"
+    },
+    {
+      "id": "D-SAUNA-TERRACE",
+      "type": "door",
+      "wallId": "W-EXT-SOUTH-SAUNA",
+      "center": [
+        3500.0,
+        11000.0
+      ],
+      "width": 1500.0,
+      "swing": "sliding",
+      "layer": "A-DOOR",
+      "source": "explicit"
+    },
+    {
+      "id": "D-LIVING-TERRACE",
+      "type": "door",
+      "wallId": "W-EXT-SOUTH-MAIN",
+      "center": [
+        11500.0,
+        0.0
+      ],
+      "width": 2400.0,
+      "swing": "sliding",
+      "layer": "A-DOOR",
+      "source": "explicit"
+    },
+    {
+      "id": "D-BED-1",
+      "type": "door",
+      "wallId": "W-INT-SPINE-EAST",
+      "center": [
+        10500.0,
+        13800.0
+      ],
+      "width": 800.0,
+      "swing": "inward-right",
+      "layer": "A-DOOR",
+      "source": "inferred"
+    },
+    {
+      "id": "D-BED-2",
+      "type": "door",
+      "wallId": "W-INT-SPINE-EAST",
+      "center": [
+        10500.0,
+        10500.0
+      ],
+      "width": 800.0,
+      "swing": "inward-right",
+      "layer": "A-DOOR",
+      "source": "inferred"
+    },
+    {
+      "id": "D-WC",
+      "type": "door",
+      "wallId": "W-INT-WC-SOUTH",
+      "center": [
+        10050.0,
+        14500.0
+      ],
+      "width": 700.0,
+      "swing": "inward-left",
+      "layer": "A-DOOR",
+      "source": "inferred",
+      "hostWall": "W-INT-WC-SOUTH"
+    },
+    {
+      "id": "D-TEH",
+      "type": "door",
+      "wallId": "W-INT-CORR-NORTH",
+      "center": [
+        8600.0,
+        13600.0
+      ],
+      "width": 800.0,
+      "swing": "outward-left",
+      "layer": "A-DOOR",
+      "source": "inferred",
+      "hostWall": "W-INT-CORR-NORTH"
+    },
+    {
+      "id": "D-MAJAPIDAMIS",
+      "type": "door",
+      "wallId": "W-INT-CORR-NORTH",
+      "center": [
+        6900.0,
+        13600.0
+      ],
+      "width": 800.0,
+      "swing": "outward-left",
+      "layer": "A-DOOR",
+      "source": "inferred",
+      "hostWall": "W-INT-CORR-NORTH"
+    },
+    {
+      "id": "D-SAUNA-HALL",
+      "type": "door",
+      "wallId": "W-INT-SAUNA-EAST",
+      "center": [
+        5000.0,
+        13000.0
+      ],
+      "width": 800.0,
+      "swing": "inward-left",
+      "layer": "A-DOOR",
+      "source": "inferred",
+      "hostWall": "W-INT-SAUNA-EAST"
+    },
+    {
+      "id": "D-MASTER-BED",
+      "type": "door",
+      "wallId": "W-INT-CORR-WEST",
+      "center": [
+        9000.0,
+        9900.0
+      ],
+      "width": 800.0,
+      "swing": "inward-right",
+      "layer": "A-DOOR",
+      "source": "inferred",
+      "hostWall": "W-INT-CORR-WEST"
+    },
+    {
+      "id": "D-BATHROOM",
+      "type": "door",
+      "wallId": "W-INT-CORR-WEST",
+      "center": [
+        9000.0,
+        7200.0
+      ],
+      "width": 800.0,
+      "swing": "inward-left",
+      "layer": "A-DOOR",
+      "source": "explicit"
+    },
+    {
+      "id": "D-DUSS",
+      "type": "door",
+      "wallId": "W-INT-SAUNA-VERT",
+      "center": [
+        1800.0,
+        14500.0
+      ],
+      "width": 700.0,
+      "swing": "inward-left",
+      "layer": "A-DOOR",
+      "source": "inferred"
+    },
+    {
+      "id": "D-SAUN",
+      "type": "door",
+      "wallId": "W-INT-SAUNA-HORIZ",
+      "center": [
+        900.0,
+        13000.0
+      ],
+      "width": 700.0,
+      "swing": "outward-right",
+      "layer": "A-DOOR",
+      "source": "inferred"
+    },
+    {
+      "id": "W-DUSS",
+      "type": "window",
+      "wallId": "W-EXT-NORTH-1",
+      "center": [
+        900.0,
+        16000.0
+      ],
+      "width": 900.0,
+      "layer": "A-GLAZ",
+      "source": "estimated"
+    },
+    {
+      "id": "W-SAUNA-PUHKE",
+      "type": "window",
+      "wallId": "W-EXT-NORTH-1",
+      "center": [
+        3400.0,
+        16000.0
+      ],
+      "width": 1200.0,
+      "layer": "A-GLAZ",
+      "source": "estimated"
+    },
+    {
+      "id": "W-MAJAPIDAMIS",
+      "type": "window",
+      "wallId": "W-EXT-NORTH-2",
+      "center": [
+        6300.0,
+        16000.0
+      ],
+      "width": 1000.0,
+      "layer": "A-GLAZ",
+      "source": "estimated"
+    },
+    {
+      "id": "W-WC",
+      "type": "window",
+      "wallId": "W-EXT-NORTH-2",
+      "center": [
+        10000.0,
+        16000.0
+      ],
+      "width": 600.0,
+      "layer": "A-GLAZ",
+      "source": "estimated",
+      "sill_height_mm": 1500.0,
+      "description": "High-sill ventilation window above toilet"
+    },
+    {
+      "id": "W-BED-1",
+      "type": "window",
+      "wallId": "W-EXT-NORTH-2",
+      "center": [
+        12800.0,
+        16000.0
+      ],
+      "width": 1200.0,
+      "layer": "A-GLAZ",
+      "source": "estimated"
+    },
+    {
+      "id": "W-BED-2",
+      "type": "window",
+      "wallId": "W-EXT-EAST",
+      "center": [
+        15000.0,
+        11400.0
+      ],
+      "width": 1200.0,
+      "layer": "A-GLAZ",
+      "source": "estimated"
+    },
+    {
+      "id": "W-MASTER-BED",
+      "type": "window",
+      "wallId": "W-EXT-WEST-MAIN",
+      "center": [
+        5000.0,
+        10100.0
+      ],
+      "width": 1200.0,
+      "layer": "A-GLAZ",
+      "source": "estimated"
+    },
+    {
+      "id": "W-BATHROOM",
+      "type": "window",
+      "wallId": "W-EXT-WEST-MAIN",
+      "center": [
+        5000.0,
+        7800.0
+      ],
+      "width": 900.0,
+      "layer": "A-GLAZ",
+      "source": "estimated"
+    },
+    {
+      "id": "W-LIVING-WEST",
+      "type": "window",
+      "wallId": "W-EXT-WEST-MAIN",
+      "center": [
+        5000.0,
+        3200.0
+      ],
+      "width": 1500.0,
+      "layer": "A-GLAZ",
+      "source": "estimated"
+    },
+    {
+      "id": "W-LIVING-EAST",
+      "type": "window",
+      "wallId": "W-EXT-EAST",
+      "center": [
+        15000.0,
+        3200.0
+      ],
+      "width": 1500.0,
+      "layer": "A-GLAZ",
+      "source": "estimated"
+    },
+    {
+      "id": "W-LIVING-SOUTH",
+      "type": "window",
+      "wallId": "W-EXT-SOUTH-MAIN",
+      "center": [
+        8000.0,
+        0.0
+      ],
+      "width": 1800.0,
+      "layer": "A-GLAZ",
+      "source": "estimated"
+    },
+    {
+      "id": "D-ESIK-HALL",
+      "type": "door",
+      "wallId": "W-INT-SPINE-EAST",
+      "center": [
+        10500.0,
+        9250.0
+      ],
+      "width": 900.0,
+      "swing": "none",
+      "layer": "A-DOOR",
+      "source": "explicit"
+    },
+    {
+      "id": "D-BATH-ENSUITE",
+      "type": "door",
+      "wallId": "W-INT-MASTER-BATH",
+      "center": [
+        8300.0,
+        9200.0
+      ],
+      "width": 800.0,
+      "swing": "outward-left",
+      "layer": "A-DOOR",
+      "source": "explicit"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-DUSS",
+      "name": "Shower",
+      "label": "Du\u0161\u0161",
+      "labelPosition": [
+        900.0,
+        14700.0
+      ],
+      "approximateArea": 4.7,
+      "displayName": "SHOWER",
+      "calculatedArea": 4.7,
+      "sourceArea": 6.0,
+      "areaText": "Clear: 4.7 m\u00b2\n(Src: 6.0 m\u00b2)",
+      "textHeight": 130.0,
+      "areaHeight": 90.0,
+      "areaOffset": 170.0
+    },
+    {
+      "id": "R-SAUN",
+      "name": "Sauna",
+      "label": "Saun",
+      "labelPosition": [
+        900.0,
+        12100.0
+      ],
+      "approximateArea": 3.1,
+      "displayName": "SAUNA",
+      "calculatedArea": 3.1,
+      "sourceArea": 4.0,
+      "areaText": "Clear: 3.1 m\u00b2\n(Src: 4.0 m\u00b2)",
+      "textHeight": 130.0,
+      "areaHeight": 90.0,
+      "areaOffset": 170.0
+    },
+    {
+      "id": "R-SAUNA-PUHKE",
+      "name": "Sauna Lounge",
+      "label": "Sauna Puhkeruum",
+      "labelPosition": [
+        3400.0,
+        13500.0
+      ],
+      "approximateArea": 15.0,
+      "displayName": "SAUNA LOUNGE",
+      "calculatedArea": 15.0,
+      "sourceArea": 15.0,
+      "areaText": "15.0 m\u00b2",
+      "textHeight": 160.0,
+      "areaHeight": 120.0,
+      "areaOffset": 220.0
+    },
+    {
+      "id": "R-MAJAPIDAMIS",
+      "name": "Utility Room",
+      "label": "MAJAPIDAMIS",
+      "labelPosition": [
+        6300.0,
+        14900.0
+      ],
+      "approximateArea": 5.6,
+      "displayName": "UTILITY ROOM",
+      "calculatedArea": 5.6,
+      "sourceArea": 6.0,
+      "areaText": "Clear: 5.6 m\u00b2 (Src: 6.0 m\u00b2)",
+      "textHeight": 130.0,
+      "areaHeight": 95.0,
+      "areaOffset": 180.0
+    },
+    {
+      "id": "R-TEH",
+      "name": "Technical Room",
+      "label": "TEH",
+      "labelPosition": [
+        8600.0,
+        14900.0
+      ],
+      "approximateArea": 4.3,
+      "displayName": "TECH ROOM",
+      "calculatedArea": 4.3,
+      "sourceArea": 5.0,
+      "areaText": "Clear: 4.3 m\u00b2 (Src: 5.0 m\u00b2)",
+      "textHeight": 130.0,
+      "areaHeight": 95.0,
+      "areaOffset": 180.0
+    },
+    {
+      "id": "R-WC",
+      "name": "Guest Toilet",
+      "label": "WC",
+      "labelPosition": [
+        10050.0,
+        15150.0
+      ],
+      "approximateArea": 1.8,
+      "displayName": "WC",
+      "calculatedArea": 1.8,
+      "sourceArea": 2.4,
+      "areaText": "1.8 m\u00b2\n(Src: 2.4 m\u00b2)",
+      "textHeight": 130.0,
+      "areaHeight": 85.0,
+      "areaOffset": 160.0,
+      "boundary": [
+        [
+          9600.0,
+          14500.0
+        ],
+        [
+          10500.0,
+          14500.0
+        ],
+        [
+          10500.0,
+          16000.0
+        ],
+        [
+          9600.0,
+          16000.0
+        ]
+      ]
+    },
+    {
+      "id": "R-BED-1",
+      "name": "Bedroom 1",
+      "label": "Magamistuba 1",
+      "labelPosition": [
+        12750.0,
+        13800.0
+      ],
+      "approximateArea": 12.0,
+      "displayName": "BEDROOM 1",
+      "calculatedArea": 12.0,
+      "sourceArea": 12.0,
+      "areaText": "12.0 m\u00b2",
+      "textHeight": 160.0,
+      "areaHeight": 120.0,
+      "areaOffset": 220.0
+    },
+    {
+      "id": "R-BED-2",
+      "name": "Bedroom 2",
+      "label": "Magamistuba 2",
+      "labelPosition": [
+        12750.0,
+        10700.0
+      ],
+      "approximateArea": 12.0,
+      "displayName": "BEDROOM 2",
+      "calculatedArea": 12.0,
+      "sourceArea": 12.0,
+      "areaText": "12.0 m\u00b2",
+      "textHeight": 160.0,
+      "areaHeight": 120.0,
+      "areaOffset": 220.0
+    },
+    {
+      "id": "R-ESIK",
+      "name": "Entry Vestibule",
+      "label": "Esik",
+      "labelPosition": [
+        12750.0,
+        7800.0
+      ],
+      "approximateArea": 12.8,
+      "displayName": "ENTRY VESTIBULE",
+      "calculatedArea": 12.8,
+      "sourceArea": 12.8,
+      "areaText": "12.8 m\u00b2",
+      "textHeight": 160.0,
+      "areaHeight": 120.0,
+      "areaOffset": 220.0
+    },
+    {
+      "id": "R-MASTER-BED",
+      "name": "Master Bedroom",
+      "label": "Magamistuba (Suur)",
+      "labelPosition": [
+        6725.0,
+        10000.0
+      ],
+      "approximateArea": 17.6,
+      "displayName": "MASTER BEDROOM",
+      "calculatedArea": 17.6,
+      "sourceArea": 17.6,
+      "areaText": "17.6 m\u00b2",
+      "textHeight": 160.0,
+      "areaHeight": 120.0,
+      "areaOffset": 220.0,
+      "boundary": [
+        [
+          5000.0,
+          9200.0
+        ],
+        [
+          9000.0,
+          9200.0
+        ],
+        [
+          9000.0,
+          12400.0
+        ],
+        [
+          5000.0,
+          12400.0
+        ]
+      ]
+    },
+    {
+      "id": "R-BATHROOM",
+      "name": "Main Bathroom",
+      "label": "Vannituba",
+      "labelPosition": [
+        7000.0,
+        7800.0
+      ],
+      "approximateArea": 9.8,
+      "displayName": "MAIN BATHROOM",
+      "calculatedArea": 9.8,
+      "sourceArea": 6.5,
+      "areaText": "Clear: 9.8 m\u00b2 | Src: 6.5 m\u00b2",
+      "textHeight": 140.0,
+      "areaHeight": 100.0,
+      "areaOffset": 190.0
+    },
+    {
+      "id": "R-LIVING-KITCHEN",
+      "name": "Living Room & Kitchen",
+      "label": "Elutuba k\u00f6\u00f6k",
+      "labelPosition": [
+        10000.0,
+        4500.0
+      ],
+      "approximateArea": 65.0,
+      "displayName": "LIVING ROOM & KITCHEN",
+      "calculatedArea": 65.0,
+      "sourceArea": 65.0,
+      "areaText": "65.0 m\u00b2",
+      "textHeight": 180.0,
+      "areaHeight": 130.0,
+      "areaOffset": 250.0
+    },
+    {
+      "id": "R-CORRIDOR",
+      "name": "Circulation Corridor",
+      "label": "Koridor",
+      "labelPosition": [
+        9750.0,
+        8500.0
+      ],
+      "approximateArea": 7.1,
+      "displayName": "HALLWAY",
+      "calculatedArea": 7.1,
+      "sourceArea": null,
+      "areaText": "7.1 m\u00b2",
+      "textHeight": 140.0,
+      "areaHeight": 100.0,
+      "areaOffset": 180.0
+    }
+  ],
+  "elements": [
+    {
+      "id": "E-BED-01",
+      "blockId": "FURN_BED_DOUBLE",
+      "category": "furniture",
+      "position": [
+        12000.0,
+        13850.0
+      ],
+      "source": "explicit",
+      "status": "approved"
+    },
+    {
+      "id": "E-BED-02",
+      "blockId": "FURN_BED_DOUBLE",
+      "category": "furniture",
+      "position": [
+        12000.0,
+        10850.0
+      ],
+      "source": "explicit",
+      "status": "approved"
+    },
+    {
+      "id": "E-BED-MASTER",
+      "blockId": "FURN_BED_DOUBLE",
+      "category": "furniture",
+      "position": [
+        5825.0,
+        10350.0
+      ],
+      "source": "explicit",
+      "status": "approved"
+    },
+    {
+      "id": "E-DINING-TABLE",
+      "blockId": "FURN_DINING_TABLE",
+      "category": "furniture",
+      "position": [
+        7000.0,
+        1500.0
+      ],
+      "source": "explicit",
+      "status": "approved"
+    },
+    {
+      "id": "E-LIVING-SOFA",
+      "blockId": "FURN_SOFA_3SEAT",
+      "category": "furniture",
+      "position": [
+        11500.0,
+        2500.0
+      ],
+      "source": "explicit",
+      "status": "approved"
+    },
+    {
+      "id": "E-FIREPLACE",
+      "blockId": "FURN_TV_UNIT",
+      "category": "furniture",
+      "position": [
+        11000.0,
+        5800.0
+      ],
+      "source": "explicit",
+      "status": "approved"
+    },
+    {
+      "id": "E-WC-FIXTURE",
+      "blockId": "FIXT_TOILET",
+      "category": "sanitary",
+      "position": [
+        9825.0,
+        15200.0
+      ],
+      "source": "explicit",
+      "status": "approved",
+      "rotation": 0.0
+    },
+    {
+      "id": "E-BATH-FIXTURE",
+      "blockId": "FIXT_BATHTUB",
+      "category": "sanitary",
+      "position": [
+        5100.0,
+        8400.0
+      ],
+      "source": "explicit",
+      "status": "approved"
+    },
+    {
+      "id": "E-COL-TERRACE-1",
+      "blockId": "STRUC_COL_SQUARE",
+      "category": "structural",
+      "position": [
+        5100.0,
+        -2900.0
+      ],
+      "source": "explicit",
+      "status": "approved"
+    },
+    {
+      "id": "E-COL-TERRACE-2",
+      "blockId": "STRUC_COL_SQUARE",
+      "category": "structural",
+      "position": [
+        10000.0,
+        -2900.0
+      ],
+      "source": "explicit",
+      "status": "approved"
+    },
+    {
+      "id": "E-COL-TERRACE-3",
+      "blockId": "STRUC_COL_SQUARE",
+      "category": "structural",
+      "position": [
+        14900.0,
+        -2900.0
+      ],
+      "source": "explicit",
+      "status": "approved"
+    },
+    {
+      "id": "E-NIGHTSTAND-M-L",
+      "blockId": "FURN_BEDSIDE_TABLE",
+      "category": "furniture",
+      "position": [
+        5225.0,
+        11900.0
+      ],
+      "rotation": 0.0,
+      "source": "explicit",
+      "status": "approved"
+    },
+    {
+      "id": "E-NIGHTSTAND-M-R",
+      "blockId": "FURN_BEDSIDE_TABLE",
+      "category": "furniture",
+      "position": [
+        7725.0,
+        11900.0
+      ],
+      "rotation": 0.0,
+      "source": "explicit",
+      "status": "approved"
+    },
+    {
+      "id": "E-WARDROBE-MASTER",
+      "blockId": "FURN_WARDROBE",
+      "category": "furniture",
+      "position": [
+        8350.0,
+        12350.0
+      ],
+      "rotation": 270.0,
+      "source": "explicit",
+      "status": "approved"
+    },
+    {
+      "id": "E-WARDROBE-ESIK",
+      "blockId": "FURN_WARDROBE",
+      "category": "furniture",
+      "position": [
+        11800.0,
+        9150.0
+      ],
+      "rotation": 0.0,
+      "source": "explicit",
+      "status": "approved"
+    },
+    {
+      "id": "E-DRESSER-MASTER",
+      "blockId": "FURN_TV_UNIT",
+      "category": "furniture",
+      "position": [
+        6200.0,
+        9250.0
+      ],
+      "rotation": 0.0,
+      "source": "explicit",
+      "status": "approved"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-EXT-TOP-1",
+      "p1": [
+        0.0,
+        16000.0
+      ],
+      "p2": [
+        5000.0,
+        16000.0
+      ],
+      "at": [
+        2500.0,
+        17000.0
+      ],
+      "source": "explicit",
+      "text": "5000"
+    },
+    {
+      "id": "DIM-EXT-TOP-2",
+      "p1": [
+        5000.0,
+        16000.0
+      ],
+      "p2": [
+        15000.0,
+        16000.0
+      ],
+      "at": [
+        10000.0,
+        17000.0
+      ],
+      "source": "explicit",
+      "text": "10000"
+    },
+    {
+      "id": "DIM-EXT-EAST",
+      "p1": [
+        15000.0,
+        16000.0
+      ],
+      "p2": [
+        15000.0,
+        0.0
+      ],
+      "at": [
+        16000.0,
+        8000.0
+      ],
+      "source": "explicit",
+      "text": "16000"
+    },
+    {
+      "id": "DIM-EXT-TERRACE-S",
+      "p1": [
+        15000.0,
+        0.0
+      ],
+      "p2": [
+        15000.0,
+        -3000.0
+      ],
+      "at": [
+        16000.0,
+        -1500.0
+      ],
+      "source": "explicit",
+      "text": "3000"
+    },
+    {
+      "id": "DIM-EXT-SAUNA-W",
+      "p1": [
+        0.0,
+        16000.0
+      ],
+      "p2": [
+        0.0,
+        11000.0
+      ],
+      "at": [
+        -1000.0,
+        13500.0
+      ],
+      "source": "explicit",
+      "text": "5000"
+    },
+    {
+      "id": "DIM-EXT-MAIN-S",
+      "p1": [
+        5000.0,
+        0.0
+      ],
+      "p2": [
+        15000.0,
+        0.0
+      ],
+      "at": [
+        10000.0,
+        -1000.0
+      ],
+      "source": "explicit",
+      "text": "10000"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "UNC-01",
+      "target": "dimensions.depth_chain",
+      "description": "Active Blocker: Arithmetic conflict between West dimension chain (5000 + 14200 = 19200 mm) and East dimension chain (16000 + 3000 = 19000 mm). Retaining 19000 mm building datum only as drafting interpretation.",
+      "assumedValue": "Unresolved Blocker - Drafting Interpretation 19000 mm Datum",
+      "confidence": "low",
+      "status": "unresolved"
+    },
+    {
+      "id": "UNC-02",
+      "target": "walls.W-INT-MASTER-BATH",
+      "description": "Source contradiction: Drawn wall line at Y=9200 mm (10.01 m\u00b2 clear) vs handwritten 6.5 m\u00b2 label. Alternative 1A retained for drafting.",
+      "assumedValue": "Alternative 1A (Y=9200 mm, Conflict Documented)",
+      "confidence": "medium",
+      "status": "unresolved"
+    },
+    {
+      "id": "UNC-03",
+      "target": "walls.W-INT-SAUNA-HORIZ",
+      "description": "Source-supported split: Revised to Y=13000 mm per pixel ratio (1.62:1) and area labels (6m\u00b2/4m\u00b2). Recalculated clear: Shower 4.70 m\u00b2, Sauna 3.05 m\u00b2.",
+      "assumedValue": "Alternative 2A (Y=13000 mm, Source-Supported Interpretation)",
+      "confidence": "high",
+      "status": "unresolved"
+    },
+    {
+      "id": "UNC-04",
+      "target": "rooms.R-CORRIDOR",
+      "description": "Open circulation space: 10.65 m\u00b2 centerline, open to living room at Y=6500 mm. No separating wall.",
+      "assumedValue": "Open circulation space (Inferred)",
+      "confidence": "medium",
+      "status": "unresolved"
+    },
+    {
+      "id": "UNC-05",
+      "target": "walls.thicknesses",
+      "description": "Wall thicknesses unannotated on sketch. Proposed drafting defaults: 200 mm exterior, 100 mm interior, 150 mm core.",
+      "assumedValue": "Proposed: 200mm ext / 100mm int / 150mm core (Unverified)",
+      "confidence": "medium",
+      "status": "unresolved"
+    },
+    {
+      "id": "UNC-06",
+      "target": "openings.widths",
+      "description": "Modular opening widths: 600-1800 mm windows, 700-900 mm doors.",
+      "assumedValue": "Proposed modular opening widths (Unverified)",
+      "confidence": "medium",
+      "status": "unresolved"
+    },
+    {
+      "id": "UNC-07",
+      "target": "openings.sill_heights",
+      "description": "Window sill heights unannotated in 2D. Designated UNKNOWN in 2D model.",
+      "assumedValue": "UNKNOWN (Not applicable to 2D plan)",
+      "confidence": "low",
+      "status": "unresolved"
+    }
+  ]
+}

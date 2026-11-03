@@ -1,0 +1,138 @@
+{
+  "file_path": "D:\\Agent Skills\\sketch-to-cad-main\\tests\\real_world\\Test-01\\Test-01-floor-plan.dxf",
+  "file_name": "Test-01-floor-plan.dxf",
+  "file_size_bytes": 86155,
+  "sha256_hash": "a776cd4cf45c5c543a84d736c69cf89f3dca051be9d8771939d6178ecf983990",
+  "overall_status": "PASSED",
+  "header": {
+    "dxf_version": "AC1032",
+    "insunits": 4,
+    "units_name": "Millimeters",
+    "extents_min": [
+      -150.0,
+      -2900.0
+    ],
+    "extents_max": [
+      15900.0,
+      16100.0
+    ],
+    "dimensions_span": [
+      16050.0,
+      19000.0
+    ]
+  },
+  "layers": [
+    {
+      "name": "0",
+      "entity_count": 0,
+      "is_standard_aia": false,
+      "is_empty": true
+    },
+    {
+      "name": "Defpoints",
+      "entity_count": 0,
+      "is_standard_aia": false,
+      "is_empty": true
+    },
+    {
+      "name": "A-WALL-EXTR",
+      "entity_count": 70,
+      "is_standard_aia": true,
+      "is_empty": false
+    },
+    {
+      "name": "A-WALL-INTR",
+      "entity_count": 78,
+      "is_standard_aia": true,
+      "is_empty": false
+    },
+    {
+      "name": "A-DOOR",
+      "entity_count": 28,
+      "is_standard_aia": true,
+      "is_empty": false
+    },
+    {
+      "name": "A-GLAZ",
+      "entity_count": 47,
+      "is_standard_aia": true,
+      "is_empty": false
+    },
+    {
+      "name": "A-FURN",
+      "entity_count": 11,
+      "is_standard_aia": true,
+      "is_empty": false
+    },
+    {
+      "name": "A-FIXT",
+      "entity_count": 2,
+      "is_standard_aia": true,
+      "is_empty": false
+    },
+    {
+      "name": "A-STAIR",
+      "entity_count": 0,
+      "is_standard_aia": true,
+      "is_empty": true
+    },
+    {
+      "name": "A-COLS",
+      "entity_count": 3,
+      "is_standard_aia": true,
+      "is_empty": false
+    },
+    {
+      "name": "A-FLOR-FIN",
+      "entity_count": 0,
+      "is_standard_aia": true,
+      "is_empty": true
+    },
+    {
+      "name": "A-ANNO-TEXT",
+      "entity_count": 31,
+      "is_standard_aia": true,
+      "is_empty": false
+    },
+    {
+      "name": "A-ANNO-DIMS",
+      "entity_count": 6,
+      "is_standard_aia": true,
+      "is_empty": false
+    }
+  ],
+  "entity_counts": {
+    "LINE": 211,
+    "ARC": 12,
+    "INSERT": 16,
+    "TEXT": 31,
+    "DIMENSION": 6
+  },
+  "blocks_defined": [
+    "FIXT_BATHTUB",
+    "FIXT_TOILET",
+    "FURN_BEDSIDE_TABLE",
+    "FURN_BED_DOUBLE",
+    "FURN_DINING_TABLE",
+    "FURN_SOFA_3SEAT",
+    "FURN_TV_UNIT",
+    "FURN_WARDROBE",
+    "STRUC_COL_SQUARE"
+  ],
+  "duplicate_entities_count": 0,
+  "degenerate_geometry_count": 0,
+  "layer_zero_clean": true,
+  "consistency": {
+    "model_walls_count": 22,
+    "dxf_wall_lines_count": 211,
+    "model_openings_count": 26,
+    "dxf_opening_arcs_count": 12,
+    "model_elements_count": 16,
+    "dxf_block_refs_count": 16,
+    "handoff_walls_match": true,
+    "handoff_openings_match": true,
+    "discrepancies": []
+  },
+  "warnings": [],
+  "errors": []
+}

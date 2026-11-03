@@ -124,6 +124,16 @@ def enhance_dxf_presentation(dxf_path: str) -> bool:
         doc.header["$INSUNITS"] = 4      # Millimeters
         doc.header["$MEASUREMENT"] = 1   # Metric
         doc.header["$LTSCALE"] = 100.0
+        doc.header["$DIMSCALE"] = 100.0
+        doc.header["$DIMTXT"] = 2.0
+        doc.header["$DIMASZ"] = 1.4
+
+        # Ensure dimension block MTEXT entities are visible at architectural scale
+        for blk in doc.blocks:
+            if blk.name.startswith("*D"):
+                for ent in blk:
+                    if ent.dxftype() == "MTEXT" and ent.dxf.char_height < 50.0:
+                        ent.dxf.char_height = 200.0
 
         doc.saveas(str(p))
         return True
@@ -768,6 +778,19 @@ class DrawingGenerator:
                 "current": True
             })
 
+            # Configure dimension system variables for architectural model space
+            for var_name, var_val in [
+                ("dimscale", 100.0),
+                ("dimtxt", 2.0),
+                ("dimasz", 1.4),
+                ("dimexe", 1.2),
+                ("dimexo", 0.8),
+            ]:
+                try:
+                    c.execute("setvar", {"name": var_name, "value": var_val})
+                except Exception:
+                    pass
+
             # Stage 3: Draw Walls & Jambs
             self._draw_walls_and_openings(c, model, floor_id=floor_id)
 
@@ -1011,72 +1034,257 @@ class DrawingGenerator:
         }
 
     def _draw_walls_and_openings(self, c: CADCraftClient, model: Dict[str, Any], floor_id: Optional[str] = None):
-        """Generates double-line walls with clean opening cuts, transverse jamb end-caps, and trimmed T-junctions."""
+        """Generates double-line walls following architectural hierarchy:
+        1. Exterior envelope (A-WALL-EXTR) walls are completed first, mitering at all building corners
+           to form a continuous, unbroken outer envelope.
+        2. Interior walls (A-WALL-INTR) connect to the completed outer walls, terminating cleanly at
+           the inner faces of host exterior walls without penetrating wall cavities.
+        3. Interior partitions connect and miter with each other at internal corners and T-junctions.
+        """
         default_floor = model.get("floors", [{}])[0].get("id", "LEVEL-01") if model.get("floors") else model.get("floorId", "LEVEL-01")
         openings_by_id = {op["id"]: op for op in model.get("openings", [])}
         walls = [w for w in model.get("walls", []) if _matches_floor(w, floor_id, default_floor)]
 
-        # Analyze T-junction trimming to prevent double lines penetrating host wall cavities
-        trim_offsets: Dict[str, Tuple[float, float]] = {}
-        for i, w in enumerate(walls):
+        def line_intersect(p1, v1, p2, v2):
+            denom = v1[0] * v2[1] - v1[1] * v2[0]
+            if abs(denom) < 1e-6:
+                return None
+            dx = p2[0] - p1[0]
+            dy = p2[1] - p1[1]
+            t = (dx * v2[1] - dy * v2[0]) / denom
+            u = (dx * v1[1] - dy * v1[0]) / denom
+            return t, u
+
+        wall_info = {}
+        for w in walls:
             wid = w["id"]
             s = [float(w["start"][0]), float(w["start"][1])]
             e = [float(w["end"][0]), float(w["end"][1])]
-            s_trim = 0.0
-            e_trim = 0.0
+            th = float(w.get("thickness", 200.0))
+            dx = e[0] - s[0]
+            dy = e[1] - s[1]
+            L = math.hypot(dx, dy)
+            if L < 1e-4:
+                continue
+            ux = dx / L
+            uy = dy / L
+            nx = -uy * (th / 2.0)
+            ny = ux * (th / 2.0)
+            wall_info[wid] = {
+                "wall": w,
+                "layer": w.get("layer", "A-WALL-EXTR"),
+                "s": s, "e": e, "th": th, "L": L,
+                "ux": ux, "uy": uy, "nx": nx, "ny": ny,
+                "t0_start": 0.0, "t0_end": L,
+                "t1_start": 0.0, "t1_end": L,
+                "step_lines": []
+            }
 
-            for j, other_w in enumerate(walls):
-                if i == j:
+        extr_info = {wid: info for wid, info in wall_info.items() if info["layer"] == "A-WALL-EXTR"}
+        intr_info = {wid: info for wid, info in wall_info.items() if info["layer"] != "A-WALL-EXTR"}
+
+        # -------------------------------------------------------------
+        # PASS 1: Complete the Exterior Wall Envelope (A-WALL-EXTR)
+        # Outer walls have priority and form continuous perimeter corners
+        # -------------------------------------------------------------
+        for w1_id, w1 in extr_info.items():
+            s1, e1 = w1["s"], w1["e"]
+            u1, n1 = [w1["ux"], w1["uy"]], [w1["nx"], w1["ny"]]
+            L1, th1 = w1["L"], w1["th"]
+
+            for end1_name, end1_pt in [("start", s1), ("end", e1)]:
+                dir1 = [u1[0] if end1_name == "start" else -u1[0],
+                        u1[1] if end1_name == "start" else -u1[1]]
+
+                for sgn1, face1_key in [(+1, "t0"), (-1, "t1")]:
+                    norm1 = [sgn1 * n1[0], sgn1 * n1[1]]
+                    p1_face = [end1_pt[0] + norm1[0], end1_pt[1] + norm1[1]]
+
+                    best_t = None
+                    for w2_id, w2 in extr_info.items():
+                        if w2_id == w1_id:
+                            continue
+                        s2, e2 = w2["s"], w2["e"]
+                        u2, n2 = [w2["ux"], w2["uy"]], [w2["nx"], w2["ny"]]
+                        th2 = w2["th"]
+
+                        for end2_name, end2_pt in [("start", s2), ("end", e2)]:
+                            dist = math.hypot(end1_pt[0] - end2_pt[0], end1_pt[1] - end2_pt[1])
+                            if dist <= 25.0:
+                                dir2 = [u2[0] if end2_name == "start" else -u2[0],
+                                        u2[1] if end2_name == "start" else -u2[1]]
+                                cross_z = dir1[0] * dir2[1] - dir1[1] * dir2[0]
+
+                                if abs(cross_z) < 0.1:
+                                    # Collinear continuation of exterior wall
+                                    dot = dir1[0] * dir2[0] + dir1[1] * dir2[1]
+                                    if dot < -0.9:
+                                        best_t = 0.0 if end1_name == "start" else L1
+                                    continue
+
+                                # Corner bisector
+                                bx = dir1[0] + dir2[0]
+                                by = dir1[1] + dir2[1]
+                                b_len = math.hypot(bx, by)
+                                if b_len < 1e-4:
+                                    continue
+                                bx /= b_len
+                                by /= b_len
+
+                                dot1 = norm1[0] * bx + norm1[1] * by
+                                is_inner1 = (dot1 > 0.05)
+                                is_outer1 = (dot1 < -0.05)
+
+                                for sgn2 in [+1, -1]:
+                                    norm2 = [sgn2 * n2[0], sgn2 * n2[1]]
+                                    dot2 = norm2[0] * bx + norm2[1] * by
+                                    is_inner2 = (dot2 > 0.05)
+                                    is_outer2 = (dot2 < -0.05)
+
+                                    if (is_inner1 and is_inner2) or (is_outer1 and is_outer2):
+                                        p2_face = [end2_pt[0] + norm2[0], end2_pt[1] + norm2[1]]
+                                        sol = line_intersect(p1_face, u1, p2_face, u2)
+                                        if sol is not None:
+                                            t1_sol, t2_sol = sol
+                                            abs_t = t1_sol if end1_name == "start" else L1 + t1_sol
+                                            if abs(t1_sol) <= max(th1, th2) * 1.5:
+                                                best_t = abs_t
+                                                break
+                                if best_t is not None:
+                                    break
+                        if best_t is not None:
+                            break
+                    if best_t is not None:
+                        w1[f"{face1_key}_{end1_name}"] = best_t
+
+        # -------------------------------------------------------------
+        # PASS 2: Connect Interior Walls (A-WALL-INTR) to Outer & Inner Walls
+        # Inner walls terminate at the inner face of completed outer walls
+        # -------------------------------------------------------------
+        for w1_id, w1 in intr_info.items():
+            s1, e1 = w1["s"], w1["e"]
+            L1, th1 = w1["L"], w1["th"]
+            u1, n1 = [w1["ux"], w1["uy"]], [w1["nx"], w1["ny"]]
+
+            for end1_name, end1_pt in [("start", s1), ("end", e1)]:
+                dir1 = [u1[0] if end1_name == "start" else -u1[0],
+                        u1[1] if end1_name == "start" else -u1[1]]
+
+                # Check connection to an EXTERIOR wall (body or endpoint)
+                connected_to_extr = False
+                for w_ext_id, w_ext in extr_info.items():
+                    s_ext, e_ext = w_ext["s"], w_ext["e"]
+                    dx_ext, dy_ext = e_ext[0] - s_ext[0], e_ext[1] - s_ext[1]
+                    l_ext_sq = dx_ext * dx_ext + dy_ext * dy_ext
+                    t_proj = ((end1_pt[0] - s_ext[0]) * dx_ext + (end1_pt[1] - s_ext[1]) * dy_ext) / l_ext_sq
+                    if -0.05 <= t_proj <= 1.05:
+                        proj = [s_ext[0] + t_proj * dx_ext, s_ext[1] + t_proj * dy_ext]
+                        dist = math.hypot(end1_pt[0] - proj[0], end1_pt[1] - proj[1])
+                        if dist <= 35.0:
+                            trim = w_ext["th"] / 2.0
+                            sin_a = abs(u1[0] * (dy_ext / math.sqrt(l_ext_sq)) - u1[1] * (dx_ext / math.sqrt(l_ext_sq)))
+                            if sin_a > 0.1:
+                                trim = (w_ext["th"] / 2.0) / sin_a
+                            if end1_name == "start":
+                                w1["t0_start"] = max(w1["t0_start"], trim)
+                                w1["t1_start"] = max(w1["t1_start"], trim)
+                            else:
+                                w1["t0_end"] = min(w1["t0_end"], L1 - trim)
+                                w1["t1_end"] = min(w1["t1_end"], L1 - trim)
+                            connected_to_extr = True
+                            break
+
+                if connected_to_extr:
                     continue
-                os_pt = [float(other_w["start"][0]), float(other_w["start"][1])]
-                oe_pt = [float(other_w["end"][0]), float(other_w["end"][1])]
-                other_th = float(other_w.get("thickness", 200.0))
 
-                dx_o = oe_pt[0] - os_pt[0]
-                dy_o = oe_pt[1] - os_pt[1]
-                l_sq = dx_o * dx_o + dy_o * dy_o
-                if l_sq > 1e-6:
-                    t_s = ((s[0] - os_pt[0]) * dx_o + (s[1] - os_pt[1]) * dy_o) / l_sq
-                    if 0.03 < t_s < 0.97:
-                        proj_s = [os_pt[0] + t_s * dx_o, os_pt[1] + t_s * dy_o]
-                        dist_s = math.hypot(s[0] - proj_s[0], s[1] - proj_s[1])
-                        if dist_s <= 35.0:
-                            s_trim = max(s_trim, other_th / 2.0)
+                # Check T-junction with other INTERIOR walls:
+                for w2_id, w2 in intr_info.items():
+                    if w1_id == w2_id:
+                        continue
+                    s2, e2 = w2["s"], w2["e"]
+                    dx2, dy2 = e2[0] - s2[0], e2[1] - s2[1]
+                    l2_sq = dx2 * dx2 + dy2 * dy2
+                    t2_proj = ((end1_pt[0] - s2[0]) * dx2 + (end1_pt[1] - s2[1]) * dy2) / l2_sq
+                    if 0.01 < t2_proj < 0.99:
+                        proj = [s2[0] + t2_proj * dx2, s2[1] + t2_proj * dy2]
+                        dist = math.hypot(end1_pt[0] - proj[0], end1_pt[1] - proj[1])
+                        if dist <= 35.0:
+                            trim = w2["th"] / 2.0
+                            if end1_name == "start":
+                                w1["t0_start"] = max(w1["t0_start"], trim)
+                                w1["t1_start"] = max(w1["t1_start"], trim)
+                            else:
+                                w1["t0_end"] = min(w1["t0_end"], L1 - trim)
+                                w1["t1_end"] = min(w1["t1_end"], L1 - trim)
+                            break
 
-                    t_e = ((e[0] - os_pt[0]) * dx_o + (e[1] - os_pt[1]) * dy_o) / l_sq
-                    if 0.03 < t_e < 0.97:
-                        proj_e = [os_pt[0] + t_e * dx_o, os_pt[1] + t_e * dy_o]
-                        dist_e = math.hypot(e[0] - proj_e[0], e[1] - proj_e[1])
-                        if dist_e <= 35.0:
-                            e_trim = max(e_trim, other_th / 2.0)
+                # Check L-corners with other INTERIOR walls:
+                for sgn1, face1_key in [(+1, "t0"), (-1, "t1")]:
+                    norm1 = [sgn1 * n1[0], sgn1 * n1[1]]
+                    p1_face = [end1_pt[0] + norm1[0], end1_pt[1] + norm1[1]]
+                    best_t = None
+                    for w2_id, w2 in intr_info.items():
+                        if w2_id == w1_id:
+                            continue
+                        s2, e2 = w2["s"], w2["e"]
+                        u2, n2 = [w2["ux"], w2["uy"]], [w2["nx"], w2["ny"]]
+                        th2 = w2["th"]
+                        for end2_name, end2_pt in [("start", s2), ("end", e2)]:
+                            dist = math.hypot(end1_pt[0] - end2_pt[0], end1_pt[1] - end2_pt[1])
+                            if dist <= 25.0:
+                                dir2 = [u2[0] if end2_name == "start" else -u2[0],
+                                        u2[1] if end2_name == "start" else -u2[1]]
+                                cross_z = dir1[0] * dir2[1] - dir1[1] * dir2[0]
+                                if abs(cross_z) < 0.1:
+                                    continue
+                                bx = dir1[0] + dir2[0]
+                                by = dir1[1] + dir2[1]
+                                b_len = math.hypot(bx, by)
+                                if b_len < 1e-4:
+                                    continue
+                                bx /= b_len
+                                by /= b_len
+                                dot1 = norm1[0] * bx + norm1[1] * by
+                                is_inner1 = (dot1 > 0.05)
+                                is_outer1 = (dot1 < -0.05)
+                                for sgn2 in [+1, -1]:
+                                    norm2 = [sgn2 * n2[0], sgn2 * n2[1]]
+                                    dot2 = norm2[0] * bx + norm2[1] * by
+                                    is_inner2 = (dot2 > 0.05)
+                                    is_outer2 = (dot2 < -0.05)
+                                    if (is_inner1 and is_inner2) or (is_outer1 and is_outer2):
+                                        p2_face = [end2_pt[0] + norm2[0], end2_pt[1] + norm2[1]]
+                                        sol = line_intersect(p1_face, u1, p2_face, u2)
+                                        if sol is not None:
+                                            t1_sol, _ = sol
+                                            abs_t = t1_sol if end1_name == "start" else L1 + t1_sol
+                                            if abs(t1_sol) <= max(th1, th2) * 1.5:
+                                                best_t = abs_t
+                                                break
+                                if best_t is not None:
+                                    break
+                        if best_t is not None:
+                            break
+                    if best_t is not None:
+                        w1[f"{face1_key}_{end1_name}"] = best_t
 
-            trim_offsets[wid] = (s_trim, e_trim)
-
-        for wall in walls:
+        for wid, info in wall_info.items():
+            wall = info["wall"]
             layer = wall.get("layer", "A-WALL-EXTR")
             c.execute("layer.current", {"name": layer})
 
-            start = wall["start"]
-            end = wall["end"]
-            thickness = float(wall.get("thickness", 200.0))
-            dx = end[0] - start[0]
-            dy = end[1] - start[1]
-            length = math.hypot(dx, dy)
-            if length == 0:
-                continue
-
-            ux = dx / length
-            uy = dy / length
-            # Normal perpendicular vector (left-hand normal)
-            nx = -uy * (thickness / 2.0)
-            ny = ux * (thickness / 2.0)
-
-            s_trim, e_trim = trim_offsets.get(wall["id"], (0.0, 0.0))
-            wall_start_t = min(s_trim, length * 0.4)
-            wall_end_t = max(wall_start_t, length - min(e_trim, length * 0.4))
+            start = info["s"]
+            ux, uy = info["ux"], info["uy"]
+            nx, ny = info["nx"], info["ny"]
+            t0_s, t0_e = info["t0_start"], info["t0_end"]
+            t1_s, t1_e = info["t1_start"], info["t1_end"]
 
             wall_openings = []
-            for op_id in wall.get("openingIds", []):
+            op_ids = list(wall.get("openingIds", []))
+            for op in model.get("openings", []):
+                if op.get("wallId") == wid and op["id"] not in op_ids:
+                    op_ids.append(op["id"])
+            for op_id in op_ids:
                 if op_id in openings_by_id:
                     op = openings_by_id[op_id]
                     op_center = op["center"]
@@ -1084,29 +1292,56 @@ class DrawingGenerator:
                     op_w = float(op.get("width", 900.0))
                     wall_openings.append({
                         "id": op_id,
-                        "t1": max(wall_start_t, op_t - op_w / 2.0),
-                        "t2": min(wall_end_t, op_t + op_w / 2.0),
+                        "t1": op_t - op_w / 2.0,
+                        "t2": op_t + op_w / 2.0,
                         "type": op.get("type", "door")
                     })
 
             wall_openings.sort(key=lambda o: o["t1"])
 
-            # Segments of solid wall
-            current_t = wall_start_t
+            # Draw Face 0 (left-hand normal: +n)
+            curr_0 = t0_s
             for op in wall_openings:
-                if op["t1"] > current_t:
-                    self._draw_wall_segment(c, start, ux, uy, nx, ny, current_t, op["t1"])
-                # Transverse jamb end-caps sealing the wall cavity at opening
+                op_cut1 = max(t0_s, min(t0_e, op["t1"]))
+                op_cut2 = max(t0_s, min(t0_e, op["t2"]))
+                if op_cut1 > curr_0:
+                    p1 = [start[0] + curr_0 * ux + nx, start[1] + curr_0 * uy + ny]
+                    p2 = [start[0] + op_cut1 * ux + nx, start[1] + op_cut1 * uy + ny]
+                    c.execute("line", {"points": [p1, p2]})
+                curr_0 = max(curr_0, op_cut2)
+            if curr_0 < t0_e:
+                p1 = [start[0] + curr_0 * ux + nx, start[1] + curr_0 * uy + ny]
+                p2 = [start[0] + t0_e * ux + nx, start[1] + t0_e * uy + ny]
+                c.execute("line", {"points": [p1, p2]})
+
+            # Draw Face 1 (right-hand normal: -n)
+            curr_1 = t1_s
+            for op in wall_openings:
+                op_cut1 = max(t1_s, min(t1_e, op["t1"]))
+                op_cut2 = max(t1_s, min(t1_e, op["t2"]))
+                if op_cut1 > curr_1:
+                    p1 = [start[0] + curr_1 * ux - nx, start[1] + curr_1 * uy - ny]
+                    p2 = [start[0] + op_cut1 * ux - nx, start[1] + op_cut1 * uy - ny]
+                    c.execute("line", {"points": [p1, p2]})
+                curr_1 = max(curr_1, op_cut2)
+            if curr_1 < t1_e:
+                p1 = [start[0] + curr_1 * ux - nx, start[1] + curr_1 * uy - ny]
+                p2 = [start[0] + t1_e * ux - nx, start[1] + t1_e * uy - ny]
+                c.execute("line", {"points": [p1, p2]})
+
+            # Transverse jamb end-caps sealing the wall cavity at openings
+            for op in wall_openings:
                 p1_out = [start[0] + op["t1"] * ux + nx, start[1] + op["t1"] * uy + ny]
                 p1_in = [start[0] + op["t1"] * ux - nx, start[1] + op["t1"] * uy - ny]
                 p2_out = [start[0] + op["t2"] * ux + nx, start[1] + op["t2"] * uy + ny]
                 p2_in = [start[0] + op["t2"] * ux - nx, start[1] + op["t2"] * uy - ny]
                 c.execute("line", {"points": [p1_out, p1_in]})
                 c.execute("line", {"points": [p2_out, p2_in]})
-                current_t = op["t2"]
 
-            if current_t < wall_end_t:
-                self._draw_wall_segment(c, start, ux, uy, nx, ny, current_t, wall_end_t)
+            # Draw step lines sealing collinear thickness transitions
+            for p_step1, p_step2, step_layer in info["step_lines"]:
+                c.execute("layer.current", {"name": step_layer})
+                c.execute("line", {"points": [p_step1, p_step2]})
 
     def _draw_wall_segment(self, c: CADCraftClient, start, ux, uy, nx, ny, t1, t2):
         p1_out = [start[0] + t1 * ux + nx, start[1] + t1 * uy + ny]
@@ -1186,6 +1421,10 @@ class DrawingGenerator:
                     c.execute("line", {"points": [p1_a, p1_b]})
                     c.execute("line", {"points": [p2_a, p2_b]})
 
+                elif "none" in swing_dir or "cased" in swing_dir or "opening" in swing_dir:
+                    # Cased opening / door placement without leaf (per Architectural Symbols Legend)
+                    pass
+
                 else:
                     # Single swing door
                     if "left" in swing_dir:
@@ -1218,10 +1457,23 @@ class DrawingGenerator:
 
             elif op_type == "window":
                 c.execute("layer.current", {"name": "A-GLAZ"})
-                sub_type = str(op.get("sub_type", op.get("subtype", "standard"))).lower()
+                sub_type = str(op.get("sub_type", op.get("subtype", op.get("subType", "standard")))).lower()
                 half_w = width / 2.0
                 p_left = [center[0] - half_w * ux, center[1] - half_w * uy]
                 p_right = [center[0] + half_w * ux, center[1] + half_w * uy]
+
+                wall_th = float(wall.get("thickness", 200.0)) if wall else 200.0
+                half_th = wall_th / 2.0
+
+                # Outer sill line (connecting outer jamb corners)
+                p_out_1 = [p_left[0] + half_th * nx, p_left[1] + half_th * ny]
+                p_out_2 = [p_right[0] + half_th * nx, p_right[1] + half_th * ny]
+                c.execute("line", {"points": [p_out_1, p_out_2]})
+
+                # Inner sill line (connecting inner jamb corners)
+                p_in_1 = [p_left[0] - half_th * nx, p_left[1] - half_th * ny]
+                p_in_2 = [p_right[0] - half_th * nx, p_right[1] - half_th * ny]
+                c.execute("line", {"points": [p_in_1, p_in_2]})
 
                 if "sliding" in sub_type or "sliding" in str(op.get("swing", "")).lower() or "sliding" in op.get("id", "").lower():
                     # Sliding window: dual offset glass panes
@@ -1232,8 +1484,15 @@ class DrawingGenerator:
                     p2_b = [center[0] + half_w * ux - off * nx, center[1] + half_w * uy - off * ny]
                     c.execute("line", {"points": [p1_a, p1_b]})
                     c.execute("line", {"points": [p2_a, p2_b]})
+                elif "double" in sub_type or width >= 1200.0:
+                    # Double panel window: center mullion + dual glass panes (per Architectural Symbols Legend)
+                    mullion_p1 = [center[0] + half_th * nx, center[1] + half_th * ny]
+                    mullion_p2 = [center[0] - half_th * nx, center[1] - half_th * ny]
+                    c.execute("line", {"points": [mullion_p1, mullion_p2]})
+                    c.execute("line", {"points": [p_left, center]})
+                    c.execute("line", {"points": [center, p_right]})
                 else:
-                    # Standard / Casement / Fixed window
+                    # Standard single window: central glass pane (per Architectural Symbols Legend)
                     c.execute("line", {"points": [p_left, p_right]})
 
     def _draw_sheet_annotations(self, c: CADCraftClient, model: Dict[str, Any], floor_id: Optional[str] = None):
@@ -1360,28 +1619,45 @@ class DrawingGenerator:
             create_floor_finish_hatch(c.execute, boundary, pattern=pattern, scale=scale)
 
     def _draw_room_labels(self, c: CADCraftClient, model: Dict[str, Any], floor_id: Optional[str] = None):
-        """Places centered room labels on A-ANNO-TEXT."""
+        """Places centered room labels on A-ANNO-TEXT with collision prevention and multiline support."""
         default_floor = model.get("floors", [{}])[0].get("id", "LEVEL-01") if model.get("floors") else model.get("floorId", "LEVEL-01")
         c.execute("layer.current", {"name": "A-ANNO-TEXT"})
         for room in model.get("rooms", []):
             if not _matches_floor(room, floor_id, default_floor):
                 continue
-            name = room.get("name", "ROOM")
+            name = room.get("displayName") or room.get("name", "ROOM")
             pos = room.get("labelPosition", [0.0, 0.0])
             area = room.get("approximateArea")
-            c.execute("text", {
-                "at": pos,
-                "text": name,
-                "height": 180.0,
-                "justify": "MC"
-            })
-            if area is not None:
+            area_str = room.get("areaText") or (f"{area:.1f} m2" if area is not None else None)
+            text_height = float(room.get("textHeight", 180.0))
+            area_height = float(room.get("areaHeight", 130.0))
+            area_offset = float(room.get("areaOffset", 250.0))
+
+            # Support multiline name
+            name_lines = name.split("\n")
+            line_spacing = text_height * 1.3
+            total_lines = len(name_lines)
+            start_y = pos[1] + ((total_lines - 1) * line_spacing / 2.0)
+
+            for i, line in enumerate(name_lines):
                 c.execute("text", {
-                    "at": [pos[0], pos[1] - 250.0],
-                    "text": f"{area:.1f} m2",
-                    "height": 130.0,
+                    "at": [pos[0], start_y - (i * line_spacing)],
+                    "text": line,
+                    "height": text_height,
                     "justify": "MC"
                 })
+
+            if area_str:
+                area_lines = area_str.split("\n")
+                area_spacing = area_height * 1.3
+                base_area_y = pos[1] - area_offset
+                for j, aline in enumerate(area_lines):
+                    c.execute("text", {
+                        "at": [pos[0], base_area_y - (j * area_spacing)],
+                        "text": aline,
+                        "height": area_height,
+                        "justify": "MC"
+                    })
 
     def _draw_dimensions(self, c: CADCraftClient, model: Dict[str, Any], floor_id: Optional[str] = None):
         """Draws dimension chains on A-ANNO-DIMS."""
@@ -1393,12 +1669,16 @@ class DrawingGenerator:
             p1 = dim["p1"]
             p2 = dim["p2"]
             at = dim["at"]
-            text = str(dim.get("text", ""))
-            
+            text = str(dim.get("text", "")).strip()
+
             # Determine horizontal vs vertical
             dx = abs(p2[0] - p1[0])
             dy = abs(p2[1] - p1[1])
             is_vertical = dy > dx
+
+            if not text:
+                calc_val = round(math.hypot(p2[0] - p1[0], p2[1] - p1[1]))
+                text = str(calc_val)
 
             params = {
                 "p1": p1,

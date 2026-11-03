@@ -1,0 +1,170 @@
+{
+  "project_name": "Real-World Test 01 - Nordic Residential Villa",
+  "cad_output": "Test-01-floor-plan.dxf",
+  "floor_id": "LEVEL-01",
+  "status": "REVIEW_REQUIRED",
+  "overall_status": "REVIEW_REQUIRED",
+  "severity_counts": {
+    "blocking": 0,
+    "major": 0,
+    "warning": 3,
+    "informational": 1
+  },
+  "severity_summary": {
+    "blocking": 0,
+    "major": 0,
+    "warning": 3,
+    "informational": 1
+  },
+  "total_issues": 5,
+  "issues": [
+    {
+      "issue_id": "QA-SYMB-001",
+      "severity": "warning",
+      "category": "symbols",
+      "description": "Element 'E-COL-TERRACE-1' at [5100.0, -2900.0] falls outside the exterior building envelope.",
+      "affected_entities": [
+        "E-COL-TERRACE-1",
+        "envelope"
+      ],
+      "floor_id": "LEVEL-01",
+      "suggested_correction": "Reposition element within interior room boundaries.",
+      "requires_human_approval": true
+    },
+    {
+      "issue_id": "QA-SYMB-002",
+      "severity": "warning",
+      "category": "symbols",
+      "description": "Element 'E-COL-TERRACE-2' at [10000.0, -2900.0] falls outside the exterior building envelope.",
+      "affected_entities": [
+        "E-COL-TERRACE-2",
+        "envelope"
+      ],
+      "floor_id": "LEVEL-01",
+      "suggested_correction": "Reposition element within interior room boundaries.",
+      "requires_human_approval": true
+    },
+    {
+      "issue_id": "QA-SYMB-003",
+      "severity": "warning",
+      "category": "symbols",
+      "description": "Element 'E-COL-TERRACE-3' at [14900.0, -2900.0] falls outside the exterior building envelope.",
+      "affected_entities": [
+        "E-COL-TERRACE-3",
+        "envelope"
+      ],
+      "floor_id": "LEVEL-01",
+      "suggested_correction": "Reposition element within interior room boundaries.",
+      "requires_human_approval": true
+    },
+    {
+      "issue_id": "QA-VISU-004",
+      "severity": "major_discrepancy",
+      "category": "source_comparison",
+      "description": "Openings count discrepancy: Doors observed=0 / CAD=15; Windows observed=0 / CAD=11.",
+      "affected_entities": [
+        "openings_count_and_distribution"
+      ],
+      "floor_id": "LEVEL-01",
+      "suggested_correction": "Investigate visual discrepancy.",
+      "requires_human_approval": false
+    },
+    {
+      "issue_id": "QA-PRES-005",
+      "severity": "informational",
+      "category": "presentation",
+      "description": "Multiple dimensions with identical text detected. Verify tiered chains are not redundant.",
+      "affected_entities": [
+        "dimensions"
+      ],
+      "floor_id": "LEVEL-01",
+      "suggested_correction": "Consolidate duplicate dimension strings.",
+      "requires_human_approval": false
+    }
+  ],
+  "geometry_validation_status": "REVIEW_REQUIRED",
+  "bim_handoff_valid": true,
+  "visual_qa_report": {
+    "project_name": "Real-World Test 01 - Nordic Residential Villa",
+    "source_sketch": "source_sketch.jpg",
+    "cad_output": "Test-01-floor-plan.dxf",
+    "overall_status": "MAJOR_DISCREPANCY",
+    "severity_summary": {
+      "blocking_discrepancies": 0,
+      "major_discrepancies": 1,
+      "warnings": 0,
+      "informational": 5
+    },
+    "checks_passed": 5,
+    "total_checks": 6,
+    "checks": [
+      {
+        "check": "footprint_aspect_ratio",
+        "status": "PASS",
+        "severity": "informational",
+        "sketch_aspect_ratio": 0.825,
+        "cad_aspect_ratio": 0.938,
+        "deviation_pct": 13.6,
+        "message": "Aspect ratio consistent: sketch=0.83, CAD=0.94 (diff 13.6%)."
+      },
+      {
+        "check": "room_topology_and_count",
+        "status": "PASS",
+        "severity": "informational",
+        "observed_room_count": 0,
+        "cad_room_count": 13,
+        "missing_in_cad": [],
+        "extra_in_cad": [
+          "BEDROOM 1",
+          "BEDROOM 2",
+          "CIRCULATION CORRIDOR",
+          "ENTRY VESTIBULE",
+          "GUEST TOILET",
+          "LIVING ROOM & KITCHEN",
+          "MAIN BATHROOM",
+          "MASTER BEDROOM",
+          "SAUNA",
+          "SAUNA LOUNGE",
+          "SHOWER",
+          "TECHNICAL ROOM",
+          "UTILITY ROOM"
+        ],
+        "message": "All observed rooms present in CAD. Additional partitioned spaces: ['BEDROOM 1', 'BEDROOM 2', 'CIRCULATION CORRIDOR', 'ENTRY VESTIBULE', 'GUEST TOILET', 'LIVING ROOM & KITCHEN', 'MAIN BATHROOM', 'MASTER BEDROOM', 'SAUNA', 'SAUNA LOUNGE', 'SHOWER', 'TECHNICAL ROOM', 'UTILITY ROOM']."
+      },
+      {
+        "check": "openings_count_and_distribution",
+        "status": "DISCREPANCY",
+        "severity": "major_discrepancy",
+        "observed_doors": 0,
+        "cad_doors": 15,
+        "observed_windows": 0,
+        "cad_windows": 11,
+        "message": "Openings count discrepancy: Doors observed=0 / CAD=15; Windows observed=0 / CAD=11."
+      },
+      {
+        "check": "dimensions_fidelity",
+        "status": "PASS",
+        "severity": "informational",
+        "discrepancies": [],
+        "message": "All 0 observed dimensions verified within 50.0mm tolerance."
+      },
+      {
+        "check": "staircase_alignment",
+        "status": "PASS",
+        "severity": "informational",
+        "observed_stairs": 0,
+        "cad_stairs": 0,
+        "message": "Staircases: observed 0, drafted 0."
+      },
+      {
+        "check": "duplicate_entities",
+        "status": "PASS",
+        "severity": "informational",
+        "duplicate_ids": [],
+        "message": "Zero duplicate entity IDs detected across walls, openings, and rooms."
+      }
+    ],
+    "summary": "Visual QA MAJOR_DISCREPANCY: 5/6 checks passed. Severity breakdown: 0 blocking, 1 major, 0 warning, 5 informational."
+  },
+  "summary": "Architectural QA REVIEW_REQUIRED: 0 blocking, 0 major, 3 warnings, 1 informational notices."
+}

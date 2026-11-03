@@ -1,0 +1,899 @@
+{
+  "schemaVersion": "1.0.0",
+  "project": {
+    "projectName": "Real-World Test 01 - Nordic Residential Villa",
+    "drawingId": "Test-01-floor-plan",
+    "units": "mm",
+    "coordinateSystem": "Cartesian2D_RightHanded_YUp",
+    "sourceSketch": "hand-sketch-residential.png",
+    "author": "Antigravity Sketch-to-CAD Agent",
+    "approvalStatus": "approved",
+    "approvedBy": null,
+    "approvedAt": null,
+    "createdAt": "2026-11-03T19:00:00Z"
+  },
+  "summary": {
+    "floorCount": 1,
+    "roomCount": 13,
+    "doorCount": 14,
+    "windowCount": 11,
+    "elementCount": 11,
+    "finishCount": 0,
+    "totalNetAreaM2": 172.9,
+    "grossFootprintAreaM2": 240.0,
+    "grossAreaMethod": "exterior_envelope_bounding_box",
+    "uncertaintyCount": 8,
+    "unresolvedUncertaintyCount": 8,
+    "validationStatus": "WARNING"
+  },
+  "rooms": [
+    {
+      "id": "R-DUSS",
+      "name": "Shower",
+      "floorId": "LEVEL-01",
+      "netAreaM2": 5.4,
+      "lengthMm": null,
+      "widthMm": null,
+      "perimeterMm": null,
+      "perimeterM": null,
+      "finishId": null,
+      "finishPattern": null,
+      "calculationMethod": "model_annotated",
+      "confidence": "explicit",
+      "boundaryVertices": 0,
+      "notes": "Boundary corners not supplied; using model annotated area."
+    },
+    {
+      "id": "R-SAUN",
+      "name": "Sauna",
+      "floorId": "LEVEL-01",
+      "netAreaM2": 3.6,
+      "lengthMm": null,
+      "widthMm": null,
+      "perimeterMm": null,
+      "perimeterM": null,
+      "finishId": null,
+      "finishPattern": null,
+      "calculationMethod": "model_annotated",
+      "confidence": "explicit",
+      "boundaryVertices": 0,
+      "notes": "Boundary corners not supplied; using model annotated area."
+    },
+    {
+      "id": "R-SAUNA-PUHKE",
+      "name": "Sauna Lounge",
+      "floorId": "LEVEL-01",
+      "netAreaM2": 15.0,
+      "lengthMm": null,
+      "widthMm": null,
+      "perimeterMm": null,
+      "perimeterM": null,
+      "finishId": null,
+      "finishPattern": null,
+      "calculationMethod": "model_annotated",
+      "confidence": "explicit",
+      "boundaryVertices": 0,
+      "notes": "Boundary corners not supplied; using model annotated area."
+    },
+    {
+      "id": "R-MAJAPIDAMIS",
+      "name": "Utility Room",
+      "floorId": "LEVEL-01",
+      "netAreaM2": 5.5,
+      "lengthMm": null,
+      "widthMm": null,
+      "perimeterMm": null,
+      "perimeterM": null,
+      "finishId": null,
+      "finishPattern": null,
+      "calculationMethod": "model_annotated",
+      "confidence": "explicit",
+      "boundaryVertices": 0,
+      "notes": "Boundary corners not supplied; using model annotated area."
+    },
+    {
+      "id": "R-TEH",
+      "name": "Technical Room",
+      "floorId": "LEVEL-01",
+      "netAreaM2": 4.8,
+      "lengthMm": null,
+      "widthMm": null,
+      "perimeterMm": null,
+      "perimeterM": null,
+      "finishId": null,
+      "finishPattern": null,
+      "calculationMethod": "model_annotated",
+      "confidence": "explicit",
+      "boundaryVertices": 0,
+      "notes": "Boundary corners not supplied; using model annotated area."
+    },
+    {
+      "id": "R-WC",
+      "name": "Guest Toilet",
+      "floorId": "LEVEL-01",
+      "netAreaM2": 2.2,
+      "lengthMm": null,
+      "widthMm": null,
+      "perimeterMm": null,
+      "perimeterM": null,
+      "finishId": null,
+      "finishPattern": null,
+      "calculationMethod": "model_annotated",
+      "confidence": "explicit",
+      "boundaryVertices": 0,
+      "notes": "Boundary corners not supplied; using model annotated area."
+    },
+    {
+      "id": "R-BED-1",
+      "name": "Bedroom 1",
+      "floorId": "LEVEL-01",
+      "netAreaM2": 12.0,
+      "lengthMm": null,
+      "widthMm": null,
+      "perimeterMm": null,
+      "perimeterM": null,
+      "finishId": null,
+      "finishPattern": null,
+      "calculationMethod": "model_annotated",
+      "confidence": "explicit",
+      "boundaryVertices": 0,
+      "notes": "Boundary corners not supplied; using model annotated area."
+    },
+    {
+      "id": "R-BED-2",
+      "name": "Bedroom 2",
+      "floorId": "LEVEL-01",
+      "netAreaM2": 12.0,
+      "lengthMm": null,
+      "widthMm": null,
+      "perimeterMm": null,
+      "perimeterM": null,
+      "finishId": null,
+      "finishPattern": null,
+      "calculationMethod": "model_annotated",
+      "confidence": "explicit",
+      "boundaryVertices": 0,
+      "notes": "Boundary corners not supplied; using model annotated area."
+    },
+    {
+      "id": "R-ESIK",
+      "name": "Entry Vestibule",
+      "floorId": "LEVEL-01",
+      "netAreaM2": 12.8,
+      "lengthMm": null,
+      "widthMm": null,
+      "perimeterMm": null,
+      "perimeterM": null,
+      "finishId": null,
+      "finishPattern": null,
+      "calculationMethod": "model_annotated",
+      "confidence": "explicit",
+      "boundaryVertices": 0,
+      "notes": "Boundary corners not supplied; using model annotated area."
+    },
+    {
+      "id": "R-MASTER-BED",
+      "name": "Master Bedroom",
+      "floorId": "LEVEL-01",
+      "netAreaM2": 17.6,
+      "lengthMm": null,
+      "widthMm": null,
+      "perimeterMm": null,
+      "perimeterM": null,
+      "finishId": null,
+      "finishPattern": null,
+      "calculationMethod": "model_annotated",
+      "confidence": "explicit",
+      "boundaryVertices": 0,
+      "notes": "Boundary corners not supplied; using model annotated area."
+    },
+    {
+      "id": "R-BATHROOM",
+      "name": "Main Bathroom",
+      "floorId": "LEVEL-01",
+      "netAreaM2": 6.5,
+      "lengthMm": null,
+      "widthMm": null,
+      "perimeterMm": null,
+      "perimeterM": null,
+      "finishId": null,
+      "finishPattern": null,
+      "calculationMethod": "model_annotated",
+      "confidence": "explicit",
+      "boundaryVertices": 0,
+      "notes": "Boundary corners not supplied; using model annotated area."
+    },
+    {
+      "id": "R-LIVING-KITCHEN",
+      "name": "Living Room & Kitchen",
+      "floorId": "LEVEL-01",
+      "netAreaM2": 65.0,
+      "lengthMm": null,
+      "widthMm": null,
+      "perimeterMm": null,
+      "perimeterM": null,
+      "finishId": null,
+      "finishPattern": null,
+      "calculationMethod": "model_annotated",
+      "confidence": "explicit",
+      "boundaryVertices": 0,
+      "notes": "Boundary corners not supplied; using model annotated area."
+    },
+    {
+      "id": "R-CORRIDOR",
+      "name": "Circulation Corridor",
+      "floorId": "LEVEL-01",
+      "netAreaM2": 10.5,
+      "lengthMm": null,
+      "widthMm": null,
+      "perimeterMm": null,
+      "perimeterM": null,
+      "finishId": null,
+      "finishPattern": null,
+      "calculationMethod": "model_annotated",
+      "confidence": "explicit",
+      "boundaryVertices": 0,
+      "notes": "Boundary corners not supplied; using model annotated area."
+    }
+  ],
+  "openings": {
+    "doors": [
+      {
+        "id": "D-ENTRY",
+        "type": "door",
+        "floorId": "LEVEL-01",
+        "wallId": "W-EXT-EAST",
+        "associatedRoomIds": [],
+        "widthMm": 900.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "swing": "outward-right",
+        "source": "explicit",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "D-SAUNA-TERRACE",
+        "type": "door",
+        "floorId": "LEVEL-01",
+        "wallId": "W-EXT-SOUTH-SAUNA",
+        "associatedRoomIds": [],
+        "widthMm": 1500.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "swing": "sliding",
+        "source": "explicit",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "D-LIVING-TERRACE",
+        "type": "door",
+        "floorId": "LEVEL-01",
+        "wallId": "W-EXT-SOUTH-MAIN",
+        "associatedRoomIds": [],
+        "widthMm": 2400.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "swing": "sliding",
+        "source": "explicit",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "D-ESIK-LIVING",
+        "type": "door",
+        "floorId": "LEVEL-01",
+        "wallId": "W-INT-ESIK-SOUTH",
+        "associatedRoomIds": [],
+        "widthMm": 1200.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "swing": "none",
+        "source": "inferred",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "D-BED-1",
+        "type": "door",
+        "floorId": "LEVEL-01",
+        "wallId": "W-INT-SPINE-EAST",
+        "associatedRoomIds": [],
+        "widthMm": 800.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "swing": "inward-right",
+        "source": "inferred",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "D-BED-2",
+        "type": "door",
+        "floorId": "LEVEL-01",
+        "wallId": "W-INT-SPINE-EAST",
+        "associatedRoomIds": [],
+        "widthMm": 800.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "swing": "inward-right",
+        "source": "inferred",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "D-WC",
+        "type": "door",
+        "floorId": "LEVEL-01",
+        "wallId": "W-INT-CORR-NORTH",
+        "associatedRoomIds": [],
+        "widthMm": 700.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "swing": "inward-left",
+        "source": "inferred",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "D-TEH",
+        "type": "door",
+        "floorId": "LEVEL-01",
+        "wallId": "W-INT-CORR-NORTH",
+        "associatedRoomIds": [],
+        "widthMm": 800.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "swing": "outward-left",
+        "source": "inferred",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "D-MAJAPIDAMIS",
+        "type": "door",
+        "floorId": "LEVEL-01",
+        "wallId": "W-INT-CORR-NORTH",
+        "associatedRoomIds": [],
+        "widthMm": 800.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "swing": "outward-left",
+        "source": "inferred",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "D-SAUNA-HALL",
+        "type": "door",
+        "floorId": "LEVEL-01",
+        "wallId": "W-INT-SAUNA-EAST",
+        "associatedRoomIds": [],
+        "widthMm": 800.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "swing": "inward-left",
+        "source": "inferred",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "D-MASTER-BED",
+        "type": "door",
+        "floorId": "LEVEL-01",
+        "wallId": "W-INT-CORR-WEST",
+        "associatedRoomIds": [],
+        "widthMm": 800.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "swing": "inward-left",
+        "source": "inferred",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "D-BATHROOM",
+        "type": "door",
+        "floorId": "LEVEL-01",
+        "wallId": "W-INT-CORR-WEST",
+        "associatedRoomIds": [],
+        "widthMm": 800.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "swing": "inward-left",
+        "source": "inferred",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "D-DUSS",
+        "type": "door",
+        "floorId": "LEVEL-01",
+        "wallId": "W-INT-SAUNA-VERT",
+        "associatedRoomIds": [],
+        "widthMm": 700.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "swing": "inward-left",
+        "source": "inferred",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "D-SAUN",
+        "type": "door",
+        "floorId": "LEVEL-01",
+        "wallId": "W-INT-SAUNA-HORIZ",
+        "associatedRoomIds": [],
+        "widthMm": 700.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "swing": "outward-right",
+        "source": "inferred",
+        "verificationStatus": "verified"
+      }
+    ],
+    "windows": [
+      {
+        "id": "W-DUSS",
+        "type": "window",
+        "floorId": "LEVEL-01",
+        "wallId": "W-EXT-NORTH-1",
+        "associatedRoomIds": [],
+        "widthMm": 900.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "source": "estimated",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "W-SAUNA-PUHKE",
+        "type": "window",
+        "floorId": "LEVEL-01",
+        "wallId": "W-EXT-NORTH-1",
+        "associatedRoomIds": [],
+        "widthMm": 1200.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "source": "estimated",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "W-MAJAPIDAMIS",
+        "type": "window",
+        "floorId": "LEVEL-01",
+        "wallId": "W-EXT-NORTH-2",
+        "associatedRoomIds": [],
+        "widthMm": 1000.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "source": "estimated",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "W-WC",
+        "type": "window",
+        "floorId": "LEVEL-01",
+        "wallId": "W-EXT-NORTH-2",
+        "associatedRoomIds": [],
+        "widthMm": 600.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "source": "estimated",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "W-BED-1",
+        "type": "window",
+        "floorId": "LEVEL-01",
+        "wallId": "W-EXT-NORTH-2",
+        "associatedRoomIds": [],
+        "widthMm": 1200.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "source": "estimated",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "W-BED-2",
+        "type": "window",
+        "floorId": "LEVEL-01",
+        "wallId": "W-EXT-EAST",
+        "associatedRoomIds": [],
+        "widthMm": 1200.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "source": "estimated",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "W-MASTER-BED",
+        "type": "window",
+        "floorId": "LEVEL-01",
+        "wallId": "W-EXT-WEST-MAIN",
+        "associatedRoomIds": [],
+        "widthMm": 1200.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "source": "estimated",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "W-BATHROOM",
+        "type": "window",
+        "floorId": "LEVEL-01",
+        "wallId": "W-EXT-WEST-MAIN",
+        "associatedRoomIds": [],
+        "widthMm": 900.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "source": "estimated",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "W-LIVING-WEST",
+        "type": "window",
+        "floorId": "LEVEL-01",
+        "wallId": "W-EXT-WEST-MAIN",
+        "associatedRoomIds": [],
+        "widthMm": 1500.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "source": "estimated",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "W-LIVING-EAST",
+        "type": "window",
+        "floorId": "LEVEL-01",
+        "wallId": "W-EXT-EAST",
+        "associatedRoomIds": [],
+        "widthMm": 1500.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "source": "estimated",
+        "verificationStatus": "verified"
+      },
+      {
+        "id": "W-LIVING-SOUTH",
+        "type": "window",
+        "floorId": "LEVEL-01",
+        "wallId": "W-EXT-SOUTH-MAIN",
+        "associatedRoomIds": [],
+        "widthMm": 1800.0,
+        "heightMm": null,
+        "sillHeightMm": null,
+        "source": "estimated",
+        "verificationStatus": "verified"
+      }
+    ]
+  },
+  "elements": {
+    "summaryByCategory": [
+      {
+        "category": "furniture",
+        "instanceCount": 6
+      },
+      {
+        "category": "sanitary",
+        "instanceCount": 2
+      },
+      {
+        "category": "structural",
+        "instanceCount": 3
+      }
+    ],
+    "summaryByBlock": [
+      {
+        "blockId": "FURN_BED_DOUBLE",
+        "category": "furniture",
+        "dimensions": {},
+        "instanceCount": 3
+      },
+      {
+        "blockId": "FURN_DINING_TABLE",
+        "category": "furniture",
+        "dimensions": {},
+        "instanceCount": 1
+      },
+      {
+        "blockId": "FURN_SOFA_3SEAT",
+        "category": "furniture",
+        "dimensions": {},
+        "instanceCount": 1
+      },
+      {
+        "blockId": "FURN_TV_UNIT",
+        "category": "furniture",
+        "dimensions": {},
+        "instanceCount": 1
+      },
+      {
+        "blockId": "FIXT_BATHTUB",
+        "category": "sanitary",
+        "dimensions": {},
+        "instanceCount": 1
+      },
+      {
+        "blockId": "FIXT_TOILET",
+        "category": "sanitary",
+        "dimensions": {},
+        "instanceCount": 1
+      },
+      {
+        "blockId": "STRUC_COL_SQUARE",
+        "category": "structural",
+        "dimensions": {},
+        "instanceCount": 3
+      }
+    ],
+    "instances": [
+      {
+        "id": "E-BED-01",
+        "blockId": "FURN_BED_DOUBLE",
+        "category": "furniture",
+        "floorId": "LEVEL-01",
+        "roomId": null,
+        "position": [
+          12750.0,
+          14800.0
+        ],
+        "rotation": 0.0,
+        "dimensions": {},
+        "source": "explicit",
+        "status": "approved"
+      },
+      {
+        "id": "E-BED-02",
+        "blockId": "FURN_BED_DOUBLE",
+        "category": "furniture",
+        "floorId": "LEVEL-01",
+        "roomId": null,
+        "position": [
+          12750.0,
+          11700.0
+        ],
+        "rotation": 0.0,
+        "dimensions": {},
+        "source": "explicit",
+        "status": "approved"
+      },
+      {
+        "id": "E-BED-MASTER",
+        "blockId": "FURN_BED_DOUBLE",
+        "category": "furniture",
+        "floorId": "LEVEL-01",
+        "roomId": null,
+        "position": [
+          7000.0,
+          12000.0
+        ],
+        "rotation": 0.0,
+        "dimensions": {},
+        "source": "explicit",
+        "status": "approved"
+      },
+      {
+        "id": "E-DINING-TABLE",
+        "blockId": "FURN_DINING_TABLE",
+        "category": "furniture",
+        "floorId": "LEVEL-01",
+        "roomId": null,
+        "position": [
+          7000.0,
+          1500.0
+        ],
+        "rotation": 0.0,
+        "dimensions": {},
+        "source": "explicit",
+        "status": "approved"
+      },
+      {
+        "id": "E-LIVING-SOFA",
+        "blockId": "FURN_SOFA_3SEAT",
+        "category": "furniture",
+        "floorId": "LEVEL-01",
+        "roomId": null,
+        "position": [
+          11500.0,
+          2500.0
+        ],
+        "rotation": 0.0,
+        "dimensions": {},
+        "source": "explicit",
+        "status": "approved"
+      },
+      {
+        "id": "E-FIREPLACE",
+        "blockId": "FURN_TV_UNIT",
+        "category": "furniture",
+        "floorId": "LEVEL-01",
+        "roomId": null,
+        "position": [
+          11000.0,
+          5800.0
+        ],
+        "rotation": 0.0,
+        "dimensions": {},
+        "source": "explicit",
+        "status": "approved"
+      },
+      {
+        "id": "E-WC-FIXTURE",
+        "blockId": "FIXT_TOILET",
+        "category": "sanitary",
+        "floorId": "LEVEL-01",
+        "roomId": null,
+        "position": [
+          10050.0,
+          15400.0
+        ],
+        "rotation": 0.0,
+        "dimensions": {},
+        "source": "explicit",
+        "status": "approved"
+      },
+      {
+        "id": "E-BATH-FIXTURE",
+        "blockId": "FIXT_BATHTUB",
+        "category": "sanitary",
+        "floorId": "LEVEL-01",
+        "roomId": null,
+        "position": [
+          6200.0,
+          8500.0
+        ],
+        "rotation": 0.0,
+        "dimensions": {},
+        "source": "explicit",
+        "status": "approved"
+      },
+      {
+        "id": "E-COL-TERRACE-1",
+        "blockId": "STRUC_COL_SQUARE",
+        "category": "structural",
+        "floorId": "LEVEL-01",
+        "roomId": null,
+        "position": [
+          5100.0,
+          -2900.0
+        ],
+        "rotation": 0.0,
+        "dimensions": {},
+        "source": "explicit",
+        "status": "approved"
+      },
+      {
+        "id": "E-COL-TERRACE-2",
+        "blockId": "STRUC_COL_SQUARE",
+        "category": "structural",
+        "floorId": "LEVEL-01",
+        "roomId": null,
+        "position": [
+          10000.0,
+          -2900.0
+        ],
+        "rotation": 0.0,
+        "dimensions": {},
+        "source": "explicit",
+        "status": "approved"
+      },
+      {
+        "id": "E-COL-TERRACE-3",
+        "blockId": "STRUC_COL_SQUARE",
+        "category": "structural",
+        "floorId": "LEVEL-01",
+        "roomId": null,
+        "position": [
+          14900.0,
+          -2900.0
+        ],
+        "rotation": 0.0,
+        "dimensions": {},
+        "source": "explicit",
+        "status": "approved"
+      }
+    ]
+  },
+  "finishes": [],
+  "uncertainties": [
+    {
+      "id": "UNC-01",
+      "category": "sketch_interpretation",
+      "target": "dimensions.depth_chain",
+      "description": "Active Blocker: Arithmetic conflict between West dimension chain (5000 + 14200 = 19200 mm) and East dimension chain (16000 + 3000 = 19000 mm). Retaining 19000 mm building datum only as drafting interpretation.",
+      "assumedValue": "Unresolved Blocker - Drafting Interpretation 19000 mm Datum",
+      "confidence": "low",
+      "status": "unresolved",
+      "provenance": "model_uncertainty_log"
+    },
+    {
+      "id": "UNC-02",
+      "category": "sketch_interpretation",
+      "target": "walls.W-INT-MASTER-BATH",
+      "description": "Source contradiction: Drawn wall line at Y=9200 mm (10.01 m\u00b2 clear) vs handwritten 6.5 m\u00b2 label. Alternative 1A retained for drafting.",
+      "assumedValue": "Alternative 1A (Y=9200 mm, Conflict Documented)",
+      "confidence": "medium",
+      "status": "unresolved",
+      "provenance": "model_uncertainty_log"
+    },
+    {
+      "id": "UNC-03",
+      "category": "sketch_interpretation",
+      "target": "walls.W-INT-SAUNA-HORIZ",
+      "description": "Source-supported split: Revised to Y=13000 mm per pixel ratio (1.62:1) and area labels (6m\u00b2/4m\u00b2). Recalculated clear: Shower 4.70 m\u00b2, Sauna 3.05 m\u00b2.",
+      "assumedValue": "Alternative 2A (Y=13000 mm, Source-Supported Interpretation)",
+      "confidence": "high",
+      "status": "unresolved",
+      "provenance": "model_uncertainty_log"
+    },
+    {
+      "id": "UNC-04",
+      "category": "sketch_interpretation",
+      "target": "rooms.R-CORRIDOR",
+      "description": "Open circulation space: 10.65 m\u00b2 centerline, open to living room at Y=6500 mm. No separating wall.",
+      "assumedValue": "Open circulation space (Inferred)",
+      "confidence": "medium",
+      "status": "unresolved",
+      "provenance": "model_uncertainty_log"
+    },
+    {
+      "id": "UNC-05",
+      "category": "sketch_interpretation",
+      "target": "walls.thicknesses",
+      "description": "Wall thicknesses unannotated on sketch. Proposed drafting defaults: 200 mm exterior, 100 mm interior, 150 mm core.",
+      "assumedValue": "Proposed: 200mm ext / 100mm int / 150mm core (Unverified)",
+      "confidence": "medium",
+      "status": "unresolved",
+      "provenance": "model_uncertainty_log"
+    },
+    {
+      "id": "UNC-06",
+      "category": "sketch_interpretation",
+      "target": "openings.widths",
+      "description": "Modular opening widths: 600-1800 mm windows, 700-900 mm doors.",
+      "assumedValue": "Proposed modular opening widths (Unverified)",
+      "confidence": "medium",
+      "status": "unresolved",
+      "provenance": "model_uncertainty_log"
+    },
+    {
+      "id": "UNC-07",
+      "category": "sketch_interpretation",
+      "target": "openings.sill_heights",
+      "description": "Window sill heights unannotated in 2D. Designated UNKNOWN in 2D model.",
+      "assumedValue": "UNKNOWN (Not applicable to 2D plan)",
+      "confidence": "low",
+      "status": "unresolved",
+      "provenance": "model_uncertainty_log"
+    },
+    {
+      "id": "UNC-VERT-01",
+      "category": "vertical_geometry",
+      "target": "openings.height",
+      "description": "25 door/window vertical heights unannotated in 2D floor plan.",
+      "assumedValue": null,
+      "confidence": "low",
+      "status": "unresolved (requires downstream approval)",
+      "provenance": "2d_floor_plan_boundary"
+    }
+  ],
+  "audit": {
+    "flags": [
+      "Element 'E-COL-TERRACE-1' at position [5100.0, -2900.0] falls outside building envelope [0..15000.0, 0..16000.0].",
+      "Element 'E-COL-TERRACE-2' at position [10000.0, -2900.0] falls outside building envelope [0..15000.0, 0..16000.0].",
+      "Element 'E-COL-TERRACE-3' at position [14900.0, -2900.0] falls outside building envelope [0..15000.0, 0..16000.0]."
+    ],
+    "hostWallValidation": {
+      "valid": true,
+      "invalidOpenings": []
+    },
+    "overlappingRooms": {
+      "detected": false,
+      "overlappingPairs": []
+    },
+    "envelopeClearance": {
+      "allWithinEnvelope": false,
+      "outOfEnvelopeElements": [
+        "E-COL-TERRACE-1",
+        "E-COL-TERRACE-2",
+        "E-COL-TERRACE-3"
+      ]
+    },
+    "verticalCoordination": {
+      "valid": true,
+      "stairsChecked": 0,
+      "columnsChecked": 0,
+      "misalignments": []
+    },
+    "isApprovedForConstruction": true
+  }
+}

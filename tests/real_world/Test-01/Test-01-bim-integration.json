@@ -1,0 +1,19 @@
+{
+  "dxf_path": "D:\\Agent Skills\\sketch-to-cad-main\\tests\\real_world\\Test-01\\Test-01-floor-plan.dxf",
+  "handoff_path": "D:\\Agent Skills\\sketch-to-cad-main\\tests\\real_world\\Test-01\\Test-01-floor-plan.handoff.json",
+  "is_downstream_available": true,
+  "downstream_execution_type": "genuine_downstream_cli",
+  "contract_valid": true,
+  "preflight_passed": true,
+  "reconstruction_passed": true,
+  "intermediate_model_path": "D:\\Agent Skills\\sketch-to-cad-main\\tests\\real_world\\Test-01\\Test-01_intermediate_bim.json",
+  "contract_errors": [],
+  "contract_warnings": [],
+  "downstream_preflight_summary": {
+    "status": "PASSED",
+    "raw_output": "\nPreflight Status: WARNING\n     DXF Preflight Summary: Test-01-floor-plan.dxf      \n+------------------------------------------------------+\n| Property                      | Value                |\n|-------------------------------+----------------------|\n| DXF Version                   | AC1032               |\n| Detected Units                | mm (INSUNITS=4)      |\n| Scale Confidence              | HIGH                 |\n| Scale Factor to mm            | 1.0x                 |\n| Raw Extents    "
+  },
+  "notes": [
+    "Successfully generated downstream intermediate BIM model at D:\\Agent Skills\\sketch-to-cad-main\\tests\\real_world\\Test-01\\Test-01_intermediate_bim.json"
+  ]
+}

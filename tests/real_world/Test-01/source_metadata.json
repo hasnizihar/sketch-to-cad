@@ -1,0 +1,18 @@
+{
+  "source_file": "source_sketch.jpg",
+  "source_path": "D:\\Agent Skills\\sketch-to-cad-main\\tests\\real_world\\Test-01\\source_sketch.jpg",
+  "file_type": "jpg",
+  "page_number": 1,
+  "total_pages": 1,
+  "dimensions_pixels": {
+    "width": 845,
+    "height": 1024
+  },
+  "dpi": 72.0,
+  "orientation_degrees": 0,
+  "source_floor_hint": "Ground Floor",
+  "sha256": "12ca802a25cd855467a62473c7c35f423ca01ed53ab3818b61b7b75cf9259957",
+  "preprocessing_applied": [
+    "Deterministic RGB Normalization"
+  ]
+}

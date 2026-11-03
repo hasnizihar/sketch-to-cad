@@ -1,0 +1,1502 @@
+{
+  "source_metadata": {
+    "source_file": "source_sketch.jpg",
+    "source_path": "D:\\Agent Skills\\sketch-to-cad-main\\tests\\real_world\\Test-01\\source_sketch.jpg",
+    "file_type": "jpg",
+    "page_number": 1,
+    "total_pages": 1,
+    "dimensions_pixels": {
+      "width": 845,
+      "height": 1024
+    },
+    "dpi": 72.0,
+    "orientation_degrees": 0,
+    "source_floor_hint": "Ground Floor",
+    "sha256": "12ca802a25cd855467a62473c7c35f423ca01ed53ab3818b61b7b75cf9259957",
+    "preprocessing_applied": [
+      "Deterministic RGB Normalization"
+    ]
+  },
+  "status": "extracted",
+  "confidence_summary": {
+    "overall_confidence": 0.9,
+    "dimension_reliability": "high",
+    "notes": "Nordic/Estonian single-storey residential villa with sauna wing and wrap-around terrace. Explicit dimensions: 5000, 10000, 16000, 5000, 14200, 3000 mm. Contradiction detected on West depth chain (19200 mm vs 19000 mm on East)."
+  },
+  "walls": [
+    {
+      "id": "W-EXT-NORTH-1",
+      "wall_type": "exterior",
+      "start_point_pixel": [
+        90,
+        105
+      ],
+      "end_point_pixel": [
+        310,
+        105
+      ],
+      "thickness_mm": 200.0,
+      "thickness_category": "inferred",
+      "confidence": 0.95,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.09,
+        0.1,
+        0.12,
+        0.37
+      ]
+    },
+    {
+      "id": "W-EXT-NORTH-2",
+      "wall_type": "exterior",
+      "start_point_pixel": [
+        310,
+        105
+      ],
+      "end_point_pixel": [
+        755,
+        105
+      ],
+      "thickness_mm": 200.0,
+      "thickness_category": "inferred",
+      "confidence": 0.95,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.09,
+        0.36,
+        0.12,
+        0.9
+      ]
+    },
+    {
+      "id": "W-EXT-EAST",
+      "wall_type": "exterior",
+      "start_point_pixel": [
+        755,
+        105
+      ],
+      "end_point_pixel": [
+        765,
+        830
+      ],
+      "thickness_mm": 200.0,
+      "thickness_category": "inferred",
+      "confidence": 0.95,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.1,
+        0.88,
+        0.82,
+        0.92
+      ]
+    },
+    {
+      "id": "W-EXT-SOUTH-MAIN",
+      "wall_type": "exterior",
+      "start_point_pixel": [
+        765,
+        830
+      ],
+      "end_point_pixel": [
+        315,
+        830
+      ],
+      "thickness_mm": 200.0,
+      "thickness_category": "inferred",
+      "confidence": 0.95,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.8,
+        0.36,
+        0.83,
+        0.91
+      ]
+    },
+    {
+      "id": "W-EXT-WEST-MAIN",
+      "wall_type": "exterior",
+      "start_point_pixel": [
+        315,
+        830
+      ],
+      "end_point_pixel": [
+        310,
+        325
+      ],
+      "thickness_mm": 200.0,
+      "thickness_category": "inferred",
+      "confidence": 0.95,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.31,
+        0.35,
+        0.82,
+        0.38
+      ]
+    },
+    {
+      "id": "W-EXT-SOUTH-SAUNA",
+      "wall_type": "exterior",
+      "start_point_pixel": [
+        310,
+        325
+      ],
+      "end_point_pixel": [
+        90,
+        325
+      ],
+      "thickness_mm": 200.0,
+      "thickness_category": "inferred",
+      "confidence": 0.95,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.31,
+        0.1,
+        0.33,
+        0.37
+      ]
+    },
+    {
+      "id": "W-EXT-WEST-SAUNA",
+      "wall_type": "exterior",
+      "start_point_pixel": [
+        90,
+        325
+      ],
+      "end_point_pixel": [
+        90,
+        105
+      ],
+      "thickness_mm": 200.0,
+      "thickness_category": "inferred",
+      "confidence": 0.95,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.1,
+        0.09,
+        0.33,
+        0.12
+      ]
+    },
+    {
+      "id": "W-INT-SAUNA-VERT",
+      "wall_type": "interior",
+      "start_point_pixel": [
+        180,
+        105
+      ],
+      "end_point_pixel": [
+        180,
+        325
+      ],
+      "thickness_mm": 100.0,
+      "thickness_category": "inferred",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.1,
+        0.2,
+        0.32,
+        0.23
+      ]
+    },
+    {
+      "id": "W-INT-SAUNA-HORIZ",
+      "wall_type": "interior",
+      "start_point_pixel": [
+        90,
+        240
+      ],
+      "end_point_pixel": [
+        180,
+        240
+      ],
+      "thickness_mm": 100.0,
+      "thickness_category": "inferred",
+      "confidence": 0.9,
+      "provenance": "source_supported_interpretation",
+      "source_bbox": [
+        0.22,
+        0.1,
+        0.25,
+        0.22
+      ],
+      "model_placement_interpretation": "Y = 13000 mm (Alternative 2A: source-supported split based on Y=240 px ink row and 6m\u00b2/4m\u00b2 area labels)"
+    },
+    {
+      "id": "W-INT-SAUNA-EAST",
+      "wall_type": "interior",
+      "start_point_pixel": [
+        310,
+        105
+      ],
+      "end_point_pixel": [
+        310,
+        325
+      ],
+      "thickness_mm": 150.0,
+      "thickness_category": "inferred",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.1,
+        0.35,
+        0.32,
+        0.38
+      ]
+    },
+    {
+      "id": "W-INT-CORR-NORTH",
+      "wall_type": "interior",
+      "start_point_pixel": [
+        310,
+        215
+      ],
+      "end_point_pixel": [
+        580,
+        215
+      ],
+      "thickness_mm": 100.0,
+      "thickness_category": "inferred",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.2,
+        0.36,
+        0.23,
+        0.69
+      ]
+    },
+    {
+      "id": "W-INT-UTIL-1",
+      "wall_type": "interior",
+      "start_point_pixel": [
+        415,
+        105
+      ],
+      "end_point_pixel": [
+        415,
+        215
+      ],
+      "thickness_mm": 100.0,
+      "thickness_category": "inferred",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.1,
+        0.48,
+        0.22,
+        0.51
+      ]
+    },
+    {
+      "id": "W-INT-UTIL-2",
+      "wall_type": "interior",
+      "start_point_pixel": [
+        505,
+        105
+      ],
+      "end_point_pixel": [
+        505,
+        215
+      ],
+      "thickness_mm": 100.0,
+      "thickness_category": "inferred",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.1,
+        0.58,
+        0.22,
+        0.61
+      ]
+    },
+    {
+      "id": "W-INT-SPINE-EAST",
+      "wall_type": "interior",
+      "start_point_pixel": [
+        580,
+        105
+      ],
+      "end_point_pixel": [
+        580,
+        500
+      ],
+      "thickness_mm": 100.0,
+      "thickness_category": "inferred",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.1,
+        0.67,
+        0.5,
+        0.7
+      ]
+    },
+    {
+      "id": "W-INT-BED-1-2",
+      "wall_type": "interior",
+      "start_point_pixel": [
+        580,
+        230
+      ],
+      "end_point_pixel": [
+        755,
+        230
+      ],
+      "thickness_mm": 100.0,
+      "thickness_category": "inferred",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.21,
+        0.68,
+        0.24,
+        0.9
+      ]
+    },
+    {
+      "id": "W-INT-BED-2-ESIK",
+      "wall_type": "interior",
+      "start_point_pixel": [
+        580,
+        360
+      ],
+      "end_point_pixel": [
+        755,
+        360
+      ],
+      "thickness_mm": 100.0,
+      "thickness_category": "inferred",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.34,
+        0.68,
+        0.37,
+        0.9
+      ]
+    },
+    {
+      "id": "W-INT-ESIK-SOUTH",
+      "wall_type": "interior",
+      "start_point_pixel": [
+        580,
+        500
+      ],
+      "end_point_pixel": [
+        765,
+        500
+      ],
+      "thickness_mm": 100.0,
+      "thickness_category": "inferred",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.48,
+        0.68,
+        0.51,
+        0.91
+      ]
+    },
+    {
+      "id": "W-INT-CORR-WEST",
+      "wall_type": "interior",
+      "start_point_pixel": [
+        505,
+        275
+      ],
+      "end_point_pixel": [
+        505,
+        550
+      ],
+      "thickness_mm": 100.0,
+      "thickness_category": "inferred",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.26,
+        0.58,
+        0.55,
+        0.61
+      ]
+    },
+    {
+      "id": "W-INT-MASTER-BATH",
+      "wall_type": "interior",
+      "start_point_pixel": [
+        315,
+        450
+      ],
+      "end_point_pixel": [
+        505,
+        450
+      ],
+      "thickness_mm": 100.0,
+      "thickness_category": "inferred",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.43,
+        0.36,
+        0.46,
+        0.6
+      ]
+    },
+    {
+      "id": "W-INT-BATH-LIVING",
+      "wall_type": "interior",
+      "start_point_pixel": [
+        315,
+        550
+      ],
+      "end_point_pixel": [
+        505,
+        550
+      ],
+      "thickness_mm": 100.0,
+      "thickness_category": "inferred",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.53,
+        0.36,
+        0.56,
+        0.6
+      ]
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-ENTRY",
+      "type": "door",
+      "sub_type": "single_swing",
+      "swing_direction": "outward_right",
+      "width_mm": 900.0,
+      "width_category": "inferred",
+      "host_wall_ref": "W-EXT-EAST",
+      "associated_room": "R-ESIK",
+      "confidence": 0.95,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.38,
+        0.88,
+        0.44,
+        0.92
+      ]
+    },
+    {
+      "id": "D-SAUNA-TERRACE",
+      "type": "door",
+      "sub_type": "sliding",
+      "swing_direction": "sliding",
+      "width_mm": 1500.0,
+      "width_category": "inferred",
+      "host_wall_ref": "W-EXT-SOUTH-SAUNA",
+      "associated_room": "R-SAUNA-PUHKE",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.31,
+        0.19,
+        0.33,
+        0.3
+      ]
+    },
+    {
+      "id": "D-LIVING-TERRACE",
+      "type": "door",
+      "sub_type": "sliding",
+      "swing_direction": "sliding",
+      "width_mm": 2400.0,
+      "width_category": "inferred",
+      "host_wall_ref": "W-EXT-SOUTH-MAIN",
+      "associated_room": "R-LIVING-KITCHEN",
+      "confidence": 0.95,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.81,
+        0.62,
+        0.83,
+        0.78
+      ]
+    },
+    {
+      "id": "D-ESIK-LIVING",
+      "type": "opening",
+      "sub_type": "cased_opening",
+      "swing_direction": null,
+      "width_mm": 1200.0,
+      "width_category": "inferred",
+      "host_wall_ref": "W-INT-SPINE-EAST",
+      "associated_room": "R-ESIK",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.42,
+        0.68,
+        0.46,
+        0.7
+      ]
+    },
+    {
+      "id": "D-BED-1",
+      "type": "door",
+      "sub_type": "single_swing",
+      "swing_direction": "inward_right",
+      "width_mm": 800.0,
+      "width_category": "inferred",
+      "host_wall_ref": "W-INT-SPINE-EAST",
+      "associated_room": "R-BED-1",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.18,
+        0.68,
+        0.22,
+        0.7
+      ]
+    },
+    {
+      "id": "D-BED-2",
+      "type": "door",
+      "sub_type": "single_swing",
+      "swing_direction": "inward_right",
+      "width_mm": 800.0,
+      "width_category": "inferred",
+      "host_wall_ref": "W-INT-SPINE-EAST",
+      "associated_room": "R-BED-2",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.28,
+        0.68,
+        0.32,
+        0.7
+      ]
+    },
+    {
+      "id": "D-WC",
+      "type": "door",
+      "sub_type": "single_swing",
+      "swing_direction": "inward_left",
+      "width_mm": 700.0,
+      "width_category": "inferred",
+      "host_wall_ref": "W-INT-CORR-NORTH",
+      "associated_room": "R-WC",
+      "confidence": 0.85,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.17,
+        0.61,
+        0.21,
+        0.66
+      ]
+    },
+    {
+      "id": "D-TEH",
+      "type": "door",
+      "sub_type": "single_swing",
+      "swing_direction": "outward_left",
+      "width_mm": 800.0,
+      "width_category": "inferred",
+      "host_wall_ref": "W-INT-CORR-NORTH",
+      "associated_room": "R-TEH",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.2,
+        0.52,
+        0.23,
+        0.58
+      ]
+    },
+    {
+      "id": "D-MAJAPIDAMIS",
+      "type": "door",
+      "sub_type": "single_swing",
+      "swing_direction": "outward_left",
+      "width_mm": 800.0,
+      "width_category": "inferred",
+      "host_wall_ref": "W-INT-CORR-NORTH",
+      "associated_room": "R-MAJAPIDAMIS",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.2,
+        0.4,
+        0.23,
+        0.46
+      ]
+    },
+    {
+      "id": "D-SAUNA-HALL",
+      "type": "door",
+      "sub_type": "single_swing",
+      "swing_direction": "inward_left",
+      "width_mm": 800.0,
+      "width_category": "inferred",
+      "host_wall_ref": "W-INT-SAUNA-EAST",
+      "associated_room": "R-SAUNA-PUHKE",
+      "confidence": 0.85,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.22,
+        0.35,
+        0.27,
+        0.38
+      ]
+    },
+    {
+      "id": "D-MASTER-BED",
+      "type": "door",
+      "sub_type": "single_swing",
+      "swing_direction": "inward_left",
+      "width_mm": 800.0,
+      "width_category": "inferred",
+      "host_wall_ref": "W-INT-CORR-WEST",
+      "associated_room": "R-MASTER-BED",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.35,
+        0.58,
+        0.4,
+        0.61
+      ]
+    },
+    {
+      "id": "D-BATHROOM",
+      "type": "door",
+      "sub_type": "single_swing",
+      "swing_direction": "inward_left",
+      "width_mm": 800.0,
+      "width_category": "inferred",
+      "host_wall_ref": "W-INT-CORR-WEST",
+      "associated_room": "R-BATHROOM",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.45,
+        0.58,
+        0.49,
+        0.61
+      ]
+    },
+    {
+      "id": "D-DUSS",
+      "type": "door",
+      "sub_type": "single_swing",
+      "swing_direction": "inward_left",
+      "width_mm": 700.0,
+      "width_category": "inferred",
+      "host_wall_ref": "W-INT-SAUNA-VERT",
+      "associated_room": "R-DUSS",
+      "confidence": 0.85,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.17,
+        0.2,
+        0.21,
+        0.23
+      ]
+    },
+    {
+      "id": "D-SAUN",
+      "type": "door",
+      "sub_type": "single_swing",
+      "swing_direction": "outward_right",
+      "width_mm": 700.0,
+      "width_category": "inferred",
+      "host_wall_ref": "W-INT-SAUNA-HORIZ",
+      "associated_room": "R-SAUN",
+      "confidence": 0.85,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.22,
+        0.14,
+        0.25,
+        0.18
+      ]
+    },
+    {
+      "id": "W-DUSS",
+      "type": "window",
+      "sub_type": "casement",
+      "swing_direction": null,
+      "width_mm": 900.0,
+      "width_category": "estimated",
+      "host_wall_ref": "W-EXT-NORTH-1",
+      "associated_room": "R-DUSS",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.09,
+        0.14,
+        0.11,
+        0.18
+      ]
+    },
+    {
+      "id": "W-SAUNA-PUHKE",
+      "type": "window",
+      "sub_type": "casement",
+      "swing_direction": null,
+      "width_mm": 1200.0,
+      "width_category": "estimated",
+      "host_wall_ref": "W-EXT-NORTH-1",
+      "associated_room": "R-SAUNA-PUHKE",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.09,
+        0.24,
+        0.11,
+        0.29
+      ]
+    },
+    {
+      "id": "W-MAJAPIDAMIS",
+      "type": "window",
+      "sub_type": "casement",
+      "swing_direction": null,
+      "width_mm": 1000.0,
+      "width_category": "estimated",
+      "host_wall_ref": "W-EXT-NORTH-2",
+      "associated_room": "R-MAJAPIDAMIS",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.09,
+        0.4,
+        0.11,
+        0.47
+      ]
+    },
+    {
+      "id": "W-WC",
+      "type": "window",
+      "sub_type": "casement",
+      "swing_direction": null,
+      "width_mm": 600.0,
+      "width_category": "estimated",
+      "host_wall_ref": "W-EXT-NORTH-2",
+      "associated_room": "R-WC",
+      "confidence": 0.85,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.09,
+        0.62,
+        0.11,
+        0.65
+      ]
+    },
+    {
+      "id": "W-BED-1",
+      "type": "window",
+      "sub_type": "casement",
+      "swing_direction": null,
+      "width_mm": 1200.0,
+      "width_category": "estimated",
+      "host_wall_ref": "W-EXT-NORTH-2",
+      "associated_room": "R-BED-1",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.09,
+        0.77,
+        0.11,
+        0.84
+      ]
+    },
+    {
+      "id": "W-BED-2",
+      "type": "window",
+      "sub_type": "casement",
+      "swing_direction": null,
+      "width_mm": 1200.0,
+      "width_category": "estimated",
+      "host_wall_ref": "W-EXT-EAST",
+      "associated_room": "R-BED-2",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.24,
+        0.89,
+        0.3,
+        0.92
+      ]
+    },
+    {
+      "id": "W-MASTER-BED",
+      "type": "window",
+      "sub_type": "casement",
+      "swing_direction": null,
+      "width_mm": 1200.0,
+      "width_category": "estimated",
+      "host_wall_ref": "W-EXT-WEST-MAIN",
+      "associated_room": "R-MASTER-BED",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.38,
+        0.35,
+        0.44,
+        0.38
+      ]
+    },
+    {
+      "id": "W-BATHROOM",
+      "type": "window",
+      "sub_type": "casement",
+      "swing_direction": null,
+      "width_mm": 900.0,
+      "width_category": "estimated",
+      "host_wall_ref": "W-EXT-WEST-MAIN",
+      "associated_room": "R-BATHROOM",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.47,
+        0.35,
+        0.51,
+        0.38
+      ]
+    },
+    {
+      "id": "W-LIVING-WEST",
+      "type": "window",
+      "sub_type": "casement",
+      "swing_direction": null,
+      "width_mm": 1500.0,
+      "width_category": "estimated",
+      "host_wall_ref": "W-EXT-WEST-MAIN",
+      "associated_room": "R-LIVING-KITCHEN",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.7,
+        0.35,
+        0.76,
+        0.38
+      ]
+    },
+    {
+      "id": "W-LIVING-EAST",
+      "type": "window",
+      "sub_type": "casement",
+      "swing_direction": null,
+      "width_mm": 1500.0,
+      "width_category": "estimated",
+      "host_wall_ref": "W-EXT-EAST",
+      "associated_room": "R-LIVING-KITCHEN",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.55,
+        0.88,
+        0.68,
+        0.92
+      ]
+    },
+    {
+      "id": "W-LIVING-SOUTH",
+      "type": "window",
+      "sub_type": "casement",
+      "swing_direction": null,
+      "width_mm": 1800.0,
+      "width_category": "estimated",
+      "host_wall_ref": "W-EXT-SOUTH-MAIN",
+      "associated_room": "R-LIVING-KITCHEN",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.81,
+        0.44,
+        0.83,
+        0.56
+      ]
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-DUSS",
+      "raw_label": "Du\u0161\u0161 6 m\u00b2",
+      "standardized_type": "bathroom",
+      "floor_level": "Level 1",
+      "annotated_dimensions_text": "6 m\u00b2",
+      "approx_width_mm": 1800.0,
+      "approx_depth_mm": 2500.0,
+      "dimension_provenance": "explicit",
+      "confidence": 0.95,
+      "source_bbox": [
+        0.12,
+        0.12,
+        0.22,
+        0.2
+      ]
+    },
+    {
+      "id": "R-SAUN",
+      "raw_label": "Saun 4 m\u00b2",
+      "standardized_type": "sauna",
+      "floor_level": "Level 1",
+      "annotated_dimensions_text": "4 m\u00b2",
+      "approx_width_mm": 1800.0,
+      "approx_depth_mm": 2000.0,
+      "dimension_provenance": "explicit",
+      "confidence": 0.95,
+      "source_bbox": [
+        0.24,
+        0.12,
+        0.31,
+        0.2
+      ]
+    },
+    {
+      "id": "R-SAUNA-PUHKE",
+      "raw_label": "Sauna Puhkeruum 15 m\u00b2",
+      "standardized_type": "living",
+      "floor_level": "Level 1",
+      "annotated_dimensions_text": "15 m\u00b2",
+      "approx_width_mm": 3200.0,
+      "approx_depth_mm": 4800.0,
+      "dimension_provenance": "explicit",
+      "confidence": 0.95,
+      "source_bbox": [
+        0.16,
+        0.22,
+        0.3,
+        0.34
+      ]
+    },
+    {
+      "id": "R-MAJAPIDAMIS",
+      "raw_label": "MAJAPIDAMIS 6 m\u00b2",
+      "standardized_type": "utility",
+      "floor_level": "Level 1",
+      "annotated_dimensions_text": "6 m\u00b2",
+      "approx_width_mm": 2400.0,
+      "approx_depth_mm": 2300.0,
+      "dimension_provenance": "explicit",
+      "confidence": 0.95,
+      "source_bbox": [
+        0.12,
+        0.38,
+        0.2,
+        0.48
+      ]
+    },
+    {
+      "id": "R-TEH",
+      "raw_label": "TEH 5 m\u00b2",
+      "standardized_type": "mechanical",
+      "floor_level": "Level 1",
+      "annotated_dimensions_text": "5 m\u00b2",
+      "approx_width_mm": 2000.0,
+      "approx_depth_mm": 2300.0,
+      "dimension_provenance": "explicit",
+      "confidence": 0.95,
+      "source_bbox": [
+        0.12,
+        0.49,
+        0.2,
+        0.58
+      ]
+    },
+    {
+      "id": "R-WC",
+      "raw_label": "WC 2.4 m\u00b2",
+      "standardized_type": "toilet",
+      "floor_level": "Level 1",
+      "annotated_dimensions_text": "2.4 m\u00b2",
+      "approx_width_mm": 1300.0,
+      "approx_depth_mm": 1800.0,
+      "dimension_provenance": "explicit",
+      "confidence": 0.95,
+      "source_bbox": [
+        0.12,
+        0.6,
+        0.18,
+        0.67
+      ]
+    },
+    {
+      "id": "R-BED-1",
+      "raw_label": "12 m\u00b2",
+      "standardized_type": "bedroom",
+      "floor_level": "Level 1",
+      "annotated_dimensions_text": "12 m\u00b2",
+      "approx_width_mm": 4200.0,
+      "approx_depth_mm": 3000.0,
+      "dimension_provenance": "explicit",
+      "confidence": 0.95,
+      "source_bbox": [
+        0.12,
+        0.7,
+        0.23,
+        0.88
+      ]
+    },
+    {
+      "id": "R-BED-2",
+      "raw_label": "12 m\u00b2",
+      "standardized_type": "bedroom",
+      "floor_level": "Level 1",
+      "annotated_dimensions_text": "12 m\u00b2",
+      "approx_width_mm": 4200.0,
+      "approx_depth_mm": 3000.0,
+      "dimension_provenance": "explicit",
+      "confidence": 0.95,
+      "source_bbox": [
+        0.24,
+        0.7,
+        0.35,
+        0.88
+      ]
+    },
+    {
+      "id": "R-ESIK",
+      "raw_label": "esik 12.8 m\u00b2",
+      "standardized_type": "entry",
+      "floor_level": "Level 1",
+      "annotated_dimensions_text": "12.8 m\u00b2",
+      "approx_width_mm": 4200.0,
+      "approx_depth_mm": 3100.0,
+      "dimension_provenance": "explicit",
+      "confidence": 0.95,
+      "source_bbox": [
+        0.38,
+        0.7,
+        0.48,
+        0.88
+      ]
+    },
+    {
+      "id": "R-MASTER-BED",
+      "raw_label": "17.6 m\u00b2",
+      "standardized_type": "bedroom",
+      "floor_level": "Level 1",
+      "annotated_dimensions_text": "17.6 m\u00b2",
+      "approx_width_mm": 3800.0,
+      "approx_depth_mm": 4200.0,
+      "dimension_provenance": "explicit",
+      "confidence": 0.95,
+      "source_bbox": [
+        0.27,
+        0.37,
+        0.42,
+        0.58
+      ]
+    },
+    {
+      "id": "R-BATHROOM",
+      "raw_label": "vannituba 6.5 m\u00b2",
+      "standardized_type": "bathroom",
+      "floor_level": "Level 1",
+      "annotated_dimensions_text": "6.5 m\u00b2",
+      "approx_width_mm": 3800.0,
+      "approx_depth_mm": 2500.0,
+      "dimension_provenance": "explicit",
+      "confidence": 0.95,
+      "source_bbox": [
+        0.44,
+        0.37,
+        0.53,
+        0.58
+      ]
+    },
+    {
+      "id": "R-LIVING-KITCHEN",
+      "raw_label": "Elutuba k\u00f6\u00f6k 65 m\u00b2",
+      "standardized_type": "living",
+      "floor_level": "Level 1",
+      "annotated_dimensions_text": "65 m\u00b2",
+      "approx_width_mm": 9600.0,
+      "approx_depth_mm": 6500.0,
+      "dimension_provenance": "explicit",
+      "confidence": 0.95,
+      "source_bbox": [
+        0.55,
+        0.36,
+        0.82,
+        0.9
+      ]
+    },
+    {
+      "id": "R-CORRIDOR",
+      "raw_label": "Koridor",
+      "standardized_type": "hallway",
+      "floor_level": "Level 1",
+      "annotated_dimensions_text": null,
+      "approx_width_mm": 1500.0,
+      "approx_depth_mm": 7000.0,
+      "dimension_provenance": "inferred",
+      "confidence": 0.85,
+      "source_bbox": [
+        0.22,
+        0.58,
+        0.52,
+        0.68
+      ]
+    },
+    {
+      "id": "R-TERRACE-SOUTH",
+      "raw_label": "Terrass",
+      "standardized_type": "terrace",
+      "floor_level": "Level 1",
+      "annotated_dimensions_text": "3000",
+      "approx_width_mm": 10000.0,
+      "approx_depth_mm": 3000.0,
+      "dimension_provenance": "explicit",
+      "confidence": 0.9,
+      "source_bbox": [
+        0.83,
+        0.36,
+        0.96,
+        0.9
+      ]
+    },
+    {
+      "id": "R-TERRACE-WEST",
+      "raw_label": "Terrass",
+      "standardized_type": "terrace",
+      "floor_level": "Level 1",
+      "annotated_dimensions_text": "14200",
+      "approx_width_mm": 5000.0,
+      "approx_depth_mm": 11000.0,
+      "dimension_provenance": "explicit",
+      "confidence": 0.85,
+      "source_bbox": [
+        0.35,
+        0.1,
+        0.83,
+        0.35
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-TOP-1",
+      "source_text": "5000",
+      "value_mm": 5000.0,
+      "unit_source": "mm",
+      "category": "explicit",
+      "target_entity_type": "overall_width",
+      "target_entity_id": "W-EXT-NORTH-1",
+      "confidence": 0.98,
+      "source_bbox": [
+        0.03,
+        0.17,
+        0.07,
+        0.28
+      ]
+    },
+    {
+      "id": "DIM-TOP-2",
+      "source_text": "10000",
+      "value_mm": 10000.0,
+      "unit_source": "mm",
+      "category": "explicit",
+      "target_entity_type": "overall_width",
+      "target_entity_id": "W-EXT-NORTH-2",
+      "confidence": 0.98,
+      "source_bbox": [
+        0.02,
+        0.55,
+        0.06,
+        0.68
+      ]
+    },
+    {
+      "id": "DIM-RIGHT-1",
+      "source_text": "16000",
+      "value_mm": 16000.0,
+      "unit_source": "mm",
+      "category": "explicit",
+      "target_entity_type": "overall_depth",
+      "target_entity_id": "W-EXT-EAST",
+      "confidence": 0.98,
+      "source_bbox": [
+        0.39,
+        0.94,
+        0.53,
+        0.99
+      ]
+    },
+    {
+      "id": "DIM-RIGHT-2",
+      "source_text": "3000",
+      "value_mm": 3000.0,
+      "unit_source": "mm",
+      "category": "explicit",
+      "target_entity_type": "overall_depth",
+      "target_entity_id": "R-TERRACE-SOUTH",
+      "confidence": 0.95,
+      "source_bbox": [
+        0.84,
+        0.94,
+        0.92,
+        0.99
+      ]
+    },
+    {
+      "id": "DIM-LEFT-1",
+      "source_text": "5000",
+      "value_mm": 5000.0,
+      "unit_source": "mm",
+      "category": "explicit",
+      "target_entity_type": "overall_depth",
+      "target_entity_id": "W-EXT-WEST-SAUNA",
+      "confidence": 0.98,
+      "source_bbox": [
+        0.17,
+        0.03,
+        0.28,
+        0.08
+      ]
+    },
+    {
+      "id": "DIM-LEFT-2",
+      "source_text": "14200",
+      "value_mm": 14200.0,
+      "unit_source": "mm",
+      "category": "explicit",
+      "target_entity_type": "overall_depth",
+      "target_entity_id": "R-TERRACE-WEST",
+      "confidence": 0.92,
+      "source_bbox": [
+        0.53,
+        0.03,
+        0.65,
+        0.08
+      ]
+    }
+  ],
+  "columns": [
+    {
+      "id": "COL-TERRACE-01",
+      "shape": "rectangular",
+      "width_mm_hint": 200.0,
+      "depth_mm_hint": 200.0,
+      "confidence": 0.9,
+      "source_bbox": [
+        0.93,
+        0.37,
+        0.96,
+        0.4
+      ]
+    },
+    {
+      "id": "COL-TERRACE-02",
+      "shape": "rectangular",
+      "width_mm_hint": 200.0,
+      "depth_mm_hint": 200.0,
+      "confidence": 0.9,
+      "source_bbox": [
+        0.93,
+        0.63,
+        0.96,
+        0.66
+      ]
+    },
+    {
+      "id": "COL-TERRACE-03",
+      "shape": "rectangular",
+      "width_mm_hint": 200.0,
+      "depth_mm_hint": 200.0,
+      "confidence": 0.9,
+      "source_bbox": [
+        0.93,
+        0.89,
+        0.96,
+        0.92
+      ]
+    }
+  ],
+  "symbols": [
+    {
+      "id": "SYM-FIREPLACE",
+      "symbol_type": "fireplace",
+      "description": "Fireplace and flue hearth marked 'kamin ahi'",
+      "is_recognized": true,
+      "confidence": 0.95,
+      "source_bbox": [
+        0.5,
+        0.68,
+        0.54,
+        0.77
+      ]
+    },
+    {
+      "id": "SYM-KITCHEN-ISLAND",
+      "symbol_type": "counter",
+      "description": "Kitchen island with breakfast bar seating labeled 'Lett'",
+      "is_recognized": true,
+      "confidence": 0.95,
+      "source_bbox": [
+        0.62,
+        0.47,
+        0.71,
+        0.58
+      ]
+    },
+    {
+      "id": "SYM-COOKTOP",
+      "symbol_type": "cooktop",
+      "description": "4-burner cooking range [88] on L-counter",
+      "is_recognized": true,
+      "confidence": 0.95,
+      "source_bbox": [
+        0.54,
+        0.48,
+        0.58,
+        0.53
+      ]
+    },
+    {
+      "id": "SYM-SAUNA-HEATER",
+      "symbol_type": "stove",
+      "description": "Sauna heater unit [O] in corner of Saun",
+      "is_recognized": true,
+      "confidence": 0.95,
+      "source_bbox": [
+        0.26,
+        0.17,
+        0.29,
+        0.2
+      ]
+    },
+    {
+      "id": "SYM-TV-UNIT",
+      "symbol_type": "furniture",
+      "description": "Wall-mounted TV / media unit along East wall",
+      "is_recognized": true,
+      "confidence": 0.9,
+      "source_bbox": [
+        0.55,
+        0.86,
+        0.67,
+        0.89
+      ]
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "UNC-01",
+      "field": "dimensions.depth_chain_arithmetic",
+      "description": "Arithmetic conflict between West dimension chain (5000 + 14200 = 19200 mm) and East dimension chain (16000 + 3000 = 19000 mm). Difference is 200 mm. Both original measurements are preserved. Building datum 19000 mm is retained only as a current drafting interpretation; the discrepancy remains an active unresolved blocker.",
+      "severity": "blocker",
+      "suggested_action": "Seek author/client clarification or verify on site. Document as variance on drawing sheet.",
+      "conflicting_values": [
+        "19200 mm (West side: 5000 mm sauna wing + 14200 mm terrace run)",
+        "19000 mm (East side: 16000 mm main house + 3000 mm terrace)"
+      ]
+    },
+    {
+      "id": "UNC-02",
+      "field": "walls.W-INT-MASTER-BATH_position",
+      "description": "Bathroom partition source contradiction: Visible ink line is drawn at Y \u2248 460 px (yielding Y = 9200 mm, clear area 10.01 m\u00b2), whereas written text annotation specifies 'vannituba 6,5 m\u00b2'. Drafting interpretation Alternative 1A retained per human instruction; conflict preserved in records.",
+      "severity": "warning",
+      "suggested_action": "Retain Y=9200 mm for drafting to accommodate bathtub and door clearances; record label conflict.",
+      "conflicting_values": [
+        "10.01 m\u00b2 clear area (from drawn partition line at Y=9200 mm)",
+        "6.5 m\u00b2 (from handwritten room text label)"
+      ]
+    },
+    {
+      "id": "UNC-03",
+      "field": "walls.W-INT-SAUNA-HORIZ_position",
+      "description": "Shower / Sauna partition placement: Revised to Y \u2248 13000 mm per Alternative 2A, providing a 3.0m deep shower (clear 4.70 m\u00b2) and 2.0m deep sauna (clear 3.05 m\u00b2). This is supported by drawn pixel ratio (136 px : 84 px = 1.62:1) and written labels (6 m\u00b2 : 4 m\u00b2 = 1.50:1), but remains an interpreted coordinate rather than an explicit dimension.",
+      "severity": "warning",
+      "suggested_action": "Approved for drafting as source-supported interpretation REV-03.",
+      "conflicting_values": [
+        "Y = 13000 mm (Alternative 2A: source-supported 3m/2m split)",
+        "Y = 13500 mm (Former Alternative 2B: arbitrary 50/50 midpoint)"
+      ]
+    },
+    {
+      "id": "UNC-04",
+      "field": "rooms.R-CORRIDOR_boundary",
+      "description": "Central corridor is an unannotated circulation zone open to the living room at Y = 6500 mm. No separating wall is drawn. Modeled area (10.65 m\u00b2 centerline, 9.87 m\u00b2 clear) is an inferred spatial boundary.",
+      "severity": "info",
+      "suggested_action": "Preserve as open circulation space without physical divider.",
+      "conflicting_values": [
+        "None (unannotated circulation)"
+      ]
+    },
+    {
+      "id": "UNC-05",
+      "field": "walls.interior_thickness",
+      "description": "Wall thicknesses unannotated on sketch. Proposed drafting defaults: 200 mm exterior envelope, 100 mm interior partitions, 150 mm plumbing core / party wall.",
+      "severity": "warning",
+      "suggested_action": "Confirm or adjust wall thicknesses prior to final CAD/BIM export.",
+      "conflicting_values": [
+        "Proposed: 200mm ext / 100mm int / 150mm core (Unverified)"
+      ]
+    },
+    {
+      "id": "UNC-06",
+      "field": "openings.window_widths",
+      "description": "Opening widths unannotated numerically. Proposed standard modular sizes: 600-1800 mm windows, 700-900 mm doors, 1500/2400 mm patio sliders.",
+      "severity": "warning",
+      "suggested_action": "Confirm or adjust opening schedules.",
+      "conflicting_values": [
+        "Proposed modular opening widths (Unverified)"
+      ]
+    },
+    {
+      "id": "UNC-07",
+      "field": "openings.window_sill_heights",
+      "description": "Window sill heights unannotated on 2D floor plan. Designated UNKNOWN in 2D CAD model; deferred to downstream 3D BIM integration preflight.",
+      "severity": "info",
+      "suggested_action": "Review in downstream 3D BIM preflight.",
+      "conflicting_values": [
+        "UNKNOWN in 2D"
+      ]
+    },
+    {
+      "id": "UNC-08",
+      "field": "rooms.R-WC_geometry",
+      "description": "WC compact powder room reconciliation: In source sketch, labeled 'WC 2.4 m\u00b2'. Modeled as width 900 mm (X=9600..10500) and depth 1500 mm (Y=14500..16000), yielding clear area 1.12 m\u00b2 (gross 1.35 m\u00b2). The previous 2400 mm deep tubular space was identified by user as conflicting with the sketch. Compact 1500 mm depth is adopted per human instruction; 2.4 m\u00b2 label discrepancy is recorded as an authentic variance.",
+      "severity": "warning",
+      "suggested_action": "Retain 900x1500 mm compact powder room with south door; document 2.4 m\u00b2 label variance.",
+      "conflicting_values": [
+        "1.12 m\u00b2 clear / 1.35 m\u00b2 gross (from compact 1500 mm depth partition)",
+        "2.4 m\u00b2 (from handwritten source text label)"
+      ]
+    }
+  ],
+  "revision_history": [
+    {
+      "timestamp": "2026-11-03T19:25:00Z",
+      "reviewer": "Human Reviewer / Antigravity Agent",
+      "action": "human_review_audit",
+      "reason": "Rebuilt observations and model following human review. Retained 14,200 mm observation without automatic modification. Categorized all wall thicknesses, window widths, and door clearances as proposed unverified values. Removed 2D sill height default, designating it unknown."
+    },
+    {
+      "timestamp": "2026-11-03T20:05:00Z",
+      "reviewer": "Human Reviewer / Antigravity Agent",
+      "action": "controlled_model_revision_rev03",
+      "reason": "Applied authorized drafting decisions: (1) Bathroom partition retained at Y=9200 mm (Alternative 1A) prioritizing drawn ink line over conflicting 6.5 m\u00b2 label; (2) Shower/sauna partition revised to Y=13000 mm (Alternative 2A) per 136px/84px pixel ratio and 6m\u00b2/4m\u00b2 labels; (3) UNC-01 preserved as active unresolved blocker with 19000 mm building datum retained only as drafting interpretation; (4) Corridor preserved as open circulation space."
+    },
+    {
+      "timestamp": "2026-11-03T20:05:00Z",
+      "reviewer": "Human Reviewer / Antigravity Agent",
+      "action": "controlled_model_revision_rev03",
+      "reason": "Applied authorized drafting decisions: (1) Bathroom partition retained at Y=9200 mm (Alternative 1A) prioritizing drawn ink line over conflicting 6.5 m\u00b2 label; (2) Shower/sauna partition revised to Y=13000 mm (Alternative 2A) per 136px/84px pixel ratio and 6m\u00b2/4m\u00b2 labels; (3) UNC-01 preserved as active unresolved blocker with 19000 mm building datum retained only as drafting interpretation; (4) Corridor preserved as open circulation space."
+    },
+    {
+      "timestamp": "2026-11-04T00:00:00Z",
+      "reviewer": "Human Reviewer / Antigravity Agent",
+      "action": "controlled_model_revision_rev04",
+      "reason": "Layout correction per user review and source sketch inspection: (1) Added Master Bedroom north enclosing wall at Y=12400 mm establishing the distinct horizontal circulation walkway (Y=12400..13600 mm) connecting hallway, utility, tech, and sauna lounge; (2) Reduced WC depth from 2400 mm to 1500 mm via south wall at Y=14500 mm to match compact source sketch powder room proportion; (3) Aligned west separating wall W-INT-SAUNA-EAST to 200 mm thickness eliminating 25 mm offset jog at X=5000 mm; (4) Corrected bed insertion coordinates for E-BED-01, E-BED-02, and E-BED-MASTER eliminating wall and door clashes; (5) Realigned doors to host walls in the new circulation walkway."
+    },
+    {
+      "timestamp": "2026-11-04T00:15:00Z",
+      "reviewer": "Human Reviewer / Antigravity Agent",
+      "action": "master_bedroom_arrangement_alignment",
+      "reason": "Realigned Master Bedroom furniture arrangement per user review and source sketch closeup (media_1793731256114_e201db4c.png): (1) Moved bed headboard flush against north wall inner face (Y=12350 mm, pos=[5825, 10350]); (2) Added flanking bedside nightstands E-NIGHTSTAND-M-L and E-NIGHTSTAND-M-R; (3) Added east wall wardrobe E-WARDROBE-MASTER (kapp); (4) Realigned entry door D-MASTER-BED to Y=9900 mm south of wardrobe; (5) Repositioned room label to [6725, 9750] in clear floor area below bed to eliminate text-furniture collision."
+    }
+  ]
+}
