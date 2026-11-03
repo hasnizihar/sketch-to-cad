@@ -83,6 +83,10 @@ $TEXTSTYLE
   7
 Standard
   9
+$CTABLESTYLE
+  7
+Standard
+  9
 $CLAYER
   8
 A-ANNO-TEXT
@@ -170,6 +174,266 @@ $MEASUREMENT
 $PSLTSCALE
  70
 1
+  9
+$DIMASZ
+ 40
+2.5
+  9
+$DIMEXO
+ 40
+0.625
+  9
+$DIMEXE
+ 40
+1.25
+  9
+$DIMTXT
+ 40
+2.5
+  9
+$DIMGAP
+ 40
+0.625
+  9
+$DIMDEC
+ 70
+2
+  9
+$DIMADEC
+ 70
+0
+  9
+$DIMLFAC
+ 40
+1.0
+  9
+$DIMTAD
+ 70
+1
+  9
+$DIMTIH
+ 70
+0
+  9
+$DIMTOH
+ 70
+0
+  9
+$DIMBLK
+  1
+
+  9
+$DIMBLK1
+  1
+
+  9
+$DIMBLK2
+  1
+
+  9
+$DIMTSZ
+ 40
+0.0
+  9
+$DIMCLRD
+ 70
+0
+  9
+$DIMCLRE
+ 70
+0
+  9
+$DIMCLRT
+ 70
+0
+  9
+$DIMTFILL
+ 70
+0
+  9
+$DIMTFILLCLR
+ 70
+0
+  9
+$DIMTXSTY
+  7
+Standard
+  9
+$DIMPOST
+  1
+
+  9
+$DIMCEN
+ 40
+2.5
+  9
+$DIMZIN
+ 70
+8
+  9
+$DIMLUNIT
+ 70
+2
+  9
+$DIMTOL
+ 70
+0
+  9
+$DIMTP
+ 40
+0.0
+  9
+$DIMTM
+ 40
+0.0
+  9
+$DIMDLI
+ 40
+3.75
+  9
+$DIMDLE
+ 40
+0.0
+  9
+$DIMJUST
+ 70
+0
+  9
+$DIMRND
+ 40
+0.0
+  9
+$DIMDSEP
+ 70
+46
+  9
+$DIMFRAC
+ 70
+0
+  9
+$DIMLIM
+ 70
+0
+  9
+$DIMTDEC
+ 70
+4
+  9
+$DIMTFAC
+ 40
+1.0
+  9
+$DIMTZIN
+ 70
+0
+  9
+$DIMALT
+ 70
+0
+  9
+$DIMALTF
+ 40
+25.4
+  9
+$DIMALTD
+ 70
+2
+  9
+$DIMAPOST
+  1
+
+  9
+$DIMALTRND
+ 40
+0.0
+  9
+$DIMALTU
+ 70
+2
+  9
+$DIMALTZ
+ 70
+0
+  9
+$DIMAUNIT
+ 70
+0
+  9
+$DIMSE1
+ 70
+0
+  9
+$DIMSE2
+ 70
+0
+  9
+$DIMSD1
+ 70
+0
+  9
+$DIMSD2
+ 70
+0
+  9
+$DIMATFIT
+ 70
+3
+  9
+$DIMTIX
+ 70
+0
+  9
+$DIMSOXD
+ 70
+0
+  9
+$DIMTOFL
+ 70
+1
+  9
+$DIMTMOVE
+ 70
+0
+  9
+$DIMTVP
+ 40
+0.0
+  9
+$DIMTOLJ
+ 70
+0
+  9
+$DIMAZIN
+ 70
+0
+  9
+$DIMARCSYM
+ 70
+0
+  9
+$DIMLDRBLK
+  1
+
+  9
+$DIMLWD
+ 70
+-2
+  9
+$DIMLWE
+ 70
+-2
+  9
+$DIMFXLON
+ 70
+0
+  9
+$DIMFXL
+ 40
+1.0
+  9
+$DIMJOGANG
+ 40
+0.7853981633974483
   9
 $HANDSEED
   5
@@ -910,6 +1174,8 @@ AcDbDimStyleTableRecord
 Standard
  70
 0
+  3
+
  40
 1.0
  41
@@ -1040,6 +1306,8 @@ AcDbDimStyleTableRecord
 ISO-25
  70
 0
+  3
+
  40
 1.0
  41
@@ -1491,7 +1759,7 @@ Straight flight with 10 treads (270mm run) and walking line
   0
 LWPOLYLINE
   5
-13D
+139
 330
 1174
 100
@@ -1523,7 +1791,7 @@ AcDbPolyline
   0
 LINE
   5
-13E
+13A
 330
 1174
 100
@@ -1542,6 +1810,102 @@ AcDbLine
 1000.0
  21
 270.0
+ 31
+0.0
+  0
+LINE
+  5
+13B
+330
+1174
+100
+AcDbEntity
+  8
+A-STAIR
+100
+AcDbLine
+ 10
+0.0
+ 20
+540.0
+ 30
+0.0
+ 11
+1000.0
+ 21
+540.0
+ 31
+0.0
+  0
+LINE
+  5
+13C
+330
+1174
+100
+AcDbEntity
+  8
+A-STAIR
+100
+AcDbLine
+ 10
+0.0
+ 20
+810.0
+ 30
+0.0
+ 11
+1000.0
+ 21
+810.0
+ 31
+0.0
+  0
+LINE
+  5
+13D
+330
+1174
+100
+AcDbEntity
+  8
+A-STAIR
+100
+AcDbLine
+ 10
+0.0
+ 20
+1080.0
+ 30
+0.0
+ 11
+1000.0
+ 21
+1080.0
+ 31
+0.0
+  0
+LINE
+  5
+13E
+330
+1174
+100
+AcDbEntity
+  8
+A-STAIR
+100
+AcDbLine
+ 10
+0.0
+ 20
+1350.0
+ 30
+0.0
+ 11
+1000.0
+ 21
+1350.0
  31
 0.0
   0
@@ -1559,13 +1923,13 @@ AcDbLine
  10
 0.0
  20
-540.0
+1620.0
  30
 0.0
  11
 1000.0
  21
-540.0
+1620.0
  31
 0.0
   0
@@ -1583,13 +1947,13 @@ AcDbLine
  10
 0.0
  20
-810.0
+1890.0
  30
 0.0
  11
 1000.0
  21
-810.0
+1890.0
  31
 0.0
   0
@@ -1607,13 +1971,13 @@ AcDbLine
  10
 0.0
  20
-1080.0
+2160.0
  30
 0.0
  11
 1000.0
  21
-1080.0
+2160.0
  31
 0.0
   0
@@ -1631,115 +1995,19 @@ AcDbLine
  10
 0.0
  20
-1350.0
+2430.0
  30
 0.0
  11
 1000.0
  21
-1350.0
+2430.0
  31
 0.0
   0
 LINE
   5
 143
-330
-1174
-100
-AcDbEntity
-  8
-A-STAIR
-100
-AcDbLine
- 10
-0.0
- 20
-1620.0
- 30
-0.0
- 11
-1000.0
- 21
-1620.0
- 31
-0.0
-  0
-LINE
-  5
-144
-330
-1174
-100
-AcDbEntity
-  8
-A-STAIR
-100
-AcDbLine
- 10
-0.0
- 20
-1890.0
- 30
-0.0
- 11
-1000.0
- 21
-1890.0
- 31
-0.0
-  0
-LINE
-  5
-145
-330
-1174
-100
-AcDbEntity
-  8
-A-STAIR
-100
-AcDbLine
- 10
-0.0
- 20
-2160.0
- 30
-0.0
- 11
-1000.0
- 21
-2160.0
- 31
-0.0
-  0
-LINE
-  5
-146
-330
-1174
-100
-AcDbEntity
-  8
-A-STAIR
-100
-AcDbLine
- 10
-0.0
- 20
-2430.0
- 30
-0.0
- 11
-1000.0
- 21
-2430.0
- 31
-0.0
-  0
-LINE
-  5
-147
 330
 1174
 100
@@ -1763,7 +2031,7 @@ AcDbLine
   0
 LINE
   5
-148
+144
 330
 1174
 100
@@ -1787,7 +2055,7 @@ AcDbLine
   0
 LINE
   5
-149
+145
 330
 1174
 100
@@ -1851,7 +2119,7 @@ Double-basin kitchen sink 800x500mm with mixer faucet
   0
 LWPOLYLINE
   5
-12C
+14A
 330
 1175
 100
@@ -1883,7 +2151,7 @@ AcDbPolyline
   0
 LWPOLYLINE
   5
-12D
+14B
 330
 1175
 100
@@ -1915,7 +2183,7 @@ AcDbPolyline
   0
 LWPOLYLINE
   5
-12E
+14C
 330
 1175
 100
@@ -1947,7 +2215,7 @@ AcDbPolyline
   0
 CIRCLE
   5
-12F
+14D
 330
 1175
 100
@@ -2007,7 +2275,7 @@ Dining table 1500x900mm with 4 chair footprints
   0
 LWPOLYLINE
   5
-14F
+127
 330
 1176
 100
@@ -2039,7 +2307,7 @@ AcDbPolyline
   0
 LWPOLYLINE
   5
-150
+128
 330
 1176
 100
@@ -2071,7 +2339,7 @@ AcDbPolyline
   0
 LWPOLYLINE
   5
-151
+129
 330
 1176
 100
@@ -2103,7 +2371,7 @@ AcDbPolyline
   0
 LWPOLYLINE
   5
-152
+12A
 330
 1176
 100
@@ -2135,7 +2403,7 @@ AcDbPolyline
   0
 LWPOLYLINE
   5
-153
+12B
 330
 1176
 100
@@ -2207,7 +2475,7 @@ Three-seater sofa 2100x850mm with backrest and three cushions
   0
 LWPOLYLINE
   5
-15A
+154
 330
 1177
 100
@@ -2239,7 +2507,7 @@ AcDbPolyline
   0
 LINE
   5
-15B
+155
 330
 1177
 100
@@ -2263,7 +2531,7 @@ AcDbLine
   0
 LINE
   5
-15C
+156
 330
 1177
 100
@@ -2287,7 +2555,7 @@ AcDbLine
   0
 LINE
   5
-15D
+157
 330
 1177
 100
@@ -2311,7 +2579,7 @@ AcDbLine
   0
 LINE
   5
-15E
+158
 330
 1177
 100
@@ -2335,7 +2603,7 @@ AcDbLine
   0
 LINE
   5
-15F
+159
 330
 1177
 100
@@ -2399,7 +2667,7 @@ Square reinforced concrete column 200x200mm
   0
 LWPOLYLINE
   5
-125
+15D
 330
 1178
 100
@@ -2431,7 +2699,7 @@ AcDbPolyline
   0
 LINE
   5
-126
+15E
 330
 1178
 100
@@ -2455,7 +2723,7 @@ AcDbLine
   0
 LINE
   5
-127
+15F
 330
 1178
 100
@@ -2685,7 +2953,7 @@ AcDbMText
  10
 4000.0
  20
-9301.875
+9302.125
  30
 0.0
  40
@@ -2695,7 +2963,7 @@ AcDbMText
  71
 5
  72
-1
+5
   1
 8000
   7
@@ -2911,7 +3179,7 @@ A-ANNO-DIMS
 100
 AcDbMText
  10
-8598.125
+8597.875
  20
 4350.0
  30
@@ -2923,7 +3191,7 @@ AcDbMText
  71
 5
  72
-1
+5
   1
 8700
   7
@@ -4061,9 +4329,9 @@ A-ANNO-TEXT
 100
 AcDbText
  10
-4000.0
+2932.0
  20
-2500.0
+2410.0
  30
 0.0
  40
@@ -4097,9 +4365,9 @@ A-ANNO-TEXT
 100
 AcDbText
  10
-4000.0
+3642.5
  20
-2250.0
+2185.0
  30
 0.0
  40
@@ -4133,9 +4401,9 @@ A-ANNO-TEXT
 100
 AcDbText
  10
-2000.0
+1466.0
  20
-6800.0
+6710.0
  30
 0.0
  40
@@ -4169,9 +4437,9 @@ A-ANNO-TEXT
 100
 AcDbText
  10
-2000.0
+1642.5
  20
-6550.0
+6485.0
  30
 0.0
  40
@@ -4205,9 +4473,9 @@ A-ANNO-TEXT
 100
 AcDbText
  10
-6000.0
+5010.0
  20
-6800.0
+6710.0
  30
 0.0
  40
@@ -4241,9 +4509,9 @@ A-ANNO-TEXT
 100
 AcDbText
  10
-6000.0
+5642.5
  20
-6550.0
+6485.0
  30
 0.0
  40
@@ -4287,7 +4555,7 @@ AcDbDimension
  11
 4000.0
  21
-9301.875
+9302.125
  31
 0.0
  70
@@ -4337,7 +4605,7 @@ AcDbDimension
  30
 0.0
  11
-8598.125
+8597.875
  21
 4350.0
  31
@@ -4383,7 +4651,7 @@ AcDbText
  10
 0.0
  20
--750.0
+-690.0
  30
 0.0
  40
@@ -4417,7 +4685,7 @@ AcDbText
  10
 0.0
  20
--990.0
+-946.6666666666666
  30
 0.0
  40
@@ -4551,15 +4819,15 @@ AcDbMLeaderStyle
 290
 1
  42
-0.09
+0.625
 291
 1
  43
-0.36
+5.0
   3
 
  44
-0.18
+2.5
 300
 
 342
@@ -4575,7 +4843,7 @@ AcDbMLeaderStyle
  93
 -1056964608
  45
-0.18
+2.5
 292
 0
 297
@@ -4701,9 +4969,9 @@ AcDbTableStyle
  71
 0
  40
-0.06
+1.0
  41
-0.06
+1.0
 280
 0
 281
@@ -4711,7 +4979,7 @@ AcDbTableStyle
   7
 Standard
 140
-0.18
+2.5
 170
 4
  62
@@ -4759,7 +5027,7 @@ Standard
   7
 Standard
 140
-0.18
+2.5
 170
 5
  62
@@ -4807,7 +5075,7 @@ Standard
   7
 Standard
 140
-0.252
+3.5
 170
 5
  62
@@ -5485,7 +5753,7 @@ ANSI_A_(8.50_x_11.00_Inches)
  70
 688
  72
-0
+1
  73
 1
  74
@@ -5605,7 +5873,7 @@ ANSI_A_(8.50_x_11.00_Inches)
  70
 688
  72
-0
+1
  73
 1
  74
@@ -5725,7 +5993,7 @@ ANSI_A_(8.50_x_11.00_Inches)
  70
 688
  72
-0
+1
  73
 1
  74

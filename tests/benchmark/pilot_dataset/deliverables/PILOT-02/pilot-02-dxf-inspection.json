@@ -1,8 +1,8 @@
 {
-  "file_path": "D:\\Agent Skills\\sketch-to-cad-main\\tests\\benchmark\\pilot_dataset\\deliverables\\PILOT-02\\pilot-02-authentic-residential-villa.dxf",
+  "file_path": "tests\\benchmark\\pilot_dataset\\deliverables\\PILOT-02\\pilot-02-authentic-residential-villa.dxf",
   "file_name": "pilot-02-authentic-residential-villa.dxf",
-  "file_size_bytes": 25807,
-  "sha256_hash": "0e0273f5761ccb8a40842731db13844473281a726a7738413deda7695fa6c216",
+  "file_size_bytes": 25767,
+  "sha256_hash": "96f8d9424942f0476577ec3e97c21ae3fd9e74ed0565d04392a6e3b4b574cda3",
   "overall_status": "PASSED",
   "header": {
     "dxf_version": "AC1032",
@@ -10,7 +10,7 @@
     "units_name": "Millimeters",
     "extents_min": [
       -100.0,
-      -946.67
+      -1000.0
     ],
     "extents_max": [
       8100.0,
@@ -18,7 +18,7 @@
     ],
     "dimensions_span": [
       8200.0,
-      9746.67
+      9800.0
     ]
   },
   "layers": [

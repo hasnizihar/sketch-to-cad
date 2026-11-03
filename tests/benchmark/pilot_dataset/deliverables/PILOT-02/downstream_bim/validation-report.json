@@ -1,0 +1,165 @@
+{
+  "timestamp": "2026-11-03T13:12:26.556564+00:00",
+  "projectName": "SketchToCadImport",
+  "overallStatus": "PASSED",
+  "checks": [
+    {
+      "category": "Export Deliverables",
+      "name": "Native BIMCraft Project File Verification",
+      "status": "PASSED",
+      "details": "File exists at sketchtocadimport.bimcraft with size 159737 bytes"
+    },
+    {
+      "category": "Export Deliverables",
+      "name": "IFC4 Export File Verification",
+      "status": "PASSED",
+      "details": "File exists at sketchtocadimport.ifc with size 11010 bytes"
+    },
+    {
+      "category": "Export Deliverables",
+      "name": "Plan Preview PNG File Verification",
+      "status": "PASSED",
+      "details": "File exists at sketchtocadimport.png with size 117978 bytes"
+    },
+    {
+      "category": "Native Project Inspection",
+      "name": "Reopen Native Project",
+      "status": "PASSED",
+      "details": "Successfully reopened and inspected .bimcraft project structure"
+    },
+    {
+      "category": "IFC Verification",
+      "name": "Parse IFC Model",
+      "status": "PASSED",
+      "details": "IFC4 parsed successfully (schema: IFC4)"
+    },
+    {
+      "category": "Geometric Topology",
+      "name": "Wall Voiding and Opening Penetration",
+      "status": "PASSED",
+      "details": "All doors and windows are verified to create IfcOpeningElement voids that cut their host IfcWalls via IfcRelVoidsElement and IfcRelFillsElement."
+    },
+    {
+      "category": "Spatial Structure",
+      "name": "Storey Containment",
+      "status": "PASSED",
+      "details": "All architectural elements are formally assigned to building storeys via IfcRelContainedInSpatialStructure."
+    },
+    {
+      "category": "Geometric Topology",
+      "name": "Wall Element Count",
+      "status": "PASSED",
+      "details": "Expected 5 walls, found 5 in IFC",
+      "numericalDifference": 0.0
+    },
+    {
+      "category": "Geometric Topology",
+      "name": "Door Opening Count",
+      "status": "PASSED",
+      "details": "Expected 1 doors, found 1 in IFC",
+      "numericalDifference": 0.0
+    },
+    {
+      "category": "Geometric Topology",
+      "name": "Window Opening Count",
+      "status": "PASSED",
+      "details": "Expected 1 windows, found 1 in IFC",
+      "numericalDifference": 0.0
+    },
+    {
+      "category": "Spatial Topology",
+      "name": "Room / Space Element Count",
+      "status": "PASSED",
+      "details": "Expected 3 architectural room(s), found 3 in IFC",
+      "numericalDifference": 0.0
+    },
+    {
+      "category": "Spatial Topology",
+      "name": "Room Area Monotonicity & Wall Thickness Accounting",
+      "status": "PASSED",
+      "details": "All room net areas strictly account for wall thickness (net <= gross)"
+    },
+    {
+      "category": "Spatial Structure",
+      "name": "Storey Level Count",
+      "status": "PASSED",
+      "details": "Expected 2 levels (2 occupied storeys, 0 roof datum), found 2 in IFC",
+      "numericalDifference": 0.0
+    },
+    {
+      "category": "Spatial Structure",
+      "name": "Storey Elevation Monotonicity",
+      "status": "PASSED",
+      "details": "Storey elevations are strictly ascending: [0.0, 3000.0]"
+    },
+    {
+      "category": "Geometric Topology",
+      "name": "Opening Host Alignment",
+      "status": "PASSED",
+      "details": "All 2 openings align within tolerance to their host walls."
+    },
+    {
+      "category": "Geometric Topology",
+      "name": "Opening Boundary Containment",
+      "status": "PASSED",
+      "details": "All opening widths fit cleanly within their host wall lengths."
+    },
+    {
+      "category": "Geometric Topology",
+      "name": "Floor Slab floor_1 Boundary",
+      "status": "PASSED",
+      "details": "Slab boundary is a closed, valid polygon with area 24.00 m\u00b2."
+    }
+  ],
+  "elementSummary": {
+    "expected": {
+      "walls": 5,
+      "doors": 1,
+      "windows": 1,
+      "levels": 2,
+      "roofs": 0,
+      "stairs": 0,
+      "stair_flights": 0,
+      "railings": 0,
+      "grids": 0,
+      "columns": 0,
+      "beams": 0,
+      "foundations": 0,
+      "structural_slabs": 0,
+      "rooms": 3,
+      "pipes": 0,
+      "cable_trays": 0,
+      "conduits": 0,
+      "ducts": 0,
+      "fixtures": 0,
+      "mep_clashes": 0
+    },
+    "generated": {
+      "walls": 5,
+      "doors": 1,
+      "windows": 1,
+      "levels": 2,
+      "roofs": 0,
+      "stairs": 0,
+      "stair_flights": 0,
+      "railings": 0,
+      "grids": 0,
+      "columns": 0,
+      "beams": 0,
+      "foundations": 0,
+      "structural_slabs": 0,
+      "rooms": 3,
+      "pipes": 0,
+      "cable_trays": 0,
+      "conduits": 0,
+      "ducts": 0,
+      "fixtures": 0,
+      "mep_clashes": 0
+    }
+  },
+  "deliverables": {
+    "bimcraftPath": "tests\\benchmark\\pilot_dataset\\deliverables\\PILOT-02\\downstream_bim\\sketchtocadimport.bimcraft",
+    "ifcPath": "tests\\benchmark\\pilot_dataset\\deliverables\\PILOT-02\\downstream_bim\\sketchtocadimport.ifc",
+    "previewPngPath": "tests\\benchmark\\pilot_dataset\\deliverables\\PILOT-02\\downstream_bim\\sketchtocadimport.png"
+  }
+}

@@ -611,6 +611,19 @@ def compile_draft_model(
                 center = [round(cx, 1), round(cy, 1)]
             else:
                 center = [env_w * 0.5, 0.0]
+
+        # Project opening center onto host wall centerline
+        host_wall_obj = next((w for w in draft_model["walls"] if w.get("id") == wall_id), None)
+        if host_wall_obj and "start" in host_wall_obj and "end" in host_wall_obj:
+            ws = host_wall_obj["start"]
+            we = host_wall_obj["end"]
+            dx = we[0] - ws[0]
+            dy = we[1] - ws[1]
+            seg_len_sq = dx * dx + dy * dy
+            if seg_len_sq > 0:
+                t = ((center[0] - ws[0]) * dx + (center[1] - ws[1]) * dy) / seg_len_sq
+                t = max(0.1, min(0.9, t))
+                center = [round(ws[0] + t * dx, 1), round(ws[1] + t * dy, 1)]
         raw_type = op.get("type", "door")
         op_type = "cased_opening" if raw_type not in ("door", "window") else raw_type
         raw_swing = op.get("swing_direction") or "none"

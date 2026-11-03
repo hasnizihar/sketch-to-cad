@@ -124,6 +124,7 @@ $ExpectedFiles = @(
     "references\real-ai-vision-accuracy.md",
     "references\vision-provider-validation.md",
     "references\milestone-13-results.md",
+    "references\final-release-audit.md",
     "schemas\floor-plan-model.json",
     "schemas\bim-handoff.schema.json",
     "schemas\architectural-report.schema.json",

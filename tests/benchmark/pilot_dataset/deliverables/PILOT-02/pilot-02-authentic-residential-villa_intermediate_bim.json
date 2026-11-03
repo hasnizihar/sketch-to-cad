@@ -3,10 +3,10 @@
   "metadata": {
     "projectName": "SketchToCadImport",
     "sourceJsonPath": "tests\\benchmark\\pilot_dataset\\deliverables\\PILOT-02\\pilot-02-authentic-residential-villa.handoff.json",
-    "createdAt": "2026-11-03T12:38:23.732344+00:00",
-    "updatedAt": "2026-11-03T12:38:23.732344+00:00"
+    "createdAt": "2026-11-03T13:11:20.477979+00:00",
+    "updatedAt": "2026-11-03T13:12:17.227590+00:00"
   },
-  "status": "awaiting_approval",
+  "status": "approved",
   "units": {
     "sourceUnits": "mm",
     "normalizedUnits": "mm",
@@ -134,7 +134,7 @@
       "wallId": "W-EXT-SOUTH",
       "center": [
         4000.0,
-        957.0
+        0.0
       ],
       "width": 1000.0,
       "height": 2100.0,
@@ -145,7 +145,7 @@
       "type": "window",
       "wallId": "W-EXT-WEST",
       "center": [
-        880.0,
+        0.0,
         4350.0
       ],
       "width": 1200.0,
@@ -237,7 +237,11 @@
     }
   ],
   "approval": {
-    "isApproved": false,
-    "notes": "Imported from Sketch-to-CAD model. Awaiting 3D approval."
+    "isApproved": true,
+    "approvedBy": "Lead Architect",
+    "approvedAt": "2026-11-03T13:12:17.227590+00:00",
+    "modelHash": "1dbb331d24d681a9f0d285d34522300c5951295acbfc093908dd35bc9af16146",
+    "notes": "Verified vertical parameters and wall axis alignments",
+    "approvalMethod": "interactive"
   }
 }

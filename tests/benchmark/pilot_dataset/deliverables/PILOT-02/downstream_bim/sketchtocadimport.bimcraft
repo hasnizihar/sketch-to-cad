@@ -1,0 +1,6718 @@
+{
+  "format": 6,
+  "name": "Project",
+  "uid": 5508489273681867980,
+  "units": "mm",
+  "language": "en",
+  "next_id": 100019,
+  "types": {
+    "wall": {
+      "Exterior - 300mm": {
+        "thickness": 300.0,
+        "layers": [
+          {
+            "id": 999684,
+            "guid": "f4268f78-1302-42de-9c01-de45c79b6595",
+            "function": "finish",
+            "material": "8eae0bc2-2185-4236-84af-84abdddd90f6",
+            "thickness": 100.0
+          },
+          {
+            "id": 999683,
+            "guid": "0ffbd13a-efd0-4e15-acc6-128233cb1504",
+            "function": "thermal",
+            "material": "36bdf631-1c10-4133-86ec-ace93895f097",
+            "thickness": 50.0
+          },
+          {
+            "id": 999682,
+            "guid": "cec35361-34e4-4091-9395-a5c04b46ce0a",
+            "function": "structure",
+            "material": "29f095b0-3b2c-4fcf-a4c8-3eacc1b5e5c6",
+            "thickness": 140.0
+          },
+          {
+            "id": 999681,
+            "guid": "e5e6b632-b9dc-4147-8b29-def8009fdd77",
+            "function": "finish",
+            "material": "c63799c6-02ce-4326-abd8-77e5a18c9628",
+            "thickness": 10.0
+          }
+        ]
+      },
+      "Generic - 200mm": {
+        "thickness": 200.0
+      },
+      "Interior - 100mm": {
+        "thickness": 100.0
+      }
+    },
+    "floor": {
+      "Generic - 200mm": {
+        "thickness": 200.0
+      }
+    },
+    "door": {
+      "Single 800 x 2100": {
+        "width": 800.0,
+        "height": 2100.0,
+        "sill": 0.0
+      },
+      "Single 900 x 2100": {
+        "width": 900.0,
+        "height": 2100.0,
+        "sill": 0.0
+      }
+    },
+    "window": {
+      "Fixed 1200 x 1500": {
+        "width": 1200.0,
+        "height": 1500.0,
+        "sill": 900.0
+      },
+      "Fixed 600 x 900": {
+        "width": 600.0,
+        "height": 900.0,
+        "sill": 1100.0
+      }
+    },
+    "column": {
+      "Rectangular 400 x 400": {
+        "width": 400.0,
+        "depth": 400.0,
+        "round": false
+      },
+      "Round 300": {
+        "width": 300.0,
+        "depth": 300.0,
+        "round": true
+      }
+    },
+    "roof": {
+      "Generic - 300mm": {
+        "thickness": 300.0
+      }
+    },
+    "ceiling": {
+      "Generic - 20mm": {
+        "thickness": 20.0,
+        "grid": 0.0
+      },
+      "Tile 600 x 600": {
+        "thickness": 20.0,
+        "grid": 600.0
+      }
+    },
+    "railing": {
+      "Railing - 1000mm": {
+        "height": 1000.0,
+        "spacing": 120.0
+      }
+    },
+    "structural_column": {
+      "Concrete 200 x 500": {
+        "width": 200.0,
+        "depth": 500.0,
+        "round": false
+      },
+      "Concrete 300 x 300": {
+        "width": 300.0,
+        "depth": 300.0,
+        "round": false
+      },
+      "Concrete Round 400": {
+        "width": 400.0,
+        "depth": 400.0,
+        "round": true
+      }
+    },
+    "footing": {
+      "Footing 1200 x 1200": {
+        "width": 1200.0,
+        "depth": 1200.0,
+        "round": false
+      },
+      "Footing 1500 x 1500": {
+        "width": 1500.0,
+        "depth": 1500.0,
+        "round": false
+      }
+    },
+    "runs": {
+      "beam": {
+        "Beam 150 x 400": {
+          "width": 150.0,
+          "depth": 400.0,
+          "round": false,
+          "material": "6f2909f9-744b-4ae6-aee8-91aadb77800c"
+        },
+        "Beam 200 x 500": {
+          "width": 200.0,
+          "depth": 500.0,
+          "round": false,
+          "material": "6f2909f9-744b-4ae6-aee8-91aadb77800c"
+        },
+        "Steel Tube 150": {
+          "width": 150.0,
+          "depth": 150.0,
+          "round": true,
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        }
+      },
+      "cable": {
+        "Cat6": {
+          "width": 6.0,
+          "depth": 6.0,
+          "round": true,
+          "material": "4aafe020-b18e-4089-b90c-a12ab6962416"
+        },
+        "Cat6A": {
+          "width": 7.5,
+          "depth": 7.5,
+          "round": true,
+          "material": "4aafe020-b18e-4089-b90c-a12ab6962416"
+        },
+        "Optical 3": {
+          "width": 3.0,
+          "depth": 3.0,
+          "round": true,
+          "material": "4aafe020-b18e-4089-b90c-a12ab6962416"
+        }
+      },
+      "cabletray": {
+        "Perforated 100 x 50": {
+          "width": 100.0,
+          "depth": 50.0,
+          "round": false,
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        },
+        "Perforated 200 x 50": {
+          "width": 200.0,
+          "depth": 50.0,
+          "round": false,
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        },
+        "Perforated 300 x 100": {
+          "width": 300.0,
+          "depth": 100.0,
+          "round": false,
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        }
+      },
+      "conduit": {
+        "PVC 20": {
+          "width": 20.0,
+          "depth": 20.0,
+          "round": true,
+          "material": "4aafe020-b18e-4089-b90c-a12ab6962416"
+        },
+        "PVC 25": {
+          "width": 25.0,
+          "depth": 25.0,
+          "round": true,
+          "material": "4aafe020-b18e-4089-b90c-a12ab6962416"
+        },
+        "PVC 32": {
+          "width": 32.0,
+          "depth": 32.0,
+          "round": true,
+          "material": "4aafe020-b18e-4089-b90c-a12ab6962416"
+        },
+        "Steel 25": {
+          "width": 25.0,
+          "depth": 25.0,
+          "round": true,
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        }
+      },
+      "downconductor": {
+        "Copper 8": {
+          "width": 8.0,
+          "depth": 8.0,
+          "round": true,
+          "material": "43bcd4db-46b5-4b77-8d5b-4804aed5904a"
+        },
+        "Flat 25 x 3": {
+          "width": 25.0,
+          "depth": 3.0,
+          "round": false,
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        },
+        "Steel 8": {
+          "width": 8.0,
+          "depth": 8.0,
+          "round": true,
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        }
+      },
+      "groundconductor": {
+        "Copper 9": {
+          "width": 9.0,
+          "depth": 9.0,
+          "round": true,
+          "material": "43bcd4db-46b5-4b77-8d5b-4804aed5904a"
+        },
+        "Steel 8": {
+          "width": 8.0,
+          "depth": 8.0,
+          "round": true,
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        }
+      },
+      "pipe": {
+        "Copper 22": {
+          "width": 22.0,
+          "depth": 22.0,
+          "round": true,
+          "material": "43bcd4db-46b5-4b77-8d5b-4804aed5904a"
+        },
+        "PVC 110": {
+          "width": 110.0,
+          "depth": 110.0,
+          "round": true,
+          "material": "4aafe020-b18e-4089-b90c-a12ab6962416"
+        },
+        "PVC 25": {
+          "width": 25.0,
+          "depth": 25.0,
+          "round": true,
+          "material": "4aafe020-b18e-4089-b90c-a12ab6962416"
+        },
+        "PVC 50": {
+          "width": 50.0,
+          "depth": 50.0,
+          "round": true,
+          "material": "4aafe020-b18e-4089-b90c-a12ab6962416"
+        }
+      },
+      "stripfooting": {
+        "Strip 600 x 300": {
+          "width": 600.0,
+          "depth": 300.0,
+          "round": false,
+          "material": "6f2909f9-744b-4ae6-aee8-91aadb77800c"
+        }
+      },
+      "wire": {
+        "Wire 2.5": {
+          "width": 4.0,
+          "depth": 4.0,
+          "round": true,
+          "material": "43bcd4db-46b5-4b77-8d5b-4804aed5904a"
+        },
+        "Wire 4": {
+          "width": 5.0,
+          "depth": 5.0,
+          "round": true,
+          "material": "43bcd4db-46b5-4b77-8d5b-4804aed5904a"
+        },
+        "Wire 6": {
+          "width": 6.5,
+          "depth": 6.5,
+          "round": true,
+          "material": "43bcd4db-46b5-4b77-8d5b-4804aed5904a"
+        }
+      }
+    }
+  },
+  "materials": {
+    "Brick": {
+      "color": [
+        178,
+        92,
+        70
+      ],
+      "cut": "brick",
+      "surface": "brick",
+      "texture": {
+        "kind": "brick",
+        "size": [
+          900.0,
+          600.0
+        ]
+      }
+    },
+    "Ceramic tile": {
+      "color": [
+        222,
+        220,
+        210
+      ],
+      "cut": "solid",
+      "surface": "grid",
+      "texture": {
+        "kind": "tile",
+        "size": [
+          1200.0,
+          1200.0
+        ]
+      }
+    },
+    "Concrete": {
+      "color": [
+        188,
+        188,
+        182
+      ],
+      "cut": "concrete",
+      "surface": "none",
+      "texture": {
+        "kind": "concrete",
+        "size": [
+          1000.0,
+          1000.0
+        ]
+      }
+    },
+    "Concrete block": {
+      "color": [
+        176,
+        176,
+        170
+      ],
+      "cut": "crosshatch",
+      "surface": "none",
+      "texture": {
+        "kind": "block",
+        "size": [
+          800.0,
+          800.0
+        ]
+      }
+    },
+    "Copper": {
+      "color": [
+        184,
+        115,
+        51
+      ],
+      "cut": "solid",
+      "surface": "none",
+      "texture": {
+        "kind": "metal",
+        "size": [
+          800.0,
+          800.0
+        ]
+      }
+    },
+    "Fabric": {
+      "color": [
+        176,
+        160,
+        136
+      ],
+      "cut": "none",
+      "surface": "none",
+      "texture": {
+        "kind": "fabric",
+        "size": [
+          100.0,
+          100.0
+        ]
+      }
+    },
+    "Glass": {
+      "color": [
+        166,
+        200,
+        228
+      ],
+      "cut": "none",
+      "surface": "none"
+    },
+    "Gypsum board": {
+      "color": [
+        242,
+        242,
+        238
+      ],
+      "cut": "none",
+      "surface": "none"
+    },
+    "Insulation": {
+      "color": [
+        232,
+        214,
+        140
+      ],
+      "cut": "insulation",
+      "surface": "none",
+      "texture": {
+        "kind": "insulation",
+        "size": [
+          600.0,
+          600.0
+        ]
+      }
+    },
+    "Membrane": {
+      "color": [
+        70,
+        70,
+        74
+      ],
+      "cut": "solid",
+      "surface": "none"
+    },
+    "Metal": {
+      "color": [
+        150,
+        152,
+        158
+      ],
+      "cut": "solid",
+      "surface": "none",
+      "texture": {
+        "kind": "metal",
+        "size": [
+          800.0,
+          800.0
+        ]
+      }
+    },
+    "PVC": {
+      "color": [
+        226,
+        226,
+        214
+      ],
+      "cut": "solid",
+      "surface": "none"
+    },
+    "Plaster": {
+      "color": [
+        238,
+        234,
+        224
+      ],
+      "cut": "none",
+      "surface": "none",
+      "texture": {
+        "kind": "plaster",
+        "size": [
+          500.0,
+          500.0
+        ]
+      }
+    },
+    "Porcelain": {
+      "color": [
+        244,
+        244,
+        240
+      ],
+      "cut": "none",
+      "surface": "none"
+    },
+    "Roof tiles": {
+      "color": [
+        170,
+        86,
+        64
+      ],
+      "cut": "solid",
+      "surface": "horizontal",
+      "texture": {
+        "kind": "roof",
+        "size": [
+          1320.0,
+          1000.0
+        ]
+      }
+    },
+    "Screed": {
+      "color": [
+        206,
+        200,
+        188
+      ],
+      "cut": "concrete",
+      "surface": "none",
+      "texture": {
+        "kind": "concrete",
+        "size": [
+          1000.0,
+          1000.0
+        ]
+      }
+    },
+    "Timber": {
+      "color": [
+        196,
+        154,
+        102
+      ],
+      "cut": "diagonal",
+      "surface": "horizontal",
+      "texture": {
+        "kind": "boards",
+        "size": [
+          1200.0,
+          1120.0
+        ]
+      }
+    }
+  },
+  "families": {
+    "Air Terminal": {
+      "category": "airterminal",
+      "parameters": [
+        {
+          "name": "Height",
+          "kind": "length",
+          "value": 500.0
+        },
+        {
+          "name": "Diameter",
+          "kind": "length",
+          "value": 10.0
+        },
+        {
+          "name": "Material",
+          "kind": "material",
+          "value": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        }
+      ],
+      "types": {
+        "1000": {
+          "Height": 1000.0
+        },
+        "2000": {
+          "Height": 2000.0
+        },
+        "500": {
+          "Height": 500.0
+        }
+      },
+      "forms": [
+        {
+          "id": 999680,
+          "guid": "46a35b68-22f1-4ab6-b40b-296d4d7510d0",
+          "plane": "xy",
+          "circle": {
+            "centre": [
+              0.0,
+              0.0
+            ],
+            "radius": 60.0
+          },
+          "from": 0.0,
+          "to": 15.0,
+          "material": "Material"
+        },
+        {
+          "id": 999679,
+          "guid": "8282e2c7-0a0e-492c-b919-0c83149815c7",
+          "plane": "xy",
+          "circle": {
+            "centre": [
+              0.0,
+              0.0
+            ],
+            "radius": "Diameter / 2"
+          },
+          "from": 15.0,
+          "to": "Height",
+          "material": "Material"
+        }
+      ]
+    },
+    "Base Cabinet": {
+      "category": "casework",
+      "parameters": [
+        {
+          "name": "Width",
+          "kind": "length",
+          "value": 1800.0
+        },
+        {
+          "name": "Depth",
+          "kind": "length",
+          "value": 600.0
+        },
+        {
+          "name": "Height",
+          "kind": "length",
+          "value": 900.0
+        },
+        {
+          "name": "Material",
+          "kind": "material",
+          "value": "bf71716b-01e6-421d-9f1e-5c032574c1cf"
+        },
+        {
+          "name": "Worktop",
+          "kind": "material",
+          "value": "6f2909f9-744b-4ae6-aee8-91aadb77800c"
+        }
+      ],
+      "types": {
+        "1200 x 600": {
+          "Width": 1200
+        },
+        "1800 x 600": {},
+        "600 x 600": {
+          "Width": 600
+        }
+      },
+      "forms": [
+        {
+          "id": 999678,
+          "guid": "60f685ff-8d5b-484e-9b19-7e59d7eef278",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width / 2)",
+              "-(Depth) + 60"
+            ],
+            [
+              "Width / 2",
+              "-(Depth) + 60"
+            ],
+            [
+              "Width / 2",
+              0.0
+            ],
+            [
+              "-(Width / 2)",
+              0.0
+            ]
+          ],
+          "from": 0.0,
+          "to": 100.0,
+          "material": "Material"
+        },
+        {
+          "id": 999677,
+          "guid": "199f10fa-cb2d-4656-ac7e-894f5ec9176c",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width / 2)",
+              "-(Depth) + 20"
+            ],
+            [
+              "Width / 2",
+              "-(Depth) + 20"
+            ],
+            [
+              "Width / 2",
+              0.0
+            ],
+            [
+              "-(Width / 2)",
+              0.0
+            ]
+          ],
+          "from": 100.0,
+          "to": "Height - 40",
+          "material": "Material"
+        },
+        {
+          "id": 999676,
+          "guid": "ee172de9-8063-4476-8261-2a8bff293034",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width / 2)",
+              "-(Depth)"
+            ],
+            [
+              "Width / 2",
+              "-(Depth)"
+            ],
+            [
+              "Width / 2",
+              0.0
+            ],
+            [
+              "-(Width / 2)",
+              0.0
+            ]
+          ],
+          "from": "Height - 40",
+          "to": "Height",
+          "material": "Worktop"
+        }
+      ]
+    },
+    "Bathtub": {
+      "category": "plumbing",
+      "parameters": [
+        {
+          "name": "Length",
+          "kind": "length",
+          "value": 1700.0
+        },
+        {
+          "name": "Width",
+          "kind": "length",
+          "value": 750.0
+        },
+        {
+          "name": "Height",
+          "kind": "length",
+          "value": 560.0
+        }
+      ],
+      "types": {
+        "1500 x 700": {
+          "Length": 1500,
+          "Width": 700
+        },
+        "1700 x 750": {}
+      },
+      "forms": [
+        {
+          "id": 999675,
+          "guid": "d542df07-d138-4bb7-ab51-18f87ec74251",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Length / 2)",
+              "-(Width)"
+            ],
+            [
+              "Length / 2",
+              "-(Width)"
+            ],
+            [
+              "Length / 2",
+              0.0
+            ],
+            [
+              "-(Length / 2)",
+              0.0
+            ]
+          ],
+          "from": 0.0,
+          "to": 120.0,
+          "material": "109bbc23-d6ac-4b53-b169-a0f733ac0396"
+        },
+        {
+          "id": 999674,
+          "guid": "889e1f39-b40f-4777-8eaa-ddb8014689ec",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Length / 2)",
+              -60.0
+            ],
+            [
+              "Length / 2",
+              -60.0
+            ],
+            [
+              "Length / 2",
+              0.0
+            ],
+            [
+              "-(Length / 2)",
+              0.0
+            ]
+          ],
+          "from": 120.0,
+          "to": "Height",
+          "material": "109bbc23-d6ac-4b53-b169-a0f733ac0396"
+        },
+        {
+          "id": 999673,
+          "guid": "dd1a57dc-efcd-470b-be0b-057ff2ba1469",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Length / 2)",
+              "-(Width)"
+            ],
+            [
+              "Length / 2",
+              "-(Width)"
+            ],
+            [
+              "Length / 2",
+              "-(Width) + 60"
+            ],
+            [
+              "-(Length / 2)",
+              "-(Width) + 60"
+            ]
+          ],
+          "from": 120.0,
+          "to": "Height",
+          "material": "109bbc23-d6ac-4b53-b169-a0f733ac0396"
+        },
+        {
+          "id": 999672,
+          "guid": "03370557-cb59-4c5f-a99c-6aa37355ec96",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Length / 2)",
+              "-(Width) + 60"
+            ],
+            [
+              "-(Length) / 2 + 60",
+              "-(Width) + 60"
+            ],
+            [
+              "-(Length) / 2 + 60",
+              -60.0
+            ],
+            [
+              "-(Length / 2)",
+              -60.0
+            ]
+          ],
+          "from": 120.0,
+          "to": "Height",
+          "material": "109bbc23-d6ac-4b53-b169-a0f733ac0396"
+        },
+        {
+          "id": 999671,
+          "guid": "50e1ef71-6cbe-4354-9639-f7c10a512b19",
+          "plane": "xy",
+          "profile": [
+            [
+              "Length / 2 - 60",
+              "-(Width) + 60"
+            ],
+            [
+              "Length / 2",
+              "-(Width) + 60"
+            ],
+            [
+              "Length / 2",
+              -60.0
+            ],
+            [
+              "Length / 2 - 60",
+              -60.0
+            ]
+          ],
+          "from": 120.0,
+          "to": "Height",
+          "material": "109bbc23-d6ac-4b53-b169-a0f733ac0396"
+        }
+      ]
+    },
+    "Bed": {
+      "category": "furniture",
+      "parameters": [
+        {
+          "name": "Width",
+          "kind": "length",
+          "value": 1600.0
+        },
+        {
+          "name": "Length",
+          "kind": "length",
+          "value": 2000.0
+        },
+        {
+          "name": "Height",
+          "kind": "length",
+          "value": 450.0
+        },
+        {
+          "name": "Headboard Height",
+          "kind": "length",
+          "value": 900.0
+        },
+        {
+          "name": "Material",
+          "kind": "material",
+          "value": "bf71716b-01e6-421d-9f1e-5c032574c1cf"
+        }
+      ],
+      "types": {
+        "1600 x 2000": {},
+        "1800 x 2000": {
+          "Width": 1800
+        },
+        "900 x 2000": {
+          "Width": 900
+        }
+      },
+      "forms": [
+        {
+          "id": 999670,
+          "guid": "3eb44bf4-c1fc-46ef-97ed-5b603c6747b9",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width / 2)",
+              "-(Length)"
+            ],
+            [
+              "Width / 2",
+              "-(Length)"
+            ],
+            [
+              "Width / 2",
+              0.0
+            ],
+            [
+              "-(Width / 2)",
+              0.0
+            ]
+          ],
+          "from": 0.0,
+          "to": 300.0,
+          "material": "Material"
+        },
+        {
+          "id": 999669,
+          "guid": "aa92838d-282a-46fe-987f-bb129d1f4eda",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width) / 2 + 20",
+              "-(Length) + 20"
+            ],
+            [
+              "Width / 2 - 20",
+              "-(Length) + 20"
+            ],
+            [
+              "Width / 2 - 20",
+              -60.0
+            ],
+            [
+              "-(Width) / 2 + 20",
+              -60.0
+            ]
+          ],
+          "from": 300.0,
+          "to": "Height",
+          "material": "673b8baf-505f-4b1d-89ea-40e5fc6bff09"
+        },
+        {
+          "id": 999668,
+          "guid": "b2edf693-88d0-498d-b8a8-1f96bd8fd1aa",
+          "plane": "xz",
+          "profile": [
+            [
+              "-(Width / 2)",
+              0.0
+            ],
+            [
+              "Width / 2",
+              0.0
+            ],
+            [
+              "Width / 2",
+              "Headboard Height"
+            ],
+            [
+              "-(Width / 2)",
+              "Headboard Height"
+            ]
+          ],
+          "from": -60.0,
+          "to": 0.0,
+          "material": "Material"
+        },
+        {
+          "id": 999667,
+          "guid": "a7e25036-2eda-4c71-9716-28b87927358d",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width) / 2 + 80",
+              -500.0
+            ],
+            [
+              "-40",
+              -500.0
+            ],
+            [
+              "-40",
+              -100.0
+            ],
+            [
+              "-(Width) / 2 + 80",
+              -100.0
+            ]
+          ],
+          "from": "Height",
+          "to": "Height + 120",
+          "material": "673b8baf-505f-4b1d-89ea-40e5fc6bff09",
+          "visible": "Width > 1200"
+        },
+        {
+          "id": 999666,
+          "guid": "f3148772-f7b0-456a-92f2-706895c9d1aa",
+          "plane": "xy",
+          "profile": [
+            [
+              "40",
+              -500.0
+            ],
+            [
+              "Width / 2 - 80",
+              -500.0
+            ],
+            [
+              "Width / 2 - 80",
+              -100.0
+            ],
+            [
+              "40",
+              -100.0
+            ]
+          ],
+          "from": "Height",
+          "to": "Height + 120",
+          "material": "673b8baf-505f-4b1d-89ea-40e5fc6bff09",
+          "visible": "Width > 1200"
+        },
+        {
+          "id": 999665,
+          "guid": "88534a0d-a8fb-4377-b3f3-d4bd8a062d1d",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width) / 2 + 80",
+              -500.0
+            ],
+            [
+              "Width / 2 - 80",
+              -500.0
+            ],
+            [
+              "Width / 2 - 80",
+              -100.0
+            ],
+            [
+              "-(Width) / 2 + 80",
+              -100.0
+            ]
+          ],
+          "from": "Height",
+          "to": "Height + 120",
+          "material": "673b8baf-505f-4b1d-89ea-40e5fc6bff09",
+          "visible": "Width <= 1200"
+        }
+      ]
+    },
+    "Casement Window": {
+      "category": "window",
+      "parameters": [
+        {
+          "name": "Width",
+          "kind": "length",
+          "value": 1200.0
+        },
+        {
+          "name": "Height",
+          "kind": "length",
+          "value": 1500.0
+        },
+        {
+          "name": "Sill Height",
+          "kind": "length",
+          "value": 900.0
+        },
+        {
+          "name": "Frame Width",
+          "kind": "length",
+          "value": 50.0
+        },
+        {
+          "name": "Frame Depth",
+          "kind": "length",
+          "value": 90.0
+        },
+        {
+          "name": "Frame Material",
+          "kind": "material",
+          "value": "bf71716b-01e6-421d-9f1e-5c032574c1cf"
+        }
+      ],
+      "types": {
+        "1200 x 1500": {
+          "Height": 1500.0,
+          "Width": 1200.0
+        },
+        "1800 x 1200": {
+          "Height": 1200.0,
+          "Sill Height": 1000.0,
+          "Width": 1800.0
+        },
+        "600 x 900": {
+          "Height": 900.0,
+          "Sill Height": 1100.0,
+          "Width": 600.0
+        }
+      },
+      "forms": [
+        {
+          "id": 999664,
+          "guid": "16a29f5c-544a-4992-8ac8-a2812ff46e8b",
+          "plane": "xy",
+          "profile": [
+            [
+              "-Width / 2",
+              "-min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "-Width / 2 + Frame Width",
+              "-min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "-Width / 2 + Frame Width",
+              "min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "-Width / 2",
+              "min(Frame Depth, Wall Thickness) / 2"
+            ]
+          ],
+          "from": "0",
+          "to": "Height",
+          "material": "Frame Material"
+        },
+        {
+          "id": 999663,
+          "guid": "3ed8cd10-48bd-4d9b-af8d-f4f6f0b3643e",
+          "plane": "xy",
+          "profile": [
+            [
+              "Width / 2 - Frame Width",
+              "-min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "Width / 2",
+              "-min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "Width / 2",
+              "min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "Width / 2 - Frame Width",
+              "min(Frame Depth, Wall Thickness) / 2"
+            ]
+          ],
+          "from": "0",
+          "to": "Height",
+          "material": "Frame Material"
+        },
+        {
+          "id": 999662,
+          "guid": "64fec358-9b2b-407e-b703-253d24aae0f5",
+          "plane": "xy",
+          "profile": [
+            [
+              "-Width / 2 + Frame Width",
+              "-min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "Width / 2 - Frame Width",
+              "-min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "Width / 2 - Frame Width",
+              "min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "-Width / 2 + Frame Width",
+              "min(Frame Depth, Wall Thickness) / 2"
+            ]
+          ],
+          "from": "Height - Frame Width",
+          "to": "Height",
+          "material": "Frame Material"
+        },
+        {
+          "id": 999661,
+          "guid": "307cc43a-a62b-4403-89e1-331cf0f0adf4",
+          "plane": "xy",
+          "profile": [
+            [
+              "-Width / 2 + Frame Width",
+              "-min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "Width / 2 - Frame Width",
+              "-min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "Width / 2 - Frame Width",
+              "min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "-Width / 2 + Frame Width",
+              "min(Frame Depth, Wall Thickness) / 2"
+            ]
+          ],
+          "from": "0",
+          "to": "Frame Width",
+          "material": "Frame Material"
+        },
+        {
+          "id": 999660,
+          "guid": "21e9c7a2-1314-4094-86ad-6c0c13b55adc",
+          "plane": "xy",
+          "profile": [
+            [
+              "-Width / 2 + Frame Width",
+              "-20"
+            ],
+            [
+              "-1",
+              "-20"
+            ],
+            [
+              "-1",
+              "20"
+            ],
+            [
+              "-Width / 2 + Frame Width",
+              "20"
+            ]
+          ],
+          "from": "Frame Width",
+          "to": "Height - Frame Width",
+          "material": "Frame Material"
+        },
+        {
+          "id": 999659,
+          "guid": "743b060c-70e5-4d83-bb6d-aa84584f4a95",
+          "plane": "xy",
+          "profile": [
+            [
+              "(-Width / 2 + Frame Width) + 40",
+              "-30"
+            ],
+            [
+              "(-1) - 20",
+              "-30"
+            ],
+            [
+              "(-1) - 20",
+              "30"
+            ],
+            [
+              "(-Width / 2 + Frame Width) + 40",
+              "30"
+            ]
+          ],
+          "from": "Frame Width + 40",
+          "to": "Height - Frame Width - 40",
+          "void": true
+        },
+        {
+          "id": 999658,
+          "guid": "821373da-0e7b-46bf-bd9c-e9db3cb40749",
+          "plane": "xy",
+          "profile": [
+            [
+              "(-Width / 2 + Frame Width) + 40",
+              "-3"
+            ],
+            [
+              "(-1) - 20",
+              "-3"
+            ],
+            [
+              "(-1) - 20",
+              "3"
+            ],
+            [
+              "(-Width / 2 + Frame Width) + 40",
+              "3"
+            ]
+          ],
+          "from": "Frame Width + 40",
+          "to": "Height - Frame Width - 40",
+          "material": "309aa0d0-3ec0-4638-9744-2a8439b9b5e0"
+        },
+        {
+          "id": 999657,
+          "guid": "6e575997-c400-4a3a-9c6f-16e4a3c0eb34",
+          "plane": "xy",
+          "profile": [
+            [
+              "1",
+              "-20"
+            ],
+            [
+              "Width / 2 - Frame Width",
+              "-20"
+            ],
+            [
+              "Width / 2 - Frame Width",
+              "20"
+            ],
+            [
+              "1",
+              "20"
+            ]
+          ],
+          "from": "Frame Width",
+          "to": "Height - Frame Width",
+          "material": "Frame Material"
+        },
+        {
+          "id": 999656,
+          "guid": "51197cb0-9fc7-43ac-b20d-e4c2a0c0751a",
+          "plane": "xy",
+          "profile": [
+            [
+              "(1) + 20",
+              "-30"
+            ],
+            [
+              "(Width / 2 - Frame Width) - 40",
+              "-30"
+            ],
+            [
+              "(Width / 2 - Frame Width) - 40",
+              "30"
+            ],
+            [
+              "(1) + 20",
+              "30"
+            ]
+          ],
+          "from": "Frame Width + 40",
+          "to": "Height - Frame Width - 40",
+          "void": true
+        },
+        {
+          "id": 999655,
+          "guid": "e16fd3ef-0dbf-4bd6-99aa-d23e772cc5fe",
+          "plane": "xy",
+          "profile": [
+            [
+              "(1) + 20",
+              "-3"
+            ],
+            [
+              "(Width / 2 - Frame Width) - 40",
+              "-3"
+            ],
+            [
+              "(Width / 2 - Frame Width) - 40",
+              "3"
+            ],
+            [
+              "(1) + 20",
+              "3"
+            ]
+          ],
+          "from": "Frame Width + 40",
+          "to": "Height - Frame Width - 40",
+          "material": "309aa0d0-3ec0-4638-9744-2a8439b9b5e0"
+        }
+      ]
+    },
+    "Ceiling Luminaire": {
+      "category": "lighting",
+      "parameters": [
+        {
+          "name": "Diameter",
+          "kind": "length",
+          "value": 300.0
+        },
+        {
+          "name": "Mounting Height",
+          "kind": "length",
+          "value": 3000.0
+        }
+      ],
+      "types": {
+        "300": {},
+        "400": {
+          "Diameter": 400
+        }
+      },
+      "forms": [
+        {
+          "id": 999654,
+          "guid": "d21c0978-d62f-41ac-bb02-009ee276ff53",
+          "plane": "xy",
+          "circle": {
+            "centre": [
+              0.0,
+              0.0
+            ],
+            "radius": "Diameter / 2"
+          },
+          "from": "Mounting Height + (-40)",
+          "to": "Mounting Height",
+          "material": "c63799c6-02ce-4326-abd8-77e5a18c9628"
+        },
+        {
+          "id": 999653,
+          "guid": "8eddd228-1f00-4c26-90c4-aa4c88ee5948",
+          "plane": "xy",
+          "circle": {
+            "centre": [
+              0.0,
+              0.0
+            ],
+            "radius": "Diameter / 2 * 0.9"
+          },
+          "from": "Mounting Height + (-60)",
+          "to": "Mounting Height + (-40)",
+          "material": "309aa0d0-3ec0-4638-9744-2a8439b9b5e0"
+        }
+      ]
+    },
+    "Chair": {
+      "category": "furniture",
+      "parameters": [
+        {
+          "name": "Width",
+          "kind": "length",
+          "value": 450.0
+        },
+        {
+          "name": "Depth",
+          "kind": "length",
+          "value": 450.0
+        },
+        {
+          "name": "Seat Height",
+          "kind": "length",
+          "value": 450.0
+        },
+        {
+          "name": "Height",
+          "kind": "length",
+          "value": 850.0
+        },
+        {
+          "name": "Thickness",
+          "kind": "length",
+          "value": 40.0
+        },
+        {
+          "name": "Leg Width",
+          "kind": "length",
+          "value": 40.0
+        },
+        {
+          "name": "Material",
+          "kind": "material",
+          "value": "bf71716b-01e6-421d-9f1e-5c032574c1cf"
+        }
+      ],
+      "types": {
+        "450 x 450": {}
+      },
+      "forms": [
+        {
+          "id": 999652,
+          "guid": "b55baaed-2013-4586-8c56-df11f5aa3c7f",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width / 2)",
+              "-Depth / 2"
+            ],
+            [
+              "Width / 2",
+              "-Depth / 2"
+            ],
+            [
+              "Width / 2",
+              "Depth / 2"
+            ],
+            [
+              "-(Width / 2)",
+              "Depth / 2"
+            ]
+          ],
+          "from": "Seat Height - Thickness",
+          "to": "Seat Height",
+          "material": "Material"
+        },
+        {
+          "id": 999651,
+          "guid": "64c00c51-d873-49b1-b637-3d58fe5e7aa5",
+          "plane": "xz",
+          "profile": [
+            [
+              "-(Width / 2)",
+              "Seat Height"
+            ],
+            [
+              "Width / 2",
+              "Seat Height"
+            ],
+            [
+              "Width / 2",
+              "Height"
+            ],
+            [
+              "-(Width / 2)",
+              "Height"
+            ]
+          ],
+          "from": "Depth / 2 - Thickness",
+          "to": "Depth / 2",
+          "material": "Material"
+        },
+        {
+          "id": 999650,
+          "guid": "5ffa2a8b-c960-4a86-8cd2-4cc7230f8d90",
+          "plane": "xy",
+          "profile": [
+            [
+              "(Width + 100) / 2 - 50 - Leg Width",
+              "(Depth + 100) / 2 - 50 - Leg Width"
+            ],
+            [
+              "(Width + 100) / 2 - 50",
+              "(Depth + 100) / 2 - 50 - Leg Width"
+            ],
+            [
+              "(Width + 100) / 2 - 50",
+              "(Depth + 100) / 2 - 50"
+            ],
+            [
+              "(Width + 100) / 2 - 50 - Leg Width",
+              "(Depth + 100) / 2 - 50"
+            ]
+          ],
+          "from": 0.0,
+          "to": "Seat Height - Thickness",
+          "material": "Material"
+        },
+        {
+          "id": 999649,
+          "guid": "ec0d674c-4873-4f1d-8eeb-b1a2b54b4fad",
+          "plane": "xy",
+          "profile": [
+            [
+              "(Width + 100) / 2 - 50 - Leg Width",
+              "-(Depth + 100) / 2 + 50"
+            ],
+            [
+              "(Width + 100) / 2 - 50",
+              "-(Depth + 100) / 2 + 50"
+            ],
+            [
+              "(Width + 100) / 2 - 50",
+              "-(Depth + 100) / 2 + 50 + Leg Width"
+            ],
+            [
+              "(Width + 100) / 2 - 50 - Leg Width",
+              "-(Depth + 100) / 2 + 50 + Leg Width"
+            ]
+          ],
+          "from": 0.0,
+          "to": "Seat Height - Thickness",
+          "material": "Material"
+        },
+        {
+          "id": 999648,
+          "guid": "017998de-864e-4757-91e7-48afdb0c53d4",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width + 100) / 2 + 50",
+              "(Depth + 100) / 2 - 50 - Leg Width"
+            ],
+            [
+              "-(Width + 100) / 2 + 50 + Leg Width",
+              "(Depth + 100) / 2 - 50 - Leg Width"
+            ],
+            [
+              "-(Width + 100) / 2 + 50 + Leg Width",
+              "(Depth + 100) / 2 - 50"
+            ],
+            [
+              "-(Width + 100) / 2 + 50",
+              "(Depth + 100) / 2 - 50"
+            ]
+          ],
+          "from": 0.0,
+          "to": "Seat Height - Thickness",
+          "material": "Material"
+        },
+        {
+          "id": 999647,
+          "guid": "7894ec30-853a-4626-83e3-98db97f5a67a",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width + 100) / 2 + 50",
+              "-(Depth + 100) / 2 + 50"
+            ],
+            [
+              "-(Width + 100) / 2 + 50 + Leg Width",
+              "-(Depth + 100) / 2 + 50"
+            ],
+            [
+              "-(Width + 100) / 2 + 50 + Leg Width",
+              "-(Depth + 100) / 2 + 50 + Leg Width"
+            ],
+            [
+              "-(Width + 100) / 2 + 50",
+              "-(Depth + 100) / 2 + 50 + Leg Width"
+            ]
+          ],
+          "from": 0.0,
+          "to": "Seat Height - Thickness",
+          "material": "Material"
+        }
+      ]
+    },
+    "Data Outlet": {
+      "category": "dataoutlet",
+      "parameters": [
+        {
+          "name": "Mounting Height",
+          "kind": "length",
+          "value": 300.0
+        }
+      ],
+      "types": {
+        "Low 300": {},
+        "Medium 1100": {
+          "Mounting Height": 1100
+        }
+      },
+      "forms": [
+        {
+          "id": 999646,
+          "guid": "f860fc3b-515e-411a-8231-583ed784994b",
+          "plane": "xy",
+          "profile": [
+            [
+              -42.0,
+              -12.0
+            ],
+            [
+              42.0,
+              -12.0
+            ],
+            [
+              42.0,
+              0.0
+            ],
+            [
+              -42.0,
+              0.0
+            ]
+          ],
+          "from": "Mounting Height",
+          "to": "Mounting Height + (85)",
+          "material": "c63799c6-02ce-4326-abd8-77e5a18c9628"
+        },
+        {
+          "id": 999645,
+          "guid": "70b6ad5e-58a5-43e3-ac16-1c87089a1b46",
+          "plane": "xy",
+          "profile": [
+            [
+              -22.0,
+              -12.0
+            ],
+            [
+              -6.0,
+              -12.0
+            ],
+            [
+              -6.0,
+              -5.0
+            ],
+            [
+              -22.0,
+              -5.0
+            ]
+          ],
+          "from": "Mounting Height + (30)",
+          "to": "Mounting Height + (55)",
+          "void": true
+        },
+        {
+          "id": 999644,
+          "guid": "9260706a-723d-4221-9489-8b17406fb824",
+          "plane": "xy",
+          "profile": [
+            [
+              6.0,
+              -12.0
+            ],
+            [
+              22.0,
+              -12.0
+            ],
+            [
+              22.0,
+              -5.0
+            ],
+            [
+              6.0,
+              -5.0
+            ]
+          ],
+          "from": "Mounting Height + (30)",
+          "to": "Mounting Height + (55)",
+          "void": true
+        }
+      ]
+    },
+    "Desk": {
+      "category": "furniture",
+      "parameters": [
+        {
+          "name": "Width",
+          "kind": "length",
+          "value": 1400.0
+        },
+        {
+          "name": "Depth",
+          "kind": "length",
+          "value": 700.0
+        },
+        {
+          "name": "Height",
+          "kind": "length",
+          "value": 740.0
+        },
+        {
+          "name": "Thickness",
+          "kind": "length",
+          "value": 30.0
+        },
+        {
+          "name": "Material",
+          "kind": "material",
+          "value": "bf71716b-01e6-421d-9f1e-5c032574c1cf"
+        }
+      ],
+      "types": {
+        "1200 x 600": {
+          "Depth": 600,
+          "Width": 1200
+        },
+        "1400 x 700": {}
+      },
+      "forms": [
+        {
+          "id": 999643,
+          "guid": "aeee62cd-2eb5-4950-a44b-254475f2bdc5",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width / 2)",
+              "-(Depth)"
+            ],
+            [
+              "Width / 2",
+              "-(Depth)"
+            ],
+            [
+              "Width / 2",
+              0.0
+            ],
+            [
+              "-(Width / 2)",
+              0.0
+            ]
+          ],
+          "from": "Height - Thickness",
+          "to": "Height",
+          "material": "Material"
+        },
+        {
+          "id": 999642,
+          "guid": "6f4e7a95-9c59-4ca2-a117-d85a1de07221",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width / 2)",
+              "-(Depth) + 20"
+            ],
+            [
+              "-(Width) / 2 + 25",
+              "-(Depth) + 20"
+            ],
+            [
+              "-(Width) / 2 + 25",
+              -20.0
+            ],
+            [
+              "-(Width / 2)",
+              -20.0
+            ]
+          ],
+          "from": 0.0,
+          "to": "Height - Thickness",
+          "material": "Material"
+        },
+        {
+          "id": 999641,
+          "guid": "76979ecb-586c-44d8-aa4d-1c8033c604b7",
+          "plane": "xy",
+          "profile": [
+            [
+              "Width / 2 - 25",
+              "-(Depth) + 20"
+            ],
+            [
+              "Width / 2",
+              "-(Depth) + 20"
+            ],
+            [
+              "Width / 2",
+              -20.0
+            ],
+            [
+              "Width / 2 - 25",
+              -20.0
+            ]
+          ],
+          "from": 0.0,
+          "to": "Height - Thickness",
+          "material": "Material"
+        },
+        {
+          "id": 999640,
+          "guid": "53e7c2cb-383d-46c3-aebc-9ab60bae810a",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width) / 2 + 25",
+              -60.0
+            ],
+            [
+              "Width / 2 - 25",
+              -60.0
+            ],
+            [
+              "Width / 2 - 25",
+              -40.0
+            ],
+            [
+              "-(Width) / 2 + 25",
+              -40.0
+            ]
+          ],
+          "from": 300.0,
+          "to": "Height - Thickness",
+          "material": "Material"
+        }
+      ]
+    },
+    "Distribution Board": {
+      "category": "equipment",
+      "parameters": [
+        {
+          "name": "Width",
+          "kind": "length",
+          "value": 400.0
+        },
+        {
+          "name": "Height",
+          "kind": "length",
+          "value": 500.0
+        },
+        {
+          "name": "Depth",
+          "kind": "length",
+          "value": 120.0
+        },
+        {
+          "name": "Mounting Height",
+          "kind": "length",
+          "value": 1300.0
+        },
+        {
+          "name": "Material",
+          "kind": "material",
+          "value": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        }
+      ],
+      "types": {
+        "12 circuits": {},
+        "24 circuits": {
+          "Height": 700,
+          "Width": 500
+        },
+        "36 circuits": {
+          "Height": 900,
+          "Width": 600
+        }
+      },
+      "forms": [
+        {
+          "id": 999639,
+          "guid": "50338574-a9ab-4f52-846e-f44c3f0e4bef",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width) / 2",
+              "-(Depth)"
+            ],
+            [
+              "Width / 2",
+              "-(Depth)"
+            ],
+            [
+              "Width / 2",
+              0.0
+            ],
+            [
+              "-(Width) / 2",
+              0.0
+            ]
+          ],
+          "from": "Mounting Height",
+          "to": "Mounting Height + Height",
+          "material": "Material"
+        },
+        {
+          "id": 999638,
+          "guid": "01445548-9515-4a9d-8079-c988aed57499",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width) / 2 + 15",
+              "-(Depth) - 12"
+            ],
+            [
+              "Width / 2 - 15",
+              "-(Depth) - 12"
+            ],
+            [
+              "Width / 2 - 15",
+              "-(Depth)"
+            ],
+            [
+              "-(Width) / 2 + 15",
+              "-(Depth)"
+            ]
+          ],
+          "from": "Mounting Height + (15)",
+          "to": "Mounting Height + Height - 15",
+          "material": "Material"
+        }
+      ]
+    },
+    "Double Door": {
+      "category": "door",
+      "parameters": [
+        {
+          "name": "Width",
+          "kind": "length",
+          "value": 1500.0
+        },
+        {
+          "name": "Height",
+          "kind": "length",
+          "value": 2100.0
+        },
+        {
+          "name": "Frame Width",
+          "kind": "length",
+          "value": 50.0
+        },
+        {
+          "name": "Leaf Thickness",
+          "kind": "length",
+          "value": 40.0
+        },
+        {
+          "name": "Frame Material",
+          "kind": "material",
+          "value": "bf71716b-01e6-421d-9f1e-5c032574c1cf"
+        },
+        {
+          "name": "Leaf Material",
+          "kind": "material",
+          "value": "bf71716b-01e6-421d-9f1e-5c032574c1cf"
+        }
+      ],
+      "types": {
+        "1200 x 2100": {
+          "Height": 2100.0,
+          "Width": 1200.0
+        },
+        "1500 x 2100": {
+          "Height": 2100.0,
+          "Width": 1500.0
+        },
+        "1800 x 2100": {
+          "Height": 2100.0,
+          "Width": 1800.0
+        }
+      },
+      "forms": [
+        {
+          "id": 999637,
+          "guid": "e8a83a93-38de-42d9-8600-cef9951ef640",
+          "plane": "xy",
+          "profile": [
+            [
+              "-Width / 2",
+              "-Wall Thickness / 2"
+            ],
+            [
+              "-Width / 2 + Frame Width",
+              "-Wall Thickness / 2"
+            ],
+            [
+              "-Width / 2 + Frame Width",
+              "Wall Thickness / 2"
+            ],
+            [
+              "-Width / 2",
+              "Wall Thickness / 2"
+            ]
+          ],
+          "from": "0",
+          "to": "Height - Frame Width",
+          "material": "Frame Material"
+        },
+        {
+          "id": 999636,
+          "guid": "3e3d8cb8-2dda-4e19-909b-91389529eb28",
+          "plane": "xy",
+          "profile": [
+            [
+              "Width / 2 - Frame Width",
+              "-Wall Thickness / 2"
+            ],
+            [
+              "Width / 2",
+              "-Wall Thickness / 2"
+            ],
+            [
+              "Width / 2",
+              "Wall Thickness / 2"
+            ],
+            [
+              "Width / 2 - Frame Width",
+              "Wall Thickness / 2"
+            ]
+          ],
+          "from": "0",
+          "to": "Height - Frame Width",
+          "material": "Frame Material"
+        },
+        {
+          "id": 999635,
+          "guid": "cf8a1726-f2a9-4ff5-8454-91a5672e6bf8",
+          "plane": "xy",
+          "profile": [
+            [
+              "-Width / 2",
+              "-Wall Thickness / 2"
+            ],
+            [
+              "Width / 2",
+              "-Wall Thickness / 2"
+            ],
+            [
+              "Width / 2",
+              "Wall Thickness / 2"
+            ],
+            [
+              "-Width / 2",
+              "Wall Thickness / 2"
+            ]
+          ],
+          "from": "Height - Frame Width",
+          "to": "Height",
+          "material": "Frame Material"
+        },
+        {
+          "id": 999634,
+          "guid": "42a81358-0338-4753-9da1-f80e314234e9",
+          "plane": "xy",
+          "profile": [
+            [
+              "-Width / 2 + Frame Width",
+              "-Leaf Thickness / 2"
+            ],
+            [
+              "-1",
+              "-Leaf Thickness / 2"
+            ],
+            [
+              "-1",
+              "Leaf Thickness / 2"
+            ],
+            [
+              "-Width / 2 + Frame Width",
+              "Leaf Thickness / 2"
+            ]
+          ],
+          "from": "0",
+          "to": "Height - Frame Width",
+          "material": "Leaf Material"
+        },
+        {
+          "id": 999633,
+          "guid": "de2fa066-e2ee-409d-a2c9-ee5eb0df2dd4",
+          "plane": "xy",
+          "profile": [
+            [
+              "1",
+              "-Leaf Thickness / 2"
+            ],
+            [
+              "Width / 2 - Frame Width",
+              "-Leaf Thickness / 2"
+            ],
+            [
+              "Width / 2 - Frame Width",
+              "Leaf Thickness / 2"
+            ],
+            [
+              "1",
+              "Leaf Thickness / 2"
+            ]
+          ],
+          "from": "0",
+          "to": "Height - Frame Width",
+          "material": "Leaf Material"
+        },
+        {
+          "id": 999632,
+          "guid": "c8abde51-4d49-4631-bad6-4425c9eb4749",
+          "plane": "xy",
+          "profile": [
+            [
+              "-120",
+              "Leaf Thickness / 2"
+            ],
+            [
+              "-40",
+              "Leaf Thickness / 2"
+            ],
+            [
+              "-40",
+              "Leaf Thickness / 2 + 55"
+            ],
+            [
+              "-120",
+              "Leaf Thickness / 2 + 55"
+            ]
+          ],
+          "from": "1000",
+          "to": "1030",
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        },
+        {
+          "id": 999631,
+          "guid": "a6b91e3b-0da1-401d-83a0-24557915f4bc",
+          "plane": "xy",
+          "profile": [
+            [
+              "-120",
+              "-Leaf Thickness / 2 - 55"
+            ],
+            [
+              "-40",
+              "-Leaf Thickness / 2 - 55"
+            ],
+            [
+              "-40",
+              "-Leaf Thickness / 2"
+            ],
+            [
+              "-120",
+              "-Leaf Thickness / 2"
+            ]
+          ],
+          "from": "1000",
+          "to": "1030",
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        },
+        {
+          "id": 999630,
+          "guid": "9091f4ae-367e-46cc-8136-aba4a38b5071",
+          "plane": "xy",
+          "profile": [
+            [
+              "40",
+              "Leaf Thickness / 2"
+            ],
+            [
+              "120",
+              "Leaf Thickness / 2"
+            ],
+            [
+              "120",
+              "Leaf Thickness / 2 + 55"
+            ],
+            [
+              "40",
+              "Leaf Thickness / 2 + 55"
+            ]
+          ],
+          "from": "1000",
+          "to": "1030",
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        },
+        {
+          "id": 999629,
+          "guid": "25f28460-c156-40ed-a0d8-387a660f3bb4",
+          "plane": "xy",
+          "profile": [
+            [
+              "40",
+              "-Leaf Thickness / 2 - 55"
+            ],
+            [
+              "120",
+              "-Leaf Thickness / 2 - 55"
+            ],
+            [
+              "120",
+              "-Leaf Thickness / 2"
+            ],
+            [
+              "40",
+              "-Leaf Thickness / 2"
+            ]
+          ],
+          "from": "1000",
+          "to": "1030",
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        }
+      ],
+      "symbols": [
+        {
+          "id": 999628,
+          "guid": "5b8d418c-22a4-4046-a349-ffb46223b8f6",
+          "line": [
+            [
+              "-Width / 2 + Frame Width",
+              "Wall Thickness / 2"
+            ],
+            [
+              "-Width / 2 + Frame Width",
+              "Wall Thickness / 2 + (Width - 2 * Frame Width) / 2"
+            ]
+          ]
+        },
+        {
+          "id": 999627,
+          "guid": "73437761-0cdc-42f6-8663-64502b7c0069",
+          "arc": {
+            "centre": [
+              "-Width / 2 + Frame Width",
+              "Wall Thickness / 2"
+            ],
+            "radius": "(Width - 2 * Frame Width) / 2",
+            "from": 0.0,
+            "to": 90.0
+          }
+        },
+        {
+          "id": 999626,
+          "guid": "62381b7f-0bf8-42a0-bea4-cbf56254ac0f",
+          "line": [
+            [
+              "Width / 2 - Frame Width",
+              "Wall Thickness / 2"
+            ],
+            [
+              "Width / 2 - Frame Width",
+              "Wall Thickness / 2 + (Width - 2 * Frame Width) / 2"
+            ]
+          ]
+        },
+        {
+          "id": 999625,
+          "guid": "19354ea7-c3f2-4e9e-a82a-4f1591c64220",
+          "arc": {
+            "centre": [
+              "Width / 2 - Frame Width",
+              "Wall Thickness / 2"
+            ],
+            "radius": "(Width - 2 * Frame Width) / 2",
+            "from": 90.0,
+            "to": 180.0
+          }
+        }
+      ]
+    },
+    "Earthing Electrode": {
+      "category": "earthing",
+      "parameters": [
+        {
+          "name": "Height",
+          "kind": "length",
+          "value": 2400.0
+        },
+        {
+          "name": "Diameter",
+          "kind": "length",
+          "value": 16.0
+        },
+        {
+          "name": "Material",
+          "kind": "material",
+          "value": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        }
+      ],
+      "types": {
+        "2400": {
+          "Height": 2400.0
+        },
+        "3000": {
+          "Height": 3000.0
+        }
+      },
+      "forms": [
+        {
+          "id": 999624,
+          "guid": "7561a873-4576-45b7-b3d5-9b2da5756cfe",
+          "plane": "xy",
+          "circle": {
+            "centre": [
+              0.0,
+              0.0
+            ],
+            "radius": "Diameter / 2"
+          },
+          "from": "-(Height)",
+          "to": 0.0,
+          "material": "Material"
+        }
+      ]
+    },
+    "Elbow 90": {
+      "category": "pipefitting",
+      "parameters": [
+        {
+          "name": "Diameter",
+          "kind": "length",
+          "value": 50.0
+        },
+        {
+          "name": "Material",
+          "kind": "material",
+          "value": "4aafe020-b18e-4089-b90c-a12ab6962416"
+        }
+      ],
+      "types": {
+        "110": {
+          "Diameter": 110.0
+        },
+        "25": {
+          "Diameter": 25.0
+        },
+        "50": {
+          "Diameter": 50.0
+        }
+      },
+      "forms": [
+        {
+          "id": 999623,
+          "guid": "77914a4e-b328-428d-ac9e-4993f6b00083",
+          "plane": "yz",
+          "circle": {
+            "centre": [
+              0.0,
+              0.0
+            ],
+            "radius": "Diameter / 2"
+          },
+          "from": "-(Diameter * 1.5 + 30)",
+          "to": "Diameter / 2",
+          "material": "Material"
+        },
+        {
+          "id": 999622,
+          "guid": "58fd561a-2108-433a-b898-b0612579ec0a",
+          "plane": "xz",
+          "circle": {
+            "centre": [
+              0.0,
+              0.0
+            ],
+            "radius": "Diameter / 2"
+          },
+          "from": "-(Diameter / 2)",
+          "to": "Diameter * 1.5 + 30",
+          "material": "Material"
+        }
+      ]
+    },
+    "Fixed Window": {
+      "category": "window",
+      "parameters": [
+        {
+          "name": "Width",
+          "kind": "length",
+          "value": 1200.0
+        },
+        {
+          "name": "Height",
+          "kind": "length",
+          "value": 1500.0
+        },
+        {
+          "name": "Sill Height",
+          "kind": "length",
+          "value": 900.0
+        },
+        {
+          "name": "Frame Width",
+          "kind": "length",
+          "value": 50.0
+        },
+        {
+          "name": "Frame Depth",
+          "kind": "length",
+          "value": 90.0
+        },
+        {
+          "name": "Frame Material",
+          "kind": "material",
+          "value": "bf71716b-01e6-421d-9f1e-5c032574c1cf"
+        }
+      ],
+      "types": {
+        "1200 x 1500": {
+          "Height": 1500.0,
+          "Width": 1200.0
+        },
+        "1800 x 1200": {
+          "Height": 1200.0,
+          "Sill Height": 1000.0,
+          "Width": 1800.0
+        },
+        "600 x 900": {
+          "Height": 900.0,
+          "Sill Height": 1100.0,
+          "Width": 600.0
+        }
+      },
+      "forms": [
+        {
+          "id": 999621,
+          "guid": "f30605ed-e3b4-43ce-8f87-563c32a955ea",
+          "plane": "xy",
+          "profile": [
+            [
+              "-Width / 2",
+              "-min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "-Width / 2 + Frame Width",
+              "-min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "-Width / 2 + Frame Width",
+              "min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "-Width / 2",
+              "min(Frame Depth, Wall Thickness) / 2"
+            ]
+          ],
+          "from": "0",
+          "to": "Height",
+          "material": "Frame Material"
+        },
+        {
+          "id": 999620,
+          "guid": "335eb127-90e6-4754-aab5-e33c382694de",
+          "plane": "xy",
+          "profile": [
+            [
+              "Width / 2 - Frame Width",
+              "-min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "Width / 2",
+              "-min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "Width / 2",
+              "min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "Width / 2 - Frame Width",
+              "min(Frame Depth, Wall Thickness) / 2"
+            ]
+          ],
+          "from": "0",
+          "to": "Height",
+          "material": "Frame Material"
+        },
+        {
+          "id": 999619,
+          "guid": "8162921a-d4a1-4700-8fa5-7c49c75b0f89",
+          "plane": "xy",
+          "profile": [
+            [
+              "-Width / 2 + Frame Width",
+              "-min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "Width / 2 - Frame Width",
+              "-min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "Width / 2 - Frame Width",
+              "min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "-Width / 2 + Frame Width",
+              "min(Frame Depth, Wall Thickness) / 2"
+            ]
+          ],
+          "from": "Height - Frame Width",
+          "to": "Height",
+          "material": "Frame Material"
+        },
+        {
+          "id": 999618,
+          "guid": "99b50968-6212-4abd-aee8-2d375690d1ce",
+          "plane": "xy",
+          "profile": [
+            [
+              "-Width / 2 + Frame Width",
+              "-min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "Width / 2 - Frame Width",
+              "-min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "Width / 2 - Frame Width",
+              "min(Frame Depth, Wall Thickness) / 2"
+            ],
+            [
+              "-Width / 2 + Frame Width",
+              "min(Frame Depth, Wall Thickness) / 2"
+            ]
+          ],
+          "from": "0",
+          "to": "Frame Width",
+          "material": "Frame Material"
+        },
+        {
+          "id": 999617,
+          "guid": "998e6fc5-dc2a-4204-bb26-c103c9e23c46",
+          "plane": "xy",
+          "profile": [
+            [
+              "-Width / 2 + Frame Width",
+              "-3"
+            ],
+            [
+              "Width / 2 - Frame Width",
+              "-3"
+            ],
+            [
+              "Width / 2 - Frame Width",
+              "3"
+            ],
+            [
+              "-Width / 2 + Frame Width",
+              "3"
+            ]
+          ],
+          "from": "Frame Width",
+          "to": "Height - Frame Width",
+          "material": "309aa0d0-3ec0-4638-9744-2a8439b9b5e0"
+        }
+      ]
+    },
+    "Floor Drain": {
+      "category": "drain",
+      "parameters": [
+        {
+          "name": "Width",
+          "kind": "length",
+          "value": 150.0
+        }
+      ],
+      "types": {
+        "100 x 100": {
+          "Width": 100
+        },
+        "150 x 150": {}
+      },
+      "forms": [
+        {
+          "id": 999616,
+          "guid": "b1895fc3-ca61-40cb-b673-51dc78d964c5",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width) / 2",
+              "-(Width) / 2"
+            ],
+            [
+              "Width / 2",
+              "-(Width) / 2"
+            ],
+            [
+              "Width / 2",
+              "Width / 2"
+            ],
+            [
+              "-(Width) / 2",
+              "Width / 2"
+            ]
+          ],
+          "from": -50.0,
+          "to": 0.0,
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        },
+        {
+          "id": 999615,
+          "guid": "f3736933-a64d-4d9a-bc27-4375bc8454cc",
+          "plane": "xy",
+          "circle": {
+            "centre": [
+              0.0,
+              0.0
+            ],
+            "radius": "(Width) / 2 - 20"
+          },
+          "from": -30.0,
+          "to": 0.0,
+          "void": true
+        },
+        {
+          "id": 999614,
+          "guid": "64c47bbc-7760-4122-b31e-ecea1a24a5f6",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width) / 2 + 20",
+              -24.0
+            ],
+            [
+              "Width / 2 - 20",
+              -24.0
+            ],
+            [
+              "Width / 2 - 20",
+              -16.0
+            ],
+            [
+              "-(Width) / 2 + 20",
+              -16.0
+            ]
+          ],
+          "from": -10.0,
+          "to": 0.0,
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        },
+        {
+          "id": 999613,
+          "guid": "0e9285ed-dcd5-4d34-8433-1112d00c5969",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width) / 2 + 20",
+              -4.0
+            ],
+            [
+              "Width / 2 - 20",
+              -4.0
+            ],
+            [
+              "Width / 2 - 20",
+              4.0
+            ],
+            [
+              "-(Width) / 2 + 20",
+              4.0
+            ]
+          ],
+          "from": -10.0,
+          "to": 0.0,
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        },
+        {
+          "id": 999612,
+          "guid": "c78f6c8b-467b-4a6f-870f-3dcefce55f6a",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width) / 2 + 20",
+              16.0
+            ],
+            [
+              "Width / 2 - 20",
+              16.0
+            ],
+            [
+              "Width / 2 - 20",
+              24.0
+            ],
+            [
+              "-(Width) / 2 + 20",
+              24.0
+            ]
+          ],
+          "from": -10.0,
+          "to": 0.0,
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        }
+      ]
+    },
+    "Gate Valve": {
+      "category": "pipeaccessory",
+      "parameters": [
+        {
+          "name": "Diameter",
+          "kind": "length",
+          "value": 50.0
+        },
+        {
+          "name": "Material",
+          "kind": "material",
+          "value": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        }
+      ],
+      "types": {
+        "25": {
+          "Diameter": 25.0
+        },
+        "50": {
+          "Diameter": 50.0
+        }
+      },
+      "forms": [
+        {
+          "id": 999611,
+          "guid": "424ab6d5-107d-4a43-9a21-fad64b929b45",
+          "plane": "yz",
+          "circle": {
+            "centre": [
+              0.0,
+              0.0
+            ],
+            "radius": "Diameter / 2"
+          },
+          "from": "-(Diameter * 1.5 + 30)",
+          "to": "Diameter * 1.5 + 30",
+          "material": "Material"
+        },
+        {
+          "id": 999610,
+          "guid": "03eaecda-de2c-4fd9-97bc-216e344335b6",
+          "plane": "xy",
+          "circle": {
+            "centre": [
+              0.0,
+              0.0
+            ],
+            "radius": "Diameter * 0.7"
+          },
+          "from": "-(Diameter / 2)",
+          "to": "Diameter * 0.7",
+          "material": "Material"
+        },
+        {
+          "id": 999609,
+          "guid": "28f39a0d-76c4-4dfb-934f-7408047ca924",
+          "plane": "xy",
+          "circle": {
+            "centre": [
+              0.0,
+              0.0
+            ],
+            "radius": "Diameter * 0.25"
+          },
+          "from": "Diameter * 0.7",
+          "to": "Diameter * 1.6",
+          "material": "Material"
+        },
+        {
+          "id": 999608,
+          "guid": "beaf0995-d64e-4b44-9df2-2dc675dd58bd",
+          "plane": "xy",
+          "circle": {
+            "centre": [
+              0.0,
+              0.0
+            ],
+            "radius": "Diameter * 0.8"
+          },
+          "from": "Diameter * 1.6",
+          "to": "Diameter * 1.7",
+          "material": "Material"
+        }
+      ]
+    },
+    "Inspection Box": {
+      "category": "inspectionbox",
+      "parameters": [
+        {
+          "name": "Diameter",
+          "kind": "length",
+          "value": 300.0
+        },
+        {
+          "name": "Height",
+          "kind": "length",
+          "value": 300.0
+        },
+        {
+          "name": "Material",
+          "kind": "material",
+          "value": "6f2909f9-744b-4ae6-aee8-91aadb77800c"
+        }
+      ],
+      "types": {
+        "250": {
+          "Diameter": 250.0
+        },
+        "300": {
+          "Diameter": 300.0
+        }
+      },
+      "forms": [
+        {
+          "id": 999607,
+          "guid": "3ecef54e-44f7-44ab-b8cb-5fc27e9b46ff",
+          "plane": "xy",
+          "circle": {
+            "centre": [
+              0.0,
+              0.0
+            ],
+            "radius": "Diameter / 2"
+          },
+          "from": "-(Height)",
+          "to": 0.0,
+          "material": "Material"
+        },
+        {
+          "id": 999606,
+          "guid": "f3e40e6b-39b6-44ba-bcd5-76fe94ad3a54",
+          "plane": "xy",
+          "circle": {
+            "centre": [
+              0.0,
+              0.0
+            ],
+            "radius": "Diameter / 2 - 20"
+          },
+          "from": "-(Height) + 20",
+          "to": 0.0,
+          "void": true
+        }
+      ]
+    },
+    "Kitchen Sink": {
+      "category": "plumbing",
+      "parameters": [
+        {
+          "name": "Width",
+          "kind": "length",
+          "value": 1200.0
+        },
+        {
+          "name": "Depth",
+          "kind": "length",
+          "value": 550.0
+        },
+        {
+          "name": "Height",
+          "kind": "length",
+          "value": 900.0
+        },
+        {
+          "name": "Material",
+          "kind": "material",
+          "value": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        }
+      ],
+      "types": {
+        "1200 x 550": {},
+        "800 x 500": {
+          "Depth": 500,
+          "Width": 800
+        }
+      },
+      "forms": [
+        {
+          "id": 999605,
+          "guid": "f7ef5b6b-bb55-47ca-a17b-ad749a784d24",
+          "plane": "xy",
+          "profile": [
+            [
+              "-Width / 2",
+              "-Depth"
+            ],
+            [
+              "Width / 2",
+              "-Depth"
+            ],
+            [
+              "Width / 2",
+              0.0
+            ],
+            [
+              "-Width / 2",
+              0.0
+            ]
+          ],
+          "from": "Height - 40",
+          "to": "Height",
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        },
+        {
+          "id": 999604,
+          "guid": "026b3da4-7854-48b5-85ff-486ed29eb1f8",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width) / 2 + 50",
+              "-(Depth) + 50"
+            ],
+            [
+              "Width / 2 - 290",
+              "-(Depth) + 50"
+            ],
+            [
+              "Width / 2 - 290",
+              -50.0
+            ],
+            [
+              "-(Width) / 2 + 50",
+              -50.0
+            ]
+          ],
+          "from": "Height - 210",
+          "to": "Height - 40",
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        },
+        {
+          "id": 999603,
+          "guid": "28afaedc-fe55-4c88-b325-8ede00a5c246",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width) / 2 + 70",
+              "-(Depth) + 70"
+            ],
+            [
+              "Width / 2 - 300 - 10",
+              "-(Depth) + 70"
+            ],
+            [
+              "Width / 2 - 300 - 10",
+              -70.0
+            ],
+            [
+              "-(Width) / 2 + 70",
+              -70.0
+            ]
+          ],
+          "from": "Height - 190",
+          "to": "Height",
+          "void": true
+        },
+        {
+          "id": 999602,
+          "guid": "f7606d57-7f8e-40e7-9cff-319c79b552f3",
+          "plane": "xy",
+          "profile": [
+            [
+              "Width / 2 - 50",
+              -50.0
+            ],
+            [
+              "Width / 2 - 10",
+              -50.0
+            ],
+            [
+              "Width / 2 - 10",
+              -10.0
+            ],
+            [
+              "Width / 2 - 50",
+              -10.0
+            ]
+          ],
+          "from": 0.0,
+          "to": "Height - 40",
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        },
+        {
+          "id": 999601,
+          "guid": "b200e204-bc9f-421a-99d1-aadca4e2a7bb",
+          "plane": "xy",
+          "profile": [
+            [
+              "Width / 2 - 50",
+              "-(Depth) + 10"
+            ],
+            [
+              "Width / 2 - 10",
+              "-(Depth) + 10"
+            ],
+            [
+              "Width / 2 - 10",
+              "-(Depth) + 50"
+            ],
+            [
+              "Width / 2 - 50",
+              "-(Depth) + 50"
+            ]
+          ],
+          "from": 0.0,
+          "to": "Height - 40",
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        },
+        {
+          "id": 999600,
+          "guid": "ed1b24e0-2e9d-462f-a88a-8f24ea97cdf6",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width) / 2 + 10",
+              -50.0
+            ],
+            [
+              "-(Width) / 2 + 50",
+              -50.0
+            ],
+            [
+              "-(Width) / 2 + 50",
+              -10.0
+            ],
+            [
+              "-(Width) / 2 + 10",
+              -10.0
+            ]
+          ],
+          "from": 0.0,
+          "to": "Height - 40",
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        },
+        {
+          "id": 999599,
+          "guid": "32fd1ec7-94ad-4fda-a369-56dbfba06b08",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width) / 2 + 10",
+              "-(Depth) + 10"
+            ],
+            [
+              "-(Width) / 2 + 50",
+              "-(Depth) + 10"
+            ],
+            [
+              "-(Width) / 2 + 50",
+              "-(Depth) + 50"
+            ],
+            [
+              "-(Width) / 2 + 10",
+              "-(Depth) + 50"
+            ]
+          ],
+          "from": 0.0,
+          "to": "Height - 40",
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        },
+        {
+          "id": 999598,
+          "guid": "440a908f-30df-4c65-ae40-e9f9b23d1601",
+          "plane": "xy",
+          "circle": {
+            "centre": [
+              -120.0,
+              -40.0
+            ],
+            "radius": 15.0
+          },
+          "from": "Height",
+          "to": "Height + 250",
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        },
+        {
+          "id": 999597,
+          "guid": "6fcc62ff-135b-457a-b540-85f4928ebaa9",
+          "plane": "xy",
+          "profile": [
+            [
+              -135.0,
+              -220.0
+            ],
+            [
+              -105.0,
+              -220.0
+            ],
+            [
+              -105.0,
+              -25.0
+            ],
+            [
+              -135.0,
+              -25.0
+            ]
+          ],
+          "from": "Height + 220",
+          "to": "Height + 250",
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        }
+      ]
+    },
+    "Outlet": {
+      "category": "outlet",
+      "parameters": [
+        {
+          "name": "Mounting Height",
+          "kind": "length",
+          "value": 300.0
+        }
+      ],
+      "types": {
+        "High 2100": {
+          "Mounting Height": 2100
+        },
+        "Low 300": {},
+        "Medium 1100": {
+          "Mounting Height": 1100
+        }
+      },
+      "forms": [
+        {
+          "id": 999596,
+          "guid": "6d1851bd-e67e-438b-80b0-b3384808a89c",
+          "plane": "xy",
+          "profile": [
+            [
+              -50.0,
+              -12.0
+            ],
+            [
+              50.0,
+              -12.0
+            ],
+            [
+              50.0,
+              0.0
+            ],
+            [
+              -50.0,
+              0.0
+            ]
+          ],
+          "from": "Mounting Height + (-50)",
+          "to": "Mounting Height + (50)",
+          "material": "c63799c6-02ce-4326-abd8-77e5a18c9628"
+        },
+        {
+          "id": 999595,
+          "guid": "06b1224f-69db-491b-bc50-75a4bde6e41a",
+          "plane": "xz",
+          "circle": {
+            "centre": [
+              0.0,
+              "Mounting Height"
+            ],
+            "radius": 25.0
+          },
+          "from": -12.0,
+          "to": -6.0,
+          "void": true
+        }
+      ]
+    },
+    "Patch Panel": {
+      "category": "patchpanel",
+      "parameters": [
+        {
+          "name": "Mounting Height",
+          "kind": "length",
+          "value": 1500.0
+        },
+        {
+          "name": "Material",
+          "kind": "material",
+          "value": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        }
+      ],
+      "types": {
+        "24 ports": {},
+        "48 ports": {}
+      },
+      "forms": [
+        {
+          "id": 999594,
+          "guid": "4fcf3a7c-a81a-4d8a-9370-557297baf966",
+          "plane": "xy",
+          "profile": [
+            [
+              -241.5,
+              -50.0
+            ],
+            [
+              241.5,
+              -50.0
+            ],
+            [
+              241.5,
+              0.0
+            ],
+            [
+              -241.5,
+              0.0
+            ]
+          ],
+          "from": "Mounting Height",
+          "to": "Mounting Height + (44)",
+          "material": "Material"
+        }
+      ]
+    },
+    "Rack": {
+      "category": "rack",
+      "parameters": [
+        {
+          "name": "Width",
+          "kind": "length",
+          "value": 600.0
+        },
+        {
+          "name": "Depth",
+          "kind": "length",
+          "value": 1000.0
+        },
+        {
+          "name": "Height",
+          "kind": "length",
+          "value": 2000.0
+        },
+        {
+          "name": "Material",
+          "kind": "material",
+          "value": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        }
+      ],
+      "types": {
+        "600 x 1000": {},
+        "600 x 800": {
+          "Depth": 800
+        },
+        "800 x 1000": {
+          "Width": 800
+        }
+      },
+      "forms": [
+        {
+          "id": 999593,
+          "guid": "e29bc832-4dd8-48c8-ac11-7fa914540deb",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width) / 2",
+              "-(Depth)"
+            ],
+            [
+              "Width / 2",
+              "-(Depth)"
+            ],
+            [
+              "Width / 2",
+              0.0
+            ],
+            [
+              "-(Width) / 2",
+              0.0
+            ]
+          ],
+          "from": 0.0,
+          "to": "Height",
+          "material": "Material"
+        },
+        {
+          "id": 999592,
+          "guid": "b2c7f05c-1205-47eb-a761-987bcbde591e",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width) / 2 + 20",
+              "-(Depth) - 25"
+            ],
+            [
+              "Width / 2 - 20",
+              "-(Depth) - 25"
+            ],
+            [
+              "Width / 2 - 20",
+              "-(Depth)"
+            ],
+            [
+              "-(Width) / 2 + 20",
+              "-(Depth)"
+            ]
+          ],
+          "from": 60.0,
+          "to": "Height - 40",
+          "material": "c63799c6-02ce-4326-abd8-77e5a18c9628"
+        }
+      ]
+    },
+    "Recessed Luminaire": {
+      "category": "lighting",
+      "parameters": [
+        {
+          "name": "Width",
+          "kind": "length",
+          "value": 600.0
+        },
+        {
+          "name": "Depth",
+          "kind": "length",
+          "value": 600.0
+        },
+        {
+          "name": "Mounting Height",
+          "kind": "length",
+          "value": 3000.0
+        }
+      ],
+      "types": {
+        "1200 x 300": {
+          "Depth": 300,
+          "Width": 1200
+        },
+        "600 x 600": {}
+      },
+      "forms": [
+        {
+          "id": 999591,
+          "guid": "5c08d9e3-b55a-4ad7-966b-0b6fa72aa74e",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width) / 2",
+              "-(Depth) / 2"
+            ],
+            [
+              "Width / 2",
+              "-(Depth) / 2"
+            ],
+            [
+              "Width / 2",
+              "Depth / 2"
+            ],
+            [
+              "-(Width) / 2",
+              "Depth / 2"
+            ]
+          ],
+          "from": "Mounting Height + (-30)",
+          "to": "Mounting Height",
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        },
+        {
+          "id": 999590,
+          "guid": "8eb2ee84-898b-4356-845d-db59c68c894a",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width) / 2 + 15",
+              "-(Depth) / 2 + 15"
+            ],
+            [
+              "Width / 2 - 15",
+              "-(Depth) / 2 + 15"
+            ],
+            [
+              "Width / 2 - 15",
+              "Depth / 2 - 15"
+            ],
+            [
+              "-(Width) / 2 + 15",
+              "Depth / 2 - 15"
+            ]
+          ],
+          "from": "Mounting Height + (-35)",
+          "to": "Mounting Height + (-30)",
+          "material": "309aa0d0-3ec0-4638-9744-2a8439b9b5e0"
+        }
+      ]
+    },
+    "Shower": {
+      "category": "plumbing",
+      "parameters": [
+        {
+          "name": "Width",
+          "kind": "length",
+          "value": 900.0
+        },
+        {
+          "name": "Depth",
+          "kind": "length",
+          "value": 900.0
+        }
+      ],
+      "types": {
+        "800 x 800": {
+          "Depth": 800,
+          "Width": 800
+        },
+        "900 x 900": {}
+      },
+      "forms": [
+        {
+          "id": 999589,
+          "guid": "1bfcc2f3-9dc9-4d5d-be29-570a88a21cf2",
+          "plane": "xy",
+          "profile": [
+            [
+              "-Width / 2",
+              "-Depth"
+            ],
+            [
+              "Width / 2",
+              "-Depth"
+            ],
+            [
+              "Width / 2",
+              0.0
+            ],
+            [
+              "-Width / 2",
+              0.0
+            ]
+          ],
+          "from": 0.0,
+          "to": 50.0,
+          "material": "109bbc23-d6ac-4b53-b169-a0f733ac0396"
+        },
+        {
+          "id": 999588,
+          "guid": "feaac360-8c76-4faf-abf6-4a49d6c6f695",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width) / 2 + 60",
+              "-(Depth) + 60"
+            ],
+            [
+              "Width / 2 - 60",
+              "-(Depth) + 60"
+            ],
+            [
+              "Width / 2 - 60",
+              -60.0
+            ],
+            [
+              "-(Width) / 2 + 60",
+              -60.0
+            ]
+          ],
+          "from": 25.0,
+          "to": 50.0,
+          "void": true
+        },
+        {
+          "id": 999587,
+          "guid": "d728d1f1-5770-4f43-b8ce-dc3207c6f147",
+          "plane": "xy",
+          "circle": {
+            "centre": [
+              0.0,
+              -60.0
+            ],
+            "radius": 12.0
+          },
+          "from": 50.0,
+          "to": 2100.0,
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        },
+        {
+          "id": 999586,
+          "guid": "456cdb32-0d97-4e6a-a714-4342331c0f6e",
+          "plane": "xy",
+          "profile": [
+            [
+              -12.0,
+              -300.0
+            ],
+            [
+              12.0,
+              -300.0
+            ],
+            [
+              12.0,
+              -48.0
+            ],
+            [
+              -12.0,
+              -48.0
+            ]
+          ],
+          "from": 2070.0,
+          "to": 2100.0,
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        },
+        {
+          "id": 999585,
+          "guid": "3bd439ad-fdec-47aa-9d5d-583ece307b7d",
+          "plane": "xy",
+          "circle": {
+            "centre": [
+              0.0,
+              -300.0
+            ],
+            "radius": 90.0
+          },
+          "from": 2040.0,
+          "to": 2070.0,
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        }
+      ]
+    },
+    "Single Door": {
+      "category": "door",
+      "parameters": [
+        {
+          "name": "Width",
+          "kind": "length",
+          "value": 900.0
+        },
+        {
+          "name": "Height",
+          "kind": "length",
+          "value": 2100.0
+        },
+        {
+          "name": "Frame Width",
+          "kind": "length",
+          "value": 50.0
+        },
+        {
+          "name": "Leaf Thickness",
+          "kind": "length",
+          "value": 40.0
+        },
+        {
+          "name": "Frame Material",
+          "kind": "material",
+          "value": "bf71716b-01e6-421d-9f1e-5c032574c1cf"
+        },
+        {
+          "name": "Leaf Material",
+          "kind": "material",
+          "value": "bf71716b-01e6-421d-9f1e-5c032574c1cf"
+        }
+      ],
+      "types": {
+        "1000 x 2100": {
+          "Height": 2100.0,
+          "Width": 1000.0
+        },
+        "800 x 2100": {
+          "Height": 2100.0,
+          "Width": 800.0
+        },
+        "900 x 2100": {
+          "Height": 2100.0,
+          "Width": 900.0
+        }
+      },
+      "forms": [
+        {
+          "id": 999584,
+          "guid": "b59cd6e5-65ed-442a-a1c1-8b2d0c6fdebe",
+          "plane": "xy",
+          "profile": [
+            [
+              "-Width / 2",
+              "-Wall Thickness / 2"
+            ],
+            [
+              "-Width / 2 + Frame Width",
+              "-Wall Thickness / 2"
+            ],
+            [
+              "-Width / 2 + Frame Width",
+              "Wall Thickness / 2"
+            ],
+            [
+              "-Width / 2",
+              "Wall Thickness / 2"
+            ]
+          ],
+          "from": "0",
+          "to": "Height - Frame Width",
+          "material": "Frame Material"
+        },
+        {
+          "id": 999583,
+          "guid": "472a5685-40af-4dba-8866-6acc4b81be3f",
+          "plane": "xy",
+          "profile": [
+            [
+              "Width / 2 - Frame Width",
+              "-Wall Thickness / 2"
+            ],
+            [
+              "Width / 2",
+              "-Wall Thickness / 2"
+            ],
+            [
+              "Width / 2",
+              "Wall Thickness / 2"
+            ],
+            [
+              "Width / 2 - Frame Width",
+              "Wall Thickness / 2"
+            ]
+          ],
+          "from": "0",
+          "to": "Height - Frame Width",
+          "material": "Frame Material"
+        },
+        {
+          "id": 999582,
+          "guid": "4b1d2648-3c17-43bf-a0d2-10dd88f18071",
+          "plane": "xy",
+          "profile": [
+            [
+              "-Width / 2",
+              "-Wall Thickness / 2"
+            ],
+            [
+              "Width / 2",
+              "-Wall Thickness / 2"
+            ],
+            [
+              "Width / 2",
+              "Wall Thickness / 2"
+            ],
+            [
+              "-Width / 2",
+              "Wall Thickness / 2"
+            ]
+          ],
+          "from": "Height - Frame Width",
+          "to": "Height",
+          "material": "Frame Material"
+        },
+        {
+          "id": 999581,
+          "guid": "f05eefaa-25ad-4637-b9ca-d218f818af96",
+          "plane": "xy",
+          "profile": [
+            [
+              "-Width / 2 + Frame Width",
+              "-Leaf Thickness / 2"
+            ],
+            [
+              "Width / 2 - Frame Width",
+              "-Leaf Thickness / 2"
+            ],
+            [
+              "Width / 2 - Frame Width",
+              "Leaf Thickness / 2"
+            ],
+            [
+              "-Width / 2 + Frame Width",
+              "Leaf Thickness / 2"
+            ]
+          ],
+          "from": "0",
+          "to": "Height - Frame Width",
+          "material": "Leaf Material"
+        },
+        {
+          "id": 999580,
+          "guid": "cd18d532-74c3-4d92-a22e-6d167a0cd3ee",
+          "plane": "xy",
+          "profile": [
+            [
+              "Width / 2 - Frame Width - 120",
+              "Leaf Thickness / 2"
+            ],
+            [
+              "Width / 2 - Frame Width - 40",
+              "Leaf Thickness / 2"
+            ],
+            [
+              "Width / 2 - Frame Width - 40",
+              "Leaf Thickness / 2 + 55"
+            ],
+            [
+              "Width / 2 - Frame Width - 120",
+              "Leaf Thickness / 2 + 55"
+            ]
+          ],
+          "from": "1000",
+          "to": "1030",
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        },
+        {
+          "id": 999579,
+          "guid": "75d57c0c-6ec3-48e4-9f81-2892ad1916e7",
+          "plane": "xy",
+          "profile": [
+            [
+              "Width / 2 - Frame Width - 120",
+              "-Leaf Thickness / 2 - 55"
+            ],
+            [
+              "Width / 2 - Frame Width - 40",
+              "-Leaf Thickness / 2 - 55"
+            ],
+            [
+              "Width / 2 - Frame Width - 40",
+              "-Leaf Thickness / 2"
+            ],
+            [
+              "Width / 2 - Frame Width - 120",
+              "-Leaf Thickness / 2"
+            ]
+          ],
+          "from": "1000",
+          "to": "1030",
+          "material": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+        }
+      ],
+      "symbols": [
+        {
+          "id": 999578,
+          "guid": "d90cff73-071a-4ada-944a-6bb167be599a",
+          "line": [
+            [
+              "-Width / 2 + Frame Width",
+              "Wall Thickness / 2"
+            ],
+            [
+              "-Width / 2 + Frame Width",
+              "Wall Thickness / 2 + Width - 2 * Frame Width"
+            ]
+          ]
+        },
+        {
+          "id": 999577,
+          "guid": "5496c0a2-de70-4819-bfa0-320571fb3770",
+          "arc": {
+            "centre": [
+              "-Width / 2 + Frame Width",
+              "Wall Thickness / 2"
+            ],
+            "radius": "Width - 2 * Frame Width",
+            "from": 0.0,
+            "to": 90.0
+          }
+        }
+      ]
+    },
+    "Sofa": {
+      "category": "furniture",
+      "parameters": [
+        {
+          "name": "Width",
+          "kind": "length",
+          "value": 2000.0
+        },
+        {
+          "name": "Depth",
+          "kind": "length",
+          "value": 900.0
+        },
+        {
+          "name": "Seat Height",
+          "kind": "length",
+          "value": 420.0
+        },
+        {
+          "name": "Height",
+          "kind": "length",
+          "value": 800.0
+        },
+        {
+          "name": "Arm Width",
+          "kind": "length",
+          "value": 180.0
+        },
+        {
+          "name": "Material",
+          "kind": "material",
+          "value": "673b8baf-505f-4b1d-89ea-40e5fc6bff09"
+        }
+      ],
+      "types": {
+        "1600 x 900": {
+          "Width": 1600
+        },
+        "2000 x 900": {}
+      },
+      "forms": [
+        {
+          "id": 999576,
+          "guid": "0f8c6d3a-ee9b-47c3-99c0-268ac3871417",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width) / 2 + Arm Width",
+              "-(Depth)"
+            ],
+            [
+              "Width / 2 - Arm Width",
+              "-(Depth)"
+            ],
+            [
+              "Width / 2 - Arm Width",
+              -200.0
+            ],
+            [
+              "-(Width) / 2 + Arm Width",
+              -200.0
+            ]
+          ],
+          "from": 0.0,
+          "to": "Seat Height",
+          "material": "Material"
+        },
+        {
+          "id": 999575,
+          "guid": "d9aacb54-0382-4f1c-9b9a-950f7fc498e8",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width / 2)",
+              -200.0
+            ],
+            [
+              "Width / 2",
+              -200.0
+            ],
+            [
+              "Width / 2",
+              0.0
+            ],
+            [
+              "-(Width / 2)",
+              0.0
+            ]
+          ],
+          "from": 0.0,
+          "to": "Height",
+          "material": "Material"
+        },
+        {
+          "id": 999574,
+          "guid": "71a96207-d1bf-4f9f-b8c4-5e615e444cd3",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width / 2)",
+              "-(Depth)"
+            ],
+            [
+              "-(Width) / 2 + Arm Width",
+              "-(Depth)"
+            ],
+            [
+              "-(Width) / 2 + Arm Width",
+              -200.0
+            ],
+            [
+              "-(Width / 2)",
+              -200.0
+            ]
+          ],
+          "from": 0.0,
+          "to": 600.0,
+          "material": "Material"
+        },
+        {
+          "id": 999573,
+          "guid": "d7832ff4-2333-44b1-84da-a368ff3bfa23",
+          "plane": "xy",
+          "profile": [
+            [
+              "Width / 2 - Arm Width",
+              "-(Depth)"
+            ],
+            [
+              "Width / 2",
+              "-(Depth)"
+            ],
+            [
+              "Width / 2",
+              -200.0
+            ],
+            [
+              "Width / 2 - Arm Width",
+              -200.0
+            ]
+          ],
+          "from": 0.0,
+          "to": 600.0,
+          "material": "Material"
+        }
+      ]
+    },
+    "Switch": {
+      "category": "switch",
+      "parameters": [
+        {
+          "name": "Mounting Height",
+          "kind": "length",
+          "value": 1100.0
+        }
+      ],
+      "types": {
+        "Low 300": {
+          "Mounting Height": 300
+        },
+        "Medium 1100": {}
+      },
+      "forms": [
+        {
+          "id": 999572,
+          "guid": "9e3841f0-046b-4032-9b74-9e88b985fbcf",
+          "plane": "xy",
+          "profile": [
+            [
+              -50.0,
+              -12.0
+            ],
+            [
+              50.0,
+              -12.0
+            ],
+            [
+              50.0,
+              0.0
+            ],
+            [
+              -50.0,
+              0.0
+            ]
+          ],
+          "from": "Mounting Height + (-50)",
+          "to": "Mounting Height + (50)",
+          "material": "c63799c6-02ce-4326-abd8-77e5a18c9628"
+        },
+        {
+          "id": 999571,
+          "guid": "37744778-cfc2-4b35-9c31-d9def20796ca",
+          "plane": "xy",
+          "profile": [
+            [
+              -12.0,
+              -18.0
+            ],
+            [
+              12.0,
+              -18.0
+            ],
+            [
+              12.0,
+              -12.0
+            ],
+            [
+              -12.0,
+              -12.0
+            ]
+          ],
+          "from": "Mounting Height + (-30)",
+          "to": "Mounting Height + (30)",
+          "material": "c63799c6-02ce-4326-abd8-77e5a18c9628"
+        }
+      ]
+    },
+    "Table": {
+      "category": "furniture",
+      "parameters": [
+        {
+          "name": "Width",
+          "kind": "length",
+          "value": 1600.0
+        },
+        {
+          "name": "Depth",
+          "kind": "length",
+          "value": 900.0
+        },
+        {
+          "name": "Height",
+          "kind": "length",
+          "value": 750.0
+        },
+        {
+          "name": "Thickness",
+          "kind": "length",
+          "value": 40.0
+        },
+        {
+          "name": "Leg Width",
+          "kind": "length",
+          "value": 60.0
+        },
+        {
+          "name": "Material",
+          "kind": "material",
+          "value": "bf71716b-01e6-421d-9f1e-5c032574c1cf"
+        }
+      ],
+      "types": {
+        "1200 x 800": {
+          "Depth": 800,
+          "Width": 1200
+        },
+        "1600 x 900": {},
+        "2000 x 1000": {
+          "Depth": 1000,
+          "Width": 2000
+        }
+      },
+      "forms": [
+        {
+          "id": 999570,
+          "guid": "79ac4326-1b23-40af-a439-e551615c31f6",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width / 2)",
+              "-Depth / 2"
+            ],
+            [
+              "Width / 2",
+              "-Depth / 2"
+            ],
+            [
+              "Width / 2",
+              "Depth / 2"
+            ],
+            [
+              "-(Width / 2)",
+              "Depth / 2"
+            ]
+          ],
+          "from": "Height - Thickness",
+          "to": "Height",
+          "material": "Material"
+        },
+        {
+          "id": 999569,
+          "guid": "772ac036-9079-42e0-bd10-ddcf642d6f7d",
+          "plane": "xy",
+          "profile": [
+            [
+              "(Width) / 2 - 50 - Leg Width",
+              "(Depth) / 2 - 50 - Leg Width"
+            ],
+            [
+              "(Width) / 2 - 50",
+              "(Depth) / 2 - 50 - Leg Width"
+            ],
+            [
+              "(Width) / 2 - 50",
+              "(Depth) / 2 - 50"
+            ],
+            [
+              "(Width) / 2 - 50 - Leg Width",
+              "(Depth) / 2 - 50"
+            ]
+          ],
+          "from": 0.0,
+          "to": "Height - Thickness",
+          "material": "Material"
+        },
+        {
+          "id": 999568,
+          "guid": "fb4ed018-277e-4c89-a630-2b07d79010f2",
+          "plane": "xy",
+          "profile": [
+            [
+              "(Width) / 2 - 50 - Leg Width",
+              "-(Depth) / 2 + 50"
+            ],
+            [
+              "(Width) / 2 - 50",
+              "-(Depth) / 2 + 50"
+            ],
+            [
+              "(Width) / 2 - 50",
+              "-(Depth) / 2 + 50 + Leg Width"
+            ],
+            [
+              "(Width) / 2 - 50 - Leg Width",
+              "-(Depth) / 2 + 50 + Leg Width"
+            ]
+          ],
+          "from": 0.0,
+          "to": "Height - Thickness",
+          "material": "Material"
+        },
+        {
+          "id": 999567,
+          "guid": "7882df49-a3e7-4640-a54f-75f6513c6d15",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width) / 2 + 50",
+              "(Depth) / 2 - 50 - Leg Width"
+            ],
+            [
+              "-(Width) / 2 + 50 + Leg Width",
+              "(Depth) / 2 - 50 - Leg Width"
+            ],
+            [
+              "-(Width) / 2 + 50 + Leg Width",
+              "(Depth) / 2 - 50"
+            ],
+            [
+              "-(Width) / 2 + 50",
+              "(Depth) / 2 - 50"
+            ]
+          ],
+          "from": 0.0,
+          "to": "Height - Thickness",
+          "material": "Material"
+        },
+        {
+          "id": 999566,
+          "guid": "638b8e79-fa75-4256-88e6-b9eb2f5d53d0",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width) / 2 + 50",
+              "-(Depth) / 2 + 50"
+            ],
+            [
+              "-(Width) / 2 + 50 + Leg Width",
+              "-(Depth) / 2 + 50"
+            ],
+            [
+              "-(Width) / 2 + 50 + Leg Width",
+              "-(Depth) / 2 + 50 + Leg Width"
+            ],
+            [
+              "-(Width) / 2 + 50",
+              "-(Depth) / 2 + 50 + Leg Width"
+            ]
+          ],
+          "from": 0.0,
+          "to": "Height - Thickness",
+          "material": "Material"
+        }
+      ]
+    },
+    "Tee": {
+      "category": "pipefitting",
+      "parameters": [
+        {
+          "name": "Diameter",
+          "kind": "length",
+          "value": 50.0
+        },
+        {
+          "name": "Material",
+          "kind": "material",
+          "value": "4aafe020-b18e-4089-b90c-a12ab6962416"
+        }
+      ],
+      "types": {
+        "110": {
+          "Diameter": 110.0
+        },
+        "25": {
+          "Diameter": 25.0
+        },
+        "50": {
+          "Diameter": 50.0
+        }
+      },
+      "forms": [
+        {
+          "id": 999565,
+          "guid": "cb7ca0c4-3351-413c-a24e-2ccdeca5a52c",
+          "plane": "yz",
+          "circle": {
+            "centre": [
+              0.0,
+              0.0
+            ],
+            "radius": "Diameter / 2"
+          },
+          "from": "-(Diameter * 1.5 + 30)",
+          "to": "Diameter * 1.5 + 30",
+          "material": "Material"
+        },
+        {
+          "id": 999564,
+          "guid": "6519f8f3-f618-49a8-a695-3702d231415e",
+          "plane": "xz",
+          "circle": {
+            "centre": [
+              0.0,
+              0.0
+            ],
+            "radius": "Diameter / 2"
+          },
+          "from": "0",
+          "to": "Diameter * 1.5 + 30",
+          "material": "Material"
+        }
+      ]
+    },
+    "Voice Outlet": {
+      "category": "voiceoutlet",
+      "parameters": [
+        {
+          "name": "Mounting Height",
+          "kind": "length",
+          "value": 300.0
+        }
+      ],
+      "types": {
+        "Low 300": {},
+        "Medium 1100": {
+          "Mounting Height": 1100
+        }
+      },
+      "forms": [
+        {
+          "id": 999563,
+          "guid": "6f8a998c-23c6-4c87-a6a1-47e3c29bc285",
+          "plane": "xy",
+          "profile": [
+            [
+              -42.0,
+              -12.0
+            ],
+            [
+              42.0,
+              -12.0
+            ],
+            [
+              42.0,
+              0.0
+            ],
+            [
+              -42.0,
+              0.0
+            ]
+          ],
+          "from": "Mounting Height",
+          "to": "Mounting Height + (85)",
+          "material": "c63799c6-02ce-4326-abd8-77e5a18c9628"
+        },
+        {
+          "id": 999562,
+          "guid": "c98304e2-14d2-4c45-a968-b5a8d9fa22e7",
+          "plane": "xy",
+          "profile": [
+            [
+              -8.0,
+              -12.0
+            ],
+            [
+              8.0,
+              -12.0
+            ],
+            [
+              8.0,
+              -5.0
+            ],
+            [
+              -8.0,
+              -5.0
+            ]
+          ],
+          "from": "Mounting Height + (30)",
+          "to": "Mounting Height + (55)",
+          "void": true
+        }
+      ]
+    },
+    "WC": {
+      "category": "plumbing",
+      "parameters": [],
+      "types": {
+        "400 x 650": {}
+      },
+      "forms": [
+        {
+          "id": 999561,
+          "guid": "2f895047-346e-4fe4-8947-778d7e36ce0c",
+          "plane": "xy",
+          "profile": [
+            [
+              -200.0,
+              -180.0
+            ],
+            [
+              200.0,
+              -180.0
+            ],
+            [
+              200.0,
+              0.0
+            ],
+            [
+              -200.0,
+              0.0
+            ]
+          ],
+          "from": 380.0,
+          "to": 800.0,
+          "material": "109bbc23-d6ac-4b53-b169-a0f733ac0396"
+        },
+        {
+          "id": 999560,
+          "guid": "cfaead66-6e5f-473f-9b04-79fae92a48f8",
+          "plane": "xy",
+          "profile": [
+            [
+              -160.0,
+              -380.0
+            ],
+            [
+              160.0,
+              -380.0
+            ],
+            [
+              160.0,
+              -150.0
+            ],
+            [
+              -160.0,
+              -150.0
+            ]
+          ],
+          "from": 0.0,
+          "to": 400.0,
+          "material": "109bbc23-d6ac-4b53-b169-a0f733ac0396"
+        },
+        {
+          "id": 999559,
+          "guid": "4c839d89-12da-4dac-853a-71707be5233d",
+          "plane": "xy",
+          "circle": {
+            "centre": [
+              0.0,
+              -470.0
+            ],
+            "radius": 180.0
+          },
+          "from": 0.0,
+          "to": 400.0,
+          "material": "109bbc23-d6ac-4b53-b169-a0f733ac0396"
+        }
+      ]
+    },
+    "Wardrobe": {
+      "category": "casework",
+      "parameters": [
+        {
+          "name": "Width",
+          "kind": "length",
+          "value": 1200.0
+        },
+        {
+          "name": "Depth",
+          "kind": "length",
+          "value": 600.0
+        },
+        {
+          "name": "Height",
+          "kind": "length",
+          "value": 2100.0
+        },
+        {
+          "name": "Material",
+          "kind": "material",
+          "value": "bf71716b-01e6-421d-9f1e-5c032574c1cf"
+        }
+      ],
+      "types": {
+        "1200 x 600": {},
+        "900 x 600": {
+          "Width": 900
+        }
+      },
+      "forms": [
+        {
+          "id": 999558,
+          "guid": "d4a1f1c0-3fca-4bbd-a4d0-0080f8ca9f2a",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width / 2)",
+              "-(Depth)"
+            ],
+            [
+              "Width / 2",
+              "-(Depth)"
+            ],
+            [
+              "Width / 2",
+              0.0
+            ],
+            [
+              "-(Width / 2)",
+              0.0
+            ]
+          ],
+          "from": 80.0,
+          "to": "Height",
+          "material": "Material"
+        },
+        {
+          "id": 999557,
+          "guid": "36ebe44d-ff1c-4ce2-a62f-9939b6785719",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width) / 2 + 50",
+              "-(Depth) + 50"
+            ],
+            [
+              "Width / 2 - 50",
+              "-(Depth) + 50"
+            ],
+            [
+              "Width / 2 - 50",
+              0.0
+            ],
+            [
+              "-(Width) / 2 + 50",
+              0.0
+            ]
+          ],
+          "from": 0.0,
+          "to": 80.0,
+          "material": "Material"
+        }
+      ]
+    },
+    "Washbasin": {
+      "category": "plumbing",
+      "parameters": [
+        {
+          "name": "Width",
+          "kind": "length",
+          "value": 600.0
+        },
+        {
+          "name": "Depth",
+          "kind": "length",
+          "value": 450.0
+        },
+        {
+          "name": "Height",
+          "kind": "length",
+          "value": 850.0
+        }
+      ],
+      "types": {
+        "500 x 400": {
+          "Depth": 400,
+          "Width": 500
+        },
+        "600 x 450": {}
+      },
+      "forms": [
+        {
+          "id": 999556,
+          "guid": "b4e41cec-cfe6-4b1d-a620-4514f8b339e1",
+          "plane": "xy",
+          "profile": [
+            [
+              "-(Width / 2)",
+              "-(Depth)"
+            ],
+            [
+              "Width / 2",
+              "-(Depth)"
+            ],
+            [
+              "Width / 2",
+              0.0
+            ],
+            [
+              "-(Width / 2)",
+              0.0
+            ]
+          ],
+          "from": "Height - 160",
+          "to": "Height",
+          "material": "109bbc23-d6ac-4b53-b169-a0f733ac0396"
+        },
+        {
+          "id": 999555,
+          "guid": "7737f301-2bf1-4b28-92d6-d79571f3bdcd",
+          "plane": "xy",
+          "circle": {
+            "centre": [
+              0.0,
+              -150.0
+            ],
+            "radius": 90.0
+          },
+          "from": 0.0,
+          "to": "Height - 160",
+          "material": "109bbc23-d6ac-4b53-b169-a0f733ac0396"
+        }
+      ]
+    }
+  },
+  "parameters": {},
+  "line_patterns": {
+    "Centre": [
+      {
+        "dash": 10.0
+      },
+      {
+        "space": 1.5
+      },
+      {
+        "dash": 2.0
+      },
+      {
+        "space": 1.5
+      }
+    ],
+    "Dash": [
+      {
+        "dash": 3.0
+      },
+      {
+        "space": 1.5
+      }
+    ],
+    "Dash Dot": [
+      {
+        "dash": 5.0
+      },
+      {
+        "space": 1.5
+      },
+      "dot",
+      {
+        "space": 1.5
+      }
+    ],
+    "Dot": [
+      "dot",
+      {
+        "space": 1.0
+      }
+    ],
+    "Hidden": [
+      {
+        "dash": 1.5
+      },
+      {
+        "space": 1.0
+      }
+    ],
+    "Long Dash": [
+      {
+        "dash": 8.0
+      },
+      {
+        "space": 2.0
+      }
+    ]
+  },
+  "line_styles": {
+    "Centre Lines": {
+      "pen": 2,
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "pattern": "39cfb632-f449-44f0-b488-4e7c60813089"
+    },
+    "Hairline": {
+      "pen": 0,
+      "color": [
+        0,
+        0,
+        0
+      ]
+    },
+    "Hidden Lines": {
+      "pen": 2,
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "pattern": "93dd6efe-bb3e-48b6-8491-6fd391f111a0"
+    },
+    "Medium Lines": {
+      "pen": 4,
+      "color": [
+        0,
+        0,
+        0
+      ]
+    },
+    "Overhead Lines": {
+      "pen": 2,
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "pattern": "e25fe4d3-b494-4b08-af04-763e0ea1482a"
+    },
+    "Thin Lines": {
+      "pen": 1,
+      "color": [
+        0,
+        0,
+        0
+      ]
+    },
+    "Wide Lines": {
+      "pen": 10,
+      "color": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "fill_patterns": {
+    "Brick 225 x 75": {
+      "target": "model",
+      "lines": [
+        {
+          "angle": 0.0,
+          "spacing": 75.0
+        },
+        {
+          "angle": 90.0,
+          "shift": 75.0,
+          "spacing": 112.5,
+          "dashes": [
+            75.0,
+            -75.0
+          ]
+        }
+      ]
+    },
+    "Crosshatch": {
+      "target": "drafting",
+      "lines": [
+        {
+          "angle": 0.0,
+          "spacing": 2.0
+        },
+        {
+          "angle": 90.0,
+          "spacing": 2.0
+        }
+      ]
+    },
+    "Diagonal Crosshatch": {
+      "target": "drafting",
+      "lines": [
+        {
+          "angle": 45.0,
+          "spacing": 2.0
+        },
+        {
+          "angle": 135.0,
+          "spacing": 2.0
+        }
+      ]
+    },
+    "Diagonal Down": {
+      "target": "drafting",
+      "lines": [
+        {
+          "angle": 135.0,
+          "spacing": 1.5
+        }
+      ]
+    },
+    "Diagonal Up": {
+      "target": "drafting",
+      "lines": [
+        {
+          "angle": 45.0,
+          "spacing": 1.5
+        }
+      ]
+    },
+    "Horizontal": {
+      "target": "drafting",
+      "lines": [
+        {
+          "angle": 0.0,
+          "spacing": 1.5
+        }
+      ]
+    },
+    "Sand": {
+      "target": "drafting",
+      "lines": [
+        {
+          "angle": 0.0,
+          "shift": 0.5,
+          "spacing": 1.0,
+          "dashes": [
+            0.0,
+            -1.0
+          ]
+        }
+      ]
+    },
+    "Solid fill": {
+      "target": "drafting"
+    },
+    "Tile 300": {
+      "target": "model",
+      "lines": [
+        {
+          "angle": 0.0,
+          "spacing": 300.0
+        },
+        {
+          "angle": 90.0,
+          "spacing": 300.0
+        }
+      ]
+    },
+    "Vertical": {
+      "target": "drafting",
+      "lines": [
+        {
+          "angle": 90.0,
+          "spacing": 1.5
+        }
+      ]
+    }
+  },
+  "region_types": {
+    "Brick": {
+      "foreground": "3b331a57-1add-4fae-8904-c00a08843ac8",
+      "foreground_color": [
+        0,
+        0,
+        0
+      ],
+      "background_color": [
+        0,
+        0,
+        0
+      ]
+    },
+    "Crosshatch": {
+      "foreground": "3aafc5d2-a92b-4fd6-81f1-d0460d6d8eb7",
+      "foreground_color": [
+        0,
+        0,
+        0
+      ],
+      "background_color": [
+        0,
+        0,
+        0
+      ]
+    },
+    "Diagonal Up": {
+      "foreground": "2a69b447-78b3-44c0-90b9-fd6bbb596036",
+      "foreground_color": [
+        0,
+        0,
+        0
+      ],
+      "background_color": [
+        0,
+        0,
+        0
+      ]
+    },
+    "Masking": {
+      "foreground_color": [
+        0,
+        0,
+        0
+      ],
+      "background_color": [
+        0,
+        0,
+        0
+      ],
+      "masking": true
+    },
+    "Sand": {
+      "foreground": "f30cd4e3-61ad-4a15-8b0c-db77ac0395d4",
+      "foreground_color": [
+        0,
+        0,
+        0
+      ],
+      "background_color": [
+        0,
+        0,
+        0
+      ]
+    },
+    "Solid Black": {
+      "foreground": "d6d920fa-16de-4c3a-a3be-a86261aab730",
+      "foreground_color": [
+        0,
+        0,
+        0
+      ],
+      "background_color": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "elements": {
+    "100000": {
+      "guid": "badda343-0adc-4afb-a25f-7c3148ef5897",
+      "category": "level",
+      "name": "Level 1",
+      "elevation": 0.0,
+      "view_range": {
+        "top": null,
+        "cut": 1200.0,
+        "bottom": 0.0,
+        "depth": 0.0
+      }
+    },
+    "100001": {
+      "guid": "62e0b7cd-edae-4293-9d69-5041a08f1e4c",
+      "category": "level",
+      "name": "Level 2",
+      "elevation": 3000.0,
+      "view_range": {
+        "top": null,
+        "cut": 1200.0,
+        "bottom": 0.0,
+        "depth": 0.0
+      }
+    },
+    "100002": {
+      "guid": "0e0403da-0c76-4d59-9d2d-bfc8a1290f5d",
+      "category": "wall",
+      "type": "279397dd-057f-42b6-9a5e-5d23373106c2",
+      "level": "badda343-0adc-4afb-a25f-7c3148ef5897",
+      "start": [
+        0.0,
+        8700.0
+      ],
+      "end": [
+        8000.0,
+        8700.0
+      ],
+      "top_level": null,
+      "height": 3000.0,
+      "base_offset": 0.0
+    },
+    "100003": {
+      "guid": "f96bfdf7-bf00-4f07-b013-9e5542f2a541",
+      "category": "wall",
+      "type": "279397dd-057f-42b6-9a5e-5d23373106c2",
+      "level": "badda343-0adc-4afb-a25f-7c3148ef5897",
+      "start": [
+        8000.0,
+        8700.0
+      ],
+      "end": [
+        8000.0,
+        0.0
+      ],
+      "top_level": null,
+      "height": 3000.0,
+      "base_offset": 0.0
+    },
+    "100004": {
+      "guid": "74bd8593-894a-4271-9306-9c471e47b02e",
+      "category": "wall",
+      "type": "279397dd-057f-42b6-9a5e-5d23373106c2",
+      "level": "badda343-0adc-4afb-a25f-7c3148ef5897",
+      "start": [
+        8000.0,
+        0.0
+      ],
+      "end": [
+        0.0,
+        0.0
+      ],
+      "top_level": null,
+      "height": 3000.0,
+      "base_offset": 0.0
+    },
+    "100005": {
+      "guid": "fec0601c-55a4-4c7c-9596-29e4bd0fe537",
+      "category": "wall",
+      "type": "279397dd-057f-42b6-9a5e-5d23373106c2",
+      "level": "badda343-0adc-4afb-a25f-7c3148ef5897",
+      "start": [
+        0.0,
+        0.0
+      ],
+      "end": [
+        0.0,
+        8700.0
+      ],
+      "top_level": null,
+      "height": 3000.0,
+      "base_offset": 0.0
+    },
+    "100006": {
+      "guid": "161bffb0-da90-4bf8-9435-119f2572c1a7",
+      "category": "wall",
+      "type": "279397dd-057f-42b6-9a5e-5d23373106c2",
+      "level": "badda343-0adc-4afb-a25f-7c3148ef5897",
+      "start": [
+        0.0,
+        4350.0
+      ],
+      "end": [
+        8000.0,
+        4350.0
+      ],
+      "top_level": null,
+      "height": 3000.0,
+      "base_offset": 0.0
+    },
+    "100007": {
+      "guid": "2f06ff6d-246e-4430-8267-71fe5278b7c9",
+      "category": "floor",
+      "type": "2c8ac9a6-37c0-4d65-8e0e-5e4f0aba7396",
+      "level": "badda343-0adc-4afb-a25f-7c3148ef5897",
+      "boundary": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          6000.0,
+          0.0
+        ],
+        [
+          6000.0,
+          4000.0
+        ],
+        [
+          0.0,
+          4000.0
+        ]
+      ]
+    },
+    "100008": {
+      "guid": "27a2bd8b-adca-403d-ad0b-0c63379f840a",
+      "category": "door",
+      "type": "57429066-44c8-4465-b878-7c7acf64c41e",
+      "host": "74bd8593-894a-4271-9306-9c471e47b02e",
+      "offset": 4000.0,
+      "sill": 0.0,
+      "mark": "1",
+      "flip_facing": false,
+      "flip_hand": false
+    },
+    "100009": {
+      "guid": "625c6836-ed9d-4bcb-9cc1-10556424b7b1",
+      "category": "window",
+      "type": "57651c68-20e4-4e5d-bc7c-95ed45870b8a",
+      "host": "fec0601c-55a4-4c7c-9596-29e4bd0fe537",
+      "offset": 4350.0,
+      "sill": 900.0,
+      "mark": "1",
+      "flip_facing": false,
+      "flip_hand": false
+    },
+    "100010": {
+      "guid": "40c7d59d-e081-43e6-9d01-9f09244d9805",
+      "category": "room",
+      "level": "badda343-0adc-4afb-a25f-7c3148ef5897",
+      "point": [
+        4000.0,
+        2610.0
+      ],
+      "name": "LIVING / DINING",
+      "number": "1"
+    },
+    "100011": {
+      "guid": "384417b3-1598-41f3-a25e-82bd1e1dece4",
+      "category": "room",
+      "level": "badda343-0adc-4afb-a25f-7c3148ef5897",
+      "point": [
+        4000.0,
+        5220.0
+      ],
+      "name": "KITCHEN",
+      "number": "2"
+    },
+    "100012": {
+      "guid": "bc660542-03e4-4909-8dde-9710e3c0c798",
+      "category": "room",
+      "level": "badda343-0adc-4afb-a25f-7c3148ef5897",
+      "point": [
+        4000.0,
+        2610.0
+      ],
+      "name": "BEDROOM 1",
+      "number": "3"
+    },
+    "100013": {
+      "guid": "589b635a-9ed4-4599-a308-81c93b39c64a",
+      "category": "tag",
+      "host": "40c7d59d-e081-43e6-9d01-9f09244d9805",
+      "offset": [
+        400.0,
+        400.0
+      ],
+      "leader": false
+    },
+    "100014": {
+      "guid": "5cc71165-3efb-404e-b721-2d026cd8f255",
+      "category": "tag",
+      "host": "384417b3-1598-41f3-a25e-82bd1e1dece4",
+      "offset": [
+        400.0,
+        400.0
+      ],
+      "leader": false
+    },
+    "100015": {
+      "guid": "daf59107-da71-45a9-9e8e-c40d59fc703b",
+      "category": "tag",
+      "host": "bc660542-03e4-4909-8dde-9710e3c0c798",
+      "offset": [
+        400.0,
+        400.0
+      ],
+      "leader": false
+    },
+    "100016": {
+      "guid": "181e0ec4-009d-42bb-bf49-46e1646ff107",
+      "category": "elevation",
+      "name": "South Elevation",
+      "start": [
+        -1100.0,
+        -3100.0
+      ],
+      "end": [
+        9100.0,
+        -3100.0
+      ],
+      "depth": null
+    },
+    "100017": {
+      "guid": "86471330-0a91-403a-bb81-b956845fb617",
+      "category": "elevation",
+      "name": "East Elevation",
+      "start": [
+        11100.0,
+        -1100.0
+      ],
+      "end": [
+        11100.0,
+        9800.0
+      ],
+      "depth": null
+    },
+    "100018": {
+      "guid": "443210b1-cb5c-4cc8-b492-560adaeecac9",
+      "category": "section",
+      "name": "Section A-A",
+      "start": [
+        -500.0,
+        4350.0
+      ],
+      "end": [
+        8500.0,
+        4350.0
+      ],
+      "depth": null
+    }
+  },
+  "library": {
+    "999685": {
+      "kind": "filled-region-type",
+      "name": "Solid Black",
+      "guid": "530f7688-b051-4e17-866b-35fc60e4b86e"
+    },
+    "999686": {
+      "kind": "filled-region-type",
+      "name": "Sand",
+      "guid": "949fbfc7-359b-440b-b605-fe3931267391"
+    },
+    "999687": {
+      "kind": "filled-region-type",
+      "name": "Masking",
+      "guid": "5c8133b5-8fb0-41a1-9a47-02343544cd2a"
+    },
+    "999688": {
+      "kind": "filled-region-type",
+      "name": "Diagonal Up",
+      "guid": "5b29e9ec-c769-4703-ae4d-9f58c43a6dc5"
+    },
+    "999689": {
+      "kind": "filled-region-type",
+      "name": "Crosshatch",
+      "guid": "67307558-9928-478f-8c5f-e152e5d7b19e"
+    },
+    "999690": {
+      "kind": "filled-region-type",
+      "name": "Brick",
+      "guid": "26af96f5-6b7e-4e00-ac80-f5fb3ea130c0"
+    },
+    "999691": {
+      "kind": "fill-pattern",
+      "name": "Vertical",
+      "guid": "ff37fe55-9239-4b17-a1e4-892fdd515791"
+    },
+    "999692": {
+      "kind": "fill-pattern",
+      "name": "Tile 300",
+      "guid": "66808f32-0deb-4e2c-960d-7a1c8cd10b45"
+    },
+    "999693": {
+      "kind": "fill-pattern",
+      "name": "Solid fill",
+      "guid": "d6d920fa-16de-4c3a-a3be-a86261aab730"
+    },
+    "999694": {
+      "kind": "fill-pattern",
+      "name": "Sand",
+      "guid": "f30cd4e3-61ad-4a15-8b0c-db77ac0395d4"
+    },
+    "999695": {
+      "kind": "fill-pattern",
+      "name": "Horizontal",
+      "guid": "6b3e56e8-2c28-4bed-adb6-c25b9ffd009d"
+    },
+    "999696": {
+      "kind": "fill-pattern",
+      "name": "Diagonal Up",
+      "guid": "2a69b447-78b3-44c0-90b9-fd6bbb596036"
+    },
+    "999697": {
+      "kind": "fill-pattern",
+      "name": "Diagonal Down",
+      "guid": "1fecd797-0a3f-4995-93ab-d0786289e25e"
+    },
+    "999698": {
+      "kind": "fill-pattern",
+      "name": "Diagonal Crosshatch",
+      "guid": "b3d7c852-4dda-4761-99c7-e1526c3a9d2a"
+    },
+    "999699": {
+      "kind": "fill-pattern",
+      "name": "Crosshatch",
+      "guid": "3aafc5d2-a92b-4fd6-81f1-d0460d6d8eb7"
+    },
+    "999700": {
+      "kind": "fill-pattern",
+      "name": "Brick 225 x 75",
+      "guid": "3b331a57-1add-4fae-8904-c00a08843ac8"
+    },
+    "999701": {
+      "kind": "line-style",
+      "name": "Wide Lines",
+      "guid": "d220d5ed-a059-4de0-b1f5-22ca49a62197"
+    },
+    "999702": {
+      "kind": "line-style",
+      "name": "Thin Lines",
+      "guid": "1cf96e0e-75d7-4c2f-ac77-68fb31a49b35"
+    },
+    "999703": {
+      "kind": "line-style",
+      "name": "Overhead Lines",
+      "guid": "2d19b723-75ee-4757-adac-e95d8e69a7e4"
+    },
+    "999704": {
+      "kind": "line-style",
+      "name": "Medium Lines",
+      "guid": "9cc649fd-be89-49be-b067-55e6fb8442f4"
+    },
+    "999705": {
+      "kind": "line-style",
+      "name": "Hidden Lines",
+      "guid": "82178aa4-0670-4087-9436-b026db1f28b9"
+    },
+    "999706": {
+      "kind": "line-style",
+      "name": "Hairline",
+      "guid": "c19092e1-2f56-47c8-8d30-700e8d90e81b"
+    },
+    "999707": {
+      "kind": "line-style",
+      "name": "Centre Lines",
+      "guid": "ec13ecc3-5ff3-486b-bd54-3a5837caeaef"
+    },
+    "999708": {
+      "kind": "line-pattern",
+      "name": "Long Dash",
+      "guid": "737b250b-056d-43b1-8fde-6a916b836f29"
+    },
+    "999709": {
+      "kind": "line-pattern",
+      "name": "Hidden",
+      "guid": "93dd6efe-bb3e-48b6-8491-6fd391f111a0"
+    },
+    "999710": {
+      "kind": "line-pattern",
+      "name": "Dot",
+      "guid": "915993e0-2795-462a-b12f-e7f962366caa"
+    },
+    "999711": {
+      "kind": "line-pattern",
+      "name": "Dash Dot",
+      "guid": "6a6c2aec-c7fc-4cfc-82f3-cc6fac8738d1"
+    },
+    "999712": {
+      "kind": "line-pattern",
+      "name": "Dash",
+      "guid": "e25fe4d3-b494-4b08-af04-763e0ea1482a"
+    },
+    "999713": {
+      "kind": "line-pattern",
+      "name": "Centre",
+      "guid": "39cfb632-f449-44f0-b488-4e7c60813089"
+    },
+    "999714": {
+      "kind": "family-parameter",
+      "name": "Washbasin: Height",
+      "guid": "8b889bd9-7de6-47c8-b5fa-d2a72453b873"
+    },
+    "999715": {
+      "kind": "family-parameter",
+      "name": "Washbasin: Depth",
+      "guid": "7ec9d5bd-adbb-4078-bccf-ddebbbf2a7d6"
+    },
+    "999716": {
+      "kind": "family-parameter",
+      "name": "Washbasin: Width",
+      "guid": "82380f2f-02da-46b9-adb0-f878fddc99d2"
+    },
+    "999717": {
+      "kind": "family-parameter",
+      "name": "Wardrobe: Material",
+      "guid": "0243d724-31d6-4c97-b32a-f9d7f7c94ad3"
+    },
+    "999718": {
+      "kind": "family-parameter",
+      "name": "Wardrobe: Height",
+      "guid": "334c413d-35e2-4f7c-b1c0-b4ea745d2c22"
+    },
+    "999719": {
+      "kind": "family-parameter",
+      "name": "Wardrobe: Depth",
+      "guid": "12084a06-07d0-4fb5-9fea-600a2231e72c"
+    },
+    "999720": {
+      "kind": "family-parameter",
+      "name": "Wardrobe: Width",
+      "guid": "9d1c61b4-9a9d-43cb-bf6b-3999503afe4d"
+    },
+    "999721": {
+      "kind": "family-parameter",
+      "name": "Voice Outlet: Mounting Height",
+      "guid": "6dc3465a-f366-4ed2-be5d-dd22dd3e3008"
+    },
+    "999722": {
+      "kind": "family-parameter",
+      "name": "Tee: Material",
+      "guid": "bc430d50-f863-4b57-b275-743429dbc4a4"
+    },
+    "999723": {
+      "kind": "family-parameter",
+      "name": "Tee: Diameter",
+      "guid": "4b92d9c3-626c-449b-9c14-d338aece2a00"
+    },
+    "999724": {
+      "kind": "family-parameter",
+      "name": "Table: Material",
+      "guid": "c598ff74-c7ad-464f-9363-1d812021951d"
+    },
+    "999725": {
+      "kind": "family-parameter",
+      "name": "Table: Leg Width",
+      "guid": "fdeccbda-6b3a-4151-bb44-822f6925a950"
+    },
+    "999726": {
+      "kind": "family-parameter",
+      "name": "Table: Thickness",
+      "guid": "adbf9215-215c-4e4d-8da9-0dabbeb23958"
+    },
+    "999727": {
+      "kind": "family-parameter",
+      "name": "Table: Height",
+      "guid": "4d02c57f-9de9-43c7-b56c-885df556960d"
+    },
+    "999728": {
+      "kind": "family-parameter",
+      "name": "Table: Depth",
+      "guid": "13b8c531-caad-48d6-a895-8c871599694d"
+    },
+    "999729": {
+      "kind": "family-parameter",
+      "name": "Table: Width",
+      "guid": "ef84f93c-6d7a-4b29-b96c-22090c66d481"
+    },
+    "999730": {
+      "kind": "family-parameter",
+      "name": "Switch: Mounting Height",
+      "guid": "6c03c85a-9740-43e9-a97b-982b1aa72811"
+    },
+    "999731": {
+      "kind": "family-parameter",
+      "name": "Sofa: Material",
+      "guid": "f54fab6f-0501-429a-bc20-6cb38ebefbe3"
+    },
+    "999732": {
+      "kind": "family-parameter",
+      "name": "Sofa: Arm Width",
+      "guid": "fd12c094-2898-43a0-a66b-98fbf7ba077e"
+    },
+    "999733": {
+      "kind": "family-parameter",
+      "name": "Sofa: Height",
+      "guid": "ff32c49a-0367-4080-88a6-a0a2543dee76"
+    },
+    "999734": {
+      "kind": "family-parameter",
+      "name": "Sofa: Seat Height",
+      "guid": "17611646-fa75-4e4d-b623-f998a009000a"
+    },
+    "999735": {
+      "kind": "family-parameter",
+      "name": "Sofa: Depth",
+      "guid": "c505dfba-d558-4620-9235-011c8097960c"
+    },
+    "999736": {
+      "kind": "family-parameter",
+      "name": "Sofa: Width",
+      "guid": "7106345d-f38a-4b8d-8fc7-7a10396ca47f"
+    },
+    "999737": {
+      "kind": "family-parameter",
+      "name": "Single Door: Leaf Material",
+      "guid": "3fc5c37e-c305-4a98-8a85-e3a15d3069fc"
+    },
+    "999738": {
+      "kind": "family-parameter",
+      "name": "Single Door: Frame Material",
+      "guid": "94784d00-ee4b-4a1c-830c-65f791e4e024"
+    },
+    "999739": {
+      "kind": "family-parameter",
+      "name": "Single Door: Leaf Thickness",
+      "guid": "e49a64c6-23c2-463e-9ab5-4ef994ae3c7d"
+    },
+    "999740": {
+      "kind": "family-parameter",
+      "name": "Single Door: Frame Width",
+      "guid": "5858e069-809c-4318-bc9d-a8fe6af3a50d"
+    },
+    "999741": {
+      "kind": "family-parameter",
+      "name": "Single Door: Height",
+      "guid": "3cb316ff-a773-49f1-ba67-3c81097f6f17"
+    },
+    "999742": {
+      "kind": "family-parameter",
+      "name": "Single Door: Width",
+      "guid": "06cd8fdc-1e23-4745-a4db-acae7e9c6aff"
+    },
+    "999743": {
+      "kind": "family-parameter",
+      "name": "Shower: Depth",
+      "guid": "a014154e-a2e3-4069-a099-0466ab418b1d"
+    },
+    "999744": {
+      "kind": "family-parameter",
+      "name": "Shower: Width",
+      "guid": "419fe188-1f39-4eb6-96cb-5109ec00b4df"
+    },
+    "999745": {
+      "kind": "family-parameter",
+      "name": "Recessed Luminaire: Mounting Height",
+      "guid": "6e65bc32-02d6-4269-8248-599f4c407100"
+    },
+    "999746": {
+      "kind": "family-parameter",
+      "name": "Recessed Luminaire: Depth",
+      "guid": "741cb8b0-c099-4421-bb3a-c6133a099061"
+    },
+    "999747": {
+      "kind": "family-parameter",
+      "name": "Recessed Luminaire: Width",
+      "guid": "2988c84f-44fc-4de2-a021-c7de1a76839c"
+    },
+    "999748": {
+      "kind": "family-parameter",
+      "name": "Rack: Material",
+      "guid": "12e5ab79-342f-41e9-92ac-85a56cdf8b97"
+    },
+    "999749": {
+      "kind": "family-parameter",
+      "name": "Rack: Height",
+      "guid": "81201568-0815-4fd4-abac-a9344956577c"
+    },
+    "999750": {
+      "kind": "family-parameter",
+      "name": "Rack: Depth",
+      "guid": "1c667a2b-44de-46ef-8b10-9df80501a463"
+    },
+    "999751": {
+      "kind": "family-parameter",
+      "name": "Rack: Width",
+      "guid": "5c740e05-18c7-4d6b-8198-f9a50eaca358"
+    },
+    "999752": {
+      "kind": "family-parameter",
+      "name": "Patch Panel: Material",
+      "guid": "fb545d85-197f-4088-89fe-03fd31a69777"
+    },
+    "999753": {
+      "kind": "family-parameter",
+      "name": "Patch Panel: Mounting Height",
+      "guid": "c86527b6-c4bf-4dd9-9cbd-a2a732f8cf2c"
+    },
+    "999754": {
+      "kind": "family-parameter",
+      "name": "Outlet: Mounting Height",
+      "guid": "889082e2-8cab-4c35-a82f-3e5aa7e03a98"
+    },
+    "999755": {
+      "kind": "family-parameter",
+      "name": "Kitchen Sink: Material",
+      "guid": "6e875a0f-1c8e-4353-9be2-4a687f82afd7"
+    },
+    "999756": {
+      "kind": "family-parameter",
+      "name": "Kitchen Sink: Height",
+      "guid": "0bc3c507-6392-4f6d-a700-1a9a55c7bb1e"
+    },
+    "999757": {
+      "kind": "family-parameter",
+      "name": "Kitchen Sink: Depth",
+      "guid": "45593647-114d-48d9-8424-f0a08920516f"
+    },
+    "999758": {
+      "kind": "family-parameter",
+      "name": "Kitchen Sink: Width",
+      "guid": "66cb8a35-1268-4905-aba3-8e2ec43da2b0"
+    },
+    "999759": {
+      "kind": "family-parameter",
+      "name": "Inspection Box: Material",
+      "guid": "9085bbd6-44a2-4318-a86f-e5741994cd42"
+    },
+    "999760": {
+      "kind": "family-parameter",
+      "name": "Inspection Box: Height",
+      "guid": "34cf3260-85a8-47d7-9a1e-0bad5d71022b"
+    },
+    "999761": {
+      "kind": "family-parameter",
+      "name": "Inspection Box: Diameter",
+      "guid": "c78f2130-dd81-4e7a-bca7-5a6d77923757"
+    },
+    "999762": {
+      "kind": "family-parameter",
+      "name": "Gate Valve: Material",
+      "guid": "cceebcdf-4e01-4c31-9f75-97cc8a413ee4"
+    },
+    "999763": {
+      "kind": "family-parameter",
+      "name": "Gate Valve: Diameter",
+      "guid": "d1509ed4-484c-4620-b865-beeb14ce3227"
+    },
+    "999764": {
+      "kind": "family-parameter",
+      "name": "Floor Drain: Width",
+      "guid": "5dfba0fa-783f-44db-844d-fa6e79a4a854"
+    },
+    "999765": {
+      "kind": "family-parameter",
+      "name": "Fixed Window: Frame Material",
+      "guid": "00694fce-cd85-45b7-91ec-1bd8cbd2b8fb"
+    },
+    "999766": {
+      "kind": "family-parameter",
+      "name": "Fixed Window: Frame Depth",
+      "guid": "4cfac1a6-88f7-4bbe-b7d4-a258b95eaef6"
+    },
+    "999767": {
+      "kind": "family-parameter",
+      "name": "Fixed Window: Frame Width",
+      "guid": "d170bc23-4386-4038-ae63-84483768d943"
+    },
+    "999768": {
+      "kind": "family-parameter",
+      "name": "Fixed Window: Sill Height",
+      "guid": "95821f27-5f70-40ea-87b9-eb8bbdc1c672"
+    },
+    "999769": {
+      "kind": "family-parameter",
+      "name": "Fixed Window: Height",
+      "guid": "88efb36b-5d2c-43f1-b9e2-49907fb8bc0d"
+    },
+    "999770": {
+      "kind": "family-parameter",
+      "name": "Fixed Window: Width",
+      "guid": "54609a1d-b8f9-4747-ac0e-f42512eddc07"
+    },
+    "999771": {
+      "kind": "family-parameter",
+      "name": "Elbow 90: Material",
+      "guid": "22f97305-f29b-4575-8a5c-b1b1fe62424b"
+    },
+    "999772": {
+      "kind": "family-parameter",
+      "name": "Elbow 90: Diameter",
+      "guid": "dd33c699-138d-4910-84dd-881364b1590f"
+    },
+    "999773": {
+      "kind": "family-parameter",
+      "name": "Earthing Electrode: Material",
+      "guid": "e77d362c-e8d4-4f3d-8520-662029a97337"
+    },
+    "999774": {
+      "kind": "family-parameter",
+      "name": "Earthing Electrode: Diameter",
+      "guid": "5b2fcdaf-046e-482e-9a10-f1548ae3f413"
+    },
+    "999775": {
+      "kind": "family-parameter",
+      "name": "Earthing Electrode: Height",
+      "guid": "ccf6b3de-195b-4b82-9b54-ce0d94553599"
+    },
+    "999776": {
+      "kind": "family-parameter",
+      "name": "Double Door: Leaf Material",
+      "guid": "fcb69d4d-8d45-4c68-ba29-6e45e4b745fe"
+    },
+    "999777": {
+      "kind": "family-parameter",
+      "name": "Double Door: Frame Material",
+      "guid": "fbc0923a-bf9c-48d9-98cf-c51c4f5d67e3"
+    },
+    "999778": {
+      "kind": "family-parameter",
+      "name": "Double Door: Leaf Thickness",
+      "guid": "f744a730-04ad-4f69-a853-3b7a364d4824"
+    },
+    "999779": {
+      "kind": "family-parameter",
+      "name": "Double Door: Frame Width",
+      "guid": "f506b885-fe73-4381-81fe-d7ff9646ba44"
+    },
+    "999780": {
+      "kind": "family-parameter",
+      "name": "Double Door: Height",
+      "guid": "d351ce14-540b-4ae7-bcbb-f3af98b41ed4"
+    },
+    "999781": {
+      "kind": "family-parameter",
+      "name": "Double Door: Width",
+      "guid": "2500f695-f06a-437d-8e8a-4f1ee3a547f0"
+    },
+    "999782": {
+      "kind": "family-parameter",
+      "name": "Distribution Board: Material",
+      "guid": "2bf7dad1-c4dd-4311-aa3f-ce38ba2cc812"
+    },
+    "999783": {
+      "kind": "family-parameter",
+      "name": "Distribution Board: Mounting Height",
+      "guid": "3897aedd-8b79-4638-b62a-f65642af71c4"
+    },
+    "999784": {
+      "kind": "family-parameter",
+      "name": "Distribution Board: Depth",
+      "guid": "2845fec6-a165-4acd-bf9c-d4c53f1601d0"
+    },
+    "999785": {
+      "kind": "family-parameter",
+      "name": "Distribution Board: Height",
+      "guid": "ff8930d1-cb8d-4642-b271-0b4f5edb4f1f"
+    },
+    "999786": {
+      "kind": "family-parameter",
+      "name": "Distribution Board: Width",
+      "guid": "f341271c-96db-4ef0-8ffe-b0440e6b0500"
+    },
+    "999787": {
+      "kind": "family-parameter",
+      "name": "Desk: Material",
+      "guid": "ea305a1b-f740-4eba-a85a-57ec06d654f1"
+    },
+    "999788": {
+      "kind": "family-parameter",
+      "name": "Desk: Thickness",
+      "guid": "0fdaf9f3-4491-4f87-9c12-6bf754a05090"
+    },
+    "999789": {
+      "kind": "family-parameter",
+      "name": "Desk: Height",
+      "guid": "979cb0a1-ddc3-4d58-a257-e32ddd9c4687"
+    },
+    "999790": {
+      "kind": "family-parameter",
+      "name": "Desk: Depth",
+      "guid": "3552f575-48eb-4acc-9f0c-74311c48e480"
+    },
+    "999791": {
+      "kind": "family-parameter",
+      "name": "Desk: Width",
+      "guid": "43dabe94-d1df-4690-ab9a-c5cef39cc0e8"
+    },
+    "999792": {
+      "kind": "family-parameter",
+      "name": "Data Outlet: Mounting Height",
+      "guid": "5841d1a0-babd-4271-94dc-02d24d73524d"
+    },
+    "999793": {
+      "kind": "family-parameter",
+      "name": "Chair: Material",
+      "guid": "ce582649-107e-48dc-82ef-d852193eb45c"
+    },
+    "999794": {
+      "kind": "family-parameter",
+      "name": "Chair: Leg Width",
+      "guid": "5c72952f-dd3a-47e4-a567-19cd0b12da34"
+    },
+    "999795": {
+      "kind": "family-parameter",
+      "name": "Chair: Thickness",
+      "guid": "903a9273-aef2-4276-bde2-1f475ce880a4"
+    },
+    "999796": {
+      "kind": "family-parameter",
+      "name": "Chair: Height",
+      "guid": "d26a105f-4cb2-40da-a445-8595a8c5d08c"
+    },
+    "999797": {
+      "kind": "family-parameter",
+      "name": "Chair: Seat Height",
+      "guid": "5a593398-cc1c-4372-a4ef-7fbd6dc03741"
+    },
+    "999798": {
+      "kind": "family-parameter",
+      "name": "Chair: Depth",
+      "guid": "f42c2ae8-6802-4b40-a061-c48cd75fb2c1"
+    },
+    "999799": {
+      "kind": "family-parameter",
+      "name": "Chair: Width",
+      "guid": "492e12c1-f5dd-43a8-88be-9d858af41026"
+    },
+    "999800": {
+      "kind": "family-parameter",
+      "name": "Ceiling Luminaire: Mounting Height",
+      "guid": "d2b829d9-2f3c-44f4-900f-532b2c271f21"
+    },
+    "999801": {
+      "kind": "family-parameter",
+      "name": "Ceiling Luminaire: Diameter",
+      "guid": "02892125-73b8-4ba6-869a-70c5d8f54c5e"
+    },
+    "999802": {
+      "kind": "family-parameter",
+      "name": "Casement Window: Frame Material",
+      "guid": "368335d1-2e18-4442-8c82-5c810bf1b9c1"
+    },
+    "999803": {
+      "kind": "family-parameter",
+      "name": "Casement Window: Frame Depth",
+      "guid": "b5217476-e2de-441a-a18b-306dc4504b72"
+    },
+    "999804": {
+      "kind": "family-parameter",
+      "name": "Casement Window: Frame Width",
+      "guid": "e252cd51-b9c2-4ccc-81b3-9d69642c0e5b"
+    },
+    "999805": {
+      "kind": "family-parameter",
+      "name": "Casement Window: Sill Height",
+      "guid": "5fcf0090-f58e-473c-b012-2cac14c10b2e"
+    },
+    "999806": {
+      "kind": "family-parameter",
+      "name": "Casement Window: Height",
+      "guid": "5dab3839-a14a-4683-a48b-facb75864b5f"
+    },
+    "999807": {
+      "kind": "family-parameter",
+      "name": "Casement Window: Width",
+      "guid": "f0de2ba4-2d1a-45c9-81c4-432f01bb7006"
+    },
+    "999808": {
+      "kind": "family-parameter",
+      "name": "Bed: Material",
+      "guid": "5aa20400-d93b-4905-8c3b-1942399b6630"
+    },
+    "999809": {
+      "kind": "family-parameter",
+      "name": "Bed: Headboard Height",
+      "guid": "2cdd9100-fbf6-4383-b359-8b98cb2f6c0d"
+    },
+    "999810": {
+      "kind": "family-parameter",
+      "name": "Bed: Height",
+      "guid": "d5602135-2c02-4fb7-ae12-1413ababf3db"
+    },
+    "999811": {
+      "kind": "family-parameter",
+      "name": "Bed: Length",
+      "guid": "360d1f76-d2ed-4497-8f47-83f36c7a82c8"
+    },
+    "999812": {
+      "kind": "family-parameter",
+      "name": "Bed: Width",
+      "guid": "3dbc1807-8c10-44f7-b818-89a27f1acfd4"
+    },
+    "999813": {
+      "kind": "family-parameter",
+      "name": "Bathtub: Height",
+      "guid": "586beef1-1f84-4484-b852-88435b1f5f1f"
+    },
+    "999814": {
+      "kind": "family-parameter",
+      "name": "Bathtub: Width",
+      "guid": "ed373a0f-ef24-44b6-9f58-8a4c72ec3912"
+    },
+    "999815": {
+      "kind": "family-parameter",
+      "name": "Bathtub: Length",
+      "guid": "e714cece-a3e0-4c61-8a61-b3d35bebc0f5"
+    },
+    "999816": {
+      "kind": "family-parameter",
+      "name": "Base Cabinet: Worktop",
+      "guid": "8a47d95f-a5d2-4554-b449-ec3d046d2276"
+    },
+    "999817": {
+      "kind": "family-parameter",
+      "name": "Base Cabinet: Material",
+      "guid": "f2e6d91f-8777-47e3-86d5-511f0b3c2f16"
+    },
+    "999818": {
+      "kind": "family-parameter",
+      "name": "Base Cabinet: Height",
+      "guid": "974c449d-bf77-4ad3-9d5e-c2f08d6da714"
+    },
+    "999819": {
+      "kind": "family-parameter",
+      "name": "Base Cabinet: Depth",
+      "guid": "da242e99-1ad0-4303-a012-bdcfb4feaea5"
+    },
+    "999820": {
+      "kind": "family-parameter",
+      "name": "Base Cabinet: Width",
+      "guid": "f264e258-ec57-4019-a90b-ab2cf5e33b77"
+    },
+    "999821": {
+      "kind": "family-parameter",
+      "name": "Air Terminal: Material",
+      "guid": "7882e196-cbf2-4f19-a9a5-2c27f11c1dec"
+    },
+    "999822": {
+      "kind": "family-parameter",
+      "name": "Air Terminal: Diameter",
+      "guid": "ffc14542-e79b-4ea6-b51b-31b897cbcb57"
+    },
+    "999823": {
+      "kind": "family-parameter",
+      "name": "Air Terminal: Height",
+      "guid": "0e26c891-30bd-44dd-a4d2-0de46f316fee"
+    },
+    "999824": {
+      "kind": "family-type",
+      "name": "Washbasin: 600 x 450",
+      "guid": "f0973ba3-e502-4117-983b-3680605ed541"
+    },
+    "999825": {
+      "kind": "family-type",
+      "name": "Washbasin: 500 x 400",
+      "guid": "b0a194a7-4137-404c-a3f3-b012fb338396"
+    },
+    "999826": {
+      "kind": "family-type",
+      "name": "Wardrobe: 900 x 600",
+      "guid": "b4d79d3e-1e32-4921-a681-6a67f97334e6"
+    },
+    "999827": {
+      "kind": "family-type",
+      "name": "Wardrobe: 1200 x 600",
+      "guid": "79cbe6bd-afdd-4037-957c-090333ada0b0"
+    },
+    "999828": {
+      "kind": "family-type",
+      "name": "WC: 400 x 650",
+      "guid": "cbad1a15-f6cb-4f2a-aa39-d22ef1e0d4dc"
+    },
+    "999829": {
+      "kind": "family-type",
+      "name": "Voice Outlet: Medium 1100",
+      "guid": "c2be5557-1e1a-47d5-bcaa-bd028dde9ddb"
+    },
+    "999830": {
+      "kind": "family-type",
+      "name": "Voice Outlet: Low 300",
+      "guid": "dcc7e259-f094-4655-8768-6cdaf4d6a173"
+    },
+    "999831": {
+      "kind": "family-type",
+      "name": "Tee: 50",
+      "guid": "47b29068-7048-4f02-bcd7-435d73d921c9"
+    },
+    "999832": {
+      "kind": "family-type",
+      "name": "Tee: 25",
+      "guid": "f8e4ff62-432a-483a-aa0d-fb02b3fddf93"
+    },
+    "999833": {
+      "kind": "family-type",
+      "name": "Tee: 110",
+      "guid": "776144bc-8415-4197-9dfd-0a50120cba1a"
+    },
+    "999834": {
+      "kind": "family-type",
+      "name": "Table: 2000 x 1000",
+      "guid": "fe5e80e3-da9b-41fe-856d-f5d49aeb4a33"
+    },
+    "999835": {
+      "kind": "family-type",
+      "name": "Table: 1600 x 900",
+      "guid": "efd44efd-e0aa-45a2-922c-e297e1ac6b38"
+    },
+    "999836": {
+      "kind": "family-type",
+      "name": "Table: 1200 x 800",
+      "guid": "19cd6839-a61b-4426-b7f1-210bcbe2248d"
+    },
+    "999837": {
+      "kind": "family-type",
+      "name": "Switch: Medium 1100",
+      "guid": "dc1f68bb-d51b-400c-b530-1ba505576f3c"
+    },
+    "999838": {
+      "kind": "family-type",
+      "name": "Switch: Low 300",
+      "guid": "92c298e1-0d4c-4a76-b60d-5fd4573859df"
+    },
+    "999839": {
+      "kind": "family-type",
+      "name": "Sofa: 2000 x 900",
+      "guid": "186d621e-b393-444d-9a7d-28bc861b6ee6"
+    },
+    "999840": {
+      "kind": "family-type",
+      "name": "Sofa: 1600 x 900",
+      "guid": "a34ae7e3-f1fd-476e-9953-e72e710ad3e8"
+    },
+    "999841": {
+      "kind": "family-type",
+      "name": "Single Door: 900 x 2100",
+      "guid": "29ec6995-a9c8-435f-8ebf-efba8a911b87"
+    },
+    "999842": {
+      "kind": "family-type",
+      "name": "Single Door: 800 x 2100",
+      "guid": "86abba1b-0da0-4d59-8ddd-9e043bf3d34a"
+    },
+    "999843": {
+      "kind": "family-type",
+      "name": "Single Door: 1000 x 2100",
+      "guid": "8c72fc4c-78d6-433d-ac2c-1c062dd9f478"
+    },
+    "999844": {
+      "kind": "family-type",
+      "name": "Shower: 900 x 900",
+      "guid": "d4494fa1-7022-44e0-887b-a60161a96c97"
+    },
+    "999845": {
+      "kind": "family-type",
+      "name": "Shower: 800 x 800",
+      "guid": "014aa6e1-1563-48bd-9bb1-476c85d43975"
+    },
+    "999846": {
+      "kind": "family-type",
+      "name": "Recessed Luminaire: 600 x 600",
+      "guid": "88e01cc8-ba48-4a16-b0f9-40130d92acce"
+    },
+    "999847": {
+      "kind": "family-type",
+      "name": "Recessed Luminaire: 1200 x 300",
+      "guid": "335f4368-41cc-41ca-a96a-3ec72ef9dc50"
+    },
+    "999848": {
+      "kind": "family-type",
+      "name": "Rack: 800 x 1000",
+      "guid": "063846a2-690e-4e20-a8fc-839a9c04e369"
+    },
+    "999849": {
+      "kind": "family-type",
+      "name": "Rack: 600 x 800",
+      "guid": "5e2dc7dd-d66c-47f5-8214-14d87ea9cda8"
+    },
+    "999850": {
+      "kind": "family-type",
+      "name": "Rack: 600 x 1000",
+      "guid": "2e4131c2-ff5d-457a-9b8f-b105b84cb312"
+    },
+    "999851": {
+      "kind": "family-type",
+      "name": "Patch Panel: 48 ports",
+      "guid": "925f0e1b-d465-4b6c-87be-4bbf7760631d"
+    },
+    "999852": {
+      "kind": "family-type",
+      "name": "Patch Panel: 24 ports",
+      "guid": "c7706c8b-5d15-4c20-bfdd-d14e4dfd41e6"
+    },
+    "999853": {
+      "kind": "family-type",
+      "name": "Outlet: Medium 1100",
+      "guid": "5052deba-8ea7-4cc9-ba89-fa19af3db4c0"
+    },
+    "999854": {
+      "kind": "family-type",
+      "name": "Outlet: Low 300",
+      "guid": "3edf0eca-2a66-4e94-b59e-f673a9ffba06"
+    },
+    "999855": {
+      "kind": "family-type",
+      "name": "Outlet: High 2100",
+      "guid": "b2e3e88f-b8ff-49b8-8524-bfcf57dba9d7"
+    },
+    "999856": {
+      "kind": "family-type",
+      "name": "Kitchen Sink: 800 x 500",
+      "guid": "cf67a669-abb0-4458-925f-660c7cbdb8f7"
+    },
+    "999857": {
+      "kind": "family-type",
+      "name": "Kitchen Sink: 1200 x 550",
+      "guid": "fab2399a-3b27-44ab-b6da-950eb0f97de2"
+    },
+    "999858": {
+      "kind": "family-type",
+      "name": "Inspection Box: 300",
+      "guid": "e01d6257-9e70-4c55-9d7a-099f1508e424"
+    },
+    "999859": {
+      "kind": "family-type",
+      "name": "Inspection Box: 250",
+      "guid": "ef2b6fee-8fda-4de0-a29f-501c3e1a34d6"
+    },
+    "999860": {
+      "kind": "family-type",
+      "name": "Gate Valve: 50",
+      "guid": "8c02ce7d-db5c-4fc5-a294-4352c7dc33b8"
+    },
+    "999861": {
+      "kind": "family-type",
+      "name": "Gate Valve: 25",
+      "guid": "ec82d9c8-0ce1-4d44-bb84-cd7761051da9"
+    },
+    "999862": {
+      "kind": "family-type",
+      "name": "Floor Drain: 150 x 150",
+      "guid": "ed89eaef-279a-458b-a000-06cd0b2ec345"
+    },
+    "999863": {
+      "kind": "family-type",
+      "name": "Floor Drain: 100 x 100",
+      "guid": "e7551b06-9eda-482e-83a2-3d420e173b82"
+    },
+    "999864": {
+      "kind": "family-type",
+      "name": "Fixed Window: 600 x 900",
+      "guid": "420f5ee6-6d31-4f5b-b09d-af5034912217"
+    },
+    "999865": {
+      "kind": "family-type",
+      "name": "Fixed Window: 1800 x 1200",
+      "guid": "25942f45-f467-40aa-af49-cbfbf1efcc98"
+    },
+    "999866": {
+      "kind": "family-type",
+      "name": "Fixed Window: 1200 x 1500",
+      "guid": "82353e76-6dac-4482-ba39-927aa131b0fa"
+    },
+    "999867": {
+      "kind": "family-type",
+      "name": "Elbow 90: 50",
+      "guid": "557261df-4adc-4bdc-bd5a-fa5d5158b357"
+    },
+    "999868": {
+      "kind": "family-type",
+      "name": "Elbow 90: 25",
+      "guid": "906bfe1a-1f5d-4303-aebd-acd2df41e964"
+    },
+    "999869": {
+      "kind": "family-type",
+      "name": "Elbow 90: 110",
+      "guid": "0e23470a-56ef-4252-b387-7303c33dfefa"
+    },
+    "999870": {
+      "kind": "family-type",
+      "name": "Earthing Electrode: 3000",
+      "guid": "18112f77-bc6c-49e5-8bab-79fad6f26b30"
+    },
+    "999871": {
+      "kind": "family-type",
+      "name": "Earthing Electrode: 2400",
+      "guid": "1dcc7269-927e-4377-8666-1c8c5145a0ee"
+    },
+    "999872": {
+      "kind": "family-type",
+      "name": "Double Door: 1800 x 2100",
+      "guid": "16418903-03f1-474d-b329-3ad8f772ae19"
+    },
+    "999873": {
+      "kind": "family-type",
+      "name": "Double Door: 1500 x 2100",
+      "guid": "ba00f0a9-dba7-4afc-835c-5c2380b3ffc5"
+    },
+    "999874": {
+      "kind": "family-type",
+      "name": "Double Door: 1200 x 2100",
+      "guid": "f915052f-f960-4284-a79a-c08a3b6f1191"
+    },
+    "999875": {
+      "kind": "family-type",
+      "name": "Distribution Board: 36 circuits",
+      "guid": "99b40855-237e-4f5a-824b-27fe4c63d8d7"
+    },
+    "999876": {
+      "kind": "family-type",
+      "name": "Distribution Board: 24 circuits",
+      "guid": "1bd93f08-a551-48d2-8fa1-de28b957e660"
+    },
+    "999877": {
+      "kind": "family-type",
+      "name": "Distribution Board: 12 circuits",
+      "guid": "1cf09a63-44e5-44ee-b8b3-bd6d978160da"
+    },
+    "999878": {
+      "kind": "family-type",
+      "name": "Desk: 1400 x 700",
+      "guid": "9873e8a8-ed7b-48ab-a637-b660f05f95ac"
+    },
+    "999879": {
+      "kind": "family-type",
+      "name": "Desk: 1200 x 600",
+      "guid": "006de07b-eec3-48e9-8bd7-36d5cf03a7a0"
+    },
+    "999880": {
+      "kind": "family-type",
+      "name": "Data Outlet: Medium 1100",
+      "guid": "b8afa37f-a3ca-4008-9265-1b357810e0c0"
+    },
+    "999881": {
+      "kind": "family-type",
+      "name": "Data Outlet: Low 300",
+      "guid": "e9542d16-965b-43a4-962a-87c200db933f"
+    },
+    "999882": {
+      "kind": "family-type",
+      "name": "Chair: 450 x 450",
+      "guid": "03a09006-323e-4ea7-a9b4-ed32f121a83b"
+    },
+    "999883": {
+      "kind": "family-type",
+      "name": "Ceiling Luminaire: 400",
+      "guid": "2e4d98b5-86b0-4d92-ab11-f0a96c405048"
+    },
+    "999884": {
+      "kind": "family-type",
+      "name": "Ceiling Luminaire: 300",
+      "guid": "26fb48f0-a6af-4cc4-bc72-f44f8bca43a9"
+    },
+    "999885": {
+      "kind": "family-type",
+      "name": "Casement Window: 600 x 900",
+      "guid": "8584d687-1ceb-4ce1-8934-9c09a947d44a"
+    },
+    "999886": {
+      "kind": "family-type",
+      "name": "Casement Window: 1800 x 1200",
+      "guid": "9a57303e-1663-4f01-ac15-45ea055bf52b"
+    },
+    "999887": {
+      "kind": "family-type",
+      "name": "Casement Window: 1200 x 1500",
+      "guid": "e89ab427-f9c9-41d3-b5bd-71b627a4843b"
+    },
+    "999888": {
+      "kind": "family-type",
+      "name": "Bed: 900 x 2000",
+      "guid": "5974adcd-3ba6-4fb5-942e-09ab52163af2"
+    },
+    "999889": {
+      "kind": "family-type",
+      "name": "Bed: 1800 x 2000",
+      "guid": "9d4dd2d4-7abb-4af2-ba46-0e5b4ffbff58"
+    },
+    "999890": {
+      "kind": "family-type",
+      "name": "Bed: 1600 x 2000",
+      "guid": "2c7b6923-94ef-4fc4-9b8f-649627d94402"
+    },
+    "999891": {
+      "kind": "family-type",
+      "name": "Bathtub: 1700 x 750",
+      "guid": "a0f0e0aa-cfca-4f2a-8e0c-9ec22685d70d"
+    },
+    "999892": {
+      "kind": "family-type",
+      "name": "Bathtub: 1500 x 700",
+      "guid": "bacf2bfd-1fcd-474d-8b82-97658cdf9f62"
+    },
+    "999893": {
+      "kind": "family-type",
+      "name": "Base Cabinet: 600 x 600",
+      "guid": "2ac47e24-1f67-4020-bd46-9f2cb75144e3"
+    },
+    "999894": {
+      "kind": "family-type",
+      "name": "Base Cabinet: 1800 x 600",
+      "guid": "a0ecd120-c9b9-41ea-9cf2-8bf4b5bd8ac8"
+    },
+    "999895": {
+      "kind": "family-type",
+      "name": "Base Cabinet: 1200 x 600",
+      "guid": "f90a0247-1a5a-4c26-9cef-81d6f0635021"
+    },
+    "999896": {
+      "kind": "family-type",
+      "name": "Air Terminal: 500",
+      "guid": "f8eabef4-62af-4289-819a-a9be9816e48c"
+    },
+    "999897": {
+      "kind": "family-type",
+      "name": "Air Terminal: 2000",
+      "guid": "8a0d6820-d907-45c8-b8a5-f105776c502d"
+    },
+    "999898": {
+      "kind": "family-type",
+      "name": "Air Terminal: 1000",
+      "guid": "7e752669-816e-45c6-beaf-b1ce999eda4a"
+    },
+    "999899": {
+      "kind": "phase-filter",
+      "name": "Show Previous + New",
+      "guid": "72f4dc4a-eb25-4ff1-8ac7-c28dc6647593"
+    },
+    "999900": {
+      "kind": "phase-filter",
+      "name": "Show Previous + Demolished",
+      "guid": "641ca3a5-d37b-4f20-b328-549496def689"
+    },
+    "999901": {
+      "kind": "phase-filter",
+      "name": "Show New",
+      "guid": "42d26180-96d0-489a-93dc-16c095c0bba0"
+    },
+    "999902": {
+      "kind": "phase-filter",
+      "name": "Show Complete",
+      "guid": "9018889e-7d73-4a21-a668-aa2a095e96ae"
+    },
+    "999903": {
+      "kind": "phase-filter",
+      "name": "Show All",
+      "guid": "27b11612-8b71-43e1-b2bb-44606977b9ac"
+    },
+    "999904": {
+      "kind": "phase",
+      "name": "New Construction",
+      "guid": "7c616714-87d3-4dca-862d-4506557dd8b2"
+    },
+    "999905": {
+      "kind": "phase",
+      "name": "Existing",
+      "guid": "e3e54f97-8e5c-4765-b9f1-3c8a6476f1e9"
+    },
+    "999906": {
+      "kind": "family",
+      "name": "Washbasin",
+      "guid": "c5ceeb73-83ed-465c-b543-6750346e4a07"
+    },
+    "999907": {
+      "kind": "family",
+      "name": "Wardrobe",
+      "guid": "ec77b8ee-f0d1-4f09-b72a-de99cfd2fea5"
+    },
+    "999908": {
+      "kind": "family",
+      "name": "WC",
+      "guid": "27d7a8bf-30a6-494c-b5f7-82141b7fa5ea"
+    },
+    "999909": {
+      "kind": "family",
+      "name": "Voice Outlet",
+      "guid": "b2c94d81-3577-4a4d-85a5-7669439edff3"
+    },
+    "999910": {
+      "kind": "family",
+      "name": "Tee",
+      "guid": "e87d0d04-b449-483b-819e-defc8eb2dc9f"
+    },
+    "999911": {
+      "kind": "family",
+      "name": "Table",
+      "guid": "1b5ac2c4-def6-497c-9bda-3ca313004ab0"
+    },
+    "999912": {
+      "kind": "family",
+      "name": "Switch",
+      "guid": "28e9a672-e506-4e11-b1df-d8b7ca01e31d"
+    },
+    "999913": {
+      "kind": "family",
+      "name": "Sofa",
+      "guid": "095a07f7-8a59-42ed-9556-7581190ab8d6"
+    },
+    "999914": {
+      "kind": "family",
+      "name": "Single Door",
+      "guid": "46e5531f-275f-4eaf-998e-c41db87b30e8"
+    },
+    "999915": {
+      "kind": "family",
+      "name": "Shower",
+      "guid": "e9f0a30c-28a3-4f05-b8ba-9c36a861ac64"
+    },
+    "999916": {
+      "kind": "family",
+      "name": "Recessed Luminaire",
+      "guid": "df22b240-be82-4473-8085-03d0c0ac66fd"
+    },
+    "999917": {
+      "kind": "family",
+      "name": "Rack",
+      "guid": "9e951e86-4da3-4e46-b75e-bea5e6e55bda"
+    },
+    "999918": {
+      "kind": "family",
+      "name": "Patch Panel",
+      "guid": "6beb8d2b-8d7a-4dec-a5f3-8a8720360fac"
+    },
+    "999919": {
+      "kind": "family",
+      "name": "Outlet",
+      "guid": "4216e434-dfa5-4d4a-aa64-2c8438cbffa0"
+    },
+    "999920": {
+      "kind": "family",
+      "name": "Kitchen Sink",
+      "guid": "3b0a8386-d531-4076-8581-e6b26a284490"
+    },
+    "999921": {
+      "kind": "family",
+      "name": "Inspection Box",
+      "guid": "3947896a-dd85-4cdf-8f1c-0f5658333b03"
+    },
+    "999922": {
+      "kind": "family",
+      "name": "Gate Valve",
+      "guid": "81c0c60e-928a-460c-bcf5-4dd7a5a335d5"
+    },
+    "999923": {
+      "kind": "family",
+      "name": "Floor Drain",
+      "guid": "eff95c80-e19d-457f-9a75-8b5d2e4e5011"
+    },
+    "999924": {
+      "kind": "family",
+      "name": "Fixed Window",
+      "guid": "ee4e3ed0-77e2-42f2-9b7e-e8e56e50334f"
+    },
+    "999925": {
+      "kind": "family",
+      "name": "Elbow 90",
+      "guid": "292d975e-ccda-4d41-bb5d-6d7a2c535581"
+    },
+    "999926": {
+      "kind": "family",
+      "name": "Earthing Electrode",
+      "guid": "3afb53ce-43da-4d87-a448-af7328b47828"
+    },
+    "999927": {
+      "kind": "family",
+      "name": "Double Door",
+      "guid": "a3899df2-d1df-48aa-b06c-5826b1e021b3"
+    },
+    "999928": {
+      "kind": "family",
+      "name": "Distribution Board",
+      "guid": "9a00275f-f9ff-42ff-a04c-f6a797d4ce65"
+    },
+    "999929": {
+      "kind": "family",
+      "name": "Desk",
+      "guid": "748e32cc-ffd3-4a06-aea7-d2a3bc476729"
+    },
+    "999930": {
+      "kind": "family",
+      "name": "Data Outlet",
+      "guid": "9f20c8d2-7320-4859-9b28-86e8076ab758"
+    },
+    "999931": {
+      "kind": "family",
+      "name": "Chair",
+      "guid": "dd5ed5fa-4974-4003-8261-5f10a34a1cac"
+    },
+    "999932": {
+      "kind": "family",
+      "name": "Ceiling Luminaire",
+      "guid": "18870efb-47ed-4273-b389-dc801c785ccc"
+    },
+    "999933": {
+      "kind": "family",
+      "name": "Casement Window",
+      "guid": "9ae301d2-c449-45c7-aa7a-b17d4d9d3b48"
+    },
+    "999934": {
+      "kind": "family",
+      "name": "Bed",
+      "guid": "ea0a0bf3-c074-4eec-8bbf-6da7c7ee4b1a"
+    },
+    "999935": {
+      "kind": "family",
+      "name": "Bathtub",
+      "guid": "0e1c5f83-6a2b-49e6-bec8-f0c03815023c"
+    },
+    "999936": {
+      "kind": "family",
+      "name": "Base Cabinet",
+      "guid": "934cf7c2-2b34-4d1d-9d83-f37b7704ee4f"
+    },
+    "999937": {
+      "kind": "family",
+      "name": "Air Terminal",
+      "guid": "48de10e5-acc3-4411-abb0-24e3aa74ed53"
+    },
+    "999938": {
+      "kind": "material",
+      "name": "Timber",
+      "guid": "bf71716b-01e6-421d-9f1e-5c032574c1cf"
+    },
+    "999939": {
+      "kind": "material",
+      "name": "Screed",
+      "guid": "fba9a999-b570-4db8-936c-012a0db9ae9e"
+    },
+    "999940": {
+      "kind": "material",
+      "name": "Roof tiles",
+      "guid": "7fa194e3-8a5c-43b6-84bf-21e57631e008"
+    },
+    "999941": {
+      "kind": "material",
+      "name": "Porcelain",
+      "guid": "109bbc23-d6ac-4b53-b169-a0f733ac0396"
+    },
+    "999942": {
+      "kind": "material",
+      "name": "Plaster",
+      "guid": "c63799c6-02ce-4326-abd8-77e5a18c9628"
+    },
+    "999943": {
+      "kind": "material",
+      "name": "PVC",
+      "guid": "4aafe020-b18e-4089-b90c-a12ab6962416"
+    },
+    "999944": {
+      "kind": "material",
+      "name": "Metal",
+      "guid": "eecb2b1a-3133-4c34-a513-5bbdab277f7d"
+    },
+    "999945": {
+      "kind": "material",
+      "name": "Membrane",
+      "guid": "07a1f466-dc7c-4bfc-9286-ba89e35f32f1"
+    },
+    "999946": {
+      "kind": "material",
+      "name": "Insulation",
+      "guid": "36bdf631-1c10-4133-86ec-ace93895f097"
+    },
+    "999947": {
+      "kind": "material",
+      "name": "Gypsum board",
+      "guid": "18328362-862b-4a47-9878-78bf5504d320"
+    },
+    "999948": {
+      "kind": "material",
+      "name": "Glass",
+      "guid": "309aa0d0-3ec0-4638-9744-2a8439b9b5e0"
+    },
+    "999949": {
+      "kind": "material",
+      "name": "Fabric",
+      "guid": "673b8baf-505f-4b1d-89ea-40e5fc6bff09"
+    },
+    "999950": {
+      "kind": "material",
+      "name": "Copper",
+      "guid": "43bcd4db-46b5-4b77-8d5b-4804aed5904a"
+    },
+    "999951": {
+      "kind": "material",
+      "name": "Concrete block",
+      "guid": "29f095b0-3b2c-4fcf-a4c8-3eacc1b5e5c6"
+    },
+    "999952": {
+      "kind": "material",
+      "name": "Concrete",
+      "guid": "6f2909f9-744b-4ae6-aee8-91aadb77800c"
+    },
+    "999953": {
+      "kind": "material",
+      "name": "Ceramic tile",
+      "guid": "c821d206-3f0d-437a-be8b-9c63257b7dfd"
+    },
+    "999954": {
+      "kind": "material",
+      "name": "Brick",
+      "guid": "8eae0bc2-2185-4236-84af-84abdddd90f6"
+    },
+    "999955": {
+      "kind": "type:wire",
+      "name": "Wire 6",
+      "guid": "1f57dd81-d0df-4a08-bf70-be415cb719d0"
+    },
+    "999956": {
+      "kind": "type:wire",
+      "name": "Wire 4",
+      "guid": "dc677881-1b1b-4166-98f9-f94173a4edce"
+    },
+    "999957": {
+      "kind": "type:wire",
+      "name": "Wire 2.5",
+      "guid": "c9effba4-0d43-4d6e-a8cc-fc0a54416b41"
+    },
+    "999958": {
+      "kind": "type:stripfooting",
+      "name": "Strip 600 x 300",
+      "guid": "2d9b6cdc-2e46-4318-babc-ef6301ecd96d"
+    },
+    "999959": {
+      "kind": "type:pipe",
+      "name": "PVC 50",
+      "guid": "511ae3fa-8d9b-4212-a21f-dc22af79d476"
+    },
+    "999960": {
+      "kind": "type:pipe",
+      "name": "PVC 25",
+      "guid": "1492dd04-8159-47b8-a979-1995e4499512"
+    },
+    "999961": {
+      "kind": "type:pipe",
+      "name": "PVC 110",
+      "guid": "353dd44d-9af5-46bf-9bea-db4c8fb47de2"
+    },
+    "999962": {
+      "kind": "type:pipe",
+      "name": "Copper 22",
+      "guid": "85c6e73e-c2f4-4ce7-aa9d-36591c4d9098"
+    },
+    "999963": {
+      "kind": "type:groundconductor",
+      "name": "Steel 8",
+      "guid": "1998ba6f-7990-4e56-a76c-1cbb3c4d3878"
+    },
+    "999964": {
+      "kind": "type:groundconductor",
+      "name": "Copper 9",
+      "guid": "12196c6d-67c4-49f2-8fb4-686837c97e90"
+    },
+    "999965": {
+      "kind": "type:downconductor",
+      "name": "Steel 8",
+      "guid": "0dfcf862-d0a0-4ca5-ac33-7690cb618cf9"
+    },
+    "999966": {
+      "kind": "type:downconductor",
+      "name": "Flat 25 x 3",
+      "guid": "674c1d65-260d-47ab-abe9-573e9f1b1535"
+    },
+    "999967": {
+      "kind": "type:downconductor",
+      "name": "Copper 8",
+      "guid": "967be0b6-81a7-47ae-acee-64b74498f72d"
+    },
+    "999968": {
+      "kind": "type:conduit",
+      "name": "Steel 25",
+      "guid": "d55cd816-38c1-4714-9b82-200600644672"
+    },
+    "999969": {
+      "kind": "type:conduit",
+      "name": "PVC 32",
+      "guid": "8c17915b-5c47-4429-abe3-e59bcce0e580"
+    },
+    "999970": {
+      "kind": "type:conduit",
+      "name": "PVC 25",
+      "guid": "933c46de-28d8-42d9-b65a-f6f050eacfea"
+    },
+    "999971": {
+      "kind": "type:conduit",
+      "name": "PVC 20",
+      "guid": "74a7ed7f-9ea7-4d3c-bf96-3b69e771dcef"
+    },
+    "999972": {
+      "kind": "type:cabletray",
+      "name": "Perforated 300 x 100",
+      "guid": "e10c0ffa-8e2d-44c1-859b-8376106ea901"
+    },
+    "999973": {
+      "kind": "type:cabletray",
+      "name": "Perforated 200 x 50",
+      "guid": "46ffb67e-ecd0-4ca4-b14b-5a60a556ebff"
+    },
+    "999974": {
+      "kind": "type:cabletray",
+      "name": "Perforated 100 x 50",
+      "guid": "0117bbe8-a1d4-41e2-940e-f43085d9c428"
+    },
+    "999975": {
+      "kind": "type:cable",
+      "name": "Optical 3",
+      "guid": "8c6c3480-4788-4837-8c2b-167ada5700e8"
+    },
+    "999976": {
+      "kind": "type:cable",
+      "name": "Cat6A",
+      "guid": "c60c19b6-df68-4406-9b87-9806fbdeac1f"
+    },
+    "999977": {
+      "kind": "type:cable",
+      "name": "Cat6",
+      "guid": "9917295d-5811-4bd6-9557-f2af872c9585"
+    },
+    "999978": {
+      "kind": "type:beam",
+      "name": "Steel Tube 150",
+      "guid": "5d77dc10-25ce-4d13-b59f-526902de98e4"
+    },
+    "999979": {
+      "kind": "type:beam",
+      "name": "Beam 200 x 500",
+      "guid": "3d42abe4-00dd-4c68-a9fb-c5f0a0dda229"
+    },
+    "999980": {
+      "kind": "type:beam",
+      "name": "Beam 150 x 400",
+      "guid": "0b4fe033-b79f-4794-9230-527874ec4692"
+    },
+    "999981": {
+      "kind": "type:footing",
+      "name": "Footing 1500 x 1500",
+      "guid": "5da2c432-1b6f-4df4-b87f-de06a5426aa4"
+    },
+    "999982": {
+      "kind": "type:footing",
+      "name": "Footing 1200 x 1200",
+      "guid": "6c192a77-5cb2-4975-b313-0931c438342a"
+    },
+    "999983": {
+      "kind": "type:structuralcolumn",
+      "name": "Concrete Round 400",
+      "guid": "3a52159b-fcff-4f42-bf1e-dd98714e85b2"
+    },
+    "999984": {
+      "kind": "type:structuralcolumn",
+      "name": "Concrete 300 x 300",
+      "guid": "a96f2069-5c06-427c-8e94-1aa51c681312"
+    },
+    "999985": {
+      "kind": "type:structuralcolumn",
+      "name": "Concrete 200 x 500",
+      "guid": "3b10698b-cbbd-46e2-aceb-a13380f55fd7"
+    },
+    "999986": {
+      "kind": "type:railing",
+      "name": "Railing - 1000mm",
+      "guid": "196defc2-e789-497d-ac26-7ec3349e755e"
+    },
+    "999987": {
+      "kind": "type:ceiling",
+      "name": "Tile 600 x 600",
+      "guid": "c20f1588-445f-476f-a66e-9b3fac5d8313"
+    },
+    "999988": {
+      "kind": "type:ceiling",
+      "name": "Generic - 20mm",
+      "guid": "ddb507e9-e684-4adb-a26e-56df192592e3"
+    },
+    "999989": {
+      "kind": "type:roof",
+      "name": "Generic - 300mm",
+      "guid": "7824ee8a-32ac-48e7-b8f0-bfcfc99abc48"
+    },
+    "999990": {
+      "kind": "type:column",
+      "name": "Round 300",
+      "guid": "694c8a01-2ab3-4069-aa41-5e4a9efff0f3"
+    },
+    "999991": {
+      "kind": "type:column",
+      "name": "Rectangular 400 x 400",
+      "guid": "b9d7759d-73c0-4038-a6b8-7bf7e303a50a"
+    },
+    "999992": {
+      "kind": "type:window",
+      "name": "Fixed 600 x 900",
+      "guid": "c9bd76cb-68fe-42c5-879b-1bed7ab7153b"
+    },
+    "999993": {
+      "kind": "type:window",
+      "name": "Fixed 1200 x 1500",
+      "guid": "57651c68-20e4-4e5d-bc7c-95ed45870b8a"
+    },
+    "999994": {
+      "kind": "type:door",
+      "name": "Single 900 x 2100",
+      "guid": "57429066-44c8-4465-b878-7c7acf64c41e"
+    },
+    "999995": {
+      "kind": "type:door",
+      "name": "Single 800 x 2100",
+      "guid": "b8cdd518-c482-403c-9502-f28d2126629c"
+    },
+    "999996": {
+      "kind": "type:floor",
+      "name": "Generic - 200mm",
+      "guid": "2c8ac9a6-37c0-4d65-8e0e-5e4f0aba7396"
+    },
+    "999997": {
+      "kind": "type:wall",
+      "name": "Interior - 100mm",
+      "guid": "bf3fe77d-f687-464b-8fb0-a7aff29289ae"
+    },
+    "999998": {
+      "kind": "type:wall",
+      "name": "Generic - 200mm",
+      "guid": "279397dd-057f-42b6-9a5e-5d23373106c2"
+    },
+    "999999": {
+      "kind": "type:wall",
+      "name": "Exterior - 300mm",
+      "guid": "678a2d23-4af3-4952-be5a-9e8fd6f2eb56"
+    }
+  }
+}

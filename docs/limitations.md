@@ -1,64 +1,65 @@
-# Limitations & Version Roadmap
+# Limitations & Safety Disclaimers: Sketch-to-CAD (Supervised MVP)
 
-This document outlines the verified scope, known limitations, and roadmap for `sketch-to-cad`.
-
----
-
-## 1. Scope & Verified Environment in v0.1.0
-
-### Verified Setup
-- **Operating System**: Windows 10/11
-- **Agent Platform**: Google Antigravity
-- **CAD Engine**: CADCraft CLI v0.8.0 (Headless MCP mode)
-- **Typology**: Single-storey orthogonal residential floor plans
-
-Other platforms (macOS, Linux), CAD engines, or multi-storey typologies are **untested** in this release.
+**Skill Version:** 1.0.0 (Supervised Beta MVP)  
+**Release Date:** 2026-11-03  
+**Status:** `MVP_READY_WITH_LIMITATIONS`  
 
 ---
 
-## 2. Current Known Limitations
+## 1. Executive Disclaimer: Supervised MVP Status
 
-### 1. Orthogonal Geometry Only
-- v0.1.0 assumes rectilinear, orthogonal geometry (0° and 90° wall angles).
-- Non-orthogonal walls, circular segments, and complex angled geometries are not yet supported.
+Sketch-to-CAD is an **AI-assisted pre-processor and drafting accelerator** designed to operate strictly under the supervision of qualified architectural designers and drafting professionals. 
 
-### 2. Single-Storey Typologies
-- The intermediate model format supports a single building envelope level.
-- Multi-storey alignment, vertical stair shafts, and floor-to-floor structural stacking are deferred to future versions.
-
-### 3. Hand-Drawn Ambiguities Require Human Decisions
-- The skill does not guess or invent missing dimensions.
-- Arithmetic conflicts on rough sketches (e.g. sum of room widths $\ne$ overall envelope) require explicit user choice between proposed reconciliation options.
-
-### 4. Non-Certified Drafting Assistance
-- Outputs are preliminary drafting aids.
-- Structural load-bearing capacity, shear wall calculations, fire egress regulations, and municipal building code compliance are **UNVERIFIED** and must be reviewed and certified by a licensed architect or professional engineer before construction use.
+> [!CAUTION]
+> **NOT CERTIFIED ARCHITECTURAL OR ENGINEERING SOFTWARE**:
+> All deliverables produced by Sketch-to-CAD—including DXF CAD drawings, companion BIM handoffs, and architectural schedules—are preliminary drafting aids. They **DO NOT** constitute stamped, sealed, or certified construction documents. They have not been evaluated for structural load capacity, foundation stability, fire-resistance ratings, life-safety egress, accessibility compliance (e.g. ADA), or local municipal building codes. All drawings must be reviewed, verified, and stamped by a licensed Architect or Registered Professional Engineer before use in permitting, bidding, or construction.
 
 ---
 
-## 3. Version Roadmap
+## 2. Benchmark Ground-Truth & AI Vision Coverage
 
-### v0.1.0 · Initial Public Preview (Current)
-- Core 7-stage quality gate workflow.
-- Hand-drawn sketch decomposition and dimension classification (`explicit`, `estimated`, `inferred`).
-- Mandatory User Approval Gate before CAD drafting.
-- AIA layer structure (`A-WALL-EXTR`, `A-WALL-INTR`, `A-DOOR`, `A-GLAZ`, `A-ANNO-TEXT`, `A-ANNO-DIMS`).
-- Sealed door jamb end-caps and legible dimension style scaling.
-- Mandatory Visual QA & Source Comparison Gate.
-- DXF, PNG, and JSON deliverables.
+In accordance with strict engineering integrity standards, the empirical performance of multimodal vision models on the 22-sample Pilot Dataset is disclosed transparently:
 
-### v0.2.0 · Geometric Reliability & Automated Regression
-- Automated geometric regression test harness.
-- Advanced wall-junction collision resolver for complex multi-partition intersections.
-- Automated dimension tier spacing and collision avoidance.
-- Support for cased openings and pocket sliding doors.
+| Metric | Measured Real AI Value (`PILOT-02`) | Challenge Mock Baselines (21 Samples) | Explanation |
+| :--- | :---: | :---: | :--- |
+| **Exterior Wall F1** | **0.800** | 0.950 – 1.000 (synthetic) | Strong perimeter detection on clean hand-drawn sketches. |
+| **Dimension Accuracy** | **100.0%** | 98.5% (synthetic) | Explicit handwritten dimensions (8000x8700 mm) recognized accurately. |
+| **Opening F1 (Doors/Windows)**| **0.000** | 0.900 – 1.000 (synthetic) | Freehand door swings and window double-lines are frequently missed or unsegmented by raw vision inference without prompt hints. |
+| **Room Polygon IoU** | **0.000** | 0.880 – 0.960 (synthetic) | Pixel-space room text labels require human assistance to associate with reconstructed geometric boundaries. |
 
-### v0.3.0 · Enhanced Sketch Interpretation
-- Robust OCR and handwriting recognition for low-resolution or skewed photos.
-- Automatic visual perspective correction for angled mobile phone photos of sketches.
-- Multi-room area schedule generation (gross vs. net internal floor areas).
+> [!NOTE]
+> **Provenance Transparency**: Of the 22 pilot benchmark samples, exactly **1 sample (`PILOT-02`)** represents an authentic user hand-drawn villa evaluated under live agent-native vision extraction. The remaining 21 samples are synthetic challenge fixtures designed to test pipeline error handling, skew detection, arithmetic conflict logging, and multi-storey handling. They are explicitly marked as `mocked` baselines and are **never** averaged into genuine AI accuracy figures.
 
-### Future Milestones
-- Multi-storey residential support with stairwell vertical continuity.
-- Support for additional MCP CAD backends (e.g., LibreCAD, FreeCAD, AutoCAD).
-- Export to IFC (Industry Foundation Classes) BIM formats.
+---
+
+## 3. Geometric & Drafting Limitations
+
+### 3.1 Orthogonal Wall Alignment
+The current geometry reconstructor operates on rectilinear Manhattan geometry (0° and 90° angles). Non-orthogonal walls (e.g., 45° bay windows in `PILOT-11`) are approximated or flagged as non-orthogonal warnings. Curved, circular, or freeform organic walls are unsupported.
+
+### 3.2 900 mm Window Sill Fallback
+Two-dimensional floor plan sketches almost never depict vertical sill heights. When sill heights are unannotated:
+- The system automatically assigns a **900 mm fallback**.
+- This assumption is recorded in the **Uncertainty Register** as unverified.
+- Downstream BIM compilation tools (`dxf-to-3d-bim`) flag this height for explicit user approval before generating 3D wall cutouts.
+
+### 3.3 Opening Host-Wall Alignment
+In raw sketches, drawn door and window symbols often drift several hundred millimeters away from wall axes due to sloppy drawing. Sketch-to-CAD applies vector centerline projection to clamp opening centers onto host walls. If an opening is drawn entirely detached from any wall, it will be skipped and logged in the QA discrepancy report.
+
+---
+
+## 4. Human Review & Security Boundaries
+
+### 4.1 Plain-Text Identity Assertions
+The Human Approval Gate records the reviewer's name and role using `auth_method: "identity_assertion"`. This establishes an internal audit trail but **does not verify professional licensure, digital cryptographic signatures, or legal identity**.
+
+### 4.2 Anti-Self-Approval
+The system strictly prohibits AI agents or automated scripts from approving their own draft models. Submitting approvals with roles containing `agent`, `bot`, or `ai_assistant` triggers a fatal permission error.
+
+---
+
+## 5. Downstream BIM Handoff Scope
+
+The exported `.handoff.json` contract provides 2D-to-3D bridge metadata (wall axes, thickness, opening locations, level elevations). However:
+- Vertical heights (ceiling height, floor-to-floor pitch, roof slope) are set to default residential standards (2700 mm ceiling, 300 mm slab) and must be reviewed.
+- Multi-storey stairwell openings require manual coordination in CAD or BIM software to verify clear headroom and riser/tread counts.

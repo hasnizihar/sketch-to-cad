@@ -1,0 +1,19 @@
+wall {"points": [[0.0, 8700.0], [8000.0, 8700.0]], "level": "Level 1", "height": 3000.0, "location": "centre"}
+wall {"points": [[8000.0, 8700.0], [8000.0, 0.0]], "level": "Level 1", "height": 3000.0, "location": "centre"}
+wall {"points": [[8000.0, 0.0], [0.0, 0.0]], "level": "Level 1", "height": 3000.0, "location": "centre"}
+wall {"points": [[0.0, 0.0], [0.0, 8700.0]], "level": "Level 1", "height": 3000.0, "location": "centre"}
+wall {"points": [[0.0, 4350.0], [8000.0, 4350.0]], "level": "Level 1", "height": 3000.0, "location": "centre"}
+floor {"boundary": [[0.0, 0.0], [6000.0, 0.0], [6000.0, 4000.0], [0.0, 4000.0]], "level": "Level 1"}
+door {"at": [4000.0, 0.0], "level": "Level 1"}
+window {"at": [0.0, 4350.0], "level": "Level 1", "sill": 900.0}
+room {"point": [4000.0, 2610.0], "level": "Level 1", "name": "LIVING / DINING"}
+room {"point": [4000.0, 5220.0], "level": "Level 1", "name": "KITCHEN"}
+room {"point": [4000.0, 2610.0], "level": "Level 1", "name": "BEDROOM 1"}
+tag {"category": "room", "level": "Level 1"}
+elevation {"facing": "south", "name": "South Elevation"}
+render {"view": "South Elevation", "path": "tests\\benchmark\\pilot_dataset\\deliverables\\PILOT-02\\downstream_bim\\sketchtocadimport_elev_south.png"}
+elevation {"facing": "east", "name": "East Elevation"}
+render {"view": "East Elevation", "path": "tests\\benchmark\\pilot_dataset\\deliverables\\PILOT-02\\downstream_bim\\sketchtocadimport_elev_east.png"}
+section {"start": [-500.0, 4350.0], "end": [8500.0, 4350.0], "name": "Section A-A"}
+render {"view": "Section A-A", "path": "tests\\benchmark\\pilot_dataset\\deliverables\\PILOT-02\\downstream_bim\\sketchtocadimport_section_a.png"}
+render {"view": "{3D}", "azimuth": 315, "elevation": 30, "path": "tests\\benchmark\\pilot_dataset\\deliverables\\PILOT-02\\downstream_bim\\sketchtocadimport_3d.png"}

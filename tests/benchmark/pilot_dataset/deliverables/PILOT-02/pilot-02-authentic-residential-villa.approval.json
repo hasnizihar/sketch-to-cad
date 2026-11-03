@@ -1,7 +1,7 @@
 {
-  "package_id": "AP-20261103180519",
+  "package_id": "AP-20261103184033",
   "project_name": "PILOT-02 Authentic Residential Villa",
-  "revision_hash": "bf38add570ab68384dc97407e4856e2d0d1fbbe161cc5792be68f443f85bbc80",
+  "revision_hash": "0abfa99642320e23535843785602ecf4fb652a6f6e926bbae4fb83e4b63ad1d7",
   "status": "approved",
   "source_sketch": {
     "source_file": "PILOT-02-user-hand-drawn-villa.jpg",
@@ -66,23 +66,19 @@
   ],
   "decisions_log": [
     {
-      "timestamp": "2026-11-03T12:35:19.893104+00:00",
-      "reviewer_name": "Senior Architectural Reviewer",
+      "timestamp": "2026-11-03T13:10:33.846257+00:00",
+      "reviewer_name": "Lead Architect",
       "action": "approve",
-      "details": {
-        "notes": "Authentic villa sketch approved for drafting. Verified 8000x8700mm structural envelope, single-leaf entry door, and arithmetic contradiction logged in register.",
-        "auth_method": "identity_assertion",
-        "override_blockers": true
-      }
+      "details": {}
     }
   ],
   "approval_metadata": {
-    "approved_by": "Senior Architectural Reviewer",
+    "approved_by": "Lead Architect",
     "auth_method": "identity_assertion",
     "auth_security_level": "unverified_name_assertion",
     "auth_note": "Reviewer identity recorded via plain-text assertion. Cryptographic signature or token authentication recommended for legal/permitting submissions.",
-    "approval_timestamp": "2026-11-03T12:35:19.893104+00:00",
-    "approved_revision_hash": "bf38add570ab68384dc97407e4856e2d0d1fbbe161cc5792be68f443f85bbc80",
-    "notes": "Authentic villa sketch approved for drafting. Verified 8000x8700mm structural envelope, single-leaf entry door, and arithmetic contradiction logged in register."
+    "approval_timestamp": "2026-11-03T13:10:33.846257+00:00",
+    "approved_revision_hash": "0abfa99642320e23535843785602ecf4fb652a6f6e926bbae4fb83e4b63ad1d7",
+    "notes": "Approved for drafting"
   }
 }

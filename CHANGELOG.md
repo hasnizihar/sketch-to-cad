@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.0-beta.1] - 2026-11-03
+
+### Added
+- **Milestone 14: Final Release, Stabilization & Project Closure (Supervised Beta MVP)**:
+  - Official project stabilization and feature development freeze, designating the codebase as MVP_READY_WITH_LIMITATIONS.
+  - Implemented opening centerline host-wall vector projection in scripts/sketch_interpreter.py and skills/sketch-to-cad/scripts/sketch_interpreter.py, solving downstream BIM door/window misalignment.
+  - Independently verified downstream 3D BIM compilation with dxf-to-3d-bim: generated native .bimcraft project, ISO 16739-1:2018 IFC4 export, and 3D axonometric and elevation raster previews with 0 errors.
+  - Authored comprehensive pre-release technical audit: skills/sketch-to-cad/references/final-release-audit.md.
+  - Authored 6 core project documentation files in docs/:
+    * docs/PROJECT_OVERVIEW.md: System overview, problem statement, target personas, and supervised MVP boundaries.
+    * docs/SYSTEM_ARCHITECTURE.md: Subsystem architecture, data flow, vision bridge, human approval gate, CADCraft MCP, BIM handoff, and Mermaid diagrams.
+    * docs/USER_GUIDE.md: Step-by-step practical user instructions, handling contradictions, reviewing proposals, approving drawings, and troubleshooting.
+    * docs/DEVELOPER_GUIDE.md: Developer guide covering repository structure, script mirroring, JSON Schemas, vision provider subclassing, and validation.
+    * docs/LIMITATIONS.md: Detailed engineering disclosures of benchmark coverage, opening detection variance, unverified dimensions, 900mm sill default, lack of licensed PE approval, and non-certified status.
+    * docs/FINAL_RELEASE_REPORT.md: Comprehensive 18-section final release report documenting technical baseline, benchmark evidence, acceptance decision, and deliverable manifest.
+  - Created standardized 
+equirements.txt with verified runtime dependencies (ezdxf, PyMuPDF, Pillow, jsonschema, 
+equests, 
+eportlab, matplotlib).
+  - Full regression executed on PILOT-02, regenerating complete CAD and BIM deliverable packages.
+  - Verified 240/240 automated unit tests (100% passing) and 19/19 skill validator checks with zero machine path leaks.
+
 ## [Unreleased]
 
 ### Added

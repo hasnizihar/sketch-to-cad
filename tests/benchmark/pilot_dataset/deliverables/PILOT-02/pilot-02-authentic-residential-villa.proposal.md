@@ -1,6 +1,6 @@
 # Architectural Floor Plan Proposal: PILOT-02 Authentic Residential Villa
 
-> **Model Revision:** `bf38add570ab` | **Status:** `AWAITING_APPROVAL` | **Source:** `PILOT-02-user-hand-drawn-villa.jpg`
+> **Model Revision:** `0abfa9964232` | **Status:** `AWAITING_APPROVAL` | **Source:** `PILOT-02-user-hand-drawn-villa.jpg`
 
 ## 1. Footprint & Envelope Summary
 

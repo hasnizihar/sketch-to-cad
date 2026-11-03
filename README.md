@@ -120,11 +120,20 @@ flowchart LR
 
 ## Quick Start
 
-### 1. Prerequisites
+### 1. Prerequisites & Dependencies
 - **OS**: Windows 10 / 11 (tested)
+- **Python**: Python 3.10 – 3.12 (python -m venv .venv && pip install -r requirements.txt)
 - **Agent Environment**: Google Antigravity IDE / Agent runtime
-- **CAD Engine**: [CADCraft CLI](docs/cadcraft-mcp-setup.md) v0.8.0+ installed on your system
+- **CAD Engine**: [CADCraft CLI](docs/cadcraft-mcp-setup.md) v0.8.0+ installed on your system (optional for native ezdxf drafting)
 - **Shell**: Windows PowerShell 5.1+ or PowerShell 7+
+
+### Final Project Documentation
+- [Project Overview](docs/PROJECT_OVERVIEW.md) · Architecture & MVP Scope
+- [System Architecture](docs/SYSTEM_ARCHITECTURE.md) · Data Flow, Vision Bridge & Approval Gate
+- [User Guide](docs/USER_GUIDE.md) · Step-by-Step Practical Drafting Guide
+- [Developer Guide](docs/DEVELOPER_GUIDE.md) · Repository Layout, Schemas & Validation
+- [Limitations & Disclaimers](docs/LIMITATIONS.md) · Honest Benchmark & Engineering Disclaimers
+- [Final Release Report](docs/FINAL_RELEASE_REPORT.md) · Milestone 14 Verification Matrix & Status
 
 ### 2. Install the Skill
 Clone this repository and run the PowerShell installer targeting your Antigravity workspace:
