@@ -1,0 +1,1328 @@
+[
+  {
+    "sample_id": "PILOT-01",
+    "category": "Clean Hand-Drawn Plans",
+    "provenance": "digitized_architectural_plan",
+    "execution_type": "mocked",
+    "is_genuine_ai": false,
+    "provider_name": "pilot_benchmark_evaluator",
+    "model_identifier": "deterministic_pilot_v1",
+    "duration_ms": 45.0,
+    "source_sha256": "7c22c95ce5a593839a513ec73c3e23a2ab85f8e4775cd9a9722819b8be6deb6c",
+    "walls": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 6,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_endpoint_error_mm": 0.0,
+      "mean_thickness_error_mm": 0.0
+    },
+    "openings": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 4,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_position_error_mm": 0.0,
+      "mean_width_error_mm": 0.0,
+      "type_accuracy": 1.0
+    },
+    "rooms": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 3,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_iou": 1.0,
+      "mean_area_error_pct": 0.0,
+      "label_accuracy": 1.0
+    },
+    "dimensions": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "numeric_accuracy_pct": 100.0,
+      "mean_value_error_mm": 0.0
+    },
+    "uncertainties": {
+      "detected": 0,
+      "expected": 0
+    },
+    "notes": [
+      "Execution used mocked or pre-supplied observations. Results do NOT reflect real multimodal AI vision inference."
+    ]
+  },
+  {
+    "sample_id": "PILOT-02",
+    "category": "Category B: Rough Hand-Drawn Plans",
+    "provenance": "user_uploaded_hand_sketch",
+    "execution_type": "agent_native",
+    "is_genuine_ai": true,
+    "provider_name": "antigravity_agent",
+    "model_identifier": "antigravity-native-vision-v1",
+    "duration_ms": 0.03,
+    "source_sha256": "8683c2cd307c28ca22a9bcb1790a66e7dfc9bb8a3e923cbf32c022cebbe6ea60",
+    "walls": {
+      "precision": 0.8,
+      "recall": 0.8,
+      "f1": 0.8,
+      "true_positives": 4,
+      "false_positives": 1,
+      "false_negatives": 1,
+      "mean_endpoint_error_mm": 0.0,
+      "mean_thickness_error_mm": 0.0
+    },
+    "openings": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "true_positives": 0,
+      "false_positives": 2,
+      "false_negatives": 4,
+      "mean_position_error_mm": 0.0,
+      "mean_width_error_mm": 0.0,
+      "type_accuracy": 0.0
+    },
+    "rooms": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "true_positives": 0,
+      "false_positives": 3,
+      "false_negatives": 3,
+      "mean_iou": 0.0,
+      "mean_area_error_pct": 0.0,
+      "label_accuracy": 0.0
+    },
+    "dimensions": {
+      "precision": 1.0,
+      "recall": 0.4,
+      "f1": 0.5714,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 3,
+      "numeric_accuracy_pct": 100.0,
+      "mean_value_error_mm": 0.0
+    },
+    "uncertainties": {
+      "detected": 1,
+      "expected": 2
+    },
+    "notes": [
+      "Authentic user sketch: handwritten annotations and arithmetic contradiction (1800+4100+3200=9100 vs 8700mm) verified by agent."
+    ]
+  },
+  {
+    "sample_id": "PILOT-03",
+    "category": "Rough Pencil Sketches",
+    "provenance": "rough_pencil_field_sketch",
+    "execution_type": "mocked",
+    "is_genuine_ai": false,
+    "provider_name": "pilot_benchmark_evaluator",
+    "model_identifier": "deterministic_pilot_v1",
+    "duration_ms": 45.0,
+    "source_sha256": "bfa74fc0b6854cdfda04fd721efa415a2be5c220349f9ba4cb05eac921ae3c1a",
+    "walls": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 7,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_endpoint_error_mm": 0.0,
+      "mean_thickness_error_mm": 0.0
+    },
+    "openings": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 6,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_position_error_mm": 0.0,
+      "mean_width_error_mm": 0.0,
+      "type_accuracy": 1.0
+    },
+    "rooms": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 4,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_iou": 1.0,
+      "mean_area_error_pct": 0.0,
+      "label_accuracy": 1.0
+    },
+    "dimensions": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "numeric_accuracy_pct": 100.0,
+      "mean_value_error_mm": 0.0
+    },
+    "uncertainties": {
+      "detected": 0,
+      "expected": 0
+    },
+    "notes": [
+      "Execution used mocked or pre-supplied observations. Results do NOT reflect real multimodal AI vision inference."
+    ]
+  },
+  {
+    "sample_id": "PILOT-04",
+    "category": "Incomplete & Missing Wall Sketches",
+    "provenance": "synthetic_incomplete_survey",
+    "execution_type": "mocked",
+    "is_genuine_ai": false,
+    "provider_name": "pilot_benchmark_evaluator",
+    "model_identifier": "deterministic_pilot_v1",
+    "duration_ms": 45.0,
+    "source_sha256": "e8fbee2a331e4f3f28b08e7da96903073c4e834ee5aaf99806625ea488da93d7",
+    "walls": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 5,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_endpoint_error_mm": 0.0,
+      "mean_thickness_error_mm": 0.0
+    },
+    "openings": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_position_error_mm": 0.0,
+      "mean_width_error_mm": 0.0,
+      "type_accuracy": 1.0
+    },
+    "rooms": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_iou": 1.0,
+      "mean_area_error_pct": 0.0,
+      "label_accuracy": 1.0
+    },
+    "dimensions": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "numeric_accuracy_pct": 100.0,
+      "mean_value_error_mm": 0.0
+    },
+    "uncertainties": {
+      "detected": 2,
+      "expected": 2
+    },
+    "notes": [
+      "Execution used mocked or pre-supplied observations. Results do NOT reflect real multimodal AI vision inference.",
+      "Incomplete geometry: unclosed south terrace boundary correctly logged in uncertainty register."
+    ]
+  },
+  {
+    "sample_id": "PILOT-05",
+    "category": "Contradictory Annotations",
+    "provenance": "synthetic_contradiction_test",
+    "execution_type": "mocked",
+    "is_genuine_ai": false,
+    "provider_name": "pilot_benchmark_evaluator",
+    "model_identifier": "deterministic_pilot_v1",
+    "duration_ms": 45.0,
+    "source_sha256": "09a0385f1a6508c2f5d8070d6de8b8030c57a4b820c6ba3545f14c694fd852f6",
+    "walls": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 5,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_endpoint_error_mm": 0.0,
+      "mean_thickness_error_mm": 0.0
+    },
+    "openings": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_position_error_mm": 0.0,
+      "mean_width_error_mm": 0.0,
+      "type_accuracy": 1.0
+    },
+    "rooms": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_iou": 1.0,
+      "mean_area_error_pct": 0.0,
+      "label_accuracy": 1.0
+    },
+    "dimensions": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 4,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "numeric_accuracy_pct": 100.0,
+      "mean_value_error_mm": 0.0
+    },
+    "uncertainties": {
+      "detected": 1,
+      "expected": 1
+    },
+    "notes": [
+      "Execution used mocked or pre-supplied observations. Results do NOT reflect real multimodal AI vision inference.",
+      "Arithmetic contradiction: internal rooms sum to 6400mm vs 7000mm overall logged in uncertainty register."
+    ]
+  },
+  {
+    "sample_id": "PILOT-06",
+    "category": "Rotated & Skewed Scans",
+    "provenance": "scanned_skewed_drawing",
+    "execution_type": "mocked",
+    "is_genuine_ai": false,
+    "provider_name": "pilot_benchmark_evaluator",
+    "model_identifier": "deterministic_pilot_v1",
+    "duration_ms": 45.0,
+    "source_sha256": "f0103d13631faed87c02e4b05e1ca694afe183df2afa1cf2f8cbb3a9f7480a41",
+    "walls": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 5,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_endpoint_error_mm": 0.0,
+      "mean_thickness_error_mm": 0.0
+    },
+    "openings": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_position_error_mm": 0.0,
+      "mean_width_error_mm": 0.0,
+      "type_accuracy": 1.0
+    },
+    "rooms": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_iou": 1.0,
+      "mean_area_error_pct": 0.0,
+      "label_accuracy": 1.0
+    },
+    "dimensions": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "numeric_accuracy_pct": 100.0,
+      "mean_value_error_mm": 0.0
+    },
+    "uncertainties": {
+      "detected": 1,
+      "expected": 1
+    },
+    "notes": [
+      "Execution used mocked or pre-supplied observations. Results do NOT reflect real multimodal AI vision inference.",
+      "Rotated scan: rotation detected and logged."
+    ]
+  },
+  {
+    "sample_id": "PILOT-07",
+    "category": "Rotated & Skewed Scans",
+    "provenance": "scanned_skewed_drawing",
+    "execution_type": "mocked",
+    "is_genuine_ai": false,
+    "provider_name": "pilot_benchmark_evaluator",
+    "model_identifier": "deterministic_pilot_v1",
+    "duration_ms": 45.0,
+    "source_sha256": "01e6196227e9f99630fa084e877e93a41e179ab71d19d76155a7f9ded5495e53",
+    "walls": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 4,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_endpoint_error_mm": 0.0,
+      "mean_thickness_error_mm": 0.0
+    },
+    "openings": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_position_error_mm": 0.0,
+      "mean_width_error_mm": 0.0,
+      "type_accuracy": 1.0
+    },
+    "rooms": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_iou": 1.0,
+      "mean_area_error_pct": 0.0,
+      "label_accuracy": 1.0
+    },
+    "dimensions": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "numeric_accuracy_pct": 100.0,
+      "mean_value_error_mm": 0.0
+    },
+    "uncertainties": {
+      "detected": 1,
+      "expected": 1
+    },
+    "notes": [
+      "Execution used mocked or pre-supplied observations. Results do NOT reflect real multimodal AI vision inference.",
+      "Rotated scan: rotation detected and logged."
+    ]
+  },
+  {
+    "sample_id": "PILOT-08",
+    "category": "Low-Resolution & Noisy Mobile Photos",
+    "provenance": "mobile_photo_simulation",
+    "execution_type": "mocked",
+    "is_genuine_ai": false,
+    "provider_name": "pilot_benchmark_evaluator",
+    "model_identifier": "deterministic_pilot_v1",
+    "duration_ms": 45.0,
+    "source_sha256": "14c676c0acc5bf4e035aff56d961a4deb47cd03f8718cdd3a4a604a2fdf80b69",
+    "walls": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 5,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_endpoint_error_mm": 0.0,
+      "mean_thickness_error_mm": 0.0
+    },
+    "openings": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_position_error_mm": 0.0,
+      "mean_width_error_mm": 0.0,
+      "type_accuracy": 1.0
+    },
+    "rooms": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_iou": 1.0,
+      "mean_area_error_pct": 0.0,
+      "label_accuracy": 1.0
+    },
+    "dimensions": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "numeric_accuracy_pct": 100.0,
+      "mean_value_error_mm": 0.0
+    },
+    "uncertainties": {
+      "detected": 1,
+      "expected": 1
+    },
+    "notes": [
+      "Execution used mocked or pre-supplied observations. Results do NOT reflect real multimodal AI vision inference.",
+      "Low-resolution mobile photo: faint graphite lines flagged for surveyor confirmation."
+    ]
+  },
+  {
+    "sample_id": "PILOT-09",
+    "category": "Rough Pencil Sketches",
+    "provenance": "rough_pencil_field_sketch",
+    "execution_type": "mocked",
+    "is_genuine_ai": false,
+    "provider_name": "pilot_benchmark_evaluator",
+    "model_identifier": "deterministic_pilot_v1",
+    "duration_ms": 45.0,
+    "source_sha256": "4ffca215ed5724223e276836ee32de46bca3ca5e7520c4163816715f1034d47a",
+    "walls": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 5,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_endpoint_error_mm": 0.0,
+      "mean_thickness_error_mm": 0.0
+    },
+    "openings": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_position_error_mm": 0.0,
+      "mean_width_error_mm": 0.0,
+      "type_accuracy": 1.0
+    },
+    "rooms": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_iou": 1.0,
+      "mean_area_error_pct": 0.0,
+      "label_accuracy": 1.0
+    },
+    "dimensions": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "numeric_accuracy_pct": 100.0,
+      "mean_value_error_mm": 0.0
+    },
+    "uncertainties": {
+      "detected": 0,
+      "expected": 0
+    },
+    "notes": [
+      "Execution used mocked or pre-supplied observations. Results do NOT reflect real multimodal AI vision inference."
+    ]
+  },
+  {
+    "sample_id": "PILOT-10",
+    "category": "Non-Rectangular Footprints",
+    "provenance": "digitized_field_sketch",
+    "execution_type": "mocked",
+    "is_genuine_ai": false,
+    "provider_name": "pilot_benchmark_evaluator",
+    "model_identifier": "deterministic_pilot_v1",
+    "duration_ms": 45.0,
+    "source_sha256": "22a215a0a3702a8bf6093572a57aa22f7b355d4443e8316c5414b4e9f05971a8",
+    "walls": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 7,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_endpoint_error_mm": 0.0,
+      "mean_thickness_error_mm": 0.0
+    },
+    "openings": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 3,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_position_error_mm": 0.0,
+      "mean_width_error_mm": 0.0,
+      "type_accuracy": 1.0
+    },
+    "rooms": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 3,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_iou": 1.0,
+      "mean_area_error_pct": 0.0,
+      "label_accuracy": 1.0
+    },
+    "dimensions": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "numeric_accuracy_pct": 100.0,
+      "mean_value_error_mm": 0.0
+    },
+    "uncertainties": {
+      "detected": 0,
+      "expected": 0
+    },
+    "notes": [
+      "Execution used mocked or pre-supplied observations. Results do NOT reflect real multimodal AI vision inference."
+    ]
+  },
+  {
+    "sample_id": "PILOT-11",
+    "category": "Non-Rectangular Footprints",
+    "provenance": "digitized_field_sketch",
+    "execution_type": "mocked",
+    "is_genuine_ai": false,
+    "provider_name": "pilot_benchmark_evaluator",
+    "model_identifier": "deterministic_pilot_v1",
+    "duration_ms": 45.0,
+    "source_sha256": "22519c6325709a5387fd9ab3f0ee290ac4051ed446b4902e1390641221f3642f",
+    "walls": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 5,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_endpoint_error_mm": 0.0,
+      "mean_thickness_error_mm": 0.0
+    },
+    "openings": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_position_error_mm": 0.0,
+      "mean_width_error_mm": 0.0,
+      "type_accuracy": 1.0
+    },
+    "rooms": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_iou": 1.0,
+      "mean_area_error_pct": 0.0,
+      "label_accuracy": 1.0
+    },
+    "dimensions": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "numeric_accuracy_pct": 100.0,
+      "mean_value_error_mm": 0.0
+    },
+    "uncertainties": {
+      "detected": 0,
+      "expected": 0
+    },
+    "notes": [
+      "Execution used mocked or pre-supplied observations. Results do NOT reflect real multimodal AI vision inference."
+    ]
+  },
+  {
+    "sample_id": "PILOT-12",
+    "category": "Non-Rectangular Footprints",
+    "provenance": "digitized_field_sketch",
+    "execution_type": "mocked",
+    "is_genuine_ai": false,
+    "provider_name": "pilot_benchmark_evaluator",
+    "model_identifier": "deterministic_pilot_v1",
+    "duration_ms": 45.0,
+    "source_sha256": "4e59ee3344d36594b0487f4d894f73c850b3fdd93e481bc6b8996fad7a21015a",
+    "walls": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 8,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_endpoint_error_mm": 0.0,
+      "mean_thickness_error_mm": 0.0
+    },
+    "openings": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 3,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_position_error_mm": 0.0,
+      "mean_width_error_mm": 0.0,
+      "type_accuracy": 1.0
+    },
+    "rooms": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_iou": 1.0,
+      "mean_area_error_pct": 0.0,
+      "label_accuracy": 1.0
+    },
+    "dimensions": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "numeric_accuracy_pct": 100.0,
+      "mean_value_error_mm": 0.0
+    },
+    "uncertainties": {
+      "detected": 0,
+      "expected": 0
+    },
+    "notes": [
+      "Execution used mocked or pre-supplied observations. Results do NOT reflect real multimodal AI vision inference."
+    ]
+  },
+  {
+    "sample_id": "PILOT-13",
+    "category": "Multi-Room Residential Layouts (5+ rooms)",
+    "provenance": "digitized_architectural_plan",
+    "execution_type": "mocked",
+    "is_genuine_ai": false,
+    "provider_name": "pilot_benchmark_evaluator",
+    "model_identifier": "deterministic_pilot_v1",
+    "duration_ms": 45.0,
+    "source_sha256": "d899ec2512a69b83938d632f02f546e985643c69e9036aa5a655e9805c79ea92",
+    "walls": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 8,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_endpoint_error_mm": 0.0,
+      "mean_thickness_error_mm": 0.0
+    },
+    "openings": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 5,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_position_error_mm": 0.0,
+      "mean_width_error_mm": 0.0,
+      "type_accuracy": 1.0
+    },
+    "rooms": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 5,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_iou": 1.0,
+      "mean_area_error_pct": 0.0,
+      "label_accuracy": 1.0
+    },
+    "dimensions": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "numeric_accuracy_pct": 100.0,
+      "mean_value_error_mm": 0.0
+    },
+    "uncertainties": {
+      "detected": 0,
+      "expected": 0
+    },
+    "notes": [
+      "Execution used mocked or pre-supplied observations. Results do NOT reflect real multimodal AI vision inference."
+    ]
+  },
+  {
+    "sample_id": "PILOT-14",
+    "category": "Multi-Room Residential Layouts (5+ rooms)",
+    "provenance": "digitized_architectural_plan",
+    "execution_type": "mocked",
+    "is_genuine_ai": false,
+    "provider_name": "pilot_benchmark_evaluator",
+    "model_identifier": "deterministic_pilot_v1",
+    "duration_ms": 45.0,
+    "source_sha256": "e5e4cae4af8afd48ad40cfd3b46f2f4456af36e9094f02bacb9632470dd15892",
+    "walls": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 10,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_endpoint_error_mm": 0.0,
+      "mean_thickness_error_mm": 0.0
+    },
+    "openings": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 3,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_position_error_mm": 0.0,
+      "mean_width_error_mm": 0.0,
+      "type_accuracy": 1.0
+    },
+    "rooms": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 6,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_iou": 1.0,
+      "mean_area_error_pct": 0.0,
+      "label_accuracy": 1.0
+    },
+    "dimensions": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "numeric_accuracy_pct": 100.0,
+      "mean_value_error_mm": 0.0
+    },
+    "uncertainties": {
+      "detected": 0,
+      "expected": 0
+    },
+    "notes": [
+      "Execution used mocked or pre-supplied observations. Results do NOT reflect real multimodal AI vision inference."
+    ]
+  },
+  {
+    "sample_id": "PILOT-15",
+    "category": "Complex Room Junctions & Openings",
+    "provenance": "digitized_architectural_plan",
+    "execution_type": "mocked",
+    "is_genuine_ai": false,
+    "provider_name": "pilot_benchmark_evaluator",
+    "model_identifier": "deterministic_pilot_v1",
+    "duration_ms": 45.0,
+    "source_sha256": "5bb2395d3a9c65c9eb84f7343c2535af6a0dedc09e74f02e6ab59f098bd6542f",
+    "walls": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 5,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_endpoint_error_mm": 0.0,
+      "mean_thickness_error_mm": 0.0
+    },
+    "openings": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 4,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_position_error_mm": 0.0,
+      "mean_width_error_mm": 0.0,
+      "type_accuracy": 1.0
+    },
+    "rooms": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_iou": 1.0,
+      "mean_area_error_pct": 0.0,
+      "label_accuracy": 1.0
+    },
+    "dimensions": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "numeric_accuracy_pct": 100.0,
+      "mean_value_error_mm": 0.0
+    },
+    "uncertainties": {
+      "detected": 0,
+      "expected": 0
+    },
+    "notes": [
+      "Execution used mocked or pre-supplied observations. Results do NOT reflect real multimodal AI vision inference."
+    ]
+  },
+  {
+    "sample_id": "PILOT-16",
+    "category": "Complex Room Junctions & Openings",
+    "provenance": "digitized_architectural_plan",
+    "execution_type": "mocked",
+    "is_genuine_ai": false,
+    "provider_name": "pilot_benchmark_evaluator",
+    "model_identifier": "deterministic_pilot_v1",
+    "duration_ms": 45.0,
+    "source_sha256": "fde268ef51e7981c0ec8d156a1f2feab6b78ab5ab19fa935de9a6b41fe9cba89",
+    "walls": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 4,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_endpoint_error_mm": 0.0,
+      "mean_thickness_error_mm": 0.0
+    },
+    "openings": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 5,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_position_error_mm": 0.0,
+      "mean_width_error_mm": 0.0,
+      "type_accuracy": 1.0
+    },
+    "rooms": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_iou": 1.0,
+      "mean_area_error_pct": 0.0,
+      "label_accuracy": 1.0
+    },
+    "dimensions": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "numeric_accuracy_pct": 100.0,
+      "mean_value_error_mm": 0.0
+    },
+    "uncertainties": {
+      "detected": 1,
+      "expected": 1
+    },
+    "notes": [
+      "Execution used mocked or pre-supplied observations. Results do NOT reflect real multimodal AI vision inference.",
+      "Unannotated window sill: 900mm default assigned and flagged as assumed_default_unverified."
+    ]
+  },
+  {
+    "sample_id": "PILOT-17",
+    "category": "Clean Hand-Drawn Plans",
+    "provenance": "digitized_architectural_plan",
+    "execution_type": "mocked",
+    "is_genuine_ai": false,
+    "provider_name": "pilot_benchmark_evaluator",
+    "model_identifier": "deterministic_pilot_v1",
+    "duration_ms": 45.0,
+    "source_sha256": "bd38c27a038a6d8be9e6ba5f056181fa259b5b44c0f6677bd2f24d79baac08a3",
+    "walls": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 6,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_endpoint_error_mm": 0.0,
+      "mean_thickness_error_mm": 0.0
+    },
+    "openings": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 4,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_position_error_mm": 0.0,
+      "mean_width_error_mm": 0.0,
+      "type_accuracy": 1.0
+    },
+    "rooms": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 3,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_iou": 1.0,
+      "mean_area_error_pct": 0.0,
+      "label_accuracy": 1.0
+    },
+    "dimensions": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "numeric_accuracy_pct": 100.0,
+      "mean_value_error_mm": 0.0
+    },
+    "uncertainties": {
+      "detected": 0,
+      "expected": 0
+    },
+    "notes": [
+      "Execution used mocked or pre-supplied observations. Results do NOT reflect real multimodal AI vision inference."
+    ]
+  },
+  {
+    "sample_id": "PILOT-18",
+    "category": "Multi-Storey Residential Sketches",
+    "provenance": "digitized_multi_storey_plan",
+    "execution_type": "mocked",
+    "is_genuine_ai": false,
+    "provider_name": "pilot_benchmark_evaluator",
+    "model_identifier": "deterministic_pilot_v1",
+    "duration_ms": 45.0,
+    "source_sha256": "c7925749bd20d2725d905918b53527e663f8eeaa26fe7cbabeca68105b176124",
+    "walls": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 8,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_endpoint_error_mm": 0.0,
+      "mean_thickness_error_mm": 0.0
+    },
+    "openings": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 3,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_position_error_mm": 0.0,
+      "mean_width_error_mm": 0.0,
+      "type_accuracy": 1.0
+    },
+    "rooms": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_iou": 1.0,
+      "mean_area_error_pct": 0.0,
+      "label_accuracy": 1.0
+    },
+    "dimensions": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "numeric_accuracy_pct": 100.0,
+      "mean_value_error_mm": 0.0
+    },
+    "uncertainties": {
+      "detected": 0,
+      "expected": 0
+    },
+    "notes": [
+      "Execution used mocked or pre-supplied observations. Results do NOT reflect real multimodal AI vision inference."
+    ]
+  },
+  {
+    "sample_id": "PILOT-19",
+    "category": "Multi-Storey Residential Sketches",
+    "provenance": "digitized_multi_storey_plan",
+    "execution_type": "mocked",
+    "is_genuine_ai": false,
+    "provider_name": "pilot_benchmark_evaluator",
+    "model_identifier": "deterministic_pilot_v1",
+    "duration_ms": 45.0,
+    "source_sha256": "4397c554c20666b0ffc1b8f5764d6e252bf67bb6121de56549ed2dffa18ac0c3",
+    "walls": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 8,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_endpoint_error_mm": 0.0,
+      "mean_thickness_error_mm": 0.0
+    },
+    "openings": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_position_error_mm": 0.0,
+      "mean_width_error_mm": 0.0,
+      "type_accuracy": 1.0
+    },
+    "rooms": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_iou": 1.0,
+      "mean_area_error_pct": 0.0,
+      "label_accuracy": 1.0
+    },
+    "dimensions": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "numeric_accuracy_pct": 100.0,
+      "mean_value_error_mm": 0.0
+    },
+    "uncertainties": {
+      "detected": 0,
+      "expected": 0
+    },
+    "notes": [
+      "Execution used mocked or pre-supplied observations. Results do NOT reflect real multimodal AI vision inference."
+    ]
+  },
+  {
+    "sample_id": "PILOT-20",
+    "category": "Multi-Page PDF Floor Plan Sets",
+    "provenance": "architectural_multipage_pdf_set",
+    "execution_type": "mocked",
+    "is_genuine_ai": false,
+    "provider_name": "pilot_benchmark_evaluator",
+    "model_identifier": "deterministic_pilot_v1",
+    "duration_ms": 45.0,
+    "source_sha256": "ce6c7ed3a77e1eae615f7d126c2e519e9a957566847ea4780ede5e6f6972d7c1",
+    "walls": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 8,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_endpoint_error_mm": 0.0,
+      "mean_thickness_error_mm": 0.0
+    },
+    "openings": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 0.0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_position_error_mm": 0.0,
+      "mean_width_error_mm": 0.0,
+      "type_accuracy": 0.0
+    },
+    "rooms": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_iou": 1.0,
+      "mean_area_error_pct": 0.0,
+      "label_accuracy": 1.0
+    },
+    "dimensions": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "numeric_accuracy_pct": 100.0,
+      "mean_value_error_mm": 0.0
+    },
+    "uncertainties": {
+      "detected": 0,
+      "expected": 0
+    },
+    "notes": [
+      "Execution used mocked or pre-supplied observations. Results do NOT reflect real multimodal AI vision inference."
+    ]
+  },
+  {
+    "sample_id": "PILOT-21",
+    "category": "Non-Rectangular Footprints",
+    "provenance": "digitized_field_sketch",
+    "execution_type": "mocked",
+    "is_genuine_ai": false,
+    "provider_name": "pilot_benchmark_evaluator",
+    "model_identifier": "deterministic_pilot_v1",
+    "duration_ms": 45.0,
+    "source_sha256": "4c706a1b446c2499f8849ff1cc8e618b6fdc12e271f7745607839644a8092868",
+    "walls": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 8,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_endpoint_error_mm": 0.0,
+      "mean_thickness_error_mm": 0.0
+    },
+    "openings": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_position_error_mm": 0.0,
+      "mean_width_error_mm": 0.0,
+      "type_accuracy": 1.0
+    },
+    "rooms": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 1,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_iou": 1.0,
+      "mean_area_error_pct": 0.0,
+      "label_accuracy": 1.0
+    },
+    "dimensions": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "numeric_accuracy_pct": 100.0,
+      "mean_value_error_mm": 0.0
+    },
+    "uncertainties": {
+      "detected": 0,
+      "expected": 0
+    },
+    "notes": [
+      "Execution used mocked or pre-supplied observations. Results do NOT reflect real multimodal AI vision inference."
+    ]
+  },
+  {
+    "sample_id": "PILOT-22",
+    "category": "Multi-Room Residential Layouts (5+ rooms)",
+    "provenance": "digitized_field_sketch",
+    "execution_type": "mocked",
+    "is_genuine_ai": false,
+    "provider_name": "pilot_benchmark_evaluator",
+    "model_identifier": "deterministic_pilot_v1",
+    "duration_ms": 45.0,
+    "source_sha256": "d6422e27a4ba35be2707c59a1550361def3bd346da2d87ca749ea62fa2c25202",
+    "walls": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 6,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_endpoint_error_mm": 0.0,
+      "mean_thickness_error_mm": 0.0
+    },
+    "openings": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 5,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_position_error_mm": 0.0,
+      "mean_width_error_mm": 0.0,
+      "type_accuracy": 1.0
+    },
+    "rooms": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 3,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "mean_iou": 1.0,
+      "mean_area_error_pct": 0.0,
+      "label_accuracy": 1.0
+    },
+    "dimensions": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "numeric_accuracy_pct": 100.0,
+      "mean_value_error_mm": 0.0
+    },
+    "uncertainties": {
+      "detected": 0,
+      "expected": 0
+    },
+    "notes": [
+      "Execution used mocked or pre-supplied observations. Results do NOT reflect real multimodal AI vision inference."
+    ]
+  }
+]

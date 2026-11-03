@@ -450,6 +450,10 @@ class BenchmarkEvaluator:
 
         for p_idx, pd in enumerate(preds):
             p_val = float(pd.get("value", 0.0))
+            if p_val == 0.0 and "p1" in pd and "p2" in pd:
+                p_val = point_distance(pd["p1"], pd["p2"])
+            elif p_val == 0.0 and "value_mm" in pd:
+                p_val = float(pd["value_mm"])
             best_gt_idx = None
             min_err = float("inf")
 

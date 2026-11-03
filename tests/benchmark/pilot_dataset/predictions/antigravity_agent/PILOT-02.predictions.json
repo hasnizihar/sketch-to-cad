@@ -1,0 +1,289 @@
+{
+  "source_metadata": {
+    "source_file": "PILOT-02-user-hand-drawn-villa.jpg",
+    "source_path": "D:\\Agent Skills\\sketch-to-cad-main\\tests\\benchmark\\pilot_dataset\\sources\\PILOT-02-user-hand-drawn-villa.jpg",
+    "file_type": "jpg",
+    "page_number": 1,
+    "total_pages": 1,
+    "dimensions_pixels": {
+      "width": 1200,
+      "height": 849
+    },
+    "dpi": 300.0,
+    "orientation_degrees": 0,
+    "source_floor_hint": "Ground Floor",
+    "preprocessing_applied": [
+      "Deterministic RGB normalization"
+    ]
+  },
+  "status": "extracted",
+  "confidence_summary": {
+    "overall_confidence": 0.92,
+    "dimension_reliability": "high",
+    "notes": "Hand-drawn residential floor-plan sketch with explicit 8000x8700 mm dimensions"
+  },
+  "walls": [
+    {
+      "id": "W-EXT-NORTH",
+      "wall_type": "exterior",
+      "start_point_pixel": [
+        100,
+        100
+      ],
+      "end_point_pixel": [
+        1100,
+        100
+      ],
+      "thickness_mm": 200.0,
+      "thickness_category": "explicit",
+      "confidence": 0.95,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.1,
+        0.1,
+        0.12,
+        0.9
+      ]
+    },
+    {
+      "id": "W-EXT-EAST",
+      "wall_type": "exterior",
+      "start_point_pixel": [
+        1100,
+        100
+      ],
+      "end_point_pixel": [
+        1100,
+        750
+      ],
+      "thickness_mm": 200.0,
+      "thickness_category": "explicit",
+      "confidence": 0.95,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.1,
+        0.88,
+        0.9,
+        0.9
+      ]
+    },
+    {
+      "id": "W-EXT-SOUTH",
+      "wall_type": "exterior",
+      "start_point_pixel": [
+        1100,
+        750
+      ],
+      "end_point_pixel": [
+        100,
+        750
+      ],
+      "thickness_mm": 200.0,
+      "thickness_category": "explicit",
+      "confidence": 0.95,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.88,
+        0.1,
+        0.9,
+        0.9
+      ]
+    },
+    {
+      "id": "W-EXT-WEST",
+      "wall_type": "exterior",
+      "start_point_pixel": [
+        100,
+        750
+      ],
+      "end_point_pixel": [
+        100,
+        100
+      ],
+      "thickness_mm": 200.0,
+      "thickness_category": "explicit",
+      "confidence": 0.95,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.1,
+        0.1,
+        0.9,
+        0.12
+      ]
+    },
+    {
+      "id": "W-INTR-MID",
+      "wall_type": "interior",
+      "start_point_pixel": [
+        100,
+        425
+      ],
+      "end_point_pixel": [
+        1100,
+        425
+      ],
+      "thickness_mm": 150.0,
+      "thickness_category": "estimated",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.49,
+        0.1,
+        0.51,
+        0.9
+      ]
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-ENTRY",
+      "type": "door",
+      "sub_type": "single_swing",
+      "swing_direction": "inward_right",
+      "width_mm": 1000.0,
+      "width_category": "explicit",
+      "host_wall_ref": "W-EXT-SOUTH",
+      "confidence": 0.92,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.88,
+        0.45,
+        0.9,
+        0.55
+      ]
+    },
+    {
+      "id": "W-KIT",
+      "type": "window",
+      "sub_type": "sliding",
+      "swing_direction": null,
+      "width_mm": 1200.0,
+      "width_category": "estimated",
+      "host_wall_ref": "W-EXT-WEST",
+      "confidence": 0.9,
+      "provenance": "source_sketch",
+      "source_bbox": [
+        0.45,
+        0.1,
+        0.55,
+        0.12
+      ]
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-LIVING",
+      "raw_label": "LIVING / DINING",
+      "standardized_type": "LIVING",
+      "floor_level": "ground",
+      "approx_width_mm": 8000.0,
+      "approx_depth_mm": 4350.0,
+      "dimension_provenance": "explicit",
+      "confidence": 0.95,
+      "source_bbox": [
+        0.55,
+        0.15,
+        0.85,
+        0.85
+      ]
+    },
+    {
+      "id": "R-KITCHEN",
+      "raw_label": "KITCHEN",
+      "standardized_type": "KITCHEN",
+      "floor_level": "ground",
+      "approx_width_mm": 4000.0,
+      "approx_depth_mm": 4350.0,
+      "dimension_provenance": "explicit",
+      "confidence": 0.92,
+      "source_bbox": [
+        0.15,
+        0.15,
+        0.48,
+        0.48
+      ]
+    },
+    {
+      "id": "R-BEDROOM-1",
+      "raw_label": "BEDROOM 1",
+      "standardized_type": "BEDROOM",
+      "floor_level": "ground",
+      "approx_width_mm": 4000.0,
+      "approx_depth_mm": 4350.0,
+      "dimension_provenance": "explicit",
+      "confidence": 0.92,
+      "source_bbox": [
+        0.15,
+        0.52,
+        0.48,
+        0.85
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-WIDTH",
+      "source_text": "8000",
+      "value_mm": 8000.0,
+      "unit_source": "mm",
+      "category": "explicit",
+      "target_entity_type": "overall_width",
+      "target_entity_id": null,
+      "confidence": 0.98,
+      "source_bbox": [
+        0.92,
+        0.3,
+        0.96,
+        0.7
+      ]
+    },
+    {
+      "id": "DIM-DEPTH",
+      "source_text": "8700",
+      "value_mm": 8700.0,
+      "unit_source": "mm",
+      "category": "explicit",
+      "target_entity_type": "overall_depth",
+      "target_entity_id": null,
+      "confidence": 0.98,
+      "source_bbox": [
+        0.3,
+        0.02,
+        0.7,
+        0.08
+      ]
+    }
+  ],
+  "stairs": [
+    {
+      "id": "ST-01",
+      "direction": "up",
+      "riser_count_hint": 14,
+      "width_mm_hint": 900.0,
+      "confidence": 0.85,
+      "source_bbox": [
+        0.6,
+        0.65,
+        0.8,
+        0.8
+      ]
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "UNC-01",
+      "field": "dimensions.scale",
+      "severity": "warning",
+      "description": "Hand sketch image aspect ratio (1.41) deviates from explicit annotated dimensions (8000x8700 mm, ratio 0.92). Explicit dimensions govern CAD reconstruction.",
+      "suggested_action": "Reconstruct using explicit dimensions."
+    }
+  ],
+  "source_evidence": {
+    "source_sha256": "8683c2cd307c28ca22a9bcb1790a66e7dfc9bb8a3e923cbf32c022cebbe6ea60",
+    "provider_name": "antigravity_agent",
+    "model_identifier": "antigravity-native-vision-v1",
+    "execution_type": "agent_native",
+    "extraction_timestamp": "2026-11-03T12:22:54.226979+00:00"
+  },
+  "review_status": "unreviewed"
+}

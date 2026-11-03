@@ -22,7 +22,7 @@
     },
     "execution_type": {
       "type": "string",
-      "enum": ["real_api", "agent_native", "mocked", "manual_override", "deterministic_heuristic"],
+      "enum": ["real_api", "agent_native", "mocked", "manual_override", "deterministic_heuristic", "replayed"],
       "description": "Classification of the vision execution path to prevent claiming mocked runs as real vision integration."
     },
     "provider_name": {

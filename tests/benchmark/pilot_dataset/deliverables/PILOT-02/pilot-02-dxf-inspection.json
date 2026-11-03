@@ -1,0 +1,117 @@
+{
+  "file_path": "D:\\Agent Skills\\sketch-to-cad-main\\tests\\benchmark\\pilot_dataset\\deliverables\\PILOT-02\\pilot-02-authentic-residential-villa.dxf",
+  "file_name": "pilot-02-authentic-residential-villa.dxf",
+  "file_size_bytes": 25807,
+  "sha256_hash": "0e0273f5761ccb8a40842731db13844473281a726a7738413deda7695fa6c216",
+  "overall_status": "PASSED",
+  "header": {
+    "dxf_version": "AC1032",
+    "insunits": 4,
+    "units_name": "Millimeters",
+    "extents_min": [
+      -100.0,
+      -946.67
+    ],
+    "extents_max": [
+      8100.0,
+      8800.0
+    ],
+    "dimensions_span": [
+      8200.0,
+      9746.67
+    ]
+  },
+  "layers": [
+    {
+      "name": "0",
+      "entity_count": 0,
+      "is_standard_aia": false,
+      "is_empty": true
+    },
+    {
+      "name": "Defpoints",
+      "entity_count": 0,
+      "is_standard_aia": false,
+      "is_empty": true
+    },
+    {
+      "name": "A-WALL-EXTR",
+      "entity_count": 8,
+      "is_standard_aia": true,
+      "is_empty": false
+    },
+    {
+      "name": "A-WALL-INTR",
+      "entity_count": 2,
+      "is_standard_aia": true,
+      "is_empty": false
+    },
+    {
+      "name": "A-DOOR",
+      "entity_count": 2,
+      "is_standard_aia": true,
+      "is_empty": false
+    },
+    {
+      "name": "A-GLAZ",
+      "entity_count": 1,
+      "is_standard_aia": true,
+      "is_empty": false
+    },
+    {
+      "name": "A-FURN",
+      "entity_count": 0,
+      "is_standard_aia": true,
+      "is_empty": true
+    },
+    {
+      "name": "A-FIXT",
+      "entity_count": 0,
+      "is_standard_aia": true,
+      "is_empty": true
+    },
+    {
+      "name": "A-STAIR",
+      "entity_count": 0,
+      "is_standard_aia": true,
+      "is_empty": true
+    },
+    {
+      "name": "A-COLS",
+      "entity_count": 0,
+      "is_standard_aia": true,
+      "is_empty": true
+    },
+    {
+      "name": "A-FLOR-FIN",
+      "entity_count": 0,
+      "is_standard_aia": true,
+      "is_empty": true
+    },
+    {
+      "name": "A-ANNO-TEXT",
+      "entity_count": 8,
+      "is_standard_aia": true,
+      "is_empty": false
+    },
+    {
+      "name": "A-ANNO-DIMS",
+      "entity_count": 2,
+      "is_standard_aia": true,
+      "is_empty": false
+    }
+  ],
+  "entity_counts": {
+    "LINE": 12,
+    "ARC": 1,
+    "TEXT": 8,
+    "DIMENSION": 2
+  },
+  "blocks_defined": [],
+  "duplicate_entities_count": 0,
+  "degenerate_geometry_count": 0,
+  "layer_zero_clean": true,
+  "consistency": null,
+  "warnings": [],
+  "errors": []
+}

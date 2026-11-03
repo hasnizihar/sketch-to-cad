@@ -128,6 +128,15 @@ Execute empirical validation across the dedicated 22-sample pilot dataset via `s
 3. **Formal Production Acceptance Criteria**: Evaluate against the 10 engineering criteria and classify outcomes (`ACCEPTED_FOR_CONTROLLED_PILOT`, `ACCEPTED_WITH_LIMITATIONS`, `NOT_READY_FOR_PRODUCTION`) documented in [references/production-acceptance-criteria.md](references/production-acceptance-criteria.md).
 4. **Asserted Identity Review Governance**: Clarify human review as an asserted identity (`auth_method: "identity_assertion"`), disclaim professional licensing authentication, and enforce security blocks against AI agent self-approval.
 
+### Phase 11: Real AI Vision Accuracy, Provider Validation & Benchmark Decoupling (Milestone 13)
+Execute decoupled multimodal AI vision inference and independent architectural validation via `scripts/run_vision_pilot.py` and `scripts/pilot_benchmark_runner.py`:
+1. **Strict Ground-Truth Isolation**: Vision inference receives only source sketch bytes and prompt instructions; zero access to ground-truth coordinates or answers. Predictions are cached independently in `tests/benchmark/pilot_dataset/predictions/` and evaluated post-hoc.
+2. **Pluggable Multimodal Interface**: Support Google Gemini (`gemini-2.5-flash`), OpenAI (`gpt-4o`), Antigravity Agent native vision, and Mock simulation with zero silent fallback to mock when external providers are requested without credentials. Pre-flight `--dry-run` inspection verifies configurations without network requests per [references/vision-provider-validation.md](references/vision-provider-validation.md).
+3. **8-Domain Architectural Vision Prompt**: Enforce systematic visual extraction across Envelope, Partitions, Doors, Windows, Rooms, Handwritten Dimensions, Vertical Circulation, and Contradictions with a strict anti-extrapolation prohibition.
+4. **Observation Evidence & Revision Audit**: Track `source_evidence`, `review_status`, and immutable `revision_history` entries via `apply_human_correction()` with SHA-256 state tracking.
+5. **Decoupled Accuracy Evaluation**: Measure wall bipartite spatial matching, opening classification, room polygon IoU, and numeric dimension accuracy per [references/real-ai-vision-accuracy.md](references/real-ai-vision-accuracy.md).
+6. **Independent Architectural Drawing Review**: Audit generated CAD outputs against the 12-item architectural drafting checklist per [references/independent-drawing-review.md](references/independent-drawing-review.md) and verify downstream 3D BIM generation with `dxf-to-3d-bim` per [references/milestone-13-results.md](references/milestone-13-results.md).
+
 ## Recovery
 If an MCP call fails:
 1. Inspect the error message and tool schema.

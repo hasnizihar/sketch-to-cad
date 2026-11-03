@@ -86,6 +86,7 @@ Sketch-to-CAD is an **AI agent skill and workflow**, not a standalone desktop ap
 - **Strengthened Approval Security**: Rejects AI self-approvals, blocks placeholder identities in production, and provides plain-text assertion security notes.
 - **4-Tier Visual QA Severity**: Classifies discrepancies into `blocking_discrepancy`, `major_discrepancy`, `warning`, and `informational` with explicit architectural reasoning for out-of-scale hand sketches.
 - **Architectural Benchmark Suite**: Evaluates model performance across 5 canonical cases measuring IoU, precision/recall, 50mm dimension fidelity, and contradiction detection.
+- **Real AI Vision Interpretation & Decoupled Benchmarking (Milestone 13)**: Zero ground-truth leakage inference via `scripts/run_vision_pilot.py` across Gemini, OpenAI, Antigravity Agent native, and Mock providers, dry-run pre-flight inspection, 8-domain architectural prompt with anti-extrapolation enforcement, observation evidence tracking (`source_evidence`, `revision_history`), post-hoc evaluation via `scripts/pilot_benchmark_runner.py`, and verified downstream 3D BIM compilation with `dxf-to-3d-bim`.
 - **Multi-Format Export**: Delivers editable `.dxf`, companion `.handoff.json`, `.report.json`/`.md`/`.pdf`, `.vision-execution.json`, `.visual-qa.json`/`.md`, and visual `.png` preview.
 
 *Scope: Version 0.1.0 targets single-storey orthogonal residential floor plans.*

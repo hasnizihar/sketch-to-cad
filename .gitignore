@@ -18,6 +18,7 @@
 *.dxf
 !residential-floor-plan.dxf
 !tests/output/*.dxf
+!tests/benchmark/**/deliverables/**/*.dxf
 *.dwg
 *.log
 *.tmp

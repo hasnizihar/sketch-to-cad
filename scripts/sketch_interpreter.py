@@ -602,7 +602,15 @@ def compile_draft_model(
         op_id = op.get("id", f"OP-{idx+1}")
         wall_id = op.get("wallId") or (draft_model["walls"][0]["id"] if draft_model["walls"] else "W-EXT-SOUTH")
         # Center coordinate along host wall
-        center = op.get("center", [env_w * 0.5, 0.0])
+        center = op.get("center")
+        if center is None:
+            if op.get("source_bbox"):
+                sb = op["source_bbox"]
+                cx = (sb[1] + sb[3]) * 0.5 * env_w
+                cy = (1.0 - (sb[0] + sb[2]) * 0.5) * env_d
+                center = [round(cx, 1), round(cy, 1)]
+            else:
+                center = [env_w * 0.5, 0.0]
         raw_type = op.get("type", "door")
         op_type = "cased_opening" if raw_type not in ("door", "window") else raw_type
         raw_swing = op.get("swing_direction") or "none"
@@ -640,7 +648,7 @@ def compile_draft_model(
                 (r.get("approx_width_mm") or (env_w * 0.5)) *
                 (r.get("approx_depth_mm") or (env_d * 0.5)) / 1_000_000.0
             )
-            reconstructed_rooms.append({
+            rm_entry = {
                 "id": r_id,
                 "name": r_name,
                 "labelPosition": pos,
@@ -650,7 +658,20 @@ def compile_draft_model(
                     "confidence": r.get("confidence", 0.9),
                     "dimension_provenance": r.get("dimension_provenance", "inferred"),
                 },
-            })
+            }
+            if r.get("source_bbox"):
+                sb = r["source_bbox"]
+                x1 = sb[1] * env_w
+                x2 = sb[3] * env_w
+                y1 = (1.0 - sb[2]) * env_d
+                y2 = (1.0 - sb[0]) * env_d
+                rm_entry["boundaryCorners"] = [
+                    [round(x1, 1), round(y1, 1)],
+                    [round(x2, 1), round(y1, 1)],
+                    [round(x2, 1), round(y2, 1)],
+                    [round(x1, 1), round(y2, 1)],
+                ]
+            reconstructed_rooms.append(rm_entry)
     else:
         # Default single living area
         reconstructed_rooms.append({
@@ -705,3 +726,71 @@ def compile_draft_model(
             raise ValueError(f"Draft model failed canonical schema validation: {errors}")
 
     return draft_model
+
+
+def apply_human_correction(
+    observations: Dict[str, Any],
+    element_type: str,
+    element_id: str,
+    corrections: Dict[str, Any],
+    reviewer: str = "Human Reviewer",
+    reason: str = "Architectural review correction",
+) -> Dict[str, Any]:
+    """
+    Apply an auditable human correction to a structured observation document,
+    recording an immutable entry in 'revision_history' and updating 'review_status'.
+    
+    Supported element_types: 'walls', 'openings', 'rooms', 'dimensions', 'uncertainties', 'source_metadata'
+    """
+    import hashlib
+    import datetime
+
+    orig_hash = hashlib.sha256(json.dumps(observations, sort_keys=True).encode("utf-8")).hexdigest()
+
+    target_found = False
+    prev_val = None
+
+    if element_type == "source_metadata":
+        prev_val = dict(observations.get("source_metadata", {}))
+        observations.setdefault("source_metadata", {}).update(corrections)
+        target_found = True
+    elif element_type in ("walls", "openings", "rooms", "dimensions", "uncertainties", "stairs", "columns"):
+        items = observations.get(element_type, [])
+        for item in items:
+            if item.get("id") == element_id:
+                prev_val = dict(item)
+                item.update(corrections)
+                target_found = True
+                break
+    else:
+        raise ValueError(f"Unsupported element_type '{element_type}' for human correction.")
+
+    if not target_found:
+        raise KeyError(f"Element '{element_id}' not found in observation list '{element_type}'.")
+
+    rev_hash = hashlib.sha256(json.dumps(observations, sort_keys=True).encode("utf-8")).hexdigest()
+    ts = datetime.datetime.now(datetime.timezone.utc).isoformat()
+
+    rev_entry = {
+        "timestamp": ts,
+        "reviewer": reviewer,
+        "action": "element_updated",
+        "element_type": element_type,
+        "element_id": element_id,
+        "previous_value": prev_val,
+        "new_value": corrections,
+        "original_hash": orig_hash,
+        "revised_hash": rev_hash,
+        "reason": reason,
+    }
+
+    if "revision_history" not in observations or observations["revision_history"] is None:
+        observations["revision_history"] = []
+    observations["revision_history"].append(rev_entry)
+    observations["review_status"] = "modified"
+
+    is_valid, val_errors = validate_observations(observations)
+    if not is_valid:
+        raise ValueError(f"Observation validation failed after applying correction: {val_errors}")
+
+    return observations

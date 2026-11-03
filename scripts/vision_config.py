@@ -92,6 +92,8 @@ def resolve_vision_config(
             prov = "mock" if allow_mock_fallback else "google_gemini"
 
     prov = prov.lower()
+    if prov == "gemini":
+        prov = "google_gemini"
 
     # Model default resolution
     model = model_identifier
@@ -110,9 +112,11 @@ def resolve_vision_config(
     elif prov == "antigravity_agent":
         model = model or "antigravity-native-vision-v1"
 
-    else:
-        prov = "mock"
+    elif prov == "mock":
         model = model or "mock-architectural-v1"
+
+    else:
+        model = model or "unknown-v1"
 
     return VisionConfig(
         provider_name=prov,

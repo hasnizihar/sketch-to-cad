@@ -132,21 +132,26 @@ def encode_image_for_api(source_path: str, page_number: int = 1) -> Tuple[str, s
 def build_architectural_vision_prompt(observations_schema_sample: Optional[Dict[str, Any]] = None) -> str:
     """Construct the architectural interpretation instruction for multimodal models."""
     return (
-        "You are an expert architectural drafting assistant for Sketch-to-CAD. "
+        "You are an expert architectural drafting assistant for Sketch-to-CAD.\n"
         "Examine the attached residential floor-plan drawing, hand sketch, or architectural scan.\n\n"
         "Analyze all visible features and output a valid JSON object matching the SketchObservations schema.\n\n"
-        "STRICT EXTRACTION RULES:\n"
-        "1. Identify exterior and interior walls with approximate normalized bounding boxes [ymin, xmin, ymax, xmax].\n"
-        "2. Extract handwritten or printed numbers. Classify dimension source as:\n"
+        "ARCHITECTURAL EXTRACTION DOMAINS:\n"
+        "A. Building Envelope & Primary Structure: Identify continuous exterior boundary walls, structural perimeter, and closed loops.\n"
+        "B. Interior Partitions & Wall Thicknesses: Identify dividing walls, partition thickness (explicit vs inferred standard 100/150mm).\n"
+        "C. Door Schedule & Swing Clearance: Identify swing direction (inward/outward, left/right, sliding), host wall association, opening width.\n"
+        "D. Window Schedule & Openings: Identify glazing locations on exterior/interior walls, estimated or noted sill heights.\n"
+        "E. Room Identifiers & Zoning: Identify labels, standardized functional types (LIVING, BEDROOM, KITCHEN, BATHROOM, CORRIDOR, BALCONY), room footprints.\n"
+        "F. Handwritten & Printed Dimensions: Transcribe exact numerical text (value_mm). Distinguish between:\n"
         "   - 'explicit': handwritten or printed text clearly stating dimension.\n"
         "   - 'estimated': estimated based on room proportions against a reference.\n"
         "   - 'inferred': architectural standards (e.g. 200mm exterior wall, 900mm entry door).\n"
         "   - 'unknown': missing or completely unlabeled dimensions.\n"
-        "3. NEVER fabricate dimensions that are not visible. If overall footprint is not annotated, mark it unknown.\n"
-        "4. Identify rooms, their names, and function.\n"
-        "5. Identify doors and windows, their host walls, and swing directions if indicated.\n"
-        "6. Identify any vertical circulation (stairs), columns, or architectural symbols.\n"
-        "7. Catalog all uncertainties, missing measurements, and arithmetic contradictions in 'uncertainties'.\n\n"
+        "G. Vertical Circulation & Structural Elements: Identify stairs (direction up/down, step hints), columns, structural piers.\n"
+        "H. Discrepancies, Ambiguities & Uncertainty Cataloging: Identify all arithmetic contradictions (e.g. sum of parts != overall dimension), unclosed boundary lines, illegible handwriting, or unannotated heights.\n\n"
+        "STRICT EXTRACTION RULES:\n"
+        "1. NEVER fabricate dimensions that are not visible. If overall footprint is not annotated, mark it unknown.\n"
+        "2. STRICT PROHIBITION AGAINST EXTRAPOLATION: NEVER extrapolate or invent dimensions based on uncalibrated pixel proportions. Handwritten or printed text must be explicitly read.\n"
+        "3. If a dimension is missing or contradictory, catalog it explicitly in 'uncertainties' with severity ('blocker', 'warning', or 'info').\n\n"
         "Return ONLY the JSON object with root keys: "
         "'source_metadata', 'status', 'confidence_summary', 'walls', 'openings', 'rooms', 'dimensions', 'uncertainties'."
     )
@@ -444,21 +449,30 @@ class AntigravityAgentVisionProvider(BaseVisionProvider):
     into the deterministic geometry and CAD pipeline with complete auditability.
     """
 
-    def __init__(self, config: VisionConfig, observation_data: Optional[Dict[str, Any]] = None):
+    def __init__(
+        self,
+        config: VisionConfig,
+        observation_data: Optional[Dict[str, Any]] = None,
+        execution_type: str = "agent_native",
+    ):
         super().__init__(config)
         self.preset_observation = observation_data
+        self.execution_type = execution_type
 
     def interpret_sketch(
         self,
         source_path: str,
         page_number: int = 1,
         source_metadata: Optional[Dict[str, Any]] = None,
+        execution_type: Optional[str] = None,
     ) -> VisionResult:
         meta = source_metadata or load_sketch_input(source_path, page_number)
         img_sha = compute_source_sha256(source_path, page_number)
         record_id = f"VR-AGENT-{int(time.time()*1000)}"
         t0 = time.perf_counter()
         req_timestamp = datetime.datetime.now(datetime.timezone.utc).isoformat()
+
+        effective_execution_type = execution_type or self.execution_type
 
         if self.preset_observation is None:
             # Fallback observation reference based on source file
@@ -483,7 +497,7 @@ class AntigravityAgentVisionProvider(BaseVisionProvider):
 
         exec_rec = {
             "record_id": record_id,
-            "execution_type": "agent_native",
+            "execution_type": effective_execution_type,
             "provider_name": "antigravity_agent",
             "model_identifier": self.config.model_identifier,
             "provider_config_version": self.config.config_version,
@@ -717,6 +731,11 @@ def create_vision_provider(config: Optional[VisionConfig] = None) -> BaseVisionP
     cfg = config or resolve_vision_config()
     is_valid, errors = validate_vision_config(cfg)
     if not is_valid:
+        # STRICT ENFORCEMENT: Never silently fallback to mock if a real external provider was requested
+        if cfg.provider_name in ("google_gemini", "openai"):
+            raise ValueError(
+                f"Invalid vision configuration for '{cfg.provider_name}': {', '.join(errors)}"
+            )
         if cfg.allow_mock_fallback:
             return MockVisionProvider(cfg)
         raise ValueError(f"Invalid vision configuration: {errors}")

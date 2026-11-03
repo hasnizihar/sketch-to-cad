@@ -1,0 +1,69 @@
+{
+  "project_name": "PILOT-02 Authentic Residential Villa",
+  "source_sketch": "PILOT-02-user-hand-drawn-villa.jpg",
+  "cad_output": "pilot-02-authentic-residential-villa.dxf",
+  "overall_status": "REVIEW_REQUIRED",
+  "severity_summary": {
+    "blocking_discrepancies": 0,
+    "major_discrepancies": 0,
+    "warnings": 1,
+    "informational": 5
+  },
+  "checks_passed": 5,
+  "total_checks": 6,
+  "checks": [
+    {
+      "check": "footprint_aspect_ratio",
+      "status": "DISCREPANCY",
+      "severity": "warning",
+      "discrepancy_type": "out_of_scale_source_sketch",
+      "sketch_aspect_ratio": 1.413,
+      "cad_aspect_ratio": 0.92,
+      "deviation_pct": 34.9,
+      "message": "Hand sketch is out-of-scale relative to explicit annotations: sketch image aspect ratio is 1.41 (landscape), but handwritten dimensions establish 8000x8700 mm (ratio 0.92, portrait). Reconstruction correctly honored explicit dimensions over distorted sketch linework."
+    },
+    {
+      "check": "room_topology_and_count",
+      "status": "PASS",
+      "severity": "informational",
+      "observed_room_count": 3,
+      "cad_room_count": 3,
+      "missing_in_cad": [],
+      "extra_in_cad": [],
+      "message": "All 3 observed rooms correctly represented in CAD model."
+    },
+    {
+      "check": "openings_count_and_distribution",
+      "status": "PASS",
+      "severity": "informational",
+      "observed_doors": 1,
+      "cad_doors": 1,
+      "observed_windows": 1,
+      "cad_windows": 1,
+      "message": "Openings count verified: 1 doors, 1 windows."
+    },
+    {
+      "check": "dimensions_fidelity",
+      "status": "PASS",
+      "severity": "informational",
+      "discrepancies": [],
+      "message": "All 2 observed dimensions verified within 50.0mm tolerance."
+    },
+    {
+      "check": "staircase_alignment",
+      "status": "PASS",
+      "severity": "informational",
+      "observed_stairs": 1,
+      "cad_stairs": 1,
+      "message": "Staircases: observed 1, drafted 1."
+    },
+    {
+      "check": "duplicate_entities",
+      "status": "PASS",
+      "severity": "informational",
+      "duplicate_ids": [],
+      "message": "Zero duplicate entity IDs detected across walls, openings, and rooms."
+    }
+  ],
+  "summary": "Visual QA REVIEW_REQUIRED: 5/6 checks passed. Severity breakdown: 0 blocking, 0 major, 1 warning, 5 informational."
+}

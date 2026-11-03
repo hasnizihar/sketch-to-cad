@@ -10,6 +10,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Milestone 13: Real AI Vision Accuracy & Independent Architectural Validation**:
+  - Established measurable, reproducible evidence of genuine AI vision interpretation accuracy on hand-drawn residential floor-plan sketches, completely eliminating ground-truth leakage and prompt contamination.
+  - Implemented decoupled vision inference runner `scripts/run_vision_pilot.py` (mirrored in `skills/sketch-to-cad/scripts/run_vision_pilot.py`): loads strictly source image bytes, computes SHA-256 fingerprints, assembles prompt, and executes provider inference without touching ground-truth annotations.
+  - Added `--dry-run` pre-flight inspection mode for Google Gemini (`gemini-2.5-flash`) and OpenAI (`gpt-4o`) validating payloads, prompt assembly, and endpoint configuration without external network requests.
+  - Enforced strict credential validation: requesting live cloud providers (`google_gemini`, `openai`) without valid API keys raises descriptive `ValueError` and strictly refuses to silently fall back to mock mode.
+  - Expanded `build_architectural_vision_prompt()` in `scripts/vision_provider.py` with 8 comprehensive extraction domains (Envelope, Partitions, Doors, Windows, Rooms, Handwritten Dimensions, Vertical Circulation, Discrepancies) and codified strict anti-extrapolation prohibition.
+  - Extended observation schema `sketch-observations.schema.json` with optional `source_evidence`, `review_status`, and `revision_history` tracking while preserving 100% backward compatibility.
+  - Implemented `apply_human_correction()` in `scripts/sketch_interpreter.py`: applies human corrections to observations, preserves original and revised SHA-256 state hashes, sets `review_status: "modified"`, and logs auditable revision history.
+  - Extended `vision-execution-record.schema.json` to support `replayed` execution type for replayed fixtures.
+  - Decoupled benchmark runner `scripts/pilot_benchmark_runner.py`: loads independent predictions from `tests/benchmark/pilot_dataset/predictions/`, evaluates them post-hoc against ground truth, and exports `real_vision_results.json` and `real_vision_summary.json`.
+  - Benchmarked authentic user sketch `PILOT-02` under genuine `agent_native` vision execution: achieved 0.80 Wall F1, 100% Dimension Accuracy within 50mm, and 100% Arithmetic Contradiction Detection ($1800+4100+3200=9100$ vs $8700\text{ mm}$).
+  - Executed end-to-end pipeline on `PILOT-02`, generating production CAD deliverables (`.dxf`, `.handoff.json`, `.report.pdf`, `.report.md`, `.visual-qa.json`) and passing comprehensive `DXFInspector` audit with 0 errors and 0 warnings.
+  - Proved downstream interoperability: `BIMIntegrationValidator` executed downstream `dxf-to-3d-bim` CLI (`inspect` and `prepare`), generating 3D intermediate BIM model without errors.
+  - Authored 5 comprehensive reference specifications:
+    * `references/milestone-13-baseline-audit.md`: Pre-implementation audit of repository state, dataset categorization, and leakage vector identification.
+    * `references/independent-drawing-review.md`: 12-item architectural drawing checklist assessing `PILOT-02` DXF drafting quality.
+    * `references/real-ai-vision-accuracy.md`: Methodology, mathematical evaluation metrics, provenance classification, and benchmark results.
+    * `references/vision-provider-validation.md`: Pluggable provider architecture, secret masking, failure simulation, prompt domains, and schema compliance.
+    * `references/milestone-13-results.md`: Complete executive summary, benchmark evidence, and acceptance recommendation.
+  - Added 10 automated unit and integration tests in `tests/test_real_vision_validation.py`, expanding test coverage to **240 tests** (100% passing in 8.8s).
+  - Updated `scripts/validate-skill.ps1` with Validation Check 19 (19/19 checks passed, 46/46 reference and schema files verified).
 - **Milestone 12: Real-World Pilot, Independent Validation & Production Acceptance**:
   - Reconciled and audited test count baseline across all 23 test modules (confirming 220 tests cleanly discovered).
   - Formalized human review governance: explicitly defined review as an asserted identity (`auth_method: "identity_assertion"`) with formal disclaimers regarding professional licensing authentication.
@@ -136,6 +157,27 @@ eferences/architectural-qa.md.
 ## [0.1.0] - 2026-10-26
 
 ### Added
+- **Milestone 13: Real AI Vision Accuracy & Independent Architectural Validation**:
+  - Established measurable, reproducible evidence of genuine AI vision interpretation accuracy on hand-drawn residential floor-plan sketches, completely eliminating ground-truth leakage and prompt contamination.
+  - Implemented decoupled vision inference runner `scripts/run_vision_pilot.py` (mirrored in `skills/sketch-to-cad/scripts/run_vision_pilot.py`): loads strictly source image bytes, computes SHA-256 fingerprints, assembles prompt, and executes provider inference without touching ground-truth annotations.
+  - Added `--dry-run` pre-flight inspection mode for Google Gemini (`gemini-2.5-flash`) and OpenAI (`gpt-4o`) validating payloads, prompt assembly, and endpoint configuration without external network requests.
+  - Enforced strict credential validation: requesting live cloud providers (`google_gemini`, `openai`) without valid API keys raises descriptive `ValueError` and strictly refuses to silently fall back to mock mode.
+  - Expanded `build_architectural_vision_prompt()` in `scripts/vision_provider.py` with 8 comprehensive extraction domains (Envelope, Partitions, Doors, Windows, Rooms, Handwritten Dimensions, Vertical Circulation, Discrepancies) and codified strict anti-extrapolation prohibition.
+  - Extended observation schema `sketch-observations.schema.json` with optional `source_evidence`, `review_status`, and `revision_history` tracking while preserving 100% backward compatibility.
+  - Implemented `apply_human_correction()` in `scripts/sketch_interpreter.py`: applies human corrections to observations, preserves original and revised SHA-256 state hashes, sets `review_status: "modified"`, and logs auditable revision history.
+  - Extended `vision-execution-record.schema.json` to support `replayed` execution type for replayed fixtures.
+  - Decoupled benchmark runner `scripts/pilot_benchmark_runner.py`: loads independent predictions from `tests/benchmark/pilot_dataset/predictions/`, evaluates them post-hoc against ground truth, and exports `real_vision_results.json` and `real_vision_summary.json`.
+  - Benchmarked authentic user sketch `PILOT-02` under genuine `agent_native` vision execution: achieved 0.80 Wall F1, 100% Dimension Accuracy within 50mm, and 100% Arithmetic Contradiction Detection ($1800+4100+3200=9100$ vs $8700\text{ mm}$).
+  - Executed end-to-end pipeline on `PILOT-02`, generating production CAD deliverables (`.dxf`, `.handoff.json`, `.report.pdf`, `.report.md`, `.visual-qa.json`) and passing comprehensive `DXFInspector` audit with 0 errors and 0 warnings.
+  - Proved downstream interoperability: `BIMIntegrationValidator` executed downstream `dxf-to-3d-bim` CLI (`inspect` and `prepare`), generating 3D intermediate BIM model without errors.
+  - Authored 5 comprehensive reference specifications:
+    * `references/milestone-13-baseline-audit.md`: Pre-implementation audit of repository state, dataset categorization, and leakage vector identification.
+    * `references/independent-drawing-review.md`: 12-item architectural drawing checklist assessing `PILOT-02` DXF drafting quality.
+    * `references/real-ai-vision-accuracy.md`: Methodology, mathematical evaluation metrics, provenance classification, and benchmark results.
+    * `references/vision-provider-validation.md`: Pluggable provider architecture, secret masking, failure simulation, prompt domains, and schema compliance.
+    * `references/milestone-13-results.md`: Complete executive summary, benchmark evidence, and acceptance recommendation.
+  - Added 10 automated unit and integration tests in `tests/test_real_vision_validation.py`, expanding test coverage to **240 tests** (100% passing in 8.8s).
+  - Updated `scripts/validate-skill.ps1` with Validation Check 19 (19/19 checks passed, 46/46 reference and schema files verified).
 - **Milestone 8: Genuine Vision Integration & Production Reliability**:
   - Implemented pluggable, verifiable multimodal vision provider architecture `scripts/vision_provider.py` and configuration manager `scripts/vision_config.py` supporting Google Gemini (`gemini-2.5-flash`), OpenAI (`gpt-4o`), Antigravity Agent native vision, and deterministic mock providers.
   - Authored Draft-07 JSON Schema `skills/sketch-to-cad/schemas/vision-execution-record.schema.json` v1.0.0; pipeline generates structured audit records (`<project>.vision-execution.json`) capturing image SHA-256 fingerprint, provider/model metadata, request timestamps, duration in ms, token usage, and status (`real_api`, `agent_native`, `mocked`) without secret leakage (`mask_secret`).

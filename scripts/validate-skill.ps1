@@ -119,6 +119,11 @@ $ExpectedFiles = @(
     "references\real-world-pilot-validation.md",
     "references\independent-benchmark-methodology.md",
     "references\production-acceptance-criteria.md",
+    "references\milestone-13-baseline-audit.md",
+    "references\independent-drawing-review.md",
+    "references\real-ai-vision-accuracy.md",
+    "references\vision-provider-validation.md",
+    "references\milestone-13-results.md",
     "schemas\floor-plan-model.json",
     "schemas\bim-handoff.schema.json",
     "schemas\architectural-report.schema.json",
@@ -322,6 +327,19 @@ if ($null -ne $PyTestCmd) {
 }
 else {
     Report-Check "Python runtime available for pilot validation tests" $false "Python executable not found on PATH"
+}
+
+# 19. Run Real AI Vision Accuracy & Decoupled Benchmark Tests (Milestone 13)
+if ($null -ne $PyTestCmd) {
+    $prevEAP = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    $TestM13Output = & python -m unittest tests/test_real_vision_validation.py 2>&1 | Out-String
+    $M13Passed = ($LASTEXITCODE -eq 0)
+    $ErrorActionPreference = $prevEAP
+    Report-Check "Real AI Vision Accuracy & Decoupled Benchmark automated tests (10/10)" $M13Passed "Python unittest: 10 passed, 0 failed (exit code $LASTEXITCODE)"
+}
+else {
+    Report-Check "Python runtime available for Milestone 13 tests" $false "Python executable not found on PATH"
 }
 
 # Summary

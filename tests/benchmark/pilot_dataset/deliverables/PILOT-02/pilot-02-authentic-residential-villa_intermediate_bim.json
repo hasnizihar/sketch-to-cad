@@ -1,0 +1,243 @@
+{
+  "schemaVersion": "1.0.0",
+  "metadata": {
+    "projectName": "SketchToCadImport",
+    "sourceJsonPath": "tests\\benchmark\\pilot_dataset\\deliverables\\PILOT-02\\pilot-02-authentic-residential-villa.handoff.json",
+    "createdAt": "2026-11-03T12:38:23.732344+00:00",
+    "updatedAt": "2026-11-03T12:38:23.732344+00:00"
+  },
+  "status": "awaiting_approval",
+  "units": {
+    "sourceUnits": "mm",
+    "normalizedUnits": "mm",
+    "scaleFactor": 1.0,
+    "originOffset": [
+      0.0,
+      0.0
+    ]
+  },
+  "levels": [
+    {
+      "id": "level_1",
+      "name": "Level 1",
+      "elevation": 0.0,
+      "height": 3000.0
+    },
+    {
+      "id": "level_2",
+      "name": "Level 2",
+      "elevation": 3000.0,
+      "height": 3000.0
+    }
+  ],
+  "walls": [
+    {
+      "id": "W-EXT-NORTH",
+      "classification": "exterior",
+      "start": [
+        0.0,
+        8700.0
+      ],
+      "end": [
+        8000.0,
+        8700.0
+      ],
+      "thickness": 200.0,
+      "height": 3000.0,
+      "levelId": "Level 1",
+      "confidence": "high",
+      "sourceEntities": [
+        "A-WALL-EXTR"
+      ]
+    },
+    {
+      "id": "W-EXT-EAST",
+      "classification": "exterior",
+      "start": [
+        8000.0,
+        8700.0
+      ],
+      "end": [
+        8000.0,
+        0.0
+      ],
+      "thickness": 200.0,
+      "height": 3000.0,
+      "levelId": "Level 1",
+      "confidence": "high",
+      "sourceEntities": [
+        "A-WALL-EXTR"
+      ]
+    },
+    {
+      "id": "W-EXT-SOUTH",
+      "classification": "exterior",
+      "start": [
+        8000.0,
+        0.0
+      ],
+      "end": [
+        0.0,
+        0.0
+      ],
+      "thickness": 200.0,
+      "height": 3000.0,
+      "levelId": "Level 1",
+      "confidence": "high",
+      "sourceEntities": [
+        "A-WALL-EXTR"
+      ]
+    },
+    {
+      "id": "W-EXT-WEST",
+      "classification": "exterior",
+      "start": [
+        0.0,
+        0.0
+      ],
+      "end": [
+        0.0,
+        8700.0
+      ],
+      "thickness": 200.0,
+      "height": 3000.0,
+      "levelId": "Level 1",
+      "confidence": "high",
+      "sourceEntities": [
+        "A-WALL-EXTR"
+      ]
+    },
+    {
+      "id": "W-INTR-MID",
+      "classification": "exterior",
+      "start": [
+        0.0,
+        4350.0
+      ],
+      "end": [
+        8000.0,
+        4350.0
+      ],
+      "thickness": 150.0,
+      "height": 3000.0,
+      "levelId": "Level 1",
+      "confidence": "high",
+      "sourceEntities": [
+        "A-WALL-INTR"
+      ]
+    }
+  ],
+  "openings": [
+    {
+      "id": "D-ENTRY",
+      "type": "door",
+      "wallId": "W-EXT-SOUTH",
+      "center": [
+        4000.0,
+        957.0
+      ],
+      "width": 1000.0,
+      "height": 2100.0,
+      "confidence": "high"
+    },
+    {
+      "id": "W-KIT",
+      "type": "window",
+      "wallId": "W-EXT-WEST",
+      "center": [
+        880.0,
+        4350.0
+      ],
+      "width": 1200.0,
+      "height": 1200.0,
+      "confidence": "high",
+      "sillHeight": 900.0
+    }
+  ],
+  "floors": [
+    {
+      "id": "floor_1",
+      "levelId": "Level 1",
+      "thickness": 150.0,
+      "elevation": 0.0,
+      "boundary": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          6000.0,
+          0.0
+        ],
+        [
+          6000.0,
+          4000.0
+        ],
+        [
+          0.0,
+          4000.0
+        ]
+      ]
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R-LIVING",
+      "name": "LIVING / DINING",
+      "levelId": "Level 1",
+      "approximateArea": 34.8,
+      "labelPosition": [
+        4000.0,
+        2610.0
+      ]
+    },
+    {
+      "id": "R-KITCHEN",
+      "name": "KITCHEN",
+      "levelId": "Level 1",
+      "approximateArea": 17.4,
+      "labelPosition": [
+        4000.0,
+        5220.0
+      ]
+    },
+    {
+      "id": "R-BEDROOM-1",
+      "name": "BEDROOM 1",
+      "levelId": "Level 1",
+      "approximateArea": 17.4,
+      "labelPosition": [
+        4000.0,
+        2610.0
+      ]
+    }
+  ],
+  "roofs": [],
+  "staircases": [],
+  "structuralGrids": [],
+  "columns": [],
+  "beams": [],
+  "foundations": [],
+  "assumptions": [
+    {
+      "id": "UNC-01",
+      "target": "dimensions.scale",
+      "description": "Hand sketch image aspect ratio (1.41) deviates from explicit annotated dimensions (8000x8700 mm, ratio 0.92). Explicit dimensions govern CAD reconstruction.",
+      "assumedValue": null,
+      "confidence": "medium",
+      "status": "unresolved"
+    },
+    {
+      "id": "unc_W-KIT_sill",
+      "target": "openings[W-KIT].sillHeight",
+      "description": "Window W-KIT sill height unannotated in sketch; standard 900mm assumed pending reviewer verification",
+      "assumedValue": 900.0,
+      "confidence": "low",
+      "status": "unresolved"
+    }
+  ],
+  "approval": {
+    "isApproved": false,
+    "notes": "Imported from Sketch-to-CAD model. Awaiting 3D approval."
+  }
+}

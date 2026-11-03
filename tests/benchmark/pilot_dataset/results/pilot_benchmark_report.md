@@ -1,19 +1,19 @@
-# Sketch-to-CAD Real-World Pilot Benchmark Report (Milestone 12)
+# Sketch-to-CAD Real-World Pilot Benchmark Report (Milestone 13)
 
-- **Benchmark Run Timestamp:** `2026-11-02T19:23:36Z`
+- **Benchmark Run Timestamp:** `2026-11-03T12:31:32Z`
 - **Total Pilot Samples Evaluated:** 22
 - **Agent-Native AI Runs:** 1 (PILOT-02 Authentic User Sketch)
 - **Mock Baseline Regression Runs:** 21
 
 > [!IMPORTANT]
-> **Provenance Disclosure**: In compliance with Milestone 12 guidelines, `PILOT-02` (authentic user villa sketch) was evaluated using `agent_native` vision execution. Synthetic challenge samples are explicitly marked as `mocked` baselines to verify tolerance matching and uncertainty logging without misrepresenting mock data as external API results.
+> **Provenance & Independence Disclosure**: `PILOT-02` (authentic user villa sketch) was evaluated using independent prediction data extracted via `agent_native` vision inference. Input prompts contain strictly zero ground-truth leakage. Challenge baseline samples verify geometric constraint checking and uncertainty logging without misrepresenting mock baselines as external API runs.
 
 ## 1. Category Summary Metrics
 
 | Category | Samples | Mean Wall F1 | Mean Opening F1 | Mean Room IoU | Mean Dim Acc % | Uncertainty Capture % |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | **Clean Hand-Drawn Plans** | 2 | 1.00 | 1.00 | 1.00 | 100.0% | 100.0% |
-| **Category B: Rough Hand-Drawn Plans** | 1 | 1.00 | 1.00 | 1.00 | 100.0% | 100.0% |
+| **Category B: Rough Hand-Drawn Plans** | 1 | 0.80 | 0.00 | 0.00 | 100.0% | 50.0% |
 | **Rough Pencil Sketches** | 2 | 1.00 | 1.00 | 1.00 | 100.0% | 100.0% |
 | **Incomplete & Missing Wall Sketches** | 1 | 1.00 | 1.00 | 1.00 | 100.0% | 100.0% |
 | **Contradictory Annotations** | 1 | 1.00 | 1.00 | 1.00 | 100.0% | 100.0% |
@@ -30,7 +30,7 @@
 | Sample ID | Category | Type | Walls F1 | Ep. Err (mm) | Openings F1 | Rooms IoU | Dims Acc % | Uncertainties |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | `PILOT-01` | Clean Hand-Drawn Plans | ⚪ Mock Baseline | 1.00 | 0 | 1.00 | 1.00 | 100% | 0/0 |
-| `PILOT-02` | Category B: Rough Hand-Drawn Plans | 🟢 Agent-Native | 1.00 | 0 | 1.00 | 1.00 | 100% | 2/2 |
+| `PILOT-02` | Category B: Rough Hand-Drawn Plans | 🟢 Agent-Native | 0.80 | 0 | 0.00 | 0.00 | 100% | 1/2 |
 | `PILOT-03` | Rough Pencil Sketches | ⚪ Mock Baseline | 1.00 | 0 | 1.00 | 1.00 | 100% | 0/0 |
 | `PILOT-04` | Incomplete & Missing Wall Sketches | ⚪ Mock Baseline | 1.00 | 0 | 1.00 | 1.00 | 100% | 2/2 |
 | `PILOT-05` | Contradictory Annotations | ⚪ Mock Baseline | 1.00 | 0 | 1.00 | 1.00 | 100% | 1/1 |
@@ -65,13 +65,13 @@
   - *Audit Note:* Execution used mocked or pre-supplied observations. Results do NOT reflect real multimodal AI vision inference.
 
 ### `PILOT-02`: Category B: Rough Hand-Drawn Plans
-- **Execution Type:** `agent_native` | **Provider:** `antigravity_agent` (agent_native_vision_v1)
+- **Execution Type:** `agent_native` | **Provider:** `antigravity_agent` (antigravity-native-vision-v1)
 - **Source SHA-256:** `8683c2cd307c28ca...`
-- **Wall Detection:** F1 = 1.00, Mean Endpoint Error = 0.0 mm
-- **Opening Detection:** F1 = 1.00, Width Error = 0.0 mm
-- **Room Reconstruction:** IoU = 1.00, Net Area Error = 0.0%
+- **Wall Detection:** F1 = 0.80, Mean Endpoint Error = 0.0 mm
+- **Opening Detection:** F1 = 0.00, Width Error = 0.0 mm
+- **Room Reconstruction:** IoU = 0.00, Net Area Error = 0.0%
 - **Dimension Accuracy:** 100.0% within 50mm
-- **Uncertainties:** 2 detected / 2 expected in ground truth
+- **Uncertainties:** 1 detected / 2 expected in ground truth
   - *Audit Note:* Authentic user sketch: handwritten annotations and arithmetic contradiction (1800+4100+3200=9100 vs 8700mm) verified by agent.
 
 ### `PILOT-03`: Rough Pencil Sketches

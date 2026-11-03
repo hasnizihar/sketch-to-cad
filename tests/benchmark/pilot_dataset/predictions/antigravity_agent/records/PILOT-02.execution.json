@@ -1,0 +1,31 @@
+{
+  "record_id": "VR-AGENT-1793708574261",
+  "execution_type": "agent_native",
+  "provider_name": "antigravity_agent",
+  "model_identifier": "antigravity-native-vision-v1",
+  "provider_config_version": "1.0.0",
+  "source_image": {
+    "file_name": "PILOT-02-user-hand-drawn-villa.jpg",
+    "page_number": 1,
+    "total_pages": 1,
+    "sha256": "8683c2cd307c28ca22a9bcb1790a66e7dfc9bb8a3e923cbf32c022cebbe6ea60",
+    "dimensions_pixels": {
+      "width": 1200,
+      "height": 849
+    },
+    "dpi": 300.0
+  },
+  "timestamp": "2026-11-03T12:22:54.261535+00:00",
+  "prompt_version": "arch-interpret-v1.0",
+  "status": "success",
+  "raw_response_path": null,
+  "parsed_observation_path": "D:\\Agent Skills\\sketch-to-cad-main\\tests\\benchmark\\pilot_dataset\\predictions\\antigravity_agent\\PILOT-02.predictions.json",
+  "validation_result": {
+    "is_valid": true,
+    "error_count": 0,
+    "errors": []
+  },
+  "processing_duration_ms": 0.03,
+  "token_usage": null,
+  "error_details": null
+}

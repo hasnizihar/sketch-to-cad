@@ -208,14 +208,27 @@ This directory contains test specifications, reference fixtures, and validation 
 
 ---
 
+---
+
+26. **Real AI Vision Accuracy & Decoupled Benchmark Suite (Milestone 13)**:
+    `powershell
+    python -m unittest tests/test_real_vision_validation.py
+    `
+    Validates strict provider credential enforcement (refusal to silently fall back to mock), 8-domain architectural vision prompt with anti-extrapolation enforcement, observation schema extensions (source_evidence, 
+eview_status, 
+evision_history), pply_human_correction immutable audit trail, execution record 
+eplayed type compliance, ground-truth isolation in inference runner, dry-run pre-flight execution for Gemini and OpenAI, decoupled post-hoc benchmark evaluation, provenance segregation (gent_native vs mocked), and PILOT-02 CAD deliverables DXF inspection compliance.
+
+---
+
 ### Overall Test Suite Execution
 
-Run all 230 automated tests:
+Run all 240 automated tests:
 `powershell
 python -m unittest discover tests
 `
 
-Run skill integrity validation (18 automated checks):
+Run skill integrity validation (19 automated checks):
 `powershell
 .\scripts\validate-skill.ps1
 `
